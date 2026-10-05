@@ -12,6 +12,11 @@ node_modules
 .env.test.local
 .env.production.local
 
+.turbo-clone-temp/
+.turbo-clone-temp/**
+.turbo-clone-temp/*
+.turbo-clone-temp
+
 # Testing
 coverage
 

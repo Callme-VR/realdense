@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+
+  /* Primary Brand Navy */
+  --color-navy-900: #001e56;
+  --color-navy-800: #0c246c;
+
+  /* Secondary Deep Blue */
+  --color-blue-900: #011e58;
+  --color-blue-800: #0d2c8a;
+
+  /* Brand Cyan Accent */
+  --color-cyan-600: #0196e3;
+  --color-cyan-500: #00a8ff;
+  --color-cyan-400: #0cb0f2;
+
+  /* Light Blue Tint & Glass Fills */
+  --color-tint-50: #e9f4fd;
+  --color-tint-100: #dcf1fd;
+  --color-tint-200: #cceafe;
+
+  /* Warm Gold Accent */
+  --color-gold-400: #ffbb1f;
+
+  /* Neutrals */
+  --color-neutral-border: #d9d9d9;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #001e56;
+  --navy-primary: #0c246c;
+  --navy-dark: #001e56;
+  --blue-deep: #0d2c8a;
+  --cyan-accent: #0cb0f2;
+  --cyan-vibrant: #00a8ff;
+  --tint-light: #e9f4fd;
+  --tint-mid: #dcf1fd;
+  --gold-warm: #ffbb1f;
+}
+
+/* Base resets & typography smooth rendering */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Components */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 241, 253, 0.6);
+}
+
+.glass-card-tint {
+  background: rgba(220, 241, 253, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(12, 176, 242, 0.2);
+}
+
+.glass-card-dark {
+  background: rgba(1, 30, 88, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(12, 176, 242, 0.25);
+}
+
+/* Gradient Utility Helpers */
+.bg-cyan-gradient {
+  background: linear-gradient(135deg, #0cb0f2 0%, #00a8ff 50%, #0196e3 100%);
+}
+
+.bg-navy-gradient {
+  background: linear-gradient(180deg, #001e56 0%, #0d2c8a 100%);
+}
+
+.bg-hero-glow {
+  background: radial-gradient(circle at 50% 20%, rgba(12, 176, 242, 0.15) 0%, rgba(220, 241, 253, 0.05) 50%, transparent 80%);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #0cb0f2 0%, #00a8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-navy {
+  background: linear-gradient(135deg, #001e56 0%, #0c246c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e9f4fd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0cb0f2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00a8ff;
+}
