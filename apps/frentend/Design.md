@@ -98,8 +98,21 @@ flowchart TD
   6. *Transparent Process*: Honest advice, zero hidden costs.
 
 ### Section 3: Our Approach ("Precision Behind Every Transformation")
-- **Headline**: `Precision Behind Every Transformation`
-- **4-Step Sequential Process Cards**: Detailed Analysis, Personalized Plan, Advanced Technique, Ongoing Care.
+- **Headline**: `Precision Behind Every Transformation` (Navy `#001e56` + Cyan `#0cb0f2` highlight)
+- **Eyebrow**: `OUR APPROACH` cyan pill badge
+- **4 Core Feature List**:
+  1. *Personalised Treatment Plans* (Bullseye Icon)
+  2. *Experienced Specialists* (Specialist User Icon)
+  3. *Advanced Techniques* (Tech Layers Icon)
+  4. *Long-Term Support* (Care Heart Icon)
+- **Interactive Before/After Split Comparison Showcase**:
+  - Drag/click interactive split comparison slider with glowing cyan beam & center `< >` handle.
+  - Floating `BEFORE Thinning Hairline` translucent badge & `AFTER Natural Result` cyan badge with animated pulse nodes.
+- **4 Sequential Process Cards Grid**:
+  1. `01 Detailed Analysis`: Scalp & facial assessment (`/assets/step-1.jpg`).
+  2. `02 Personalized Plan`: Hairline strategy (`/assets/step-2.jpg`).
+  3. `03 Advanced Technique`: FUE/DHI/Sapphire execution (`/assets/step-3.jpg`).
+  4. `04 Ongoing Care`: 12-18 month aftercare support (`/assets/step-4.jpg`).
 
 ### Section 4: Patient Results Gallery
 - **Headline**: `See the Difference. Feel the Confidence.`
