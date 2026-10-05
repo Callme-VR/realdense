@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "Realdense | Hair Restoration & Transplant Clinic",
   description:
     "Advanced hair restoration designed around you, with natural-looking results that feel completely your own.",
+  icons: {
+    icon: "/assets/logo.png",
+    shortcut: "/assets/logo.png",
+    apple: "/assets/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -23,8 +28,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${plusJakartaSans.variable} h-full antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-white text-navy-900 font-sans selection:bg-cyan-400 selection:text-white">
+      <body
+        className="min-h-full flex flex-col bg-white text-navy-900 font-sans selection:bg-cyan-400 selection:text-white"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
