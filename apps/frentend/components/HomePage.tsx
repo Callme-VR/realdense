@@ -87,11 +87,10 @@ function Card({
         {/* BEFORE image panel */}
         <div
           style={{ borderRadius: radius }}
-          className={`h-full w-1/2 overflow-hidden border-2 border-sky-200/80 bg-white shadow-[0_8px_24px_rgba(14,140,220,0.25)] transition-transform duration-500 ease-out ${
-            hoverDirection === "vertical"
-              ? "group-hover:-translate-y-3.5"
-              : "group-hover:-translate-x-3.5"
-          }`}
+          className={`h-full w-1/2 overflow-hidden border-2 border-sky-200/80 bg-white shadow-[0_8px_24px_rgba(14,140,220,0.25)] transition-transform duration-500 ease-out ${hoverDirection === "vertical"
+            ? "group-hover:-translate-y-3.5"
+            : "group-hover:-translate-x-3.5"
+            }`}
         >
           {before}
         </div>
@@ -102,11 +101,10 @@ function Card({
         {/* AFTER image panel */}
         <div
           style={{ borderRadius: radius }}
-          className={`h-full w-1/2 overflow-hidden border-2 border-sky-200/80 bg-white shadow-[0_8px_24px_rgba(14,140,220,0.25)] transition-transform duration-500 ease-out ${
-            hoverDirection === "vertical"
-              ? "group-hover:translate-y-3.5"
-              : "group-hover:translate-x-3.5"
-          }`}
+          className={`h-full w-1/2 overflow-hidden border-2 border-sky-200/80 bg-white shadow-[0_8px_24px_rgba(14,140,220,0.25)] transition-transform duration-500 ease-out ${hoverDirection === "vertical"
+            ? "group-hover:translate-y-3.5"
+            : "group-hover:translate-x-3.5"
+            }`}
         >
           {after}
         </div>

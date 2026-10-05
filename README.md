@@ -1,159 +1,141 @@
-# Turborepo starter
+# 💇‍♂️ Realdense — Hair Restoration Clinic Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+Welcome to the **Realdense** repository. This is a full-stack monorepo powered by **Bun**, **Turborepo**, **Next.js 16**, and **Express.js with Prisma ORM**.
 
-## Using this example
+---
 
-Run the following command:
+## 🛠️ Tech Stack & Workspace Overview
 
-```sh
-npx create-turbo@latest
+- **Package Manager & Runtime**: [Bun](https://bun.sh) (`v1.3.4+`)
+- **Monorepo Build System**: [Turborepo](https://turborepo.dev)
+- **Frontend (`apps/frentend`)**: Next.js 16, React 19, TailwindCSS v4, Framer Motion (`motion/react`)
+- **Backend (`apps/backend`)**: Express.js, Prisma 7 ORM, PostgreSQL (Neon Cloud DB)
+
+---
+
+## 🚀 Prerequisites
+
+Ensure you have **Bun** installed globally:
+
+```bash
+# Verify Bun installation
+bun --version
 ```
 
-## What's inside?
+If you don't have Bun installed:
+- **macOS / Linux**: `curl -fsSL https://bun.sh/install | bash`
+- **Windows**: `powershell -c "irm bun.sh/install.ps1 | iex"`
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+## 📥 Installation
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `@next/eslint-plugin-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Clone the repository and install all workspace dependencies from the root directory using **Bun**:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo build
+```bash
+# Install all dependencies across apps & packages
+bun install
 ```
 
-Without global `turbo`, use your package manager:
+---
 
-```sh
-cd my-turborepo
-npx turbo build
-bun exec turbo build
-bun exec turbo build
+## 💻 Running the Application with Bun
+
+### 1. Run Full Stack (Frontend + Backend Concurrently)
+
+To start both the **Next.js Frontend** (Port `3000`) and **Express Backend** (Port `3001`) simultaneously from the monorepo root:
+
+```bash
+bun dev
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### 2. Run Frontend Only (`apps/frentend`)
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+```bash
+# Option A: From root using workspace filter
+bun run --filter=frentend dev
 
-```sh
-turbo build --filter=docs
+# Option B: From the frontend directory
+cd apps/frentend
+bun dev
+```
+> Frontend will be running at **`http://localhost:3000`**
+
+### 3. Run Backend Only (`apps/backend`)
+
+```bash
+# Option A: From root using workspace filter
+bun run --filter=backend dev
+
+# Option B: From the backend directory
+cd apps/backend
+bun dev
+```
+> Backend API will be running at **`http://localhost:3001`**
+
+---
+
+## 🗄️ Database Commands (Prisma & Bun)
+
+All database scripts are executed inside `apps/backend`:
+
+```bash
+cd apps/backend
+
+# Generate Prisma Client
+bun run db:generate
+
+# Push schema changes to Neon PostgreSQL database
+bun run db:push
+
+# Run database migrations
+bun run db:migrate
+
+# Open Prisma Studio (GUI Database Manager)
+bun run db:studio
 ```
 
-Without global `turbo`:
+---
 
-```sh
-npx turbo build --filter=docs
-bun exec turbo build --filter=docs
-bun exec turbo build --filter=docs
+## 🏗️ Production Build
+
+To test and build all packages and applications for production:
+
+```bash
+# Build all workspaces
+bun run build
 ```
 
-### Develop
+To build a specific app:
 
-To develop all apps and packages, run the following command:
+```bash
+# Build Frontend only
+bun run --filter=frentend build
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
+# Build Backend only
+bun run --filter=backend build
 ```
 
-Without global `turbo`, use your package manager:
+---
 
-```sh
-cd my-turborepo
-npx turbo dev
-bun exec turbo dev
-bun exec turbo dev
+## 📁 Repository Structure
+
+```
+Realdense/
+├── apps/
+│   ├── frentend/          # Next.js 16 Web Application
+│   └── backend/           # Express.js REST API + Prisma ORM
+├── packages/
+│   ├── eslint-config/     # Shared ESLint configuration
+│   ├── typescript-config/ # Shared TypeScript configs
+│   └── ui/                # Shared UI component library
+├── Deployment.md          # Step-by-step deployment guide (Vercel & Render)
+├── Design.md              # Figma design system analysis & tokens
+└── package.json           # Monorepo root script definitions
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+---
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+## 📜 Deployment Guide
 
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-bun exec turbo dev --filter=web
-bun exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-bun exec turbo login
-bun exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-bun exec turbo link
-bun exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+For full instructions on how to deploy the backend to **Render** and the frontend to **Vercel**, refer to [Deployment.md](./Deployment.md).
