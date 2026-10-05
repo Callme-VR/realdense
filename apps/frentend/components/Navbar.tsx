@@ -79,8 +79,8 @@ export default function Navbar() {
             alt="Realdense Hair Restoration Clinic"
             width={148}
             height={52}
-            className="w-auto h-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-            style={{ width: "auto", height: "auto" }}
+            className="object-contain w-auto transition-transform duration-200 group-hover:scale-[1.02]"
+            style={{ height: "auto", maxHeight: "52px" }}
             priority
           />
         </Link>

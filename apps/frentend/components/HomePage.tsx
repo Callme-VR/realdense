@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 /* ── Avatar stack ── */
 const AvatarStack = () => (
@@ -58,21 +59,58 @@ function Pill({ label, dark, style }: { label: string; dark?: boolean; style: Re
 
 function Photo({ src, alt }: { src?: string; alt: string }) {
   return src ? (
-    <img src={src} alt={alt} className="h-full w-full object-cover" />
+    <img src={src} alt={alt} className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105" />
   ) : (
     <div className="h-full w-full bg-gradient-to-b from-slate-300 to-slate-400" aria-label={alt} />
   );
 }
 
-function Card({ style, radius, before, after }: { style: React.CSSProperties; radius: string; before: React.ReactNode; after: React.ReactNode }) {
+function Card({
+  style,
+  radius,
+  before,
+  after,
+  hoverDirection = "vertical",
+}: {
+  style: React.CSSProperties;
+  radius: string;
+  before: React.ReactNode;
+  after: React.ReactNode;
+  hoverDirection?: "vertical" | "horizontal";
+}) {
   return (
     <div
-      style={{ ...style, borderRadius: radius }}
-      className="z-10 flex overflow-hidden border-2 border-sky-200/80 bg-white shadow-[0_8px_24px_rgba(14,140,220,0.25)]"
+      style={style}
+      className="z-10 flex overflow-visible transition-all duration-300 group cursor-pointer"
     >
-      <div className="h-full w-1/2 overflow-hidden">{before}</div>
-      <div className="h-full w-[2px] bg-white" />
-      <div className="h-full w-1/2 overflow-hidden">{after}</div>
+      <div className="relative w-full h-full flex gap-1 items-center">
+        {/* BEFORE image panel */}
+        <div
+          style={{ borderRadius: radius }}
+          className={`h-full w-1/2 overflow-hidden border-2 border-sky-200/80 bg-white shadow-[0_8px_24px_rgba(14,140,220,0.25)] transition-transform duration-500 ease-out ${
+            hoverDirection === "vertical"
+              ? "group-hover:-translate-y-3.5"
+              : "group-hover:-translate-x-3.5"
+          }`}
+        >
+          {before}
+        </div>
+
+        {/* Small gap separator */}
+        <div className="h-full w-[2px] bg-transparent shrink-0" />
+
+        {/* AFTER image panel */}
+        <div
+          style={{ borderRadius: radius }}
+          className={`h-full w-1/2 overflow-hidden border-2 border-sky-200/80 bg-white shadow-[0_8px_24px_rgba(14,140,220,0.25)] transition-transform duration-500 ease-out ${
+            hoverDirection === "vertical"
+              ? "group-hover:translate-y-3.5"
+              : "group-hover:translate-x-3.5"
+          }`}
+        >
+          {after}
+        </div>
+      </div>
     </div>
   );
 }
@@ -163,6 +201,7 @@ export default function HomePage() {
           <Pill label="BEFORE" style={pos(83, 13, 80, 22)} />
           <Pill label="AFTER" dark style={pos(243, 13, 80, 22)} />
           <Card
+            hoverDirection="vertical"
             style={pos(45, 28, 315, 240)}
             radius="9%"
             before={<Photo src="/assets/BEFORE.png" alt="Before, top view" />}
@@ -172,6 +211,7 @@ export default function HomePage() {
           {/* side card */}
           <Pill label="BEFORE" style={pos(157, 330, 78, 22)} />
           <Card
+            hoverDirection="horizontal"
             style={pos(220, 313, 280, 212)}
             radius="7%"
             before={<Photo src="/assets/BEFORE1.png" alt="Before, side view" />}
