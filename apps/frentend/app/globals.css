@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 
   /* Primary Brand Navy */
   --color-navy-900: #001e56;
