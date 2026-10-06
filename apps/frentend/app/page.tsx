@@ -5,6 +5,9 @@ import OurPromise from "@/components/OurPromise";
 import OurApproach from "@/components/OurApproach";
 import PatientResults from "@/components/PatientResults";
 import WhyChooseIndia from "@/components/WhyChooseIndia";
+import OurProcess from "@/components/OurProcess";
+import OurServices from "@/components/OurServices";
+import TransparentPricing from "@/components/TransparentPricing";
 
 export default function Page() {
   return (
@@ -19,6 +22,9 @@ export default function Page() {
       <OurApproach />
       <PatientResults />
       <WhyChooseIndia />
+      <OurProcess />
+      <OurServices />
+      <TransparentPricing />
     </div>
   );
 }

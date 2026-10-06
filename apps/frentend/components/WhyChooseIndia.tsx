@@ -18,7 +18,7 @@ const topFeatures: IndiaFeature[] = [
     title: "Travel–Friendly Destination",
     description:
       "India is easily accessible with direct flights from major countries and offers a comfortable experience for international patients.",
-    image: "/assets/india-travel.jpg",
+    image: "/assets/aeroplane.png",
     alt: "Travel friendly destination with airplane illustration",
   },
   {
@@ -26,7 +26,7 @@ const topFeatures: IndiaFeature[] = [
     title: "Cost–Effective Treatment",
     description:
       "Get world-class hair transplant procedures at a fraction of the cost compared to many Western countries.",
-    image: "/assets/india-cost.jpg",
+    image: "/assets/coins.png",
     alt: "Cost effective treatment with Indian Rupee coins illustration",
   },
   {
@@ -34,7 +34,7 @@ const topFeatures: IndiaFeature[] = [
     title: "Highly Experienced Surgeons",
     description:
       "Treatment is performed by skilled and experienced surgeons using globally approved techniques.",
-    image: "/assets/india-surgeons.jpg",
+    image: "/assets/shiled.png",
     alt: "Highly experienced surgeons with medical shield illustration",
   },
 ];
@@ -45,7 +45,7 @@ const bottomFeatures: IndiaFeature[] = [
     title: "Combine Treatment with Travel",
     description:
       "Experience India’s rich culture, heritage, and hospitality while transforming your look.",
-    image: "/assets/india-tourism.jpg",
+    image: "/assets/mahal.png",
     alt: "Combine treatment with travel Taj Mahal illustration",
   },
   {
@@ -53,7 +53,7 @@ const bottomFeatures: IndiaFeature[] = [
     title: "Modern Clinics & Technology",
     description:
       "State-of-the-art facilities equipped with the latest technology ensure safe, precise, and natural-looking results.",
-    image: "/assets/india-clinic.jpg",
+    image: "/assets/hospital.png",
     alt: "Modern clinics and technology hospital illustration",
   },
 ];

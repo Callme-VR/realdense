@@ -40,8 +40,8 @@ const resultsData: ResultItem[] = [
     title: "Hairline Restoration",
     grafts: "DHI 1,800 grafts",
     category: "Hairline",
-    beforeImg: "/assets/BEFORE1.png",
-    afterImg: "/assets/AFTER1.png",
+    beforeImg: "/assets/BEFORE.png",
+    afterImg: "/assets/AFTER.png",
   },
   {
     id: 3,
@@ -56,8 +56,8 @@ const resultsData: ResultItem[] = [
     title: "Full Restoration",
     grafts: "DHI - 4,100 grafts",
     category: "Full Restoration",
-    beforeImg: "/assets/BEFORE1.png",
-    afterImg: "/assets/AFTER1.png",
+    beforeImg: "/assets/BEFORE.png",
+    afterImg: "/assets/AFTER.png",
   },
   {
     id: 5,
@@ -72,8 +72,8 @@ const resultsData: ResultItem[] = [
     title: "Hairline + Crown",
     grafts: "FUE 3,200 grafts",
     category: "Hairline",
-    beforeImg: "/assets/BEFORE1.png",
-    afterImg: "/assets/AFTER1.png",
+    beforeImg: "/assets/BEFORE.png",
+    afterImg: "/assets/AFTER.png",
   },
   {
     id: 7,
@@ -88,8 +88,8 @@ const resultsData: ResultItem[] = [
     title: "Hairline + Crown",
     grafts: "FUE 3,200 grafts",
     category: "Full Restoration",
-    beforeImg: "/assets/BEFORE1.png",
-    afterImg: "/assets/AFTER1.png",
+    beforeImg: "/assets/BEFORE.png",
+    afterImg: "/assets/AFTER.png",
   },
 ];
 
@@ -205,83 +205,195 @@ export default function PatientResults() {
     activeCategory === "All"
       ? resultsData
       : resultsData.filter(
-          (item) =>
-            item.category === activeCategory ||
-            (activeCategory === "Hairline" && item.title.includes("Hairline")) ||
-            (activeCategory === "Crown" && item.title.includes("Crown")) ||
-            (activeCategory === "Full Restoration" && item.title.includes("Full"))
-        );
+        (item) =>
+          item.category === activeCategory ||
+          (activeCategory === "Hairline" && item.title.includes("Hairline")) ||
+          (activeCategory === "Crown" && item.title.includes("Crown")) ||
+          (activeCategory === "Full Restoration" && item.title.includes("Full"))
+      );
 
   return (
-    <section className="relative w-full bg-gradient-to-br from-[#eef7fe] via-[#f8fafc] to-[#e6f4fe]/60 py-16 sm:py-20 lg:py-24 overflow-hidden">
-      {/* ── Background Visuals & Light Waves ── */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Soft upper-right ambient sky blue glow */}
-        <div className="absolute top-0 right-0 w-[850px] h-[650px] bg-gradient-to-br from-[#bae3fa]/80 via-[#d0ebfd]/50 to-transparent blur-3xl opacity-90" />
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden bg-gradient-to-br from-[#edf6fe] via-[#f8fafc] to-[#e6f4fe]">
+      {/* ── SVG WAVE BACKGROUND LAYER ── */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Soft Ambient Glow */}
+        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-gradient-to-br from-[#cce9fd]/80 via-[#dcf1fd]/40 to-transparent blur-3xl opacity-80" />
 
-        {/* Decorative cyan/blue wave lines & visual graphics */}
         <svg
-          className="absolute top-0 right-0 w-full max-w-[950px] h-[550px] opacity-80 text-[#0cb0f2]"
-          viewBox="0 0 950 550"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 2048 1152"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full text-[#0cb0f2]"
         >
-          {/* Wave Petal Fills */}
-          <path
-            d="M250 0C450 160 700 220 950 180V0H250Z"
-            fill="url(#wave-grad-1)"
-          />
-          <path
-            d="M400 0C580 180 780 280 950 250V0H400Z"
-            fill="url(#wave-grad-2)"
-          />
-
-          {/* Stroke Lines */}
-          <path
-            d="M150 0C380 200 650 280 950 220"
-            stroke="url(#line-grad-1)"
-            strokeWidth="2.5"
-            opacity="0.8"
-          />
-          <path
-            d="M250 0C450 160 700 220 950 180"
-            stroke="#ffffff"
-            strokeWidth="2"
-            opacity="0.9"
-          />
-          <path
-            d="M100 0C320 230 580 340 950 300"
-            stroke="url(#line-grad-2)"
-            strokeWidth="3"
-            strokeDasharray="6 6"
-            opacity="0.6"
-          />
-          <path
-            d="M50 0C280 270 520 400 950 380"
-            stroke="#0cb0f2"
-            strokeWidth="1.5"
-            opacity="0.4"
-          />
-
           <defs>
-            <linearGradient id="wave-grad-1" x1="250" y1="0" x2="950" y2="180">
-              <stop stopColor="#0cb0f2" stopOpacity="0.18" />
-              <stop offset="1" stopColor="#0196e3" stopOpacity="0.05" />
+            {/* Main blue gradient */}
+            <linearGradient id="waveBlue" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#0cb0f2" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="#00a8ff" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#0196e3" stopOpacity="0.3" />
             </linearGradient>
-            <linearGradient id="wave-grad-2" x1="400" y1="0" x2="950" y2="250">
-              <stop stopColor="#cceafe" stopOpacity="0.3" />
-              <stop offset="1" stopColor="#0cb0f2" stopOpacity="0.08" />
-            </linearGradient>
-            <linearGradient id="line-grad-1" x1="150" y1="0" x2="950" y2="220">
-              <stop stopColor="#0cb0f2" />
-              <stop offset="1" stopColor="#0196e3" stopOpacity="0.4" />
-            </linearGradient>
-            <linearGradient id="line-grad-2" x1="100" y1="0" x2="950" y2="300">
-              <stop stopColor="#0196e3" />
-              <stop offset="1" stopColor="#0cb0f2" stopOpacity="0.2" />
+
+            {/* Bottom soft gradient */}
+            <linearGradient id="softBlue" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#dcf1fd" stopOpacity="0.7" />
             </linearGradient>
           </defs>
+
+          {/* Bottom soft blue area */}
+          <path
+            d="
+              M 0 760
+              C 350 1000, 650 1000, 940 850
+              C 1190 720, 1300 570, 1530 520
+              C 1760 470, 1930 550, 2048 650
+              L 2048 1152
+              L 0 1152
+              Z
+            "
+            fill="url(#softBlue)"
+          />
+
+          {/* TOP FLOWING WAVES */}
+          <path
+            d="
+              M 720 150
+              C 920 80, 1050 330, 1240 280
+              C 1430 230, 1510 30, 1730 10
+              C 1880 -5, 1980 50, 2048 90
+            "
+            fill="none"
+            stroke="url(#waveBlue)"
+            strokeWidth="3.5"
+          />
+
+          <path
+            d="
+              M 690 190
+              C 900 120, 1040 390, 1240 330
+              C 1450 270, 1520 80, 1730 45
+              C 1880 20, 1980 80, 2048 125
+            "
+            fill="none"
+            stroke="#0cb0f2"
+            strokeOpacity="0.55"
+            strokeWidth="2.5"
+          />
+
+          <path
+            d="
+              M 780 220
+              C 950 160, 1060 410, 1260 350
+              C 1450 295, 1540 115, 1730 80
+              C 1880 55, 1990 110, 2048 155
+            "
+            fill="none"
+            stroke="#00a8ff"
+            strokeOpacity="0.45"
+            strokeWidth="2"
+          />
+
+          {/* LARGE MIDDLE WAVE */}
+          <path
+            d="
+              M 900 270
+              C 1110 350, 1240 570, 1470 530
+              C 1690 490, 1870 570, 2048 690
+            "
+            fill="none"
+            stroke="#0cb0f2"
+            strokeOpacity="0.4"
+            strokeWidth="4"
+          />
+
+          <path
+            d="
+              M 850 300
+              C 1090 390, 1250 610, 1480 570
+              C 1710 530, 1880 610, 2048 720
+            "
+            fill="none"
+            stroke="#0196e3"
+            strokeOpacity="0.35"
+            strokeWidth="2.5"
+          />
+
+          {/* LOWER FLOWING WAVES */}
+          <path
+            d="
+              M 970 390
+              C 1200 500, 1360 620, 1580 570
+              C 1800 520, 1920 600, 2048 700
+            "
+            fill="none"
+            stroke="#0cb0f2"
+            strokeOpacity="0.35"
+            strokeWidth="4"
+          />
+
+          <path
+            d="
+              M 920 420
+              C 1180 540, 1360 680, 1590 610
+              C 1800 545, 1930 630, 2048 730
+            "
+            fill="none"
+            stroke="#00a8ff"
+            strokeOpacity="0.3"
+            strokeWidth="2.5"
+          />
+
+          {/* FINE PARALLEL LINES */}
+          {Array.from({ length: 18 }).map((_, i) => (
+            <path
+              key={i}
+              d={`
+                M ${1150 + i * 12} ${20 + i * 3}
+                C ${1370 + i * 5} ${-50 + i * 4},
+                  ${1480 + i * 7} ${100 + i * 2},
+                  ${1650 + i * 4} ${55 + i * 2}
+                C ${1820 + i * 2} ${10 + i * 4},
+                  ${1960 + i} ${60 + i * 5},
+                  2048 ${110 + i * 7}
+              `}
+              fill="none"
+              stroke="#0196e3"
+              strokeOpacity={Math.max(0.12, 0.45 - i * 0.018)}
+              strokeWidth="1.8"
+            />
+          ))}
         </svg>
+
+        {/* ── DOT PATTERN OVERLAY ── */}
+        <div
+          className="absolute top-[50px] right-[60px] w-[380px] h-[360px] opacity-60 pointer-events-none"
+          style={{
+            backgroundImage: `
+              radial-gradient(
+                circle,
+                #0cb0f2 1.6px,
+                transparent 1.6px
+              )
+            `,
+            backgroundSize: "18px 18px",
+            maskImage: `
+              radial-gradient(
+                ellipse at center,
+                black 0%,
+                rgba(0,0,0,0.8) 50%,
+                transparent 80%
+              )
+            `,
+            WebkitMaskImage: `
+              radial-gradient(
+                ellipse at center,
+                black 0%,
+                rgba(0,0,0,0.8) 50%,
+                transparent 80%
+              )
+            `,
+          }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -314,18 +426,17 @@ export default function PatientResults() {
         {/* ── Category Filters & Action Bar ── */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10 pb-2">
           {/* Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
+          <div className="flex items-center gap-2.5 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-[13.5px] font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? "bg-[#001e56] text-white shadow-md scale-[1.02]"
-                      : "bg-white text-[#001e56] border border-slate-200/90 hover:bg-[#edf6fe] hover:border-[#0cb0f2] hover:text-[#0cb0f2]"
-                  }`}
+                  className={`px-5 py-2.5 rounded-full text-[14px] font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${isActive
+                    ? "bg-[#183c7d] text-white shadow-md shadow-blue-950/20 scale-[1.02]"
+                    : "bg-[#e8f3fc]/80 text-[#183c7d] border border-[#c2e2f5] hover:bg-[#dbeffd] hover:border-[#93cbe9]"
+                    }`}
                 >
                   {cat}
                 </button>
@@ -334,7 +445,10 @@ export default function PatientResults() {
           </div>
 
           {/* Action Button: View All Results */}
-          <button className="shrink-0 px-5 py-2.5 rounded-xl border border-[#0cb0f2]/50 bg-white text-[#001e56] text-[14px] font-semibold hover:bg-[#0cb0f2] hover:text-white hover:border-[#0cb0f2] transition-all duration-200 shadow-sm cursor-pointer active:scale-[0.98]">
+          <button
+            type="button"
+            className="shrink-0 rounded-[10px] border border-[#183c7d] bg-transparent px-6 py-2.5 text-[14px] font-medium leading-5 text-[#183c7d] transition-all duration-200 hover:bg-[#183c7d] hover:text-white active:scale-[0.98]"
+          >
             View All Results
           </button>
         </div>
