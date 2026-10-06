@@ -290,7 +290,7 @@ export default function OurApproach() {
       </div>
 
       {/* ── Bottom 4-Step Sequential Process Cards ── */}
-      <div className="w-full bg-[#f4fafe] border-t border-sky-100/70 py-16 lg:py-20">
+      <div className="w-full bg-gradient-to-b from-white via-[#f4fafe] to-[#eef7fe] py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-sky-200/60 items-stretch">
             {steps.map((step, idx) => (

@@ -49,7 +49,7 @@ function Pill({ label, dark, style }: { label: string; dark?: boolean; style: Re
   return (
     <span
       style={style}
-      className={`z-20 flex items-center justify-center rounded-full text-[clamp(8px,1.9cqw,13px)] font-bold tracking-wide text-white shadow-md ${dark ? "bg-[#0b2a6b]" : "bg-[#0b95e0]"
+      className={`z-20 flex items-center justify-center rounded-full text-[clamp(8px,1.9cqw,13px)] font-extrabold tracking-wide text-white shadow-md ${dark ? "bg-[#001e56]" : "bg-[#0cb0f2]"
         }`}
     >
       {label}
@@ -59,7 +59,7 @@ function Pill({ label, dark, style }: { label: string; dark?: boolean; style: Re
 
 function Photo({ src, alt }: { src?: string; alt: string }) {
   return src ? (
-    <img src={src} alt={alt} className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105" />
+    <img src={src} alt={alt} loading="eager" className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105" />
   ) : (
     <div className="h-full w-full bg-gradient-to-b from-slate-300 to-slate-400" aria-label={alt} />
   );

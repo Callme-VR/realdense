@@ -3,6 +3,8 @@ import HomePage from "@/components/HomePage";
 import BlueWaveBackground from "@/components/HeroBackground";
 import OurPromise from "@/components/OurPromise";
 import OurApproach from "@/components/OurApproach";
+import PatientResults from "@/components/PatientResults";
+import WhyChooseIndia from "@/components/WhyChooseIndia";
 
 export default function Page() {
   return (
@@ -15,6 +17,8 @@ export default function Page() {
       </BlueWaveBackground>
       <OurPromise />
       <OurApproach />
+      <PatientResults />
+      <WhyChooseIndia />
     </div>
   );
 }

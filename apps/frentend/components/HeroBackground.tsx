@@ -15,17 +15,17 @@ export default function BlueWaveBackground({ children, className = "" }: Props) 
         <defs>
           <linearGradient id="bw-bg" x1="0" y1="0" x2="1" y2="0.5">
             <stop offset="0" stopColor="#ffffff" />
-            <stop offset="0.55" stopColor="#f4fafe" />
-            <stop offset="1" stopColor="#e2f2fc" />
+            <stop offset="0.45" stopColor="#edf6fe" />
+            <stop offset="1" stopColor="#d9f0fe" />
           </linearGradient>
           <linearGradient id="bw-top" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#ffffff" stopOpacity="0" />
-            <stop offset="1" stopColor="#d3ecfb" stopOpacity="0.95" />
+            <stop offset="1" stopColor="#cce9fd" stopOpacity="0.95" />
           </linearGradient>
           <radialGradient id="bw-petal" cx="0.3" cy="0.25" r="0.9">
-            <stop offset="0" stopColor="#f2faff" />
-            <stop offset="0.45" stopColor="#c4e6fa" />
-            <stop offset="1" stopColor="#6cc2ee" />
+            <stop offset="0" stopColor="#eff8fe" />
+            <stop offset="0.45" stopColor="#bde2fa" />
+            <stop offset="1" stopColor="#5bc0ed" />
           </radialGradient>
           <linearGradient id="bw-band" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#7fcaf2" />
@@ -64,33 +64,33 @@ export default function BlueWaveBackground({ children, className = "" }: Props) 
         <ellipse cx="140" cy="200" rx="420" ry="260" fill="#fff" opacity="0.85" filter="url(#bw-b30)" />
 
         {/* top wide petal */}
-        <path d="M440 40 C560 185 800 255 1040 238 L1090 300 L1090 0 L520 0 Z" fill="url(#bw-top)" />
+        <path d="M440 40 C560 185 800 255 1040 238 L1108 300 L1108 0 L520 0 Z" fill="url(#bw-top)" />
         <path d="M440 40 C560 185 800 255 1040 238" fill="none" stroke="#fff" strokeWidth="6" opacity="0.8" filter="url(#bw-b6)" />
         <path d="M440 40 C560 185 800 255 1040 238" fill="none" stroke="#fff" strokeWidth="1.5" opacity="0.95" />
 
         {/* top-right petal */}
-        <path d="M920 0 C908 85 985 175 1090 300 L1090 0 Z" fill="#e6f5fd" />
-        <path d="M920 0 C908 85 985 175 1090 300" fill="none" stroke="#fff" strokeWidth="5" opacity="0.8" filter="url(#bw-b6)" />
-        <path d="M920 0 C908 85 985 175 1090 300" fill="none" stroke="#fff" strokeWidth="1.5" />
+        <path d="M920 0 C908 85 985 175 1108 300 L1108 0 Z" fill="#e6f5fd" />
+        <path d="M920 0 C908 85 985 175 1108 300" fill="none" stroke="#fff" strokeWidth="5" opacity="0.8" filter="url(#bw-b6)" />
+        <path d="M920 0 C908 85 985 175 1108 300" fill="none" stroke="#fff" strokeWidth="1.5" />
 
         {/* right edge strip */}
-        <path d="M1090 45 C1058 100 1052 225 1090 292 Z" fill="#c4e5f8" />
-        <path d="M1090 45 C1058 100 1052 225 1090 292" fill="none" stroke="#fff" strokeWidth="1.5" opacity="0.9" />
+        <path d="M1108 45 C1058 100 1052 225 1108 292 Z" fill="#c4e5f8" />
+        <path d="M1108 45 C1058 100 1052 225 1108 292" fill="none" stroke="#fff" strokeWidth="1.5" opacity="0.9" />
 
         {/* big petal */}
-        <path d="M1090 300 C1068 224 955 222 880 240 C740 282 622 430 598 640 L790 640 C905 598 1052 480 1090 300 Z" fill="url(#bw-petal)" />
+        <path d="M1108 300 C1068 224 955 222 880 240 C740 282 622 430 598 640 L790 640 C905 598 1052 480 1108 300 Z" fill="url(#bw-petal)" />
         <ellipse cx="800" cy="360" rx="110" ry="70" transform="rotate(-50 800 360)" fill="#fff" opacity="0.45" filter="url(#bw-b30)" />
-        <path d="M1090 300 C1068 224 955 222 880 240 C740 282 622 430 598 640" fill="none" stroke="#fff" strokeWidth="7" opacity="0.8" filter="url(#bw-b6)" />
-        <path d="M1090 300 C1068 224 955 222 880 240 C740 282 622 430 598 640" fill="none" stroke="#fff" strokeWidth="1.8" opacity="0.95" />
+        <path d="M1108 300 C1068 224 955 222 880 240 C740 282 622 430 598 640" fill="none" stroke="#fff" strokeWidth="7" opacity="0.8" filter="url(#bw-b6)" />
+        <path d="M1108 300 C1068 224 955 222 880 240 C740 282 622 430 598 640" fill="none" stroke="#fff" strokeWidth="1.8" opacity="0.95" />
 
         {/* deep blue band */}
-        <path d="M1090 300 C1088 405 965 560 825 640 L760 640 C905 598 1085 425 1090 300 Z" fill="url(#bw-band)" />
-        <path d="M1090 300 C1085 420 900 600 760 640" fill="none" stroke="#0a8fdc" strokeWidth="5" opacity="0.5" filter="url(#bw-b6)" />
+        <path d="M1108 300 C1088 405 965 560 825 640 L760 640 C905 598 1085 425 1108 300 Z" fill="url(#bw-band)" />
+        <path d="M1108 300 C1085 420 900 600 760 640" fill="none" stroke="#0a8fdc" strokeWidth="5" opacity="0.5" filter="url(#bw-b6)" />
 
         {/* bright bottom-right */}
-        <path d="M1090 410 C1045 482 905 582 862 640 L1090 640 Z" fill="url(#bw-bright)" />
-        <path d="M1090 410 C1045 482 905 582 862 640" fill="none" stroke="#fff" strokeWidth="1.8" opacity="0.95" />
-        <path d="M1090 520 C1040 560 975 610 950 640 L1090 640 Z" fill="#fff" opacity="0.25" filter="url(#bw-b2)" />
+        <path d="M1108 410 C1045 482 905 582 862 640 L1108 640 Z" fill="url(#bw-bright)" />
+        <path d="M1108 410 C1045 482 905 582 862 640" fill="none" stroke="#fff" strokeWidth="1.8" opacity="0.95" />
+        <path d="M1108 520 C1040 560 975 610 950 640 L1108 640 Z" fill="#fff" opacity="0.25" filter="url(#bw-b2)" />
 
         {/* bottom soft sweeps */}
         <path d="M520 640 C640 562 800 522 965 500 C905 562 825 612 765 640 Z" fill="#fff" opacity="0.5" filter="url(#bw-b6)" />

@@ -142,7 +142,7 @@ export default function OurPromise(): React.JSX.Element {
   return (
     <section
       id="our-promise"
-      className="relative w-full overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#e9f4fd]/50 via-white to-white py-16 sm:py-20 lg:py-28"
     >
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[280px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-100/30 blur-3xl sm:h-[360px] sm:w-[720px]"
@@ -173,7 +173,7 @@ export default function OurPromise(): React.JSX.Element {
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage:
-                  "linear-gradient(90deg, #0cb0f2 0%, #009bf2 100%)",
+                  "linear-gradient(90deg, #0cb0f2 0%, #0196e3 100%)",
               }}
             >
               Our Commitment.
