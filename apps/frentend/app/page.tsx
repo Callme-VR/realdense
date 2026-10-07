@@ -8,6 +8,9 @@ import WhyChooseIndia from "@/components/WhyChooseIndia";
 import OurProcess from "@/components/OurProcess";
 import OurServices from "@/components/OurServices";
 import TransparentPricing from "@/components/TransparentPricing";
+import PatientReviews from "@/components/PatientReviews";
+import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
 
 export default function Page() {
   return (
@@ -25,6 +28,9 @@ export default function Page() {
       <OurProcess />
       <OurServices />
       <TransparentPricing />
+      <PatientReviews />
+      <FAQSection />
+      <Footer />
     </div>
   );
 }

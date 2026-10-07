@@ -118,3 +118,19 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #00a8ff;
 }
+
+
+@keyframes button-shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+
+  45%,
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+  }
+}
+
+.button-shimmer {
+  animation: button-shimmer 3s ease-in-out infinite;
+}
