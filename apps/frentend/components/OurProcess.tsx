@@ -59,7 +59,7 @@ export default function OurProcess() {
   return (
     <section
       id="our-process"
-      className="relative w-full bg-gradient-to-b from-white via-[#f8fafc] to-white py-20 sm:py-24 lg:py-28 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-white via-[#f8fafc] to-white py-12 sm:py-16 lg:py-20 overflow-hidden"
     >
       {/* Background Soft Glow Ambient Overlay */}
       <div className="absolute inset-0 pointer-events-none z-0">

@@ -166,7 +166,7 @@ export default function TransparentPricing() {
   return (
     <section
       id="pricing"
-      className="relative w-full bg-[#fcfdff] py-16 sm:py-20 lg:py-24 overflow-hidden"
+      className="relative w-full bg-[#fcfdff] py-12 sm:py-16 lg:py-20 overflow-hidden"
     >
       {/* Background Soft Glow Overlay */}
       <div className="absolute inset-0 pointer-events-none z-0">

@@ -213,7 +213,7 @@ export default function PatientResults() {
       );
 
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden bg-gradient-to-br from-[#edf6fe] via-[#f8fafc] to-[#e6f4fe]">
+    <section className="relative w-full py-12 sm:py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-[#edf6fe] via-[#f8fafc] to-[#e6f4fe]">
       {/* ── SVG WAVE BACKGROUND LAYER ── */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Soft Ambient Glow */}

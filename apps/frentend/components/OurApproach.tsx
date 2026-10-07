@@ -97,7 +97,7 @@ const steps: ProcessStep[] = [
 
 export default function OurApproach() {
   return (
-    <section id="our-approach" className="relative w-full bg-white pt-16 sm:pt-20 lg:pt-24 overflow-hidden">
+    <section id="our-approach" className="relative w-full bg-white py-12 sm:py-16 lg:py-20 overflow-hidden">
       {/* ── Top Hero Section ── */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-2 lg:pb-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">

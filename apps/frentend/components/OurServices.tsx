@@ -428,7 +428,7 @@ export default function OurServices() {
   return (
     <section
       id="our-services"
-      className="relative w-full bg-gradient-to-b from-white via-[#f8fafc] to-white py-20 sm:py-24 lg:py-28 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-white via-[#f8fafc] to-white py-12 sm:py-16 lg:py-20 overflow-hidden"
     >
       {/* Background Ambient Light Glow */}
       <div className="absolute inset-0 pointer-events-none z-0">
