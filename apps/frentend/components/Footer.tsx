@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BookConsultationButton from "./BookConsultationButton";
 import { motion } from "motion/react";
 
 export default function Footer() {
@@ -52,63 +53,7 @@ export default function Footer() {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mt-8 sm:mt-10">
               {/* Primary Button */}
-              <Link
-                href="/book-consultation"
-                className="
-    group relative inline-flex items-center gap-2.5
-    overflow-hidden rounded-lg
-    px-7 py-3.5
-    text-[15px] font-semibold text-white
-    bg-[#001e56]
-    transition-all duration-300 ease-out
-    hover:shadow-[0_8px_25px_rgba(0,30,86,0.25)]
-    active:scale-[0.98]
-  "
-              >
-                {/* Animated blue shimmer */}
-                <span
-                  className="
-      absolute inset-0
-      -translate-x-full
-      bg-gradient-to-r
-      from-transparent
-      via-[#42bfff]/40
-      to-transparent
-      skew-x-[-20deg]
-      transition-transform
-      duration-700
-      ease-out
-      group-hover:translate-x-full
-    "
-                />
-
-                {/* Soft blue glow */}
-                <span
-                  className="
-      absolute inset-0
-      opacity-0
-      bg-[radial-gradient(circle_at_center,rgba(66,191,255,0.35),transparent_65%)]
-      transition-opacity duration-300
-      group-hover:opacity-100
-    "
-                />
-
-                {/* Content */}
-                <span className="relative z-10">
-                  Book a Consultation
-                </span>
-
-                <span
-                  className="
-      relative z-10
-      text-[17px] leading-none select-none
-      transition-transform duration-300 ease-out
-      group-hover:translate-x-2
-    "
-                >
-                  →
-                </span>
-              </Link>
+              <BookConsultationButton />
 
               {/* WhatsApp Button */}
               <a

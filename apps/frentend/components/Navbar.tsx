@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import BookConsultationButton from "./BookConsultationButton";
 
 // ─── Figma Design Tokens (file: sr2znFAWlrfvsYNHtSYjYz) ──────────────────────
 // Font: Plus Jakarta Sans | Nav: SemiBold 600 ~19-21px | Link color: #001e56
@@ -243,16 +244,16 @@ export default function Navbar() {
 
           {/* Mobile CTA */}
           <div className="mt-3 pt-4 border-t border-[#e9f4fd]">
-            <Link
+            <BookConsultationButton
               href="/contact"
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-[15px] font-semibold text-white bg-gradient-to-r from-[#0cb0f2] to-[#0196e3] shadow-[0_4px_16px_rgba(12,176,242,0.30)] transition-all duration-200 active:scale-[0.98]"
               onClick={() => setMobileOpen(false)}
-            >
-              Book a Consultation
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-[15px] font-semibold text-white bg-gradient-to-r from-[#0cb0f2] to-[#0196e3] shadow-[0_4px_16px_rgba(12,176,242,0.30)] transition-all duration-200 active:scale-[0.98]"
+              arrowIcon={
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              }
+            />
           </div>
         </nav>
       </div>

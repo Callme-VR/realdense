@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import BookConsultationButton from "./BookConsultationButton";
 import { useState } from "react";
 
 /* ── Avatar stack ── */
@@ -156,16 +157,7 @@ export default function HomePage() {
           {/* CTAs — image: dark navy filled rounded button + subtle bordered button */}
           <div className="flex flex-wrap items-center gap-4 mt-1">
             {/* Primary: dark navy filled, rounded-lg, with arrow → */}
-            <Link
-              href="/book-consultation"
-              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg text-white text-[15px] font-semibold transition-all duration-300 ease-out hover:shadow-lg hover:brightness-110 active:scale-[0.98]"
-              style={{ background: "#001e56" }}
-            >
-              <span>Book a Consultation</span>
-              <span className="text-[17px] leading-none select-none transition-transform duration-300 ease-out group-hover:translate-x-2">
-                →
-              </span>
-            </Link>
+            <BookConsultationButton />
 
             <Link
               href="/services"

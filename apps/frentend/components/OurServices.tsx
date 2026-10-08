@@ -3,6 +3,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BookConsultationButton from "./BookConsultationButton";
 import { motion, AnimatePresence } from "motion/react";
 
 /* ── Service Data Interface ── */
@@ -644,12 +645,9 @@ export default function OurServices() {
             </div>
 
             <div className="mt-8 pt-2">
-              <Link
-                href="/book-consultation"
-                className="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-2xl text-[14.5px] font-semibold text-white bg-[#001e56] shadow-md hover:bg-[#0c246c] hover:shadow-lg transition-all duration-200 active:scale-[0.98]"
-              >
-                Book a Consultation →
-              </Link>
+              <BookConsultationButton
+                className="flex items-center justify-center gap-2.5 w-full py-3.5 px-6 rounded-2xl text-[14.5px] font-semibold text-white bg-[#001e56] shadow-md hover:bg-[#0c246c] hover:shadow-lg transition-all duration-300 ease-out active:scale-[0.98]"
+              />
             </div>
           </div>
         </div>
