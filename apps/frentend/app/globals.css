@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui,
+    -apple-system, sans-serif;
 
   /* Primary Brand Navy */
   --color-navy-900: #001e56;
@@ -31,17 +32,26 @@
 :root {
   --background: #ffffff;
   --foreground: #001e56;
+
   --navy-primary: #0c246c;
   --navy-dark: #001e56;
+
   --blue-deep: #0d2c8a;
+
   --cyan-accent: #0cb0f2;
   --cyan-vibrant: #00a8ff;
+
   --tint-light: #e9f4fd;
   --tint-mid: #dcf1fd;
+
   --gold-warm: #ffbb1f;
 }
 
-/* Base resets & typography smooth rendering */
+
+/* =========================================================
+   BASE
+========================================================= */
+
 html {
   scroll-behavior: smooth;
   font-family: var(--font-sans);
@@ -54,7 +64,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Glassmorphism Components */
+
+/* =========================================================
+   GLASSMORPHISM COMPONENTS
+========================================================= */
+
 .glass-card {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
@@ -76,32 +90,54 @@ body {
   border: 1px solid rgba(12, 176, 242, 0.25);
 }
 
-/* Gradient Utility Helpers */
+
+/* =========================================================
+   GRADIENT UTILITY HELPERS
+========================================================= */
+
 .bg-cyan-gradient {
-  background: linear-gradient(135deg, #0cb0f2 0%, #00a8ff 50%, #0196e3 100%);
+  background: linear-gradient(135deg,
+      #0cb0f2 0%,
+      #00a8ff 50%,
+      #0196e3 100%);
 }
 
 .bg-navy-gradient {
-  background: linear-gradient(180deg, #001e56 0%, #0d2c8a 100%);
+  background: linear-gradient(180deg,
+      #001e56 0%,
+      #0d2c8a 100%);
 }
 
 .bg-hero-glow {
-  background: radial-gradient(circle at 50% 20%, rgba(12, 176, 242, 0.15) 0%, rgba(220, 241, 253, 0.05) 50%, transparent 80%);
+  background: radial-gradient(circle at 50% 20%,
+      rgba(12, 176, 242, 0.15) 0%,
+      rgba(220, 241, 253, 0.05) 50%,
+      transparent 80%);
 }
 
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #0cb0f2 0%, #00a8ff 100%);
+  background: linear-gradient(135deg,
+      #0cb0f2 0%,
+      #00a8ff 100%);
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-navy {
-  background: linear-gradient(135deg, #001e56 0%, #0c246c 100%);
+  background: linear-gradient(135deg,
+      #001e56 0%,
+      #0c246c 100%);
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Custom Scrollbar */
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+========================================================= */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -120,6 +156,10 @@ body {
 }
 
 
+/* =========================================================
+   BUTTON SHIMMER
+========================================================= */
+
 @keyframes button-shimmer {
   0% {
     transform: translateX(-120%) skewX(-20deg);
@@ -133,4 +173,304 @@ body {
 
 .button-shimmer {
   animation: button-shimmer 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+========================================================= */
+
+.button-arrow-container {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 32px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  overflow: visible;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   SINGLE ARROW
+========================================================= */
+
+.button-arrow {
+  position: absolute;
+
+  top: 2px;
+  left: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+
+  color: #ffffff;
+
+  pointer-events: none;
+
+  will-change: transform, opacity;
+
+  animation: consultation-arrow 2.4s ease-in-out infinite;
+}
+
+.button-arrow svg {
+  width: 14px;
+  height: 14px;
+
+  display: block;
+}
+
+
+/* =========================================================
+   ARROW MOVEMENT
+
+   POSITION 1
+        →
+
+   POSITION 2
+          →
+
+   POSITION 3
+            →
+
+   POSITION 4
+              →
+
+   THEN RESET AND REPEAT
+========================================================= */
+
+@keyframes consultation-arrow {
+  /* -----------------------------------------
+     POSITION 1
+  ----------------------------------------- */
+
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+
+  /* -----------------------------------------
+     Move toward POSITION 2
+  ----------------------------------------- */
+
+  15% {
+    transform: translateX(6px);
+    opacity: 1;
+  }
+
+
+  /* -----------------------------------------
+     POSITION 2
+  ----------------------------------------- */
+
+  25% {
+    transform: translateX(6px);
+    opacity: 1;
+  }
+
+
+  /* -----------------------------------------
+     Move toward POSITION 3
+  ----------------------------------------- */
+
+  40% {
+    transform: translateX(12px);
+    opacity: 1;
+  }
+
+
+  /* -----------------------------------------
+     POSITION 3
+  ----------------------------------------- */
+
+  50% {
+    transform: translateX(12px);
+    opacity: 1;
+  }
+
+
+  /* -----------------------------------------
+     Move toward POSITION 4
+  ----------------------------------------- */
+
+  65% {
+    transform: translateX(18px);
+    opacity: 1;
+  }
+
+
+  /* -----------------------------------------
+     POSITION 4
+  ----------------------------------------- */
+
+  75% {
+    transform: translateX(18px);
+    opacity: 1;
+  }
+
+
+  /* -----------------------------------------
+     Fade out at the end
+  ----------------------------------------- */
+
+  88% {
+    transform: translateX(18px);
+    opacity: 0;
+  }
+
+
+  /* -----------------------------------------
+     Invisible reset
+  ----------------------------------------- */
+
+  88.01% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.group:hover .button-shimmer {
+  animation-duration: 2.2s;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .button-shimmer,
+  .button-arrow {
+    animation: none;
+  }
+
+  .button-arrow {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   BLUE TECH BACKGROUND (Orb, Orbit, Bubbles, Waves)
+========================================================= */
+
+.blue-tech-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Large Gradient Orb ── */
+.blue-tech-orb {
+  position: absolute;
+  left: -5%;
+  bottom: 5%;
+  width: min(42vw, 480px);
+  height: min(42vw, 480px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%,
+      #d8f2ff 0%,
+      #b8e4ff 30%,
+      #8dd0f4 60%,
+      #cceafe 100%);
+  opacity: 0.55;
+  filter: blur(2px);
+}
+
+/* ── Dashed Circle Orbit ── */
+.blue-tech-orbit {
+  position: absolute;
+  left: -8%;
+  bottom: 0%;
+  width: min(50vw, 560px);
+  height: min(50vw, 560px);
+  z-index: 1;
+  opacity: 0.7;
+}
+
+/* ── Floating Bubbles Container ── */
+.blue-tech-bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.blue-tech-bubbles span {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+      #d8f2ff,
+      #5bbdf5 50%,
+      #3da8e8 100%);
+  box-shadow: 0 2px 8px rgba(12, 176, 242, 0.3);
+  animation: blueTechBubbleFloat 4s ease-in-out infinite alternate;
+}
+
+.blue-tech-bubbles span:nth-child(odd) {
+  animation-duration: 3.5s;
+}
+
+.blue-tech-bubbles span:nth-child(even) {
+  animation-duration: 5s;
+  animation-delay: 0.5s;
+}
+
+.blue-tech-bubbles span:nth-child(3n) {
+  animation-delay: 1s;
+}
+
+@keyframes blueTechBubbleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-14px) scale(1.1);
+    opacity: 0.45;
+  }
+}
+
+/* ── Bottom Wave SVG ── */
+.blue-tech-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  z-index: 0;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .blue-tech-bubbles span {
+    animation: none;
+  }
 }

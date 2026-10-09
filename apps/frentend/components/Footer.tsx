@@ -20,7 +20,6 @@ export default function Footer() {
               fill
               className="object-cover object-right"
               sizes="(max-width: 1024px) 100vw, 55vw"
-              priority
             />
           </div>
           {/* Subtle mobile fade so text is 100% readable over background on smaller screens */}
@@ -83,18 +82,28 @@ export default function Footer() {
       </section>
 
       {/* ── Top Organic Wave Transition into Navy Footer ── */}
-      <div className="w-full overflow-hidden leading-none -mb-[1px] bg-white">
+      <div className="w-full overflow-hidden leading-none -mb-[1px] bg-white relative">
         <svg
-          className="w-full h-16 sm:h-20 lg:h-28 text-[#001633] fill-current"
-          viewBox="0 0 1440 120"
+          className="w-full h-14 sm:h-20 lg:h-28 block"
+          viewBox="0 0 1440 140"
           preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M0,45 C280,110 520,15 840,48 C1120,78 1320,25 1440,10 L1440,120 L0,120 Z" />
+          {/* Secondary Blue Wave (Behind) */}
+          <path
+            d="M0,22 C140,2 260,2 380,14 C560,32 720,38 900,24 C1040,12 1150,4 1250,28 C1330,48 1395,78 1440,96 L1440,140 L0,140 Z"
+            fill="#09316d"
+          />
+          {/* Primary Deep Navy Wave (Foreground) */}
+          <path
+            d="M0,42 C140,24 260,22 380,34 C560,54 720,58 900,48 C1040,36 1150,30 1240,56 C1320,80 1380,118 1440,140 L1440,140 L0,140 Z"
+            fill="#061d3a"
+          />
         </svg>
       </div>
 
       {/* ── Main Deep Navy Footer ── */}
-      <div className="w-full bg-[#001633] text-white">
+      <div className="w-full bg-[#061d3a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
           {/* Main Columns Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12">

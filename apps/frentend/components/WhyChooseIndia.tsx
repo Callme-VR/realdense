@@ -120,7 +120,6 @@ export default function WhyChooseIndia() {
                   fill
                   sizes="(max-width: 768px) 100vw, 220px"
                   className="object-contain object-center drop-shadow-sm"
-                  priority={idx === 0}
                 />
               </div>
 

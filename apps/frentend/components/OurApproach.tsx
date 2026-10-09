@@ -97,7 +97,7 @@ const steps: ProcessStep[] = [
 
 export default function OurApproach() {
   return (
-    <section id="our-approach" className="relative w-full bg-white py-12 sm:py-16 lg:py-20 overflow-hidden">
+    <section id="our-approach" className="relative w-full bg-white pt-12 sm:pt-16 lg:pt-20 pb-0 overflow-hidden">
       {/* ── Top Hero Section ── */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-2 lg:pb-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
@@ -124,18 +124,16 @@ export default function OurApproach() {
             </h2>
 
             {/* Subtitle */}
-            <p className="text-[15px] sm:text-[16px] font-medium leading-relaxed text-[#4A5568] max-w-[360px] mb-8">
-              It&apos;s more than a procedure -<br />
-              it&apos;s a personalised journey,<br />
-              guided by expertise,<br />
-              advanced techniques, and<br />
-              ongoing care.
+            <p className="text-[15px] sm:text-[16px] font-medium leading-relaxed text-[#4A5568] max-w-[420px] mb-8">
+              It&apos;s more than a procedure — <br className="hidden sm:inline" />
+              it&apos;s a personalised journey, guided by expertise, <br className="hidden sm:inline" />
+              advanced techniques, and ongoing care.
             </p>
 
             {/* 4 Feature List Items */}
             <div className="flex flex-col gap-5 w-full">
               {features.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-4 group cursor-pointer">
+                <div key={idx} className="flex items-center gap-4 group">
                   <div className="shrink-0 w-12 h-12 rounded-full bg-[#0cb0f2] text-white flex items-center justify-center shadow-md shadow-sky-200/80 transition-transform duration-200 group-hover:scale-105">
                     {item.icon}
                   </div>
@@ -165,7 +163,6 @@ export default function OurApproach() {
                 alt="Our Approach - Precision Behind Every Transformation"
                 width={1200}
                 height={800}
-                priority
                 style={{ width: "100%", height: "auto" }}
                 className="w-full h-auto object-contain drop-shadow-xl"
               />
@@ -176,25 +173,21 @@ export default function OurApproach() {
       </div>
 
       {/* ── Bottom 4-Step Sequential Process Cards ── */}
-      <div className="w-full bg-gradient-to-b from-white via-[#f4fafe] to-[#eef7fe] pt-4 pb-14 lg:pt-6 lg:pb-16">
+      <div className="w-full bg-gradient-to-b from-white via-[#f4fafe] to-[#edf6fe] pt-4 pb-14 lg:pt-6 lg:pb-16">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-sky-200/60 items-stretch">
-            {steps.map((step, idx) => (
-              <motion.div
+            {steps.map((step) => (
+              <div
                 key={step.number}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
                 className="flex flex-col items-center text-center px-4 lg:px-6 group cursor-pointer"
               >
                 {/* Number Badge */}
-                <div className="w-11 h-11 rounded-full bg-[#dcf1fd] text-[#0196e3] font-extrabold text-[15px] flex items-center justify-center mb-4 shadow-sm group-hover:bg-[#0cb0f2] group-hover:text-white transition-colors duration-300">
+                <div className="w-11 h-11 rounded-full bg-[#dcf1fd] text-[#0196e3] font-extrabold text-[15px] flex items-center justify-center mb-4 shadow-sm group-hover:bg-[#0cb0f2] group-hover:text-white transition-colors duration-200">
                   {step.number}
                 </div>
 
                 {/* Step Title */}
-                <h3 className="text-[17.5px] font-bold text-[#001e56] tracking-tight mb-2 group-hover:text-[#0cb0f2] transition-colors">
+                <h3 className="text-[17.5px] font-bold text-[#001e56] tracking-tight mb-2 group-hover:text-[#0cb0f2] transition-colors duration-200">
                   {step.title}
                 </h3>
 
@@ -204,16 +197,16 @@ export default function OurApproach() {
                 </p>
 
                 {/* Process Step Image Thumbnail */}
-                <div className="relative w-full h-[175px] rounded-2xl overflow-hidden border-2 border-white shadow-md shadow-sky-100 transition-transform duration-300 group-hover:scale-[1.02] group-hover:shadow-lg">
+                <div className="relative w-full h-[175px] rounded-2xl overflow-hidden border-2 border-white shadow-sm shadow-sky-100 transition-shadow duration-200 group-hover:shadow-md">
                   <Image
                     src={step.image}
                     alt={step.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center"
                   />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

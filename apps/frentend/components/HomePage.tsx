@@ -130,7 +130,7 @@ export default function HomePage() {
           </p>
 
           {/* Headline */}
-          <h1 className="font-extrabold leading-[1.08] text-[50px] lg:text-[60px]">
+          <h1 className="font-extrabold leading-[1.08] text-3xl sm:text-4xl md:text-5xl lg:text-[60px] tracking-tight">
             <span style={{ color: "#001e56" }}>A Fuller Hairline</span>
             <br />
             <span
@@ -146,12 +146,10 @@ export default function HomePage() {
 
           {/* Sub-headline — image: navy/dark blue, underlined */}
           <p
-            className="text-[15.5px] font-medium leading-relaxed max-w-[420px] "
+            className="text-[15px] sm:text-[15.5px] font-medium leading-relaxed max-w-[420px]"
             style={{ color: "#001e56" }}
           >
-            Advanced hair restoration designed around you, with <br />
-            natural-looking
-            results that feel completely your own.
+            Advanced hair restoration designed around you, with natural-looking results that feel completely your own.
           </p>
 
           {/* CTAs — image: dark navy filled rounded button + subtle bordered button */}

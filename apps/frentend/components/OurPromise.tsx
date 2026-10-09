@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "motion/react";
 
 interface PromisePillar {
@@ -26,9 +26,8 @@ const pillars: PromisePillar[] = [
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6-8 10-8 10z" />
-        <circle cx="12" cy="11" r="2.2" />
-        <path d="M12 13.2v2.3" />
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     ),
   },
@@ -137,8 +136,6 @@ const pillars: PromisePillar[] = [
 ];
 
 export default function OurPromise(): React.JSX.Element {
-  const [highlightedIndex, setHighlightedIndex] = useState<number>(1);
-
   return (
     <section
       id="our-promise"
@@ -189,7 +186,6 @@ export default function OurPromise(): React.JSX.Element {
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {pillars.map((pillar, index) => {
-            const isHighlighted = highlightedIndex === index;
             const isLast = index === pillars.length - 1;
 
             // Desktop: 3 columns
@@ -209,127 +205,105 @@ export default function OurPromise(): React.JSX.Element {
                   delay: index * 0.08,
                   ease: "easeOut",
                 }}
-                onMouseEnter={() => setHighlightedIndex(index)}
-                className={`
-                  group relative flex cursor-pointer items-start gap-4
-                  p-5 transition-all duration-300
-                  sm:p-7
-
-                  ${isHighlighted
-                    ? "z-10 rounded-2xl border border-[#b8e1fa] bg-gradient-to-b from-[#e3f4fd] to-[#c7e8fd] shadow-[0_12px_32px_rgba(12,176,242,0.18)]"
-                    : "border border-transparent bg-transparent hover:bg-slate-50/80"
-                  }
-                `}
+                className="
+                  group relative overflow-hidden rounded-2xl
+                  bg-white p-5 sm:p-7
+                  transition-all duration-300
+                "
               >
                 {/* Mobile Separator */}
                 {!isLast && (
                   <div
-                    className={`
+                    className="
                       absolute bottom-0 left-5 right-5 h-[1.5px]
-                      rounded-full transition-all duration-300
-                      md:hidden
-                      ${isHighlighted
-                        ? "bg-[#94d5f7] opacity-90"
-                        : "bg-[#cbd5e1] opacity-75"
-                      }
-                    `}
+                      rounded-full bg-[#cbd5e1] opacity-75
+                      md:hidden pointer-events-none
+                    "
                   />
                 )}
 
                 {/* Tablet Horizontal Separator */}
                 {index < 4 && (
                   <div
-                    className={`
+                    className="
                       absolute bottom-0 left-7 right-7 h-[1.5px]
-                      rounded-full transition-all duration-300
-                      hidden md:block lg:hidden
-                      ${isHighlighted
-                        ? "bg-[#94d5f7] opacity-90"
-                        : "bg-[#cbd5e1] opacity-75"
-                      }
-                    `}
+                      rounded-full bg-[#cbd5e1] opacity-75
+                      hidden md:block lg:hidden pointer-events-none
+                    "
                   />
                 )}
 
                 {/* Tablet Vertical Separator */}
                 {!isTabletRightColumn && (
                   <div
-                    className={`
+                    className="
                       absolute right-0 top-7 bottom-7 w-[1.5px]
-                      rounded-full transition-all duration-300
-                      hidden md:block lg:hidden
-                      ${isHighlighted
-                        ? "bg-[#94d5f7] opacity-90"
-                        : "bg-[#cbd5e1] opacity-75"
-                      }
-                    `}
+                      rounded-full bg-[#cbd5e1] opacity-75
+                      hidden md:block lg:hidden pointer-events-none
+                    "
                   />
                 )}
 
                 {/* Desktop Horizontal Separator */}
                 {index < 3 && (
                   <div
-                    className={`
+                    className="
                       absolute bottom-0 left-7 right-7 h-[2px]
-                      rounded-full transition-all duration-300
-                      hidden lg:block
-                      ${isHighlighted
-                        ? "bg-[#94d5f7] opacity-90"
-                        : "bg-[#cbd5e1] opacity-75"
-                      }
-                    `}
+                      rounded-full bg-[#cbd5e1] opacity-75
+                      hidden lg:block pointer-events-none
+                    "
                   />
                 )}
 
                 {/* Desktop Vertical Separator */}
                 {!isDesktopRightColumn && (
                   <div
-                    className={`
+                    className="
                       absolute right-0 top-7 bottom-7 w-[2px]
-                      rounded-full transition-all duration-300
-                      hidden lg:block
-                      ${isHighlighted
-                        ? "bg-[#94d5f7] opacity-90"
-                        : "bg-[#cbd5e1] opacity-75"
-                      }
-                    `}
+                      rounded-full bg-[#cbd5e1] opacity-75
+                      hidden lg:block pointer-events-none
+                    "
                   />
                 )}
 
-                {/* Icon */}
+                {/* Soft blue gradient rises from bottom to top on hover */}
                 <div
-                  className={`
-                    flex h-11 w-11 shrink-0 items-center justify-center
-                    shadow-sm transition-all duration-300
-                    sm:h-12 sm:w-12
+                  className="
+                    absolute inset-x-0 bottom-0
+                    h-0
+                    bg-gradient-to-t
+                    from-[#9DDAF8]
+                    via-[#DDF3FC]
+                    to-white
+                    transition-all duration-500 ease-out
+                    group-hover:h-full
+                    pointer-events-none
+                  "
+                />
 
-                    ${isHighlighted
-                      ? "rounded-xl bg-white/90 text-[#001e56] ring-2 ring-sky-200/60"
-                      : "rounded-full bg-[#edf6fe] text-[#001e56] group-hover:rounded-xl"
-                    }
-                  `}
-                >
-                  {pillar.icon}
-                </div>
-
-                {/* Content */}
-                <div className="flex min-w-0 flex-col pt-0.5">
-                  <h3 className="mb-1.5 text-[16px] font-bold leading-snug tracking-tight text-[#001e56] sm:text-[17px]">
-                    {pillar.title}
-                  </h3>
-
-                  <p
-                    className={`
-                      text-[13px] leading-relaxed transition-colors duration-200
-                      sm:text-[13.5px]
-                      ${isHighlighted
-                        ? "text-[#334155]"
-                        : "text-[#64748b]"
-                      }
-                    `}
+                {/* Content above the animated background */}
+                <div className="relative z-10 flex items-start gap-4">
+                  {/* Icon */}
+                  <div
+                    className="
+                      flex h-11 w-11 shrink-0 items-center justify-center
+                      rounded-xl bg-[#edf6fe] text-[#001e56]
+                      shadow-sm sm:h-12 sm:w-12
+                    "
                   >
-                    {pillar.description}
-                  </p>
+                    {pillar.icon}
+                  </div>
+
+                  {/* Text */}
+                  <div className="flex min-w-0 flex-col pt-0.5">
+                    <h3 className="mb-1.5 text-[16px] font-bold leading-snug tracking-tight text-[#001e56] sm:text-[17px]">
+                      {pillar.title}
+                    </h3>
+
+                    <p className="text-[13px] leading-relaxed text-[#64748b] sm:text-[13.5px]">
+                      {pillar.description}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             );

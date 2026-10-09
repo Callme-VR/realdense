@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BookConsultationButton from "./BookConsultationButton";
 import { motion, AnimatePresence } from "motion/react";
+import { Leaf, Clock, Star } from "lucide-react";
 
 /* ── Service Data Interface ── */
 interface ServiceData {
@@ -354,10 +355,27 @@ function ServiceBeforeAfterCard({
     updatePos(e.clientX);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setSliderPos((prev) => Math.max(0, prev - 5));
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setSliderPos((prev) => Math.min(100, prev + 5));
+    }
+  };
+
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-[420px] aspect-[1.15/1] rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(12,176,242,0.18)] border-4 border-white select-none cursor-ew-resize bg-slate-900 group/showcase"
+      role="slider"
+      tabIndex={0}
+      aria-label={`Before and after comparison slider for ${title}`}
+      aria-valuenow={Math.round(sliderPos)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      onKeyDown={handleKeyDown}
+      className="relative w-full max-w-[320px] aspect-[1.15/1] rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(12,176,242,0.18)] border-4 border-white select-none cursor-ew-resize bg-slate-900 group/showcase touch-none @container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0cb0f2]"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -379,9 +397,8 @@ function ServiceBeforeAfterCard({
           src={afterImg}
           alt={`After ${title}`}
           fill
-          sizes="(max-width: 768px) 100vw, 560px"
+          sizes="(max-width: 768px) 100vw, 320px"
           className="object-cover object-center"
-          priority
         />
       </div>
 
@@ -390,14 +407,13 @@ function ServiceBeforeAfterCard({
         className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-white shadow-xl"
         style={{ width: `${sliderPos}%` }}
       >
-        <div className="absolute inset-y-0 left-0 w-full min-w-[340px] h-full">
+        <div className="absolute inset-y-0 left-0 w-[100cqw] min-w-full h-full">
           <Image
             src={beforeImg}
             alt={`Before ${title}`}
             fill
-            sizes="(max-width: 768px) 100vw, 560px"
+            sizes="(max-width: 768px) 100vw, 320px"
             className="object-cover object-center"
-            priority
           />
         </div>
       </div>
@@ -455,7 +471,7 @@ export default function OurServices() {
         </motion.div>
 
         {/* ── Interactive Service Selection Tabs Bar ── */}
-        <div className="flex items-center gap-3 lg:gap-4 overflow-x-auto w-full pb-4 mb-14 scrollbar-none justify-start lg:justify-center">
+        <div className="flex items-center gap-3 lg:gap-4 overflow-x-auto w-full pb-4 mb-14 scrollbar-none justify-start pr-6">
           {servicesList.map((service) => {
             const isActive = activeTab === service.id;
             return (
@@ -505,22 +521,22 @@ export default function OurServices() {
             className="mb-14"
           >
             {/* Top Row: Description on Left, Smaller Before/After Image Card on Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-8">
-              <div className="lg:col-span-7 flex flex-col items-start">
-                <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-[#0cb0f2] mb-3">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-8">
+              <div className="lg:col-span-8 flex flex-col items-start">
+                <p className="text-[13px] font-bold uppercase tracking-[0.25em] text-[#0cb0f2] mb-4">
                   {currentService.eyebrow}
                 </p>
 
-                <h3 className="text-3xl sm:text-4xl font-extrabold leading-tight text-[#001e56] mb-4">
+                <h3 className="text-4xl sm:text-5xl lg:text-[52px] font-extrabold leading-tight text-[#001e56] mb-5">
                   {currentService.title}
                 </h3>
 
-                <p className="text-[15px] sm:text-[16px] font-normal leading-relaxed text-[#64748B]">
+                <p className="text-[16px] sm:text-[17px] font-normal leading-relaxed text-[#64748B]">
                   {currentService.description}
                 </p>
               </div>
 
-              <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="lg:col-span-4 flex justify-center lg:justify-end">
                 <ServiceBeforeAfterCard
                   beforeImg={currentService.beforeImg}
                   afterImg={currentService.afterImg}
@@ -533,20 +549,13 @@ export default function OurServices() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-0 lg:divide-x divide-slate-200/90 w-full py-6 my-6 border-t border-b border-slate-100/90 items-center">
               {currentService.benefits.map((benefit, idx) => (
                 <div key={idx} className="flex items-center gap-3.5 px-2 lg:px-6">
-                  <div className="w-11 h-11 rounded-full bg-[#edf6fe] text-[#0cb0f2] flex items-center justify-center shrink-0 shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-[#edf6fe] text-cyan-400 flex items-center justify-center shrink-0 shadow-sm">
                     {idx === 0 ? (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                      </svg>
+                      <Leaf className="w-5 h-5" strokeWidth={2} />
                     ) : idx === 1 ? (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <circle cx="12" cy="12" r="10" />
-                        <polyline points="12 6 12 12 16 14" />
-                      </svg>
+                      <Clock className="w-5 h-5" strokeWidth={2} />
                     ) : (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                      </svg>
+                      <Star className="w-5 h-5" strokeWidth={2} />
                     )}
                   </div>
                   <div>
@@ -596,7 +605,7 @@ export default function OurServices() {
           {/* Card 2: Advantages / Checklist */}
           <div className="bg-[#f4fafe]/90 rounded-3xl p-6 sm:p-7 border border-[#e9f4fd] shadow-sm flex flex-col">
             <h3 className="text-[19px] font-bold text-[#001e56] mb-6">
-              How It Works
+              Key Advantages
             </h3>
 
             <div className="flex flex-col gap-3.5">
@@ -616,39 +625,38 @@ export default function OurServices() {
           </div>
 
           {/* Card 3: Pricing & Consultation CTA */}
-          <div className="bg-[#f4fafe]/90 rounded-3xl p-6 sm:p-7 border border-[#e9f4fd] shadow-sm flex flex-col justify-between">
-            <div>
-              <p className="text-[13px] font-medium text-[#64748B]">Starting From</p>
-              <div className="flex items-baseline gap-1.5 mt-1 mb-6">
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#001e56]">
-                  {currentService.price}
-                </span>
-                <span className="text-[13.5px] font-normal text-[#64748B]">
-                  session
-                </span>
-              </div>
+          <div className="bg-[#f4fafe]/90 rounded-3xl p-6 sm:p-7 border border-[#e9f4fd] shadow-sm flex flex-col">
+            <h3 className="text-[19px] font-bold text-[#001e56] mb-6">
+              Starting From
+            </h3>
 
-              <div className="flex flex-col gap-3 pt-4 border-t border-slate-200/80">
-                <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
-                  <span className="w-2 h-2 rounded-full bg-[#001e56]" />
-                  Procedure Time {currentService.procedureTime}
-                </div>
-                <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
-                  <span className="w-2 h-2 rounded-full bg-[#001e56]" />
-                  Recovery Time {currentService.recoveryTime}
-                </div>
-                <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
-                  <span className="w-2 h-2 rounded-full bg-[#001e56]" />
-                  Results Visible {currentService.resultsTime}
-                </div>
+            <div className="flex items-baseline gap-1.5 mb-6">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#001e56]">
+                {currentService.price}
+              </span>
+              <span className="text-[13.5px] font-normal text-[#64748B]">
+                session
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-3 mb-6 pt-4 border-t border-slate-200/80">
+              <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
+                <span className="w-2 h-2 rounded-full bg-[#001e56]" />
+                Procedure Time {currentService.procedureTime}
+              </div>
+              <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
+                <span className="w-2 h-2 rounded-full bg-[#001e56]" />
+                Recovery Time {currentService.recoveryTime}
+              </div>
+              <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
+                <span className="w-2 h-2 rounded-full bg-[#001e56]" />
+                Results Visible {currentService.resultsTime}
               </div>
             </div>
 
-            <div className="mt-8 pt-2">
-              <BookConsultationButton
-                className="flex items-center justify-center gap-2.5 w-full py-3.5 px-6 rounded-2xl text-[14.5px] font-semibold text-white bg-[#001e56] shadow-md hover:bg-[#0c246c] hover:shadow-lg transition-all duration-300 ease-out active:scale-[0.98]"
-              />
-            </div>
+            <BookConsultationButton
+              className="flex items-center justify-center gap-2.5 w-full py-3.5 px-6 rounded-2xl text-[14.5px] font-semibold text-white bg-[#001e56] shadow-md hover:bg-[#0c246c] hover:shadow-lg transition-all duration-300 ease-out active:scale-[0.98]"
+            />
           </div>
         </div>
       </div>

@@ -57,8 +57,8 @@ export default function PatientReviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  // We show 2 cards at a time on desktop, or 1 on mobile
-  const maxIndex = reviewsData.length - 2; // For pairs: 0, 1, 2
+  // 1 card on mobile, 2 cards on desktop
+  const maxIndex = reviewsData.length - 1;
 
   const handlePrev = () => {
     setDirection(-1);
@@ -166,7 +166,33 @@ export default function PatientReviews() {
           <button
             onClick={handlePrev}
             aria-label="Previous reviews"
-            className="absolute -left-2 sm:-left-5 lg:-left-6 z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-slate-400 hover:text-[#001e56] border border-slate-200/90 shadow-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+            className="
+    absolute
+    left-0
+    sm:-left-5
+    lg:-left-6
+    z-10
+    w-9
+    h-9
+    sm:w-11
+    sm:h-11
+    rounded-full
+    bg-white/95
+    hover:bg-[#0D2C8A]
+    text-slate-400
+    hover:text-white
+    border
+    border-slate-200/90
+    shadow-md
+    flex
+    items-center
+    justify-center
+    transition-all
+    duration-200
+    hover:scale-105
+    active:scale-95
+    cursor-pointer
+  "
           >
             <svg
               className="w-5 h-5"
@@ -184,7 +210,7 @@ export default function PatientReviews() {
           </button>
 
           {/* Cards Grid / Transition View */}
-          <div className="w-full px-2 sm:px-6">
+          <div className="w-full px-8 sm:px-6">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={currentIndex}
@@ -194,10 +220,11 @@ export default function PatientReviews() {
                 transition={{ duration: 0.35, ease: "easeInOut" }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
               >
-                {visibleReviews.map((review) => (
+                {visibleReviews.map((review, rIdx) => (
                   <div
-                    key={review.id}
-                    className="relative bg-[#f0f8fd]/70 hover:bg-[#ebf6fd] border border-[#dcf1fd] rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,168,255,0.08)] flex flex-col justify-between"
+                    key={`${review.id}-${rIdx}`}
+                    className={`relative bg-[#f0f8fd]/70 hover:bg-[#ebf6fd] border border-[#dcf1fd] rounded-[24px] sm:rounded-[28px] p-6 sm:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,168,255,0.08)] flex-col justify-between ${rIdx > 0 ? "hidden md:flex" : "flex"
+                      }`}
                   >
                     {/* Cyan Quote Mark in Top Left */}
                     <div className="mb-4 text-[#00a8ff]">
@@ -261,7 +288,33 @@ export default function PatientReviews() {
           <button
             onClick={handleNext}
             aria-label="Next reviews"
-            className="absolute -right-2 sm:-right-5 lg:-right-6 z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-white text-slate-400 hover:text-[#001e56] border border-slate-200/90 shadow-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+            className="
+    absolute
+    right-0
+    sm:-right-5
+    lg:-right-6
+    z-10
+    w-9
+    h-9
+    sm:w-11
+    sm:h-11
+    rounded-full
+    bg-white/95
+    hover:bg-[#0D2C8A]
+    text-slate-400
+    hover:text-white
+    border
+    border-slate-200/90
+    shadow-md
+    flex
+    items-center
+    justify-center
+    transition-all
+    duration-200
+    hover:scale-105
+    active:scale-95
+    cursor-pointer
+  "
           >
             <svg
               className="w-5 h-5"

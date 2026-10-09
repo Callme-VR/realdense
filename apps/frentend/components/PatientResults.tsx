@@ -134,10 +134,27 @@ function BeforeAfterImage({
     updatePosition(e.clientX);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      setSliderPos((prev) => Math.max(0, prev - 5));
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      setSliderPos((prev) => Math.min(100, prev + 5));
+    }
+  };
+
   return (
     <div
       ref={containerRef}
-      className="relative w-full aspect-[4/3] bg-slate-900 overflow-hidden select-none cursor-ew-resize group/img"
+      role="slider"
+      tabIndex={0}
+      aria-label={`Before and after comparison slider for ${title}`}
+      aria-valuenow={Math.round(sliderPos)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      onKeyDown={handleKeyDown}
+      className="relative w-full aspect-[4/3] bg-slate-900 overflow-hidden select-none cursor-ew-resize group/img touch-none @container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0cb0f2]"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -169,7 +186,7 @@ function BeforeAfterImage({
         className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-white shadow-lg"
         style={{ width: `${sliderPos}%` }}
       >
-        <div className="absolute inset-y-0 left-0 w-full min-w-[320px] h-full">
+        <div className="absolute inset-y-0 left-0 w-[100cqw] min-w-full h-full">
           <Image
             src={beforeImg}
             alt={`Before ${title}`}

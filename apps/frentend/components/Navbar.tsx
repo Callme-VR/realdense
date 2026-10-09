@@ -47,7 +47,7 @@ export default function Navbar() {
   // Close drawer on desktop resize
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setMobileOpen(false);
         setMobileServicesOpen(false);
       }
@@ -87,7 +87,7 @@ export default function Navbar() {
 
         {/* ── Desktop Nav ── */}
         {/* Figma: Plus Jakarta Sans SemiBold 600 ~19px, color #001e56 */}
-        <nav className="hidden md:flex items-center gap-0.5" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
           {navLinks.map((link) =>
             link.hasDropdown ? (
               <div
@@ -159,7 +159,7 @@ export default function Navbar() {
 
         {/* ── Mobile Hamburger ── */}
         <button
-          className="md:hidden relative flex flex-col justify-center items-center w-10 h-10 rounded-xl hover:bg-[#e9f4fd] transition-colors duration-200"
+          className="lg:hidden relative flex flex-col justify-center items-center w-10 h-10 rounded-xl hover:bg-[#e9f4fd] transition-colors duration-200"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -181,7 +181,7 @@ export default function Navbar() {
 
       {/* ── Mobile Drawer ── */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
           }`}
         aria-hidden={!mobileOpen}
       >

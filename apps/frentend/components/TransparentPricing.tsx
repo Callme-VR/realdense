@@ -195,13 +195,13 @@ export default function TransparentPricing() {
         </div>
 
         {/* ── Pill Filter Tabs Row ── */}
-        <div className="mb-10">
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none max-w-full">
+        <div className="mb-8 sm:mb-10">
+          <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto pb-2.5 scrollbar-none max-w-full -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => handleCategorySelect(cat)}
-                className={`px-6 py-2.5 rounded-full text-[14px] font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer ${activeCategory === cat
+                className={`px-5 sm:px-6 py-2.5 rounded-full text-[13.5px] sm:text-[14px] font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#001e56] focus-visible:ring-offset-2 ${activeCategory === cat
                   ? "bg-[#001e56] text-white shadow-md border border-[#001e56]"
                   : "bg-white text-[#001e56] border border-[#e2e8f0] hover:bg-slate-50 hover:border-[#cbd5e1]"
                   }`}
@@ -216,7 +216,7 @@ export default function TransparentPricing() {
         <div className="relative w-full">
           <div
             ref={carouselRef}
-            className="flex gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 px-1 scrollbar-none"
+            className="flex gap-5 sm:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 px-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-1"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {filteredCards.map((card) => (
@@ -226,7 +226,7 @@ export default function TransparentPricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
-                className={`group relative bg-white rounded-[28px] p-7 sm:p-8 flex flex-col justify-between min-w-[300px] sm:min-w-[340px] max-w-[360px] snap-start shrink-0 transition-all duration-300 ${card.popular
+                className={`group relative bg-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-between min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start shrink-0 transition-all duration-300 ${card.popular
                   ? "border-2 border-[#0cb0f2] shadow-[0_8px_30px_rgba(12,176,242,0.25)] scale-[1.02] z-10"
                   : "border border-slate-100 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-1"
                   }`}
@@ -364,11 +364,32 @@ export default function TransparentPricing() {
             <div className="shrink-0 flex items-center">
               <Link
                 href="/book-consultation"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#001e56] font-bold text-[14px] shadow-md hover:bg-sky-50 transition-all duration-200 active:scale-[0.98] whitespace-nowrap group"
+                className="
+    inline-flex items-center justify-center gap-2
+    px-7 py-3.5
+    rounded-full
+    bg-white
+    text-[#001e56]
+    font-bold text-[14px]
+    shadow-md
+    hover:bg-[#00a8ff]
+    hover:text-white
+    transition-all duration-200
+    active:scale-[0.98]
+    whitespace-nowrap
+    group
+  "
               >
                 <span>Get a Personalised Quote</span>
+
                 <svg
-                  className="w-4 h-4 text-[#001e56] group-hover:translate-x-1 transition-transform"
+                  className="
+      w-4 h-4
+      text-[#001e56]
+      group-hover:text-white
+      group-hover:translate-x-1
+      transition-all duration-200
+    "
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
