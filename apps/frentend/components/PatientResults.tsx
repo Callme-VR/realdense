@@ -176,6 +176,7 @@ function BeforeAfterImage({
           src={afterImg}
           alt={`After ${title}`}
           fill
+          loading="eager"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover object-center"
         />
@@ -191,6 +192,7 @@ function BeforeAfterImage({
             src={beforeImg}
             alt={`Before ${title}`}
             fill
+            loading="eager"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover object-center"
           />

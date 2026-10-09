@@ -397,6 +397,7 @@ function ServiceBeforeAfterCard({
           src={afterImg}
           alt={`After ${title}`}
           fill
+          loading="eager"
           sizes="(max-width: 768px) 100vw, 320px"
           className="object-cover object-center"
         />
@@ -412,6 +413,7 @@ function ServiceBeforeAfterCard({
             src={beforeImg}
             alt={`Before ${title}`}
             fill
+            loading="eager"
             sizes="(max-width: 768px) 100vw, 320px"
             className="object-cover object-center"
           />

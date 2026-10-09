@@ -78,8 +78,9 @@ export default function Navbar() {
           <Image
             src="/assets/logo.png"
             alt="Realdense Hair Restoration Clinic"
-            width={148}
-            height={52}
+            width={376}
+            height={251}
+            style={{ width: "auto" }}
             className="object-contain w-auto h-[48px] sm:h-[52px] transition-transform duration-200 group-hover:scale-[1.02]"
             priority
           />
