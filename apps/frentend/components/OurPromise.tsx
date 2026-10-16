@@ -1,7 +1,7 @@
+
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
 
 interface PromisePillar {
   id: string;
@@ -147,14 +147,8 @@ export default function OurPromise(): React.JSX.Element {
       />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center sm:mb-16 lg:mb-20"
-        >
+        {/* Header — no entrance animation */}
+        <div className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center sm:mb-16 lg:mb-20">
           <div className="mb-3.5 inline-flex items-center gap-3.5">
             <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#64748B] sm:text-[11.5px]">
               OUR PROMISE
@@ -181,116 +175,55 @@ export default function OurPromise(): React.JSX.Element {
             We combine advanced techniques, medical expertise, and personalised
             care to deliver natural-looking, long-lasting results.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Responsive Grid */}
+        {/* Responsive Grid — cards have no entrance animation */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {pillars.map((pillar, index) => {
             const isLast = index === pillars.length - 1;
-
-            // Desktop: 3 columns
             const isDesktopRightColumn = index % 3 === 2;
-
-            // Tablet: 2 columns
             const isTabletRightColumn = index % 2 === 1;
 
             return (
-              <motion.div
+              <div
                 key={pillar.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.08,
-                  ease: "easeOut",
-                }}
-                className="
-                  group relative overflow-hidden rounded-2xl
-                  bg-white p-5 sm:p-7
-                  transition-all duration-300
-                "
+                className="group relative overflow-hidden rounded-2xl bg-white p-5 sm:p-7"
               >
                 {/* Mobile Separator */}
                 {!isLast && (
-                  <div
-                    className="
-                      absolute bottom-0 left-5 right-5 h-[1.5px]
-                      rounded-full bg-[#cbd5e1] opacity-75
-                      md:hidden pointer-events-none
-                    "
-                  />
+                  <div className="pointer-events-none absolute bottom-0 left-5 right-5 h-[1.5px] rounded-full bg-[#cbd5e1] opacity-75 md:hidden" />
                 )}
 
                 {/* Tablet Horizontal Separator */}
                 {index < 4 && (
-                  <div
-                    className="
-                      absolute bottom-0 left-7 right-7 h-[1.5px]
-                      rounded-full bg-[#cbd5e1] opacity-75
-                      hidden md:block lg:hidden pointer-events-none
-                    "
-                  />
+                  <div className="pointer-events-none absolute bottom-0 left-7 right-7 hidden h-[1.5px] rounded-full bg-[#cbd5e1] opacity-75 md:block lg:hidden" />
                 )}
 
                 {/* Tablet Vertical Separator */}
                 {!isTabletRightColumn && (
-                  <div
-                    className="
-                      absolute right-0 top-7 bottom-7 w-[1.5px]
-                      rounded-full bg-[#cbd5e1] opacity-75
-                      hidden md:block lg:hidden pointer-events-none
-                    "
-                  />
+                  <div className="pointer-events-none absolute right-0 top-7 bottom-7 hidden w-[1.5px] rounded-full bg-[#cbd5e1] opacity-75 md:block lg:hidden" />
                 )}
 
                 {/* Desktop Horizontal Separator */}
                 {index < 3 && (
-                  <div
-                    className="
-                      absolute bottom-0 left-7 right-7 h-[2px]
-                      rounded-full bg-[#cbd5e1] opacity-75
-                      hidden lg:block pointer-events-none
-                    "
-                  />
+                  <div className="pointer-events-none absolute bottom-0 left-7 right-7 hidden h-[2px] rounded-full bg-[#cbd5e1] opacity-75 lg:block" />
                 )}
 
                 {/* Desktop Vertical Separator */}
                 {!isDesktopRightColumn && (
-                  <div
-                    className="
-                      absolute right-0 top-7 bottom-7 w-[2px]
-                      rounded-full bg-[#cbd5e1] opacity-75
-                      hidden lg:block pointer-events-none
-                    "
-                  />
+                  <div className="pointer-events-none absolute right-0 top-7 bottom-7 hidden w-[2px] rounded-full bg-[#cbd5e1] opacity-75 lg:block" />
                 )}
 
-                {/* Soft blue gradient rises from bottom to top on hover */}
+                {/* Only animation retained: blue gradient rises on hover */}
                 <div
-                  className="
-                    absolute inset-x-0 bottom-0
-                    h-0
-                    bg-gradient-to-t
-                    from-[#9DDAF8]
-                    via-[#DDF3FC]
-                    to-white
-                    transition-all duration-500 ease-out
-                    group-hover:h-full
-                    pointer-events-none
-                  "
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-0 bg-gradient-to-t from-[#9DDAF8] via-[#DDF3FC] to-white transition-[height] duration-500 ease-out group-hover:h-full"
+                  aria-hidden="true"
                 />
 
-                {/* Content above the animated background */}
+                {/* Card Content */}
                 <div className="relative z-10 flex items-start gap-4">
                   {/* Icon */}
-                  <div
-                    className="
-                      flex h-11 w-11 shrink-0 items-center justify-center
-                      rounded-xl bg-[#edf6fe] text-[#001e56]
-                      shadow-sm sm:h-12 sm:w-12
-                    "
-                  >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#edf6fe] text-[#001e56] shadow-sm sm:h-12 sm:w-12">
                     {pillar.icon}
                   </div>
 
@@ -305,7 +238,7 @@ export default function OurPromise(): React.JSX.Element {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

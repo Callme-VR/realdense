@@ -40,8 +40,8 @@ const servicesList: ServiceData[] = [
         implanted for natural-looking, long-lasting results.
       </>
     ),
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    beforeImg: "/images/transformations/case-01-before.webp",
+    afterImg: "/images/transformations/case-01-after.webp",
     price: "₹90,000",
     benefits: [
       {
@@ -97,8 +97,8 @@ const servicesList: ServiceData[] = [
     title: "DHI Hair Transplant",
     description:
       "Direct Hair Implantation (DHI) utilizes a specialized Choi Implanter Pen to control depth, angle, and direction for ultra-dense, natural hairline restoration.",
-    beforeImg: "/assets/BEFORE1.png",
-    afterImg: "/assets/AFTER1.png",
+    beforeImg: "/images/transformations/case-02-before.webp",
+    afterImg: "/images/transformations/case-02-after.webp",
     price: "₹1,10,000",
     benefits: [
       {
@@ -154,8 +154,8 @@ const servicesList: ServiceData[] = [
     title: "Sapphire FUE Transplant",
     description:
       "Sapphire FUE uses blades made from precious sapphire gemstone instead of steel, creating micro-channels that accelerate healing and maximize graft density.",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    beforeImg: "/images/transformations/case-03-before.webp",
+    afterImg: "/images/transformations/case-03-after.webp",
     price: "₹1,00,000",
     benefits: [
       {
@@ -211,8 +211,8 @@ const servicesList: ServiceData[] = [
     title: "Beard & Mustache Transplant",
     description:
       "Restore patchy, thin, or uneven facial hair with natural donor hair follicles transplanted to sculpt a full, well-defined beard.",
-    beforeImg: "/assets/BEFORE1.png",
-    afterImg: "/assets/AFTER1.png",
+    beforeImg: "/images/transformations/case-04-before.webp",
+    afterImg: "/images/transformations/case-04-after.webp",
     price: "₹85,000",
     benefits: [
       {
@@ -268,8 +268,8 @@ const servicesList: ServiceData[] = [
     title: "Eyebrow Transplant",
     description:
       "Precision transplantation of single hair follicles to reshape over-plucked, thin, or scarred eyebrows for natural facial symmetry.",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    beforeImg: "/images/transformations/case-01-before.webp",
+    afterImg: "/images/transformations/case-02-after.webp",
     price: "₹75,000",
     benefits: [
       {

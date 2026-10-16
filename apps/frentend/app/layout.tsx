@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   description:
     "Advanced hair restoration designed around you, with natural-looking results that feel completely your own.",
   icons: {
-    icon: "/assets/logo.png",
-    shortcut: "/assets/logo.png",
-    apple: "/assets/logo.png",
+    icon: "/images/brand/logo.png",
+    shortcut: "/images/brand/logo.png",
+    apple: "/images/brand/logo.png",
   },
 };
 

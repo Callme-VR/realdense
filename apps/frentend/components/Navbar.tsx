@@ -3,13 +3,17 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import BookConsultationButton from "./BookConsultationButton";
 
-// ─── Figma Design Tokens (file: sr2znFAWlrfvsYNHtSYjYz) ──────────────────────
-// Font: Plus Jakarta Sans | Nav: SemiBold 600 ~19-21px | Link color: #001e56
-// Cyan accent: #0cb0f2 / #0196e3 | Tint bg: #e9f4fd | Gold: #ffbb1f
+interface NavItem {
+  label: string;
+  href: string;
+  hasDropdown?: boolean;
+  dropdown?: { label: string; href: string }[];
+}
 
-const navLinks = [
+const navLinks: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Results", href: "/results" },
   {
@@ -31,20 +35,19 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Scroll-aware shadow (Figma: Header sticky variant)
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 15);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close drawer on desktop resize
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 1024) {
@@ -60,121 +63,134 @@ export default function Navbar() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setServicesOpen(true);
   };
+
   const onDropdownLeave = () => {
-    closeTimer.current = setTimeout(() => setServicesOpen(false), 120);
+    closeTimer.current = setTimeout(() => setServicesOpen(false), 140);
+  };
+
+  const isLinkActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
   };
 
   return (
     <header
-      className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-white/90 backdrop-blur-md shadow-[0_4px_24px_rgba(0,30,86,0.08)]"
-        : "bg-transparent"
+      className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-2.5 sm:py-3.5 ${scrolled ? "bg-white/85 backdrop-blur-md shadow-[0_4px_20px_rgba(3,30,80,0.06)]" : "bg-transparent"
         }`}
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between h-[76px]">
-
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* ── Logo ── */}
-        <Link href="/" className="flex items-center shrink-0 group" aria-label="Realdense Home">
+        <Link
+          href="/"
+          className="shrink-0 flex items-center transition-transform duration-200 hover:scale-[1.02]"
+          aria-label="Realdense Home"
+        >
           <Image
-            src="/assets/logo.png"
+            src="/images/brand/logo.webp"
             alt="Realdense Hair Restoration Clinic"
-            width={376}
-            height={251}
-            style={{ width: "auto" }}
-            className="object-contain w-auto h-[48px] sm:h-[52px] transition-transform duration-200 group-hover:scale-[1.02]"
+            width={160}
+            height={46}
+            className="w-auto h-[38px] sm:h-[44px] lg:h-[48px] object-contain"
             priority
           />
         </Link>
 
-        {/* ── Desktop Nav ── */}
-        {/* Figma: Plus Jakarta Sans SemiBold 600 ~19px, color #001e56 */}
-        <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
-          {navLinks.map((link) =>
-            link.hasDropdown ? (
-              <div
-                key={link.label}
-                className="relative"
-                onMouseEnter={onDropdownEnter}
-                onMouseLeave={onDropdownLeave}
-              >
-                <button
-                  className="flex items-center gap-[5px] px-3.5 py-2 text-[15px] font-semibold text-[#001e56] hover:text-[#0cb0f2] transition-colors duration-200 rounded-lg hover:bg-[#e9f4fd]/60"
-                  aria-expanded={servicesOpen}
-                  aria-haspopup="true"
-                >
-                  {link.label}
-                  {/* Figma Vector 1 — chevron */}
-                  <svg
-                    className={`w-[14px] h-[14px] opacity-70 transition-transform duration-200 ${servicesOpen ? "rotate-180 text-[#0cb0f2]" : "text-[#001e56]"}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
+        {/* ── Desktop Sleek Pill Navbar ── */}
+        <nav
+          className="hidden lg:flex items-center gap-1.5 bg-[#EBF8FF]/95 backdrop-blur-xs border border-[#d6ecfb] rounded-full px-2 py-1 shadow-[0_2px_8px_rgba(3,30,80,0.03)]"
+          aria-label="Main navigation"
+        >
+          {navLinks.map((item) => {
+            const active = isLinkActive(item.href);
 
-                {/* Dropdown panel */}
+            if (item.hasDropdown) {
+              return (
                 <div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,30,86,0.13)] border border-[#e9f4fd] py-2 transition-all duration-200 origin-top ${servicesOpen
-                    ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
-                    : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
-                    }`}
+                  key={item.label}
+                  className="relative flex items-center"
                   onMouseEnter={onDropdownEnter}
                   onMouseLeave={onDropdownLeave}
-                  role="menu"
                 >
-                  {/* Caret */}
-                  <div className="absolute -top-[6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-l border-t border-[#e9f4fd] rotate-45" />
-
-                  {link.dropdown!.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      role="menuitem"
-                      className="flex items-center gap-2.5 px-4 py-2.5 text-[13.5px] font-semibold text-[#001e56] hover:bg-[#e9f4fd] hover:text-[#0cb0f2] transition-colors duration-150 group/item"
-                      onClick={() => setServicesOpen(false)}
+                  <button
+                    className={`flex items-center gap-1 px-4 py-1.5 rounded-full text-[14px] font-semibold text-[#031E50] transition-all duration-200 select-none ${active
+                      ? "bg-[rgba(62,184,247,0.32)] shadow-[0px_2px_4px_rgba(0,0,0,0.12),inset_0px_1px_4px_rgba(0,75,214,0.35)]"
+                      : "hover:bg-[rgba(62,184,247,0.14)] hover:text-[#00A3FF]"
+                      }`}
+                    aria-expanded={servicesOpen}
+                    aria-haspopup="true"
+                  >
+                    <span>{item.label}</span>
+                    <svg
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180 text-[#00A3FF]" : "text-[#031E50]/70"
+                        }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0cb0f2] opacity-0 group-hover/item:opacity-100 transition-opacity shrink-0" />
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              /* Regular link — Figma: color #001e56, hover #0cb0f2 */
-              <Link
-                key={link.label}
-                href={link.href}
-                className="relative px-3.5 py-2 text-[15px] font-semibold text-[#001e56] hover:text-[#0cb0f2] transition-colors duration-200 rounded-lg hover:bg-[#e9f4fd]/60 group"
-              >
-                {link.label}
-                {/* Figma active underline state */}
-                <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-[#0cb0f2] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </Link>
-            )
-          )}
-        </nav>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
 
+                  {/* Dropdown panel */}
+                  <div
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-2xl shadow-[0_10px_35px_rgba(3,30,80,0.12)] border border-[#d6ecfb] py-2 transition-all duration-200 origin-top ${servicesOpen
+                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                      : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                      }`}
+                    role="menu"
+                  >
+                    <div className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-white border-l border-t border-[#d6ecfb] rotate-45" />
+
+                    {item.dropdown!.map((subItem) => (
+                      <Link
+                        key={subItem.label}
+                        href={subItem.href}
+                        role="menuitem"
+                        className="flex items-center gap-2.5 px-4 py-2 text-[13.5px] font-semibold text-[#031E50] hover:bg-[#EBF8FF] hover:text-[#00A3FF] transition-colors"
+                        onClick={() => setServicesOpen(false)}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00A3FF] shrink-0" />
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`flex items-center px-4 py-1.5 rounded-full text-[14px] font-semibold text-[#031E50] transition-all duration-200 select-none ${active
+                  ? "bg-[rgba(62,184,247,0.32)] shadow-[0px_2px_4px_rgba(0,0,0,0.12),inset_0px_1px_4px_rgba(0,75,214,0.35)]"
+                  : "hover:bg-[rgba(62,184,247,0.14)] hover:text-[#00A3FF]"
+                  }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
 
         {/* ── Mobile Hamburger ── */}
         <button
-          className="lg:hidden relative flex flex-col justify-center items-center w-10 h-10 rounded-xl hover:bg-[#e9f4fd] transition-colors duration-200"
+          className="lg:hidden relative flex flex-col justify-center items-center w-10 h-10 rounded-full bg-[#EBF8FF] border border-[#d6ecfb] transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
           <span
-            className={`absolute block w-5 h-[2px] rounded-full bg-[#001e56] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-0" : "-translate-y-[5px]"
+            className={`absolute block w-5 h-[2px] rounded-full bg-[#031E50] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-0" : "-translate-y-[5px]"
               }`}
           />
           <span
-            className={`block w-5 h-[2px] rounded-full bg-[#001e56] transition-all duration-300 ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+            className={`block w-5 h-[2px] rounded-full bg-[#031E50] transition-all duration-300 ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
               }`}
           />
           <span
-            className={`absolute block w-5 h-[2px] rounded-full bg-[#001e56] transition-all duration-300 ${mobileOpen ? "-rotate-45 translate-y-0" : "translate-y-[5px]"
+            className={`absolute block w-5 h-[2px] rounded-full bg-[#031E50] transition-all duration-300 ${mobileOpen ? "-rotate-45 translate-y-0" : "translate-y-[5px]"
               }`}
           />
         </button>
@@ -182,78 +198,81 @@ export default function Navbar() {
 
       {/* ── Mobile Drawer ── */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? "max-h-[640px] opacity-100 mt-2.5" : "max-h-0 opacity-0"
           }`}
         aria-hidden={!mobileOpen}
       >
         <nav
-          className="border-t border-[#e9f4fd] bg-white px-6 pt-4 pb-6 flex flex-col gap-1"
+          className="mx-4 sm:mx-6 rounded-3xl bg-[#EBF8FF] border border-[#d6ecfb] px-5 py-4 flex flex-col gap-1 shadow-[0_12px_36px_rgba(3,30,80,0.1)]"
           aria-label="Mobile navigation"
         >
-          {navLinks.map((link) =>
-            link.hasDropdown ? (
-              <div key={link.label}>
-                <button
-                  className="w-full flex items-center justify-between px-3 py-3 text-[15px] font-semibold text-[#001e56] hover:text-[#0cb0f2] hover:bg-[#e9f4fd]/70 rounded-xl transition-colors duration-150"
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  aria-expanded={mobileServicesOpen}
-                >
-                  {link.label}
-                  <svg
-                    className={`w-4 h-4 opacity-60 transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
+          {navLinks.map((item) => {
+            const active = isLinkActive(item.href);
 
-                <div
-                  className={`overflow-hidden transition-all duration-250 ease-in-out ${mobileServicesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                    }`}
-                >
-                  <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l-2 border-[#0cb0f2]/20 pl-4">
-                    {link.dropdown!.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="py-2.5 text-[14px] font-semibold text-[#001e56]/80 hover:text-[#0cb0f2] transition-colors duration-150"
-                        onClick={() => {
-                          setMobileOpen(false);
-                          setMobileServicesOpen(false);
-                        }}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+            if (item.hasDropdown) {
+              return (
+                <div key={item.label} className="w-full">
+                  <button
+                    className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-[14.5px] font-semibold text-[#031E50] transition-colors ${active ? "bg-[rgba(62,184,247,0.32)]" : "hover:bg-white/60"
+                      }`}
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    aria-expanded={mobileServicesOpen}
+                  >
+                    <span>{item.label}</span>
+                    <svg
+                      className={`w-4 h-4 text-[#031E50] transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""
+                        }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen ? "max-h-80 opacity-100 mt-1" : "max-h-0 opacity-0"
+                      }`}
+                  >
+                    <div className="ml-4 pl-3 border-l-2 border-[#00A3FF]/30 flex flex-col gap-1">
+                      {item.dropdown!.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          href={subItem.href}
+                          className="py-2 px-3 text-[13.5px] font-medium text-[#031E50]/80 hover:text-[#00A3FF] transition-colors"
+                          onClick={() => {
+                            setMobileOpen(false);
+                            setMobileServicesOpen(false);
+                          }}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
+              );
+            }
+
+            return (
               <Link
-                key={link.label}
-                href={link.href}
-                className="px-3 py-3 text-[15px] font-semibold text-[#001e56] hover:text-[#0cb0f2] hover:bg-[#e9f4fd]/70 rounded-xl transition-colors duration-150"
+                key={item.label}
+                href={item.href}
+                className={`px-4 py-2.5 rounded-xl text-[14.5px] font-semibold text-[#031E50] transition-colors ${active ? "bg-[rgba(62,184,247,0.32)]" : "hover:bg-white/60"
+                  }`}
                 onClick={() => setMobileOpen(false)}
               >
-                {link.label}
+                {item.label}
               </Link>
-            )
-          )}
+            );
+          })}
 
-          {/* Mobile CTA */}
-          <div className="mt-3 pt-4 border-t border-[#e9f4fd]">
+          <div className="mt-2 pt-3 border-t border-sky-200/60">
             <BookConsultationButton
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full text-[15px] font-semibold text-white bg-gradient-to-r from-[#0cb0f2] to-[#0196e3] shadow-[0_4px_16px_rgba(12,176,242,0.30)] transition-all duration-200 active:scale-[0.98]"
-              arrowIcon={
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              }
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-[14.5px] font-semibold text-white bg-gradient-to-r from-[#00A3FF] to-[#0196e3] shadow-[0_4px_16px_rgba(0,163,255,0.3)] transition-all active:scale-[0.98]"
             />
           </div>
         </nav>

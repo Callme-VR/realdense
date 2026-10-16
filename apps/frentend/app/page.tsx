@@ -17,7 +17,7 @@ export default function Page() {
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
       <BlueWaveBackground>
-        <main className="pt-[76px]">
+        <main>
           <HomePage />
         </main>
       </BlueWaveBackground>

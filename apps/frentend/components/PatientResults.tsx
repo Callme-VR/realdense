@@ -1,8 +1,9 @@
+
 "use client";
 
 import React, { useState, useRef, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
+import WaveBackground from "./WaveBackground";
 
 /* ── Filter Categories ── */
 const categories = [
@@ -16,92 +17,95 @@ const categories = [
 
 type Category = (typeof categories)[number];
 
-/* ── Result Card Data Interface ── */
+/* ── Result Card Data Model ── */
 interface ResultItem {
   id: number;
   title: string;
   grafts: string;
-  category: Category;
+  categories: Category[];
   beforeImg: string;
   afterImg: string;
 }
 
+/* ── Patient Results ── */
 const resultsData: ResultItem[] = [
   {
     id: 1,
     title: "Hairline + Crown",
     grafts: "FUE 3,200 grafts",
-    category: "Hairline",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    categories: ["Hairline", "Crown"],
+    beforeImg: "/images/transformations/case-01-before.webp",
+    afterImg: "/images/transformations/case-01-after.webp",
   },
   {
     id: 2,
     title: "Hairline Restoration",
     grafts: "DHI 1,800 grafts",
-    category: "Hairline",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    categories: ["Hairline"],
+    beforeImg: "/images/transformations/case-02-before.webp",
+    afterImg: "/images/transformations/case-02-after.webp",
   },
   {
     id: 3,
     title: "Crown Restoration",
     grafts: "Sapphire FUE 2,400 grafts",
-    category: "Crown",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    categories: ["Crown"],
+    beforeImg: "/images/transformations/case-03-before.webp",
+    afterImg: "/images/transformations/case-03-after.webp",
   },
   {
     id: 4,
     title: "Full Restoration",
     grafts: "DHI - 4,100 grafts",
-    category: "Full Restoration",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    categories: ["Full Restoration"],
+    beforeImg: "/images/transformations/case-04-before.webp",
+    afterImg: "/images/transformations/case-04-after.webp",
   },
   {
     id: 5,
-    title: "Profile Restoration",
-    grafts: "FUE 3,200 grafts",
-    category: "Beard",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    title: "Full Restoration",
+    grafts: "DHI - 4,100 grafts",
+    categories: ["Full Restoration", "Beard"],
+    beforeImg: "/images/transformations/case-04-before.webp",
+    afterImg: "/images/transformations/case-04-after.webp",
   },
   {
     id: 6,
-    title: "Hairline + Crown",
-    grafts: "FUE 3,200 grafts",
-    category: "Hairline",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    title: "Crown Restoration",
+    grafts: "Sapphire FUE 2,400 grafts",
+    categories: ["Crown"],
+    beforeImg: "/images/transformations/case-03-before.webp",
+    afterImg: "/images/transformations/case-03-after.webp",
   },
   {
     id: 7,
-    title: "Hairline Restoration",
+    title: "Hairline + Crown",
     grafts: "FUE 3,200 grafts",
-    category: "Eyebrows",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    categories: ["Hairline", "Crown", "Eyebrows"],
+    beforeImg: "/images/transformations/case-01-before.webp",
+    afterImg: "/images/transformations/case-01-after.webp",
   },
   {
     id: 8,
-    title: "Hairline + Crown",
-    grafts: "FUE 3,200 grafts",
-    category: "Full Restoration",
-    beforeImg: "/assets/BEFORE.png",
-    afterImg: "/assets/AFTER.png",
+    title: "Hairline Restoration",
+    grafts: "DHI 1,800 grafts",
+    categories: ["Hairline"],
+    beforeImg: "/images/transformations/case-02-before.webp",
+    afterImg: "/images/transformations/case-02-after.webp",
   },
 ];
 
-/* ── Interactive Before / After Split Slider Component ── */
+/* ── Interactive Before / After Slider ── */
 function BeforeAfterImage({
   beforeImg,
   afterImg,
   title,
+  priority = false,
 }: {
   beforeImg: string;
   afterImg: string;
   title: string;
+  priority?: boolean;
 }) {
   const [sliderPos, setSliderPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -109,38 +113,52 @@ function BeforeAfterImage({
 
   const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
+
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    const percentage = Math.max(
+      0,
+      Math.min(100, (x / rect.width) * 100)
+    );
+
     setSliderPos(percentage);
   }, []);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.preventDefault();
     isDragging.current = true;
     updatePosition(e.clientX);
+
+    const handlePointerMoveWindow = (moveEvent: PointerEvent) => {
+      moveEvent.preventDefault();
+      updatePosition(moveEvent.clientX);
+    };
+
+    const handlePointerUpWindow = () => {
+      isDragging.current = false;
+      window.removeEventListener("pointermove", handlePointerMoveWindow);
+      window.removeEventListener("pointerup", handlePointerUpWindow);
+      window.removeEventListener("pointercancel", handlePointerUpWindow);
+    };
+
+    window.addEventListener("pointermove", handlePointerMoveWindow, { passive: false });
+    window.addEventListener("pointerup", handlePointerUpWindow);
+    window.addEventListener("pointercancel", handlePointerUpWindow);
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (isDragging.current || e.buttons === 1) {
-      updatePosition(e.clientX);
-    }
-  };
-
-  const handlePointerUp = () => {
-    isDragging.current = false;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    updatePosition(e.clientX);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
       setSliderPos((prev) => Math.max(0, prev - 5));
     } else if (e.key === "ArrowRight") {
       e.preventDefault();
       setSliderPos((prev) => Math.min(100, prev + 5));
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setSliderPos(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      setSliderPos(100);
     }
   };
 
@@ -149,75 +167,78 @@ function BeforeAfterImage({
       ref={containerRef}
       role="slider"
       tabIndex={0}
-      aria-label={`Before and after comparison slider for ${title}`}
+      aria-label={`Before and after transformation slider for ${title}`}
       aria-valuenow={Math.round(sliderPos)}
       aria-valuemin={0}
       aria-valuemax={100}
       onKeyDown={handleKeyDown}
-      className="relative w-full aspect-[4/3] bg-slate-900 overflow-hidden select-none cursor-ew-resize group/img touch-none @container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0cb0f2]"
       onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onMouseMove={handleMouseMove}
+      onDragStart={(e) => e.preventDefault()}
+      className="relative aspect-[4/3.3] w-full cursor-ew-resize touch-none select-none overflow-hidden bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00a8ff]"
     >
-      {/* BEFORE Label Badge */}
-      <span className="absolute top-3 left-3 z-30 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10.5px] font-extrabold uppercase tracking-wider text-white border border-white/10 shadow-sm pointer-events-none">
-        BEFORE
-      </span>
-
-      {/* AFTER Label Badge */}
-      <span className="absolute top-3 right-3 z-30 px-2.5 py-1 rounded-full bg-[#0cb0f2] text-[10.5px] font-extrabold uppercase tracking-wider text-white shadow-md shadow-sky-500/30 pointer-events-none">
-        AFTER
-      </span>
-
-      {/* AFTER Image (Full Background Layer) */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* AFTER Image */}
+      <div className="pointer-events-none absolute inset-0 h-full w-full">
         <Image
           src={afterImg}
           alt={`After ${title}`}
           fill
-          loading="eager"
+          priority={priority}
+          quality={85}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover object-center"
         />
       </div>
 
-      {/* BEFORE Image (Clipped Left Layer) */}
+      {/* BEFORE Image */}
       <div
-        className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-white shadow-lg"
-        style={{ width: `${sliderPos}%` }}
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        style={{
+          clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
+          WebkitClipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
+        }}
       >
-        <div className="absolute inset-y-0 left-0 w-[100cqw] min-w-full h-full">
-          <Image
-            src={beforeImg}
-            alt={`Before ${title}`}
-            fill
-            loading="eager"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover object-center"
-          />
-        </div>
+        <Image
+          src={beforeImg}
+          alt={`Before ${title}`}
+          fill
+          priority={priority}
+          quality={85}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover object-center"
+        />
       </div>
 
-      {/* Glowing Split Beam Divider */}
+      {/* BEFORE Label */}
+      <span className="pointer-events-none absolute left-3 top-3 z-20 rounded-full border border-slate-200/60 bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-700 shadow-sm sm:text-[11px]">
+        BEFORE
+      </span>
+
+      {/* AFTER Label */}
+      <span className="pointer-events-none absolute right-3 top-3 z-20 rounded-full bg-[#00a8ff] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm sm:text-[11px]">
+        AFTER
+      </span>
+
+      {/* Split Divider */}
       <div
-        className="absolute top-0 bottom-0 w-[2px] bg-cyan-400 shadow-[0_0_10px_#0cb0f2] z-20 pointer-events-none"
+        className="pointer-events-none absolute bottom-0 top-0 z-20 w-[2px] bg-white shadow-[0_0_8px_rgba(0,0,0,0.35)]"
         style={{ left: `calc(${sliderPos}% - 1px)` }}
       />
 
-      {/* Interactive Handle Knob */}
+      {/* Slider Handle — no hover animation */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-white text-[#0cb0f2] border border-[#0cb0f2]/40 shadow-md flex items-center justify-center z-30 text-[10px] font-bold group-hover/img:scale-110 transition-transform pointer-events-none"
+        className="pointer-events-none absolute top-1/2 z-30 flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200/80 bg-white text-[10px] font-bold text-[#001e56] shadow-[0_2px_8px_rgba(0,0,0,0.2)] sm:h-7 sm:w-7"
         style={{ left: `${sliderPos}%` }}
       >
-        ‹ ›
+        <span className="flex select-none items-center gap-[1px] leading-none text-slate-700">
+          ‹›
+        </span>
       </div>
     </div>
   );
 }
 
-/* ── Main Patient Results Section Component ── */
-export default function PatientResults() {
+/* ── Main Patient Results Component ── */
+export default function PatientResults(): React.JSX.Element {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
 
   const filteredResults =
@@ -225,236 +246,49 @@ export default function PatientResults() {
       ? resultsData
       : resultsData.filter(
         (item) =>
-          item.category === activeCategory ||
-          (activeCategory === "Hairline" && item.title.includes("Hairline")) ||
-          (activeCategory === "Crown" && item.title.includes("Crown")) ||
-          (activeCategory === "Full Restoration" && item.title.includes("Full"))
+          item.categories.includes(activeCategory) ||
+          item.title.toLowerCase().includes(activeCategory.toLowerCase())
       );
 
   return (
-    <section className="relative w-full py-12 sm:py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-[#edf6fe] via-[#f8fafc] to-[#e6f4fe]">
-      {/* ── SVG WAVE BACKGROUND LAYER ── */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Soft Ambient Glow */}
-        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-gradient-to-br from-[#cce9fd]/80 via-[#dcf1fd]/40 to-transparent blur-3xl opacity-80" />
-
-        <svg
-          viewBox="0 0 2048 1152"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full text-[#0cb0f2]"
-        >
-          <defs>
-            {/* Main blue gradient */}
-            <linearGradient id="waveBlue" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#0cb0f2" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#00a8ff" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#0196e3" stopOpacity="0.3" />
-            </linearGradient>
-
-            {/* Bottom soft gradient */}
-            <linearGradient id="softBlue" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#dcf1fd" stopOpacity="0.7" />
-            </linearGradient>
-          </defs>
-
-          {/* Bottom soft blue area */}
-          <path
-            d="
-              M 0 760
-              C 350 1000, 650 1000, 940 850
-              C 1190 720, 1300 570, 1530 520
-              C 1760 470, 1930 550, 2048 650
-              L 2048 1152
-              L 0 1152
-              Z
-            "
-            fill="url(#softBlue)"
-          />
-
-          {/* TOP FLOWING WAVES */}
-          <path
-            d="
-              M 720 150
-              C 920 80, 1050 330, 1240 280
-              C 1430 230, 1510 30, 1730 10
-              C 1880 -5, 1980 50, 2048 90
-            "
-            fill="none"
-            stroke="url(#waveBlue)"
-            strokeWidth="3.5"
-          />
-
-          <path
-            d="
-              M 690 190
-              C 900 120, 1040 390, 1240 330
-              C 1450 270, 1520 80, 1730 45
-              C 1880 20, 1980 80, 2048 125
-            "
-            fill="none"
-            stroke="#0cb0f2"
-            strokeOpacity="0.55"
-            strokeWidth="2.5"
-          />
-
-          <path
-            d="
-              M 780 220
-              C 950 160, 1060 410, 1260 350
-              C 1450 295, 1540 115, 1730 80
-              C 1880 55, 1990 110, 2048 155
-            "
-            fill="none"
-            stroke="#00a8ff"
-            strokeOpacity="0.45"
-            strokeWidth="2"
-          />
-
-          {/* LARGE MIDDLE WAVE */}
-          <path
-            d="
-              M 900 270
-              C 1110 350, 1240 570, 1470 530
-              C 1690 490, 1870 570, 2048 690
-            "
-            fill="none"
-            stroke="#0cb0f2"
-            strokeOpacity="0.4"
-            strokeWidth="4"
-          />
-
-          <path
-            d="
-              M 850 300
-              C 1090 390, 1250 610, 1480 570
-              C 1710 530, 1880 610, 2048 720
-            "
-            fill="none"
-            stroke="#0196e3"
-            strokeOpacity="0.35"
-            strokeWidth="2.5"
-          />
-
-          {/* LOWER FLOWING WAVES */}
-          <path
-            d="
-              M 970 390
-              C 1200 500, 1360 620, 1580 570
-              C 1800 520, 1920 600, 2048 700
-            "
-            fill="none"
-            stroke="#0cb0f2"
-            strokeOpacity="0.35"
-            strokeWidth="4"
-          />
-
-          <path
-            d="
-              M 920 420
-              C 1180 540, 1360 680, 1590 610
-              C 1800 545, 1930 630, 2048 730
-            "
-            fill="none"
-            stroke="#00a8ff"
-            strokeOpacity="0.3"
-            strokeWidth="2.5"
-          />
-
-          {/* FINE PARALLEL LINES */}
-          {Array.from({ length: 18 }).map((_, i) => (
-            <path
-              key={i}
-              d={`
-                M ${1150 + i * 12} ${20 + i * 3}
-                C ${1370 + i * 5} ${-50 + i * 4},
-                  ${1480 + i * 7} ${100 + i * 2},
-                  ${1650 + i * 4} ${55 + i * 2}
-                C ${1820 + i * 2} ${10 + i * 4},
-                  ${1960 + i} ${60 + i * 5},
-                  2048 ${110 + i * 7}
-              `}
-              fill="none"
-              stroke="#0196e3"
-              strokeOpacity={Math.max(0.12, 0.45 - i * 0.018)}
-              strokeWidth="1.8"
-            />
-          ))}
-        </svg>
-
-        {/* ── DOT PATTERN OVERLAY ── */}
-        <div
-          className="absolute top-[50px] right-[60px] w-[380px] h-[360px] opacity-60 pointer-events-none"
-          style={{
-            backgroundImage: `
-              radial-gradient(
-                circle,
-                #0cb0f2 1.6px,
-                transparent 1.6px
-              )
-            `,
-            backgroundSize: "18px 18px",
-            maskImage: `
-              radial-gradient(
-                ellipse at center,
-                black 0%,
-                rgba(0,0,0,0.8) 50%,
-                transparent 80%
-              )
-            `,
-            WebkitMaskImage: `
-              radial-gradient(
-                ellipse at center,
-                black 0%,
-                rgba(0,0,0,0.8) 50%,
-                transparent 80%
-              )
-            `,
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* ── Header / Intro Section ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-2xl mb-10 sm:mb-12"
-        >
-          {/* Small Uppercase Label */}
-          <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-[#0cb0f2] mb-3">
+    <WaveBackground className="relative py-14 sm:py-16 lg:py-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-8 max-w-2xl sm:mb-10">
+          <p className="mb-2.5 text-[12px] font-bold uppercase tracking-[0.2em] text-[#00a8ff] sm:text-[13px]">
             PATIENT RESULTS
           </p>
 
-          {/* Main Heading */}
-          <h2 className="text-4xl sm:text-5xl lg:text-[52px] font-extrabold leading-[1.1] tracking-tight">
-            <span className="text-[#001e56] block">See the Difference.</span>
-            <span className="text-[#0cb0f2]">Feel the Confidence.</span>
+          <h2 className="text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-4xl lg:text-[46px]">
+            <span className="block text-[#001e56]">
+              See the Difference.
+            </span>
+            <span className="text-[#00a8ff]">
+              Feel the Confidence.
+            </span>
           </h2>
 
-          {/* Subheading Description */}
-          <p className="mt-4 text-[15px] sm:text-[16.5px] font-medium leading-relaxed text-[#64748B]">
-            Real patients. Real results. Every transformation below is from our
-            own clinic.
+          <p className="mt-3 text-[14.5px] font-normal leading-relaxed text-[#64748B] sm:text-[15.5px]">
+            Real patients. Real results. Every transformation
+            <br className="hidden sm:inline" /> below is from our own clinic.
           </p>
-        </motion.div>
+        </div>
 
-        {/* ── Category Filters & Action Bar ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10 pb-2">
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2.5 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
+        {/* Category Filters and View All */}
+        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:mb-10 sm:flex-row sm:items-center">
+          <div className="scrollbar-none flex w-full items-center gap-2 overflow-x-auto pb-2 sm:w-auto sm:pb-0">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
+
               return (
                 <button
                   key={cat}
+                  type="button"
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-5 py-2.5 rounded-full text-[14px] font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${isActive
-                    ? "bg-[#183c7d] text-white shadow-md shadow-blue-950/20 scale-[1.02]"
-                    : "bg-[#e8f3fc]/80 text-[#183c7d] border border-[#c2e2f5] hover:bg-[#dbeffd] hover:border-[#93cbe9]"
+                  aria-pressed={isActive}
+                  className={`cursor-pointer whitespace-nowrap rounded-full px-4 py-2 text-[13px] font-semibold transition-colors duration-200 sm:px-5 sm:text-[14px] ${isActive
+                    ? "bg-[#0B2545] text-white shadow-sm"
+                    : "border border-[#cdecfd] bg-[#eaf4fd]/70 text-[#0B2545] hover:border-[#93cbe9] hover:bg-white"
                     }`}
                 >
                   {cat}
@@ -463,53 +297,51 @@ export default function PatientResults() {
             })}
           </div>
 
-          {/* Action Button: View All Results */}
           <button
             type="button"
-            className="shrink-0 rounded-[10px] border border-[#183c7d] bg-transparent px-6 py-2.5 text-[14px] font-medium leading-5 text-[#183c7d] transition-all duration-200 hover:bg-[#183c7d] hover:text-white active:scale-[0.98]"
+            className="shrink-0 rounded-[8px] border border-[#0B2545] bg-transparent px-5 py-2 text-[13px] font-medium leading-5 text-[#0B2545] transition-colors duration-200 hover:bg-[#193B8B] hover:text-white sm:text-[13.5px]"
           >
             View All Results
           </button>
         </div>
+        {/* #193B8B */}
 
-        {/* ── Results Cards Grid ── */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
-          <AnimatePresence mode="popLayout">
-            {filteredResults.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{
-                  duration: 0.4,
-                  delay: idx * 0.06,
-                  ease: "easeOut",
-                }}
-                className="group relative bg-white rounded-2xl border border-[#e9f4fd] shadow-[0_4px_20px_rgba(0,30,86,0.06)] hover:shadow-[0_12px_32px_rgba(12,176,242,0.15)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col"
-              >
-                {/* Interactive Before / After Image Split Slider */}
-                <BeforeAfterImage
-                  beforeImg={item.beforeImg}
-                  afterImg={item.afterImg}
-                  title={item.title}
-                />
+        {/* Results Grid — no entrance, exit, or layout animations */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          {filteredResults.map((item, idx) => (
+            <div
+              key={item.id}
+              className="group relative flex flex-col overflow-hidden rounded-[16px] border border-slate-100 bg-white shadow-[0_4px_20px_rgba(0,30,86,0.06)]"
+            >
+              {/* Interactive Before / After Slider */}
+              <BeforeAfterImage
+                beforeImg={item.beforeImg}
+                afterImg={item.afterImg}
+                title={item.title}
+                priority={idx < 4}
+              />
 
-                {/* Card Title & Graft Information */}
-                <div className="p-5 text-center flex flex-col items-center justify-center bg-white border-t border-slate-100/80">
-                  <h3 className="text-[16px] font-bold text-[#001e56] tracking-tight group-hover:text-[#0cb0f2] transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-[13.5px] font-medium text-[#64748B] mt-0.5">
-                    {item.grafts}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+              {/* Card Details */}
+              <div className="flex flex-col items-center justify-center border-t border-slate-100/60 bg-white px-3 py-4 text-center">
+                <h3 className="text-[15px] font-bold tracking-tight text-[#001e56] sm:text-[16px]">
+                  {item.title}
+                </h3>
+
+                <p className="mt-0.5 text-[12.5px] font-normal text-[#64748B] sm:text-[13px]">
+                  {item.grafts}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Empty State */}
+        {filteredResults.length === 0 && (
+          <p className="py-10 text-center text-sm text-[#64748B]">
+            No patient results found for this category.
+          </p>
+        )}
       </div>
-    </section>
+    </WaveBackground>
   );
 }

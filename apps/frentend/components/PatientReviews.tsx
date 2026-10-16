@@ -19,7 +19,7 @@ const reviewsData: PatientReview[] = [
     id: 1,
     name: "Rohan Mehta",
     treatment: "FUE HAIR TRANSPLANT",
-    image: "/patients/rohan-mehta.jpg",
+    image: "/images/reviews/rohan-mehta.webp",
     rating: 5,
     quote:
       "The entire experience at Realdense was smooth and professional. The team understood my concerns, explained everything clearly, and the results look completely natural. I feel more confident than ever!",
@@ -28,7 +28,7 @@ const reviewsData: PatientReview[] = [
     id: 2,
     name: "Amit Sharma",
     treatment: "HAIRLINE RESTORATION",
-    image: "/patients/amit-sharma.jpg",
+    image: "/images/reviews/amit-sharma.webp",
     rating: 5,
     quote:
       "My hairline was receding for years and it affected my confidence. The team at Realdense gave me a natural hairline and the results exceeded my expectations. Highly recommended!",
@@ -37,7 +37,7 @@ const reviewsData: PatientReview[] = [
     id: 3,
     name: "Vikram Malhotra",
     treatment: "SAPPHIRE FUE 3,200 GRAFTS",
-    image: "/patients/patient-2.jpg",
+    image: "/images/reviews/patient-2.webp",
     rating: 5,
     quote:
       "Traveling to India for my hair transplant was the best decision. The clinical precision and aftercare from Realdense were world-class. My density at 9 months is unbelievable!",
@@ -46,7 +46,7 @@ const reviewsData: PatientReview[] = [
     id: 4,
     name: "Dr. Kabir Sengupta",
     treatment: "DHI DENSE RESTORATION",
-    image: "/patients/patient-4.jpg",
+    image: "/images/reviews/patient-4.webp",
     rating: 5,
     quote:
       "As a doctor myself, I evaluated hygiene, graft handling, and surgeon involvement meticulously. Realdense exceeded every clinical standard. Truly exceptional and painless procedure.",
@@ -102,7 +102,7 @@ export default function PatientReviews() {
               <span className="text-[#00a8ff] block">Real Confidence.</span>
             </h2>
             <p className="mt-4 text-[14.5px] sm:text-[16px] leading-relaxed text-slate-500 font-normal">
-              Hear from our patients who have transformed their lives with
+              Hear from our patients who have transformed their lives with  <br />
               natural-looking hair restoration at Realdense.
             </p>
           </motion.div>

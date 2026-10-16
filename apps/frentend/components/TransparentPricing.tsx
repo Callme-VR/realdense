@@ -1,10 +1,10 @@
+
 "use client";
 
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
 
-/* ── Pricing Card Data Interface ── */
+/* Pricing Card Data Interface */
 interface PricingCard {
   id: number;
   title: string;
@@ -147,19 +147,26 @@ const pricingCards: PricingCard[] = [
 ];
 
 export default function TransparentPricing() {
-  const [activeCategory, setActiveCategory] = useState("Hair Transplant");
+  const [activeCategory, setActiveCategory] =
+    useState("Hair Transplant");
+
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const filteredCards = pricingCards.filter(
+  const categoryCards = pricingCards.filter(
     (card) => card.category === activeCategory
-  ).length > 0
-    ? pricingCards.filter((card) => card.category === activeCategory)
-    : pricingCards;
+  );
+
+  const filteredCards =
+    categoryCards.length > 0 ? categoryCards : pricingCards;
 
   const handleCategorySelect = (cat: string) => {
     setActiveCategory(cat);
+
     if (carouselRef.current) {
-      carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      carouselRef.current.scrollTo({
+        left: 0,
+        behavior: "auto",
+      });
     }
   };
 
@@ -174,34 +181,36 @@ export default function TransparentPricing() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* ── Top Section: Full Width Header ── */}
+        {/* Header */}
         <div className="max-w-3xl mb-10 sm:mb-12">
-          {/* Eyebrow Tag */}
           <p className="text-[13px] font-extrabold uppercase tracking-[0.2em] text-[#0cb0f2] mb-3">
             INVESTMENT
           </p>
 
-          {/* Main Title */}
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold leading-[1.15] tracking-tight mb-4">
-            <span className="text-[#001e56] block sm:inline">Transparent Pricing </span>
+            <span className="text-[#001e56] block sm:inline">
+              Transparent Pricing{" "}
+            </span>
             <br />
-            <span className="text-[#0cb0f2] block sm:inline">for Real Transformations</span>
+            <span className="text-[#0cb0f2] block sm:inline">
+              for Real Transformations
+            </span>
           </h2>
 
-          {/* Subtitle */}
           <p className="text-[15px] sm:text-[16px] font-normal leading-relaxed text-[#64748B]">
-            Personalised treatment plans with clear pricing, no hidden costs <br className="hidden sm:inline" /> and world-class techniques
+            Personalised treatment plans with clear pricing, no hidden costs{" "}
+            <br className="hidden sm:inline" /> and world-class techniques
           </p>
         </div>
 
-        {/* ── Pill Filter Tabs Row ── */}
+        {/* Category Filter Tabs */}
         <div className="mb-8 sm:mb-10">
           <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto pb-2.5 scrollbar-none max-w-full -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => handleCategorySelect(cat)}
-                className={`px-5 sm:px-6 py-2.5 rounded-full text-[13.5px] sm:text-[14px] font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#001e56] focus-visible:ring-offset-2 ${activeCategory === cat
+                className={`px-5 sm:px-6 py-2.5 rounded-full text-[13.5px] sm:text-[14px] font-semibold whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#001e56] focus-visible:ring-offset-2 ${activeCategory === cat
                   ? "bg-[#001e56] text-white shadow-md border border-[#001e56]"
                   : "bg-white text-[#001e56] border border-[#e2e8f0] hover:bg-slate-50 hover:border-[#cbd5e1]"
                   }`}
@@ -212,32 +221,31 @@ export default function TransparentPricing() {
           </div>
         </div>
 
-        {/* ── Horizontal Scrolling Pricing Cards Carousel ── */}
+        {/* Horizontal Scrolling Pricing Cards */}
         <div className="relative w-full">
           <div
             ref={carouselRef}
-            className="flex gap-5 sm:gap-7 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 px-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-1"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex gap-5 sm:gap-7 overflow-x-auto snap-x snap-mandatory py-4 px-1 scrollbar-none -mx-4 sm:mx-0 sm:px-1"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
           >
             {filteredCards.map((card) => (
-              <motion.div
+              <div
                 key={card.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className={`group relative bg-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-between min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start shrink-0 transition-all duration-300 ${card.popular
+                className={`group relative bg-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-between min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start shrink-0 ${card.popular
                   ? "border-2 border-[#0cb0f2] shadow-[0_8px_30px_rgba(12,176,242,0.25)] scale-[1.02] z-10"
-                  : "border border-slate-100 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-1"
+                  : "border border-slate-100 shadow-sm hover:border-slate-300 hover:shadow-md"
                   }`}
               >
                 {/* Card Main Info */}
                 <div>
-                  {/* Title & Inline Most Popular Badge */}
                   <div className="flex items-start justify-between gap-2 mb-3">
                     <h3 className="text-[21px] font-bold text-[#001e56] leading-snug">
                       {card.title}
                     </h3>
+
                     {card.popular && (
                       <span className="shrink-0 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#0cb0f2] to-[#38bdf8] text-[10px] font-extrabold uppercase tracking-wider text-white shadow-sm">
                         MOST POPULAR
@@ -245,15 +253,17 @@ export default function TransparentPricing() {
                     )}
                   </div>
 
-                  {/* Short Description */}
                   <p className="text-[13.5px] font-normal text-[#64748B] leading-relaxed mb-6 min-h-[48px]">
                     {card.shortDesc}
                   </p>
 
-                  {/* Features Checklist with Soft Blue Checkmark Circles */}
+                  {/* Features */}
                   <div className="flex flex-col gap-3.5 mb-8">
                     {card.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex items-center gap-3">
+                      <div
+                        key={fIdx}
+                        className="flex items-center gap-3"
+                      >
                         <div className="w-5 h-5 rounded-full bg-[#dcf1fd] text-[#0cb0f2] flex items-center justify-center shrink-0">
                           <svg
                             className="w-3 h-3"
@@ -269,6 +279,7 @@ export default function TransparentPricing() {
                             />
                           </svg>
                         </div>
+
                         <span className="text-[13.5px] font-semibold text-[#001e56]">
                           {feature}
                         </span>
@@ -277,16 +288,18 @@ export default function TransparentPricing() {
                   </div>
                 </div>
 
-                {/* Bottom Section: Starting From, Price & CTA Arrow Button */}
+                {/* Price and CTA */}
                 <div className="pt-5 border-t border-slate-100 flex items-end justify-between">
                   <div>
                     <p className="text-[12px] font-medium text-slate-400 mb-0.5">
                       Starting From
                     </p>
+
                     <div className="flex items-baseline gap-1">
                       <span className="text-2xl sm:text-3xl font-extrabold text-[#001e56]">
                         {card.price}
                       </span>
+
                       <span className="text-[12.5px] font-normal text-slate-400">
                         /session
                       </span>
@@ -295,7 +308,7 @@ export default function TransparentPricing() {
 
                   <Link
                     href="/book-consultation"
-                    className="w-11 h-11 rounded-full bg-[#0cb0f2] text-white flex items-center justify-center text-lg shadow-sm hover:bg-[#0096e3] group-hover:scale-105 transition-all duration-200 shrink-0"
+                    className="w-11 h-11 rounded-full bg-[#0cb0f2] text-white flex items-center justify-center text-lg shadow-sm hover:bg-[#0096e3] shrink-0"
                     aria-label={`Book ${card.title}`}
                   >
                     <svg
@@ -313,83 +326,68 @@ export default function TransparentPricing() {
                     </svg>
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* ── Bottom Banner Card: "Get an Accurate Price for Your Hair Goals." ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mt-14 sm:mt-16 relative w-full rounded-[28px] bg-[#002766] p-7 sm:p-9 text-white shadow-xl overflow-hidden"
-        >
+        {/* Bottom Banner */}
+        <div className="mt-14 sm:mt-16 relative w-full rounded-[28px] bg-[#002766] p-7 sm:p-9 text-white shadow-xl overflow-hidden">
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-8">
             {/* Left Title */}
             <div className="lg:max-w-xs shrink-0 lg:pr-6 lg:border-r border-white/20">
               <span className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#0cb0f2] mb-1.5 block">
                 PERSONALISED FOR YOU
               </span>
+
               <h3 className="text-2xl sm:text-[26px] font-extrabold leading-tight">
                 Get an Accurate Price <br />
-                <span className="text-[#0cb0f2]">for Your Hair Goals.</span>
+                <span className="text-[#0cb0f2]">
+                  for Your Hair Goals.
+                </span>
               </h3>
             </div>
 
-            {/* Middle 3 Columns */}
+            {/* Middle Columns */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 flex-1">
               <div>
-                <h4 className="text-[15px] font-bold text-white mb-1">Free Consultation</h4>
+                <h4 className="text-[15px] font-bold text-white mb-1">
+                  Free Consultation
+                </h4>
                 <p className="text-[12.5px] text-white/70 leading-snug">
                   Discuss your goals with our specialists.
                 </p>
               </div>
+
               <div>
-                <h4 className="text-[15px] font-bold text-white mb-1">Customised Plan</h4>
+                <h4 className="text-[15px] font-bold text-white mb-1">
+                  Customised Plan
+                </h4>
                 <p className="text-[12.5px] text-white/70 leading-snug">
                   Get a treatment plan tailored to your needs.
                 </p>
               </div>
+
               <div>
-                <h4 className="text-[15px] font-bold text-white mb-1">Clear Pricing</h4>
+                <h4 className="text-[15px] font-bold text-white mb-1">
+                  Clear Pricing
+                </h4>
                 <p className="text-[12.5px] text-white/70 leading-snug">
                   Know the exact cost with no hidden fees.
                 </p>
               </div>
             </div>
 
-            {/* Right CTA Button */}
+            {/* CTA Button */}
             <div className="shrink-0 flex items-center">
               <Link
                 href="/book-consultation"
-                className="
-    inline-flex items-center justify-center gap-2
-    px-7 py-3.5
-    rounded-full
-    bg-white
-    text-[#001e56]
-    font-bold text-[14px]
-    shadow-md
-    hover:bg-[#00a8ff]
-    hover:text-white
-    transition-all duration-200
-    active:scale-[0.98]
-    whitespace-nowrap
-    group
-  "
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#001e56] font-bold text-[14px] shadow-md hover:bg-[#00a8ff] hover:text-white whitespace-nowrap group"
               >
                 <span>Get a Personalised Quote</span>
 
                 <svg
-                  className="
-      w-4 h-4
-      text-[#001e56]
-      group-hover:text-white
-      group-hover:translate-x-1
-      transition-all duration-200
-    "
+                  className="w-4 h-4 text-[#001e56] group-hover:text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -404,7 +402,7 @@ export default function TransparentPricing() {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

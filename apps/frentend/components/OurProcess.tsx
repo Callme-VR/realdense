@@ -1,246 +1,340 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { motion } from "motion/react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
-interface ProcessCard {
-  number: string;
+interface ProcessItem {
   title: string;
-  description: string;
-  image: string;
-  alt: string;
+  desc: string;
 }
 
-const processSteps: ProcessCard[] = [
+interface StepData {
+  id: number;
+  number: string;
+  stepNumber: string;
+  navLabel: string;
+  cardTitle: string;
+  cardSubtitle: string;
+  whosWithYou: ProcessItem[];
+  howTheySupportYou: ProcessItem[];
+}
+
+const stepsData: StepData[] = [
   {
+    id: 0,
     number: "01",
-    title: "Consultation & Analysis",
-    description:
-      "We assess your hair, scalp and goals with advanced diagnostics.",
-    image: "/assets/second1.png",
-    alt: "Consultation and hair analysis",
+    stepNumber: "01",
+    navLabel: "Consultation",
+    cardTitle: "Consultation",
+    cardSubtitle: "Understanding\nYour Goals",
+    whosWithYou: [
+      {
+        title: "Hair Restoration Surgeon",
+        desc: "Evaluates your hair and creates a personalised plan",
+      },
+      {
+        title: "Dermatologist",
+        desc: "Checks scalp health and overall suitability",
+      },
+      {
+        title: "Consultation Coordinator",
+        desc: "Guides you with process, cost, and expected results",
+      },
+    ],
+    howTheySupportYou: [
+      {
+        title: "Understand your goals and concerns",
+        desc: "We listen to your expectations and analyse your hair condition.",
+      },
+      {
+        title: "Personalised treatment",
+        desc: "Designed for natural-looking and long-lasting results.",
+      },
+      {
+        title: "Explain the entire process clearly",
+        desc: "Our team answers all your questions about procedure, cost, and care.",
+      },
+    ],
   },
   {
+    id: 1,
     number: "02",
-    title: "Personalised Plan",
-    description:
-      "A tailored treatment strategy designed around your unique needs.",
-    image: "/assets/step1.jpg",
-    alt: "Personalised hair transplant planning",
+    stepNumber: "02",
+    navLabel: "Pre-Op",
+    cardTitle: "Pre - Op",
+    cardSubtitle: "Treatment\nPlanning",
+    whosWithYou: [
+      {
+        title: "Hair Restoration Surgeon",
+        desc: "Plans grafts for the procedure.",
+      },
+      {
+        title: "Anesthetist",
+        desc: "Ensures comfortable preparation.",
+      },
+      {
+        title: "Technicians",
+        desc: "Maintain surgical hygiene and safety.",
+      },
+    ],
+    howTheySupportYou: [
+      {
+        title: "Graft Planning",
+        desc: "The team plans grafts carefully.",
+      },
+      {
+        title: "Comfortable Preparation",
+        desc: "Ensures painless preparation.",
+      },
+      {
+        title: "Surgical Safety",
+        desc: "Maintains strict hygiene and surgical safety.",
+      },
+    ],
   },
   {
+    id: 2,
     number: "03",
-    title: "Procedure",
-    description:
-      "Using FUE, DHI or Sapphire FUE for natural, precise and minimally invasive results.",
-    image: "/assets/step-3.jpg",
-    alt: "Hair restoration procedure execution",
+    stepNumber: "03",
+    navLabel: "Surgery",
+    cardTitle: "Surgery",
+    cardSubtitle: "Surgical\nProcedure",
+    whosWithYou: [
+      {
+        title: "Hair Restoration Surgeon",
+        desc: "Performs precise graft extraction and implantation.",
+      },
+      {
+        title: "Anesthetist",
+        desc: "Ensures patient comfort during surgery.",
+      },
+    ],
+    howTheySupportYou: [
+      {
+        title: "Precise Extraction",
+        desc: "Each graft is carefully extracted.",
+      },
+      {
+        title: "Accurate Implantation",
+        desc: "Grafts are placed with precision for natural-looking results.",
+      },
+    ],
   },
   {
+    id: 3,
     number: "04",
-    title: "Recovery & Care",
-    description: "Guidance and support through every stage of your recovery.",
-    image: "/assets/second2.png",
-    alt: "Recovery and scalp aftercare support",
-  },
-  {
-    number: "05",
-    title: "Your Transformation",
-    description: "Natural-looking results that grow with you, for life.",
-    image: "/assets/second3.png",
-    alt: "Final hair restoration transformation",
+    stepNumber: "04",
+    navLabel: "Recovery",
+    cardTitle: "Recovery",
+    cardSubtitle: "Smooth\nRecovery",
+    whosWithYou: [
+      {
+        title: "Hair Restoration Surgeon",
+        desc: "Monitors healing and hair growth.",
+      },
+      {
+        title: "Dermatologist",
+        desc: "Guides scalp care during recovery.",
+      },
+      {
+        title: "Patient Care Team",
+        desc: "Supports aftercare and follow-up visits.",
+      },
+    ],
+    howTheySupportYou: [
+      {
+        title: "Scalp Care",
+        desc: "Guidance for a smooth recovery.",
+      },
+      {
+        title: "Medication",
+        desc: "Follow prescribed medication instructions.",
+      },
+      {
+        title: "Regular Follow-Ups",
+        desc: "Monitor healing and long-term results.",
+      },
+    ],
   },
 ];
 
+// Bar progress reach for each step (aligning with column centers: 12.5%, 37.5%, 62.5%, 88%)
+const progressWidths = ["12.5%", "37.5%", "62.5%", "88%"];
+
 export default function OurProcess() {
+  const [activeStep, setActiveStep] = useState(0);
+  const current = stepsData[activeStep];
+
   return (
     <section
       id="our-process"
-      className="relative w-full bg-gradient-to-b from-white via-[#f8fafc] to-white py-12 sm:py-16 lg:py-20 overflow-hidden"
+      className="relative w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden"
     >
-      {/* Background Soft Glow Ambient Overlay */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 right-0 w-[600px] h-[500px] bg-[#dcf1fd]/50 blur-3xl rounded-full opacity-60" />
-      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ── Section Header ── */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <p className="text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.25em] text-[#0099ff] mb-3">
+            OUR PROCESS
+          </p>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* ── Top Hero Showcase: Left Info & Right Wave Image ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-16 lg:mb-24">
-          {/* Left Column: Heading, Subtitle & 3 Badges */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-6 flex flex-col items-start"
-          >
-            {/* Eyebrow Label */}
-            <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-[#0cb0f2] mb-3">
-              OUR PROCESS
-            </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight leading-[1.18] text-[#001e56]">
+            A Team of Experts ,
+            <span className="block text-[#0099ff] mt-1 sm:mt-1.5">
+              Focused on You
+            </span>
+          </h2>
 
-            {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold leading-[1.12] tracking-tight mb-4">
-              <span className="text-[#001e56] block">A Personalised</span>
-              <span className="text-[#0cb0f2] block sm:inline whitespace-nowrap">
-                Journey to Lasting Results.
-              </span>
-            </h2>
-            {/* Subtitle */}
-            <p className="text-[15px] sm:text-[16px] font-medium leading-relaxed text-[#64748B] max-w-[480px] mb-8">
-              From your first consultation to final results, every step is
-              guided <br className="hidden sm:inline" />
-              by expertise, advanced technology, and personalized care.
-            </p>
-
-            {/* 3 Feature Badges Grid */}
-            <div className="flex flex-wrap items-center gap-6 sm:gap-8 w-full">
-              {/* Badge 1: Expert Team */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#dcf1fd] text-[#0196e3] flex items-center justify-center shrink-0 shadow-sm">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[14.5px] font-bold text-[#001e56] leading-snug">
-                    Expert Team
-                  </h3>
-                  <p className="text-[12px] text-[#64748B] font-medium">
-                    Specialists in all hair types
-                  </p>
-                </div>
-              </div>
-
-              {/* Badge 2: Advanced Technology */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#dcf1fd] text-[#0196e3] flex items-center justify-center shrink-0 shadow-sm">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[14.5px] font-bold text-[#001e56] leading-snug">
-                    Advanced Technology
-                  </h3>
-                  <p className="text-[12px] text-[#64748B] font-medium">
-                    FUE, DHI & Sapphire FUE
-                  </p>
-                </div>
-              </div>
-
-              {/* Badge 3: Personal Care */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#dcf1fd] text-[#0196e3] flex items-center justify-center shrink-0 shadow-sm">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-[14.5px] font-bold text-[#001e56] leading-snug">
-                    Personal Care
-                  </h3>
-                  <p className="text-[12px] text-[#64748B] font-medium">
-                    Support at every stage
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Column: dentist_wave.png Showcase Graphic */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="lg:col-span-6 relative w-full flex justify-center lg:justify-end items-center"
-          >
-            {/* Background Soft Glow Halo */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[650px] h-[400px] sm:h-[550px] rounded-full bg-gradient-to-tr from-[#dcf1fd]/50 to-[#0cb0f2]/20 blur-3xl pointer-events-none -z-10" />
-
-            {/* Large Organic Graphic Display (Without Rectangular Card Box) */}
-            <div className="relative w-full max-w-[680px] lg:max-w-[780px] xl:max-w-[840px] aspect-[16/11]">
-              <Image
-                src="/assets/dentist_wave.png"
-                alt="Doctor performing procedure with wave frame graphic"
-                fill
-                sizes="(max-width: 1024px) 100vw, 780px"
-                className="object-contain object-center mix-blend-multiply scale-105 sm:scale-110 lg:scale-115"
-              />
-            </div>
-          </motion.div>
+          <p className="mt-4 text-sm sm:text-[15.5px] font-normal leading-relaxed text-[#556987] max-w-2xl mx-auto">
+            Hair restoration isn&apos;t a one-person job – it&apos;s a team effort.
+            Our specialists work together to design a natural, safe, and lasting
+            hairline with zero compromise.
+          </p>
         </div>
 
-        {/* ── Bottom Grid: 5 Sequential Process Cards ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 items-stretch">
-          {processSteps.map((step, idx) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
-              className="relative bg-[#f4fafe]/80 rounded-2xl p-3.5 sm:p-4 border border-[#e9f4fd] flex flex-col"
-            >
-              {/* Process Step Image Thumbnail Container */}
-              <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 shadow-sm mb-3">
-                {/* Step Serial Number Circle Badge at Top-Left Corner */}
-                <div className="absolute top-0 left-0 z-50 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#dcf1fd] text-[#0196e3] text-[13px] sm:text-[14px] font-extrabold flex items-center justify-center shadow-lg border-2 border-white">
-                  {step.number}
-                </div>
+        {/* ── Stepper Navigation ── */}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-4 gap-2 sm:gap-4">
+            {stepsData.map((step) => {
+              const isActive = activeStep === step.id;
+              return (
+                <button
+                  key={step.id}
+                  onClick={() => setActiveStep(step.id)}
+                  type="button"
+                  className="group flex flex-col items-center cursor-pointer transition-all focus:outline-none"
+                  aria-label={`Step ${step.id + 1}: ${step.navLabel}`}
+                  aria-selected={isActive}
+                >
+                  {/* Step Number Circle */}
+                  <div
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-base sm:text-lg transition-all duration-300 ${isActive
+                      ? "bg-[#0066ff] text-white shadow-md shadow-blue-500/30 scale-105"
+                      : "bg-[#e1f0fe] text-[#2563eb] group-hover:bg-[#d5e9fd]"
+                      }`}
+                  >
+                    {step.id + 1}
+                  </div>
 
-                <Image
-                  src={step.image}
-                  alt={step.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
-                  className="object-cover object-center"
-                />
+                  {/* Step Label */}
+                  <span
+                    className={`mt-2.5 sm:mt-3 text-xs sm:text-[15px] transition-colors duration-200 text-center ${isActive
+                      ? "font-bold text-[#001e56]"
+                      : "font-semibold text-[#475569] group-hover:text-[#001e56]"
+                      }`}
+                  >
+                    {step.navLabel}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* ── Animated Progress Line with Indicator Dot ── */}
+          <div className="relative w-full mt-5 sm:mt-6">
+            <div className="relative w-full h-[5px] sm:h-[6px] bg-[#e4effa] rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#0066ff] rounded-full transition-all duration-500 ease-out"
+                style={{ width: progressWidths[activeStep] }}
+              />
+            </div>
+            {/* Dot at start of progress track */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#0066ff] rounded-full shadow-sm pointer-events-none" />
+          </div>
+        </div>
+
+        {/* ── Dynamic Content Cards ── */}
+        <div className="max-w-5xl mx-auto mt-10 sm:mt-12">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeStep}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+              className="flex flex-col lg:flex-row gap-5 sm:gap-6 items-stretch"
+            >
+              {/* Card 1: Highlight / Number & Title */}
+              <div className="w-full lg:w-[220px] xl:w-[240px] shrink-0 bg-gradient-to-br from-[#ebf5fe] via-[#f1f8fe] to-[#dcf0fe] border border-[#d2e8fb] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col justify-center min-h-[170px] lg:min-h-[280px] shadow-[0_4px_20px_rgba(0,102,255,0.04)]">
+                <span className="text-4xl sm:text-[46px] font-extrabold text-[#001e56] leading-none mb-3 tracking-tight">
+                  {current.number}
+                </span>
+                <h3 className="text-lg sm:text-[21px] font-bold text-[#001e56] leading-snug mb-1.5">
+                  {current.cardTitle}
+                </h3>
+                <p className="text-sm sm:text-[14.5px] font-medium text-[#4b7bb0] leading-snug whitespace-pre-line">
+                  {current.cardSubtitle}
+                </p>
               </div>
 
-              {/* Title */}
-              <h3 className="text-[15.5px] font-bold text-[#001e56] leading-snug tracking-tight mb-1.5">
-                {step.title}
-              </h3>
+              {/* Card 2: WHO'S WITH YOU */}
+              <div className="flex-1 bg-[#f8fbfe] border border-[#e5f0fa] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_14px_rgba(0,0,0,0.02)]">
+                <div>
+                  <div className="flex items-center justify-between pb-4 border-b border-[#e8f1fa] mb-4">
+                    <span className="text-xs sm:text-[13px] font-black tracking-wider text-[#001e56] uppercase">
+                      WHO&apos;S WITH YOU
+                    </span>
+                    <span className="text-xs sm:text-[13px] font-bold text-[#567fa6]">
+                      {current.stepNumber}/04
+                    </span>
+                  </div>
 
-              {/* Description */}
-              <p className="text-[12.5px] font-normal text-[#64748B] leading-relaxed">
-                {step.description}
-              </p>
+                  <div className="space-y-4">
+                    {current.whosWithYou.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className={
+                          idx !== current.whosWithYou.length - 1
+                            ? "border-b border-dashed border-[#d8e6f4] pb-3.5"
+                            : ""
+                        }
+                      >
+                        <h4 className="text-[14.5px] sm:text-[15px] font-bold text-[#001e56] leading-snug">
+                          {item.title}
+                        </h4>
+                        <p className="text-[12.5px] sm:text-[13px] text-[#64748b] leading-relaxed mt-0.5">
+                          {item.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: HOW THEY SUPPORT YOU */}
+              <div className="flex-1 bg-[#f8fbfe] border border-[#e5f0fa] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_14px_rgba(0,0,0,0.02)]">
+                <div>
+                  <div className="flex items-center justify-between pb-4 border-b border-[#e8f1fa] mb-4">
+                    <span className="text-xs sm:text-[13px] font-black tracking-wider text-[#001e56] uppercase">
+                      HOW THEY SUPPORT YOU
+                    </span>
+                    <span className="text-xs sm:text-[13px] font-bold text-[#567fa6]">
+                      {current.stepNumber}/04
+                    </span>
+                  </div>
+
+                  <div className="space-y-4">
+                    {current.howTheySupportYou.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className={
+                          idx !== current.howTheySupportYou.length - 1
+                            ? "border-b border-dashed border-[#d8e6f4] pb-3.5"
+                            : ""
+                        }
+                      >
+                        <h4 className="text-[14.5px] sm:text-[15px] font-bold text-[#001e56] leading-snug">
+                          {item.title}
+                        </h4>
+                        <p className="text-[12.5px] sm:text-[13px] text-[#64748b] leading-relaxed mt-0.5">
+                          {item.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

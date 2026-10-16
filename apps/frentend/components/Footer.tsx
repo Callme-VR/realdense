@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BookConsultationButton from "./BookConsultationButton";
+import MeshBackground from "./meshnetworkdot";
 import { motion } from "motion/react";
 
 export default function Footer() {
@@ -24,6 +25,35 @@ export default function Footer() {
           </div>
           {/* Subtle mobile fade so text is 100% readable over background on smaller screens */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent lg:hidden" />
+        </div>
+
+        {/* Ambient Organic Wave Swoosh matching the design */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 1440 560"
+            preserveAspectRatio="none"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M-40,420 C280,470 560,340 780,210 C1000,80 1200,20 1480,0 L1480,560 L-40,560 Z"
+              fill="url(#swoopGrad)"
+              opacity="0.18"
+            />
+            <path
+              d="M-40,480 C320,510 620,380 840,240 C1060,100 1250,40 1480,10"
+              stroke="#38bdf8"
+              strokeWidth="1.5"
+              opacity="0.35"
+            />
+            <defs>
+              <linearGradient id="swoopGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#bae6fd" />
+                <stop offset="100%" stopColor="#e0f2fe" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
 
         {/* Content Container (Left-aligned) */}
@@ -81,29 +111,12 @@ export default function Footer() {
         </div>
       </section>
 
-      {/* ── Top Organic Wave Transition into Navy Footer ── */}
-      <div className="w-full overflow-hidden leading-none -mb-[1px] bg-white relative">
-        <svg
-          className="w-full h-14 sm:h-20 lg:h-28 block"
-          viewBox="0 0 1440 140"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Secondary Blue Wave (Behind) */}
-          <path
-            d="M0,22 C140,2 260,2 380,14 C560,32 720,38 900,24 C1040,12 1150,4 1250,28 C1330,48 1395,78 1440,96 L1440,140 L0,140 Z"
-            fill="#09316d"
-          />
-          {/* Primary Deep Navy Wave (Foreground) */}
-          <path
-            d="M0,42 C140,24 260,22 380,34 C560,54 720,58 900,48 C1040,36 1150,30 1240,56 C1320,80 1380,118 1440,140 L1440,140 L0,140 Z"
-            fill="#061d3a"
-          />
-        </svg>
-      </div>
-
-      {/* ── Main Deep Navy Footer ── */}
-      <div className="w-full bg-[#061d3a] text-white">
+      {/* ── Main Deep Navy Footer with Animated Mesh Network Background ── */}
+      <MeshBackground
+        top={0}
+        left={0}
+        className="!relative !w-full !top-0 !left-0 !h-auto text-white overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
           {/* Main Columns Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12">
@@ -223,7 +236,7 @@ export default function Footer() {
                   { name: "Our Doctors", href: "/our-doctors" },
                   { name: "Results", href: "/results" },
                   { name: "Treatment Cost", href: "/treatment-cost" },
-                  { name: "FAQs", href: "/faq" },
+                  { name: "FAQS", href: "/faq" },
                 ].map((link, idx) => (
                   <li key={idx}>
                     <Link
@@ -366,7 +379,7 @@ export default function Footer() {
             </p>
           </div>
         </div>
-      </div>
+      </MeshBackground>
     </footer>
   );
 }
