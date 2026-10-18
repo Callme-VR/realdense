@@ -79,43 +79,40 @@ export default function HomePage() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
         {/* Eyebrow */}
-        <p className="mb-2.5 font-['Plus_Jakarta_Sans'] text-[12px] font-semibold uppercase leading-[25px] tracking-[0.24em] text-[#0093B0] sm:text-[13.5px] md:text-[16px]">
+        <p className="mb-2 font-['Plus_Jakarta_Sans'] text-[12px] font-semibold uppercase leading-[25px] tracking-[0.24em] text-[#0cb0f2] sm:text-[13.5px] md:text-[16px]">
           Because Look Matters.
         </p>
 
         {/* Main headline */}
         <h1 className="mx-auto max-w-3xl font-['Plus_Jakarta_Sans'] text-[30px] font-extrabold leading-[1.14] tracking-tight sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[48px]">
-          <span className="inline-block bg-gradient-to-r from-[#051A4D] to-[#0C3CB3] bg-clip-text text-transparent [filter:drop-shadow(0_0_2px_rgba(255,255,255,0.4))]">
+          <span className="text-[#001e56]">
             Rediscover a Denser
-          </span>
-          <br />
-
-          <span
-            className="inline-block bg-gradient-to-r from-[#0380C1] to-[#00C7FF] bg-clip-text text-transparent [filter:drop-shadow(0_0_2px_rgba(255,255,255,0.4))]"
-          >
+            <br />
+          </span>{" "}
+          <span className="text-[#0cb0f2]">
             More Confident
           </span>{" "}
-
-          <span className="inline-block bg-gradient-to-r from-[#051A4D] to-[#0C3CB3] bg-clip-text text-transparent [filter:drop-shadow(0_0_2px_rgba(255,255,255,0.4))]">
+          <span className="text-[#001e56]">
             You
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-3 w-full max-w-[800px] font-['Plus_Jakarta_Sans'] text-[14px] font-medium leading-relaxed tracking-[0.02em] text-[#001E56] sm:mt-3.5 sm:text-[15.5px] md:text-[16px] md:leading-[1.6] lg:text-[18px] lg:leading-[1.7]">
+        <p className="mx-auto mt-3 w-full max-w-[800px] font-['Plus_Jakarta_Sans'] text-[10px] font-medium leading-relaxed tracking-[0.02em] text-[#001E56] sm:mt-3.5 sm:text-[15.5px] md:text-[16px] md:leading-[1.6] lg:text-[18px] lg:leading-[1.7]">
           Advanced hair restoration designed around you, with natural-looking
-          results that feel completely your own.
+          results
+          <br />
+          that feel completely your own.
         </p>
-
         {/* Patient transformations */}
         <div className="mt-7 flex w-full items-center justify-center gap-1.5 px-1 sm:mt-9 sm:gap-3.5 sm:px-4 lg:gap-5">
           {patientCards.map((card) => (
             <div
               key={card.id}
-              className={`relative shrink-0 cursor-pointer overflow-hidden border transition-all duration-300 ease-out shadow-[0_10px_30px_rgba(2,30,80,0.14)] ${card.isCenter
-                ? "shadow-[0_16px_45px_rgba(2,30,85,0.24)]"
-                : ""
-                } ${card.widthClass} ${card.radiusClass} ${card.borderClass} ${card.scaleClass} ${card.zIndexClass}`}
+              className={`relative shrink-0 overflow-hidden border border-white/80 bg-white/10 shadow-[0_6px_20px_rgba(0,30,86,0.10)] transition-transform duration-300 ease-out ${card.widthClass} ${card.isCenter
+                ? "rounded-[14px] sm:rounded-[22px] lg:rounded-[26px] shadow-[0_10px_28px_rgba(0,30,86,0.16)]"
+                : "rounded-[10px] sm:rounded-[16px] lg:rounded-[20px]"
+                } ${card.scaleClass} ${card.zIndexClass}`}
             >
               <div className="relative aspect-[1192/1320] w-full">
                 <Image
@@ -123,7 +120,7 @@ export default function HomePage() {
                   alt={`${card.name} Hair Restoration Result`}
                   fill
                   sizes="(max-width: 640px) 20vw, 280px"
-                  className="object-contain object-center"
+                  className="object-cover object-center"
                   priority={card.isCenter}
                 />
               </div>
@@ -132,10 +129,10 @@ export default function HomePage() {
         </div>
 
         {/* Statistics bar */}
-        <div className="mt-7 grid w-full max-w-[1060px] grid-cols-2 gap-x-3 gap-y-4 rounded-[22px] border border-white/25 bg-[#2E78B8]/85 px-5 py-4 shadow-[0_10px_35px_rgba(2,30,80,0.22)] backdrop-blur-md sm:mt-10 sm:flex sm:items-center sm:justify-between sm:gap-4 sm:px-10 sm:py-[18px]">
+        <div className="mt-7 grid w-full max-w-[1060px] grid-cols-2 gap-x-3 gap-y-4 rounded-[22px] border border-white/25 bg-[#0c246c]/85 px-5 py-4 shadow-[0_10px_35px_rgba(2,30,80,0.22)] backdrop-blur-md sm:mt-10 sm:flex sm:items-center sm:justify-between sm:gap-4 sm:px-10 sm:py-[18px]">
           {/* Stat 1 */}
           <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0047C4] text-white shadow-sm sm:h-11 sm:w-11">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0d2c8a] text-white shadow-sm sm:h-11 sm:w-11">
               <svg
                 className="h-5 w-5"
                 fill="none"
@@ -165,7 +162,7 @@ export default function HomePage() {
 
           {/* Stat 2 */}
           <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A3FF] text-white shadow-sm sm:h-11 sm:w-11">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A8FF] text-white shadow-sm sm:h-11 sm:w-11">
               <svg
                 className="h-5 w-5"
                 fill="none"
@@ -195,7 +192,7 @@ export default function HomePage() {
 
           {/* Stat 3 */}
           <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0047C4] text-white shadow-sm sm:h-11 sm:w-11">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0d2c8a] text-white shadow-sm sm:h-11 sm:w-11">
               <svg
                 className="h-5 w-5"
                 fill="none"
@@ -225,7 +222,7 @@ export default function HomePage() {
 
           {/* Stat 4 */}
           <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A3FF] text-white shadow-sm sm:h-11 sm:w-11">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A8FF] text-white shadow-sm sm:h-11 sm:w-11">
               <svg
                 className="h-5 w-5"
                 fill="none"

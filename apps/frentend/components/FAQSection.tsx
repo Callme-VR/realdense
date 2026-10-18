@@ -119,7 +119,7 @@ export default function FAQSection(): React.JSX.Element {
             </span>
 
             <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-4xl lg:text-[46px] xl:text-[50px]">
-              <span className="block text-[#0a1931]">Frequently Asked</span>
+              <span className="block text-[#001e56]">Frequently Asked</span>
               <span className="block text-[#00a8ff]">Questions</span>
             </h2>
 
@@ -151,19 +151,19 @@ export default function FAQSection(): React.JSX.Element {
                   >
                     {/* Number Badge */}
                     <div
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[14px] font-bold text-[#0a1931] transition-colors sm:h-10 sm:w-10 sm:text-[15px] ${isOpen ? "bg-white shadow-xs" : "bg-[#eaf5fe]"
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[14px] font-bold text-[#001e56] transition-colors sm:h-10 sm:w-10 sm:text-[15px] ${isOpen ? "bg-white shadow-xs" : "bg-[#eaf5fe]"
                         }`}
                     >
                       {item.id}
                     </div>
 
                     {/* Question Title */}
-                    <span className="flex-1 text-[15px] font-bold leading-snug text-[#0a1931] sm:text-[16.5px]">
+                    <span className="flex-1 text-[15px] font-bold leading-snug text-[#001e56] sm:text-[16.5px]">
                       {item.question}
                     </span>
 
                     {/* Chevron Icon */}
-                    <div className="shrink-0 text-[#0a1931]">
+                    <div className="shrink-0 text-[#001e56]">
                       <svg
                         className={`h-5 w-5 transition-transform duration-200 ${isOpen ? "rotate-180" : "rotate-0"
                           }`}

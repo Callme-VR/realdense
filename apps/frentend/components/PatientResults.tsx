@@ -287,8 +287,8 @@ export default function PatientResults(): React.JSX.Element {
                   onClick={() => setActiveCategory(cat)}
                   aria-pressed={isActive}
                   className={`cursor-pointer whitespace-nowrap rounded-full px-4 py-2 text-[13px] font-semibold transition-colors duration-200 sm:px-5 sm:text-[14px] ${isActive
-                    ? "bg-[#0B2545] text-white shadow-sm"
-                    : "border border-[#cdecfd] bg-[#eaf4fd]/70 text-[#0B2545] hover:border-[#93cbe9] hover:bg-white"
+                    ? "bg-[#001e56] text-white shadow-sm"
+                    : "border border-[#cdecfd] bg-[#eaf4fd]/70 text-[#001e56] hover:border-[#93cbe9] hover:bg-white"
                     }`}
                 >
                   {cat}
@@ -299,7 +299,7 @@ export default function PatientResults(): React.JSX.Element {
 
           <button
             type="button"
-            className="shrink-0 rounded-[8px] border border-[#0B2545] bg-transparent px-5 py-2 text-[13px] font-medium leading-5 text-[#0B2545] transition-colors duration-200 hover:bg-[#193B8B] hover:text-white sm:text-[13.5px]"
+            className="shrink-0 rounded-[8px] border border-[#001e56] bg-transparent px-5 py-2 text-[13px] font-medium leading-5 text-[#001e56] transition-colors duration-200 hover:bg-[#001e56] hover:text-white sm:text-[13.5px]"
           >
             View All Results
           </button>

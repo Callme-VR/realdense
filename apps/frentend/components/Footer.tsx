@@ -11,49 +11,19 @@ export default function Footer() {
   return (
     <footer className="w-full bg-white relative overflow-hidden">
       {/* ── Upper CTA Section: "Start Your Hair Restoration Journey Today" ── */}
-      <section className="relative w-full min-h-[480px] sm:min-h-[520px] lg:min-h-[560px] overflow-hidden bg-gradient-to-r from-white via-sky-50/30 to-[#eef8fe]/40 flex items-center">
-        {/* Full-Bleed Modern Clinic Building Graphic on Right */}
-        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[58%] xl:w-[54%] h-full pointer-events-none select-none z-0">
-          <div className="relative w-full h-full [mask-image:linear-gradient(to_right,transparent,black_14%,black)]">
-            <Image
-              src="/images/clinic/modern-building.webp"
-              alt="Realdense Hair Restoration Centre Modern Building"
-              fill
-              className="object-cover object-right"
-              sizes="(max-width: 1024px) 100vw, 55vw"
-            />
-          </div>
+      <section className="relative w-full min-h-[480px] sm:min-h-[520px] lg:min-h-[560px] overflow-hidden bg-white flex items-center">
+        {/* Full-Bleed Panorama Background Banner */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
+          <Image
+            src="/images/clinic/footer.webp"
+            alt="Realdense Hair Restoration Centre Building Banner"
+            fill
+            priority
+            className="object-cover object-right lg:object-center"
+            sizes="100vw"
+          />
           {/* Subtle mobile fade so text is 100% readable over background on smaller screens */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent lg:hidden" />
-        </div>
-
-        {/* Ambient Organic Wave Swoosh matching the design */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-          <svg
-            className="w-full h-full"
-            viewBox="0 0 1440 560"
-            preserveAspectRatio="none"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M-40,420 C280,470 560,340 780,210 C1000,80 1200,20 1480,0 L1480,560 L-40,560 Z"
-              fill="url(#swoopGrad)"
-              opacity="0.18"
-            />
-            <path
-              d="M-40,480 C320,510 620,380 840,240 C1060,100 1250,40 1480,10"
-              stroke="#38bdf8"
-              strokeWidth="1.5"
-              opacity="0.35"
-            />
-            <defs>
-              <linearGradient id="swoopGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#bae6fd" />
-                <stop offset="100%" stopColor="#e0f2fe" />
-              </linearGradient>
-            </defs>
-          </svg>
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent lg:hidden" />
         </div>
 
         {/* Content Container (Left-aligned) */}
@@ -93,15 +63,14 @@ export default function Footer() {
               >
                 <svg
                   className="w-5 h-5 text-[#001e56]"
-                  fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                    d="M20.52 3.48A11.87 11.87 0 0 0 12.04 0C5.47 0 .12 5.35.12 11.92c0 2.1.55 4.15 1.6 5.96L.02 24l6.27-1.65a11.9 11.9 0 0 0 5.74 1.46h.01c6.57 0 11.92-5.35 11.92-11.92a11.85 11.85 0 0 0-3.44-8.41ZM12.04 21.8a9.9 9.9 0 0 1-5.05-1.39l-.36-.21-3.72.98.99-3.63-.24-.37a9.85 9.85 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.92-9.92a9.85 9.85 0 0 1 7.02 2.91 9.85 9.85 0 0 1 2.9 7.01c0 5.47-4.45 9.92-9.94 9.92Zm5.45-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.09 4.49.71.3 1.27.49 1.7.62.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"
+                    fill="currentColor"
                   />
                 </svg>
                 <span>Chat on Whatsapp</span>

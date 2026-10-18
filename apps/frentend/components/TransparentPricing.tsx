@@ -188,18 +188,16 @@ export default function TransparentPricing() {
           </p>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold leading-[1.15] tracking-tight mb-4">
-            <span className="text-[#001e56] block sm:inline">
+            <span className="text-[#001e56]">
               Transparent Pricing{" "}
             </span>
-            <br />
-            <span className="text-[#0cb0f2] block sm:inline">
+            <span className="text-[#0cb0f2]">
               for Real Transformations
             </span>
           </h2>
 
           <p className="text-[15px] sm:text-[16px] font-normal leading-relaxed text-[#64748B]">
-            Personalised treatment plans with clear pricing, no hidden costs{" "}
-            <br className="hidden sm:inline" /> and world-class techniques
+            Personalised treatment plans with clear pricing, no hidden costs, and world-class techniques.
           </p>
         </div>
 
@@ -234,7 +232,7 @@ export default function TransparentPricing() {
             {filteredCards.map((card) => (
               <div
                 key={card.id}
-                className={`group relative bg-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-between min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start shrink-0 ${card.popular
+                className={`group relative bg-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-between min-w-[260px] xs:min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start shrink-0 ${card.popular
                   ? "border-2 border-[#0cb0f2] shadow-[0_8px_30px_rgba(12,176,242,0.25)] scale-[1.02] z-10"
                   : "border border-slate-100 shadow-sm hover:border-slate-300 hover:shadow-md"
                   }`}
@@ -332,7 +330,7 @@ export default function TransparentPricing() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-14 sm:mt-16 relative w-full rounded-[28px] bg-[#002766] p-7 sm:p-9 text-white shadow-xl overflow-hidden">
+        <div className="mt-14 sm:mt-16 relative w-full rounded-[28px] bg-[#001e56] p-7 sm:p-9 text-white shadow-xl overflow-hidden">
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-8">
             {/* Left Title */}
             <div className="lg:max-w-xs shrink-0 lg:pr-6 lg:border-r border-white/20">

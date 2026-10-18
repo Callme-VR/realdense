@@ -59,6 +59,7 @@ export const ASSETS = {
   },
   clinic: {
     modernBuilding: "/images/clinic/modern-building.webp",
+    footerBanner: "/images/clinic/footer-banner.webp",
   },
   reviews: {
     rohanMehta: "/images/reviews/rohan-mehta.webp",

@@ -233,7 +233,7 @@ export default function OurPromise(): React.JSX.Element {
                       {pillar.title}
                     </h3>
 
-                    <p className="text-[13px] leading-relaxed text-[#64748b] sm:text-[13.5px]">
+                    <p className="text-[14px] leading-relaxed text-[#64748b] sm:text-[14.5px]">
                       {pillar.description}
                     </p>
                   </div>

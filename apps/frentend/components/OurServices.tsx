@@ -33,13 +33,8 @@ const servicesList: ServiceData[] = [
     tabSubtitle: "Natural-Looking Results",
     eyebrow: "HAIR TRANSPLANT",
     title: "FUE Hair Transplant",
-    description: (
-      <>
-        Follicular Unit Extraction (FUE) is a minimally invasive hair transplant <br />
-        technique where individual hair follicles are extracted and <br />
-        implanted for natural-looking, long-lasting results.
-      </>
-    ),
+    description:
+      "Follicular Unit Extraction (FUE) is a minimally invasive hair transplant technique where individual hair follicles are extracted and implanted for natural-looking, long-lasting results.",
     beforeImg: "/images/transformations/case-01-before.webp",
     afterImg: "/images/transformations/case-01-after.webp",
     price: "₹90,000",

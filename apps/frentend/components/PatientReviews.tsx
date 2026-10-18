@@ -102,8 +102,7 @@ export default function PatientReviews() {
               <span className="text-[#00a8ff] block">Real Confidence.</span>
             </h2>
             <p className="mt-4 text-[14.5px] sm:text-[16px] leading-relaxed text-slate-500 font-normal">
-              Hear from our patients who have transformed their lives with  <br />
-              natural-looking hair restoration at Realdense.
+              Hear from our patients who have transformed their lives with natural-looking hair restoration at Realdense.
             </p>
           </motion.div>
 

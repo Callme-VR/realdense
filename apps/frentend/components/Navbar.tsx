@@ -203,7 +203,7 @@ export default function Navbar() {
         aria-hidden={!mobileOpen}
       >
         <nav
-          className="mx-4 sm:mx-6 rounded-3xl bg-[#EBF8FF] border border-[#d6ecfb] px-5 py-4 flex flex-col gap-1 shadow-[0_12px_36px_rgba(3,30,80,0.1)]"
+          className="mx-4 sm:mx-6 rounded-3xl bg-[#EBF8FF] border border-[#d6ecfb] px-5 py-4 flex flex-col gap-1 shadow-[0_12px_36px_rgba(3,30,80,0.1)] max-h-[calc(100dvh-100px)] overflow-y-auto"
           aria-label="Mobile navigation"
         >
           {navLinks.map((item) => {

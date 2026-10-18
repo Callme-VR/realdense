@@ -173,13 +173,13 @@ export default function OurProcess() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Section Header ── */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <p className="text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.25em] text-[#0099ff] mb-3">
+          <p className="text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.25em] text-[#00a8ff] mb-3">
             OUR PROCESS
           </p>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight leading-[1.18] text-[#001e56]">
-            A Team of Experts ,
-            <span className="block text-[#0099ff] mt-1 sm:mt-1.5">
+            A Team of Experts,
+            <span className="block text-[#00a8ff] mt-1 sm:mt-1.5">
               Focused on You
             </span>
           </h2>
@@ -208,8 +208,8 @@ export default function OurProcess() {
                   {/* Step Number Circle */}
                   <div
                     className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-base sm:text-lg transition-all duration-300 ${isActive
-                      ? "bg-[#0066ff] text-white shadow-md shadow-blue-500/30 scale-105"
-                      : "bg-[#e1f0fe] text-[#2563eb] group-hover:bg-[#d5e9fd]"
+                      ? "bg-[#00a8ff] text-white shadow-md shadow-sky-500/25 scale-105"
+                      : "bg-[#e1f0fe] text-[#001e56] group-hover:bg-[#d5e9fd]"
                       }`}
                   >
                     {step.id + 1}
@@ -217,7 +217,7 @@ export default function OurProcess() {
 
                   {/* Step Label */}
                   <span
-                    className={`mt-2.5 sm:mt-3 text-xs sm:text-[15px] transition-colors duration-200 text-center ${isActive
+                    className={`mt-2.5 sm:mt-3 text-[11px] sm:text-[14px] transition-colors duration-200 text-center ${isActive
                       ? "font-bold text-[#001e56]"
                       : "font-semibold text-[#475569] group-hover:text-[#001e56]"
                       }`}
@@ -233,12 +233,12 @@ export default function OurProcess() {
           <div className="relative w-full mt-5 sm:mt-6">
             <div className="relative w-full h-[5px] sm:h-[6px] bg-[#e4effa] rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#0066ff] rounded-full transition-all duration-500 ease-out"
+                className="h-full bg-[#00a8ff] rounded-full transition-all duration-500 ease-out"
                 style={{ width: progressWidths[activeStep] }}
               />
             </div>
             {/* Dot at start of progress track */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#0066ff] rounded-full shadow-sm pointer-events-none" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#00a8ff] rounded-full shadow-sm pointer-events-none" />
           </div>
         </div>
 

@@ -87,7 +87,7 @@ export default function WhyChooseIndia(): React.JSX.Element {
               World–Class Hair Transplant{" "}
             </span>
 
-            <span className="bg-gradient-to-r from-[#f59e0b] to-[#d97706] bg-clip-text text-transparent">
+            <span className="text-[#ffbb1f]">
               in India
             </span>
           </h2>
@@ -118,7 +118,7 @@ export default function WhyChooseIndia(): React.JSX.Element {
               </div>
 
               {/* Title */}
-              <h3 className="mb-2.5 max-w-[240px] text-[18px] font-bold leading-snug tracking-tight text-[#001e56] transition-colors group-hover:text-[#0cb0f2] sm:text-[19px]">
+              <h3 className="mb-2.5 text-[18px] font-bold leading-snug tracking-tight text-[#001e56] transition-colors group-hover:text-[#0cb0f2] sm:text-[19px]">
                 {feature.title}
               </h3>
 
@@ -149,7 +149,7 @@ export default function WhyChooseIndia(): React.JSX.Element {
               </div>
 
               {/* Title */}
-              <h3 className="mb-2.5 max-w-[260px] text-[18px] font-bold leading-snug tracking-tight text-[#001e56] transition-colors group-hover:text-[#0cb0f2] sm:text-[19px]">
+              <h3 className="mb-2.5 text-[18px] font-bold leading-snug tracking-tight text-[#001e56] transition-colors group-hover:text-[#0cb0f2] sm:text-[19px]">
                 {feature.title}
               </h3>
 

@@ -171,7 +171,7 @@ export default function OurApproach(): React.JSX.Element {
 
 
             {/* Main Headline */}
-            <h2 className="mb-5 whitespace-normal text-3xl font-extrabold leading-[1.14] tracking-tight sm:text-4xl lg:whitespace-nowrap lg:text-[46px]">
+            <h2 className="mb-5 text-3xl font-extrabold leading-[1.14] tracking-tight sm:text-4xl lg:text-[46px]">
               <span className="text-[#001e56]">
                 Precision Behind Every
               </span>
@@ -253,7 +253,7 @@ export default function OurApproach(): React.JSX.Element {
                 </h3>
 
                 {/* Step Description */}
-                <p className="mb-6 min-h-[58px] max-w-[250px] text-[13.5px] font-normal leading-relaxed text-[#64748B]">
+                <p className="mb-6 min-h-0 sm:min-h-[52px] max-w-[250px] text-[14px] font-normal leading-relaxed text-[#64748B]">
                   {step.description}
                 </p>
 
