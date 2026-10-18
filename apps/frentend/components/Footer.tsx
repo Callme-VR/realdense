@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[58%] xl:w-[54%] h-full pointer-events-none select-none z-0">
           <div className="relative w-full h-full [mask-image:linear-gradient(to_right,transparent,black_14%,black)]">
             <Image
-              src="/assets/modern.png"
+              src="/images/clinic/modern-building.webp"
               alt="Realdense Hair Restoration Centre Modern Building"
               fill
               className="object-cover object-right"
@@ -127,10 +127,11 @@ export default function Footer() {
                 <Link href="/" className="inline-block">
                   <div className="relative h-14 w-44 brightness-0 invert opacity-95 hover:opacity-100 transition-opacity">
                     <Image
-                      src="/assets/logo.png"
+                      src="/images/brand/logo.png"
                       alt="Realdense Hair Transplant Clinic"
                       fill
                       className="object-contain object-left"
+                      sizes="(max-width: 768px) 150px, 176px"
                     />
                   </div>
                 </Link>
