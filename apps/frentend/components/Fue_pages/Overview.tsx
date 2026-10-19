@@ -49,25 +49,25 @@ export default function FueOverview({
   const b2 = { ...defaultBlock2, ...block2 };
 
   return (
-    <section className="w-full bg-white py-16 sm:py-20 lg:py-28 overflow-hidden">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24 lg:space-y-32">
+    <section className="w-full bg-white py-14 sm:py-20 lg:py-28 overflow-hidden">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-20 lg:space-y-28">
         {/* ── Block 1: Text Left, Image Right ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Content Column */}
           <div className="max-w-[560px]">
             {/* Eyebrow */}
-            <span className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
+            <span className="font-['Plus_Jakarta_Sans'] text-[11.5px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
               {b1.eyebrow}
             </span>
 
             {/* Heading */}
-            <h2 className="font-['Plus_Jakarta_Sans'] text-[30px] sm:text-[38px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.15]">
+            <h2 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[36px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.16]">
               <span className="text-[#001e56] block">{b1.titleLine1}</span>
               <span className="text-[#00A3FF] block mt-1">{b1.titleLine2}</span>
             </h2>
 
             {/* Paragraphs */}
-            <div className="mt-5 sm:mt-6 space-y-4 sm:space-y-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[15.5px] lg:text-[16px] leading-[1.7] font-normal">
+            <div className="mt-4 sm:mt-6 space-y-3.5 sm:space-y-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[15.5px] lg:text-[16px] leading-[1.7] font-normal">
               {b1.paragraphs?.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}
@@ -76,7 +76,7 @@ export default function FueOverview({
 
           {/* Image Column */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[410px] rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_30px_rgba(3,30,80,0.06)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
+            <div className="relative w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[410px] rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_30px_rgba(3,30,80,0.06)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
               <Image
                 src={b1.imageSrc || "/Fue_page_images/fue-procedure-marking.webp"}
                 alt={b1.imageAlt || "FUT Hair Transplant Overview"}
@@ -92,10 +92,10 @@ export default function FueOverview({
         </div>
 
         {/* ── Block 2: Image Left, Text Right ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Image Column (First on desktop, below on mobile/order handled) */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[410px] rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_30px_rgba(3,30,80,0.06)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
+            <div className="relative w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[410px] rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_30px_rgba(3,30,80,0.06)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
               <Image
                 src={b2.imageSrc || "/Fue_page_images/fue-grafts-dissection.webp"}
                 alt={b2.imageAlt || "FUT Hair Transplant in India"}
@@ -111,18 +111,18 @@ export default function FueOverview({
           {/* Content Column */}
           <div className="order-1 lg:order-2 max-w-[560px]">
             {/* Eyebrow */}
-            <span className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
+            <span className="font-['Plus_Jakarta_Sans'] text-[11.5px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
               {b2.eyebrow}
             </span>
 
             {/* Heading */}
-            <h2 className="font-['Plus_Jakarta_Sans'] text-[30px] sm:text-[38px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.15]">
+            <h2 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[36px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.16]">
               <span className="text-[#001e56] block">{b2.titleLine1}</span>
               <span className="text-[#00A3FF] block mt-1">{b2.titleLine2}</span>
             </h2>
 
             {/* Paragraphs */}
-            <div className="mt-5 sm:mt-6 space-y-4 sm:space-y-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[15.5px] lg:text-[16px] leading-[1.7] font-normal">
+            <div className="mt-4 sm:mt-6 space-y-3.5 sm:space-y-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[15.5px] lg:text-[16px] leading-[1.7] font-normal">
               {b2.paragraphs?.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}

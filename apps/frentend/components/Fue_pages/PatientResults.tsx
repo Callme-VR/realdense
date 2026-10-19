@@ -201,7 +201,7 @@ export default function FuePatientResults({
   items = transformations,
 }: PatientResultsProps) {
   return (
-    <section className="relative isolate w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <section className="relative isolate w-full bg-white py-14 sm:py-20 lg:py-24 overflow-hidden">
       {/* ── Background Image Layer (fue-patient-results-background.webp) ── */}
       <div className="absolute inset-0 -z-10 w-full h-full pointer-events-none select-none overflow-hidden">
         <Image
@@ -217,21 +217,21 @@ export default function FuePatientResults({
 
       <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Header Section ── */}
-        <div className="max-w-[740px] mb-12 sm:mb-14 lg:mb-16">
-          <span className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
+        <div className="max-w-[740px] mb-10 sm:mb-12 lg:mb-16">
+          <span className="font-['Plus_Jakarta_Sans'] text-[11.5px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
             {eyebrow}
           </span>
-          <h2 className="font-['Plus_Jakarta_Sans'] text-[30px] sm:text-[38px] lg:text-[46px] font-extrabold tracking-[-0.03em] leading-[1.15]">
+          <h2 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[36px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.16]">
             <span className="text-[#001e56]">{titleLine1} </span>
             <span className="text-[#00A3FF]">{titleLine2}</span>
           </h2>
-          <p className="mt-3.5 sm:mt-4 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[15.5px] leading-[1.65] font-normal">
+          <p className="mt-3.5 sm:mt-4 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15.5px] leading-[1.65] font-normal">
             {description}
           </p>
         </div>
 
         {/* ── 8 Cards Grid (4 columns x 2 rows) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {items.map((item) => (
             <div
               key={item.id}

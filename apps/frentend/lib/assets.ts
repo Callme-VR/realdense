@@ -75,6 +75,14 @@ export const ASSETS = {
     procedureMarking: "/Fue_page_images/fue-procedure-marking.webp",
     graftsDissection: "/Fue_page_images/fue-grafts-dissection.webp",
     patientResultsBackground: "/Fue_page_images/fue-patient-results-background.webp",
+    classicStripMethod: "/Fue_page_images/fue-classic-strip-method.webp",
+    combinedTechnique: "/Fue_page_images/fue-combined-technique.webp",
+    benefits: {
+      benefit1: "/Fue_page_images/benefit-1.webp",
+      benefit2: "/Fue_page_images/benefit-2.webp",
+      benefit3: "/Fue_page_images/benefit-3.webp",
+      benefit4: "/Fue_page_images/benefit-4.webp",
+    },
   },
   services: {
     heroBackground: "/service_page_images/services-hero-background.webp",

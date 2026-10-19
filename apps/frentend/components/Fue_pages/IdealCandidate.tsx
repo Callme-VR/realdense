@@ -64,24 +64,24 @@ export default function IdealCandidate({
   };
 
   return (
-    <section className="w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <section className="w-full bg-white py-14 sm:py-20 lg:py-24 overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Header Section ── */}
-        <div className="text-center max-w-[800px] mx-auto mb-14 sm:mb-16 lg:mb-20">
-          <span className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2.5 sm:mb-3 block">
+        <div className="text-center max-w-[800px] mx-auto mb-10 sm:mb-14 lg:mb-16">
+          <span className="font-['Plus_Jakarta_Sans'] text-[11.5px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
             {eyebrow}
           </span>
-          <h2 className="font-['Plus_Jakarta_Sans'] text-[30px] sm:text-[38px] lg:text-[46px] font-extrabold tracking-[-0.03em] leading-[1.16]">
+          <h2 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[36px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.16]">
             <span className="text-[#001e56] block">{titleLine1}</span>
             <span className="text-[#00A3FF] block mt-1">{titleLine2}</span>
           </h2>
-          <p className="mt-4 sm:mt-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[16px] leading-[1.65] font-normal max-w-[720px] mx-auto">
+          <p className="mt-3.5 sm:mt-4 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15.5px] leading-[1.65] font-normal max-w-[720px] mx-auto">
             {subtitle}
           </p>
         </div>
 
         {/* ── 4 Steps Flow with Connecting Arcs ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-6 relative mb-16 sm:mb-20 lg:mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-8 lg:gap-6 relative mb-12 sm:mb-16 lg:mb-20">
           {cards.map((item, idx) => {
             const hasNext = idx < cards.length - 1;
             return (
@@ -114,7 +114,15 @@ export default function IdealCandidate({
                 )}
 
                 {/* Step Circle Badge */}
-                <div className="relative z-10 w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#dff2fe] border border-[#cbe8fd] flex items-center justify-center text-[#001e56] font-['Plus_Jakarta_Sans'] font-extrabold text-[17px] sm:text-[18px] shadow-xs mb-5 transition-transform duration-200 group-hover:scale-105 group-hover:bg-[#d0ecfe]">
+                <div
+                  style={{
+                    background:
+                      "linear-gradient(180deg, #B5DAEF 0%, #FFFFFF 100%)",
+                    boxShadow:
+                      "inset 0px -3px 4px rgba(5, 78, 116, 0.44), inset 0px 2.62px 7.86px #8DD8FF",
+                  }}
+                  className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] rounded-full flex items-center justify-center text-[#001e56] font-['Plus_Jakarta_Sans'] font-extrabold text-[18px] sm:text-[20px] lg:text-[22px] mb-5 transition-transform duration-200 group-hover:scale-105 select-none"
+                >
                   {item.step}
                 </div>
 

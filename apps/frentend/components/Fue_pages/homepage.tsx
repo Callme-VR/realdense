@@ -113,12 +113,12 @@ export default function FueHero({
       {/* ── Main Hero Content (Centered) ── */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center my-auto">
         {/* Eyebrow / Kicker */}
-        <p className="mb-2.5 sm:mb-3 font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] md:text-[14px] font-bold uppercase tracking-[0.24em] text-[#00A3FF]">
+        <p className="mb-2 sm:mb-3 font-['Plus_Jakarta_Sans'] text-[11px] sm:text-[13px] md:text-[14px] font-bold uppercase tracking-[0.22em] text-[#00A3FF]">
           {eyebrow}
         </p>
 
         {/* Headline */}
-        <h1 className="font-['Plus_Jakarta_Sans'] text-[32px] xs:text-[38px] sm:text-[48px] md:text-[56px] lg:text-[62px] xl:text-[66px] font-extrabold tracking-[-0.03em] leading-[1.12] text-center max-w-[900px] mx-auto">
+        <h1 className="font-['Plus_Jakarta_Sans'] text-[28px] sm:text-[44px] md:text-[54px] lg:text-[62px] xl:text-[66px] font-extrabold tracking-[-0.03em] leading-[1.14] text-center max-w-[900px] mx-auto px-2">
           <span className="text-[#001e56] block">{titleLine1}</span>
           <span className="text-[#00A3FF] block mt-1 sm:mt-1.5">
             {titleLine2}
@@ -126,7 +126,7 @@ export default function FueHero({
         </h1>
 
         {/* Subtitle / Description */}
-        <p className="mt-3.5 sm:mt-4 mb-7 sm:mb-9 max-w-[660px] mx-auto font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[16px] md:text-[17px] font-medium leading-[1.6] text-[#1b3a6b]">
+        <p className="mt-3 sm:mt-4 mb-6 sm:mb-8 max-w-[660px] mx-auto font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[16px] md:text-[17px] font-medium leading-[1.6] text-[#1b3a6b] px-2">
           {description}
         </p>
 
