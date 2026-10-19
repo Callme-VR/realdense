@@ -22,7 +22,7 @@ export default function BlueWaveBackground({ children, className = "" }: Props) 
     <div className={`relative w-full min-h-screen overflow-hidden bg-[#a0ddfc] ${className}`}>
       {/* ── Background Static Image Layer ── */}
       <Image
-        src="/images/hero/Hero_background.jpg"
+        src="/images/hero/hero-background.webp"
         alt="Hero Background"
         fill
         priority

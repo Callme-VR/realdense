@@ -1,0 +1,176 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+
+interface CandidateCard {
+  step: string;
+  title: string;
+  description: string;
+}
+
+const candidates: CandidateCard[] = [
+  {
+    step: "01",
+    title: "Advanced Baldness",
+    description:
+      "Ideal for patients with large areas of hair loss (Norwood 5–7) who need a high number of grafts for adequate coverage.",
+  },
+  {
+    step: "02",
+    title: "Limited Donor Density",
+    description:
+      "Suitable for patients with a compressed or narrow donor area, as FUT helps preserve donor density and reduces the risk of overharvesting.",
+  },
+  {
+    step: "03",
+    title: "Age",
+    description:
+      "FUT often delivers better results for individuals in their 20s or 30s, when hair loss is more stable and predictable.",
+  },
+  {
+    step: "04",
+    title: "Budget-Conscious Patients",
+    description:
+      "A cost-effective option for those seeking maximum grafts at a relatively lower cost per graft compared to techniques like FUE or DHI.",
+  },
+];
+
+export interface IdealCandidateProps {
+  eyebrow?: string;
+  titleLine1?: string;
+  titleLine2?: string;
+  subtitle?: string;
+  cards?: CandidateCard[];
+  onCallbackClick?: () => void;
+}
+
+export default function IdealCandidate({
+  eyebrow = "IDEAL CANDIDATES",
+  titleLine1 = "Who is an Ideal Candidate for",
+  titleLine2 = "FUT Hair Transplant?",
+  subtitle = "FUT is best suited for patients who require a high graft count and maximum density in a single session. It can be an excellent option for individuals with advanced hair loss and specific goals.",
+  cards = candidates,
+  onCallbackClick,
+}: IdealCandidateProps) {
+  const handleScrollToCallback = (e: React.MouseEvent) => {
+    if (onCallbackClick) {
+      e.preventDefault();
+      onCallbackClick();
+      return;
+    }
+    // Default: smooth scroll to top callback form
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <section className="w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ── Header Section ── */}
+        <div className="text-center max-w-[800px] mx-auto mb-14 sm:mb-16 lg:mb-20">
+          <span className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2.5 sm:mb-3 block">
+            {eyebrow}
+          </span>
+          <h2 className="font-['Plus_Jakarta_Sans'] text-[30px] sm:text-[38px] lg:text-[46px] font-extrabold tracking-[-0.03em] leading-[1.16]">
+            <span className="text-[#001e56] block">{titleLine1}</span>
+            <span className="text-[#00A3FF] block mt-1">{titleLine2}</span>
+          </h2>
+          <p className="mt-4 sm:mt-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[16px] leading-[1.65] font-normal max-w-[720px] mx-auto">
+            {subtitle}
+          </p>
+        </div>
+
+        {/* ── 4 Steps Flow with Connecting Arcs ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-6 relative mb-16 sm:mb-20 lg:mb-24">
+          {cards.map((item, idx) => {
+            const hasNext = idx < cards.length - 1;
+            return (
+              <div
+                key={item.step}
+                className="relative flex flex-col items-center text-center px-3 group"
+              >
+                {/* Connecting Curved Arc (Visible on desktop between cards) */}
+                {hasNext && (
+                  <div
+                    className="hidden lg:block absolute top-5 left-[calc(50%+34px)] w-[calc(100%-68px)] h-8 pointer-events-none z-0"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      className="w-full h-full overflow-visible"
+                      viewBox="0 0 100 24"
+                      fill="none"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        d="M 0 18 Q 50 -4 95 16"
+                        stroke="#7dd3fc"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        className="transition-colors group-hover:stroke-[#00A3FF]"
+                      />
+                      <circle cx="95" cy="16" r="2.8" fill="#00A3FF" />
+                    </svg>
+                  </div>
+                )}
+
+                {/* Step Circle Badge */}
+                <div className="relative z-10 w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#dff2fe] border border-[#cbe8fd] flex items-center justify-center text-[#001e56] font-['Plus_Jakarta_Sans'] font-extrabold text-[17px] sm:text-[18px] shadow-xs mb-5 transition-transform duration-200 group-hover:scale-105 group-hover:bg-[#d0ecfe]">
+                  {item.step}
+                </div>
+
+                {/* Card Title */}
+                <h3 className="font-['Plus_Jakarta_Sans'] text-[17px] sm:text-[18px] font-bold text-[#001e56] mb-2.5 tracking-[-0.01em]">
+                  {item.title}
+                </h3>
+
+                {/* Card Description */}
+                <p className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14px] leading-[1.65] text-[#556987]">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── Bottom Banner: Talk to our experts ── */}
+        <div className="relative rounded-[22px] sm:rounded-[26px] bg-[#001744] shadow-[0_16px_40px_rgba(0,23,68,0.28)] p-6 sm:p-8 lg:px-10 lg:py-7">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            {/* Left: Heading & Eyebrow */}
+            <div className="shrink-0">
+              <span className="font-['Plus_Jakarta_Sans'] text-[11.5px] sm:text-[12px] font-bold uppercase tracking-[0.2em] text-[#00A3FF] block mb-1">
+                STILL CONFUSED ?
+              </span>
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[24px] sm:text-[28px] font-extrabold text-white tracking-[-0.02em]">
+                Talk to our experts
+              </h3>
+            </div>
+
+            {/* Divider */}
+            <div
+              className="hidden lg:block w-[1px] h-12 bg-white/15 mx-2"
+              aria-hidden="true"
+            />
+
+            {/* Middle: Explanatory text */}
+            <p className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14.5px] text-white/80 leading-relaxed max-w-[400px]">
+              Get personalized guidance to understand if FUT is the right option
+              for your hair restoration journey.
+            </p>
+
+            {/* Right: CTA Button */}
+            <div className="w-full sm:w-auto shrink-0">
+              <Link
+                href="#callback-form"
+                onClick={handleScrollToCallback}
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0077e6] hover:bg-[#0066cc] active:scale-[0.98] text-white font-['Plus_Jakarta_Sans'] font-semibold text-[14.5px] shadow-[0_4px_16px_rgba(0,119,230,0.35)] transition-all duration-200"
+              >
+                <span>Request a callback</span>
+                <span className="text-[16px] leading-none">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

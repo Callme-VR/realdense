@@ -76,10 +76,10 @@ export default function GetInTouch() {
 
   return (
     <section className="relative isolate w-full overflow-hidden bg-[#eef6fe] py-14 sm:py-18 lg:py-22">
-      {/* ── Background Wave & 3D Follicle Layer (Form.webp) ── */}
+      {/* ── Background Wave & 3D Follicle Layer (services-form-banner.webp) ── */}
       <div className="absolute inset-0 z-0 w-full h-full select-none pointer-events-none overflow-hidden">
         <Image
-          src="/service_page_images/Form.webp"
+          src="/service_page_images/services-form-banner.webp"
           alt="Consultation Background Pattern"
           fill
           priority

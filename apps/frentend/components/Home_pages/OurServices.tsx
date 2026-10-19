@@ -3,7 +3,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import BookConsultationButton from "./BookConsultationButton";
+import BookConsultationButton from "@/components/BookConsultationButton";
 import { motion, AnimatePresence } from "motion/react";
 import { Leaf, Clock, Star } from "lucide-react";
 

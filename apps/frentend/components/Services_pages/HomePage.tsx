@@ -112,7 +112,7 @@ export default function ServicesHero() {
       {/* ── Background Image Layer (Anchored to right to keep hair follicle & wave crisp & uncropped) ── */}
       <div className="absolute inset-0 -z-10 w-full h-full select-none pointer-events-none overflow-hidden">
         <Image
-          src="/service_page_images/hero.webp"
+          src="/service_page_images/services-hero-background.webp"
           alt="Advanced Hair Restoration Solution"
           fill
           priority

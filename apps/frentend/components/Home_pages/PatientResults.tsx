@@ -3,7 +3,7 @@
 
 import React, { useState, useRef, useCallback } from "react";
 import Image from "next/image";
-import WaveBackground from "./WaveBackground";
+import WaveBackground from "@/components/WaveBackground";
 
 /* ── Filter Categories ── */
 const categories = [
