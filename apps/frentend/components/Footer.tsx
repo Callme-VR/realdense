@@ -7,11 +7,16 @@ import BookConsultationButton from "./BookConsultationButton";
 import MeshBackground from "./meshnetworkdot";
 import { motion } from "motion/react";
 
-export default function Footer() {
+interface FooterProps {
+  hideCta?: boolean;
+}
+
+export default function Footer({ hideCta = false }: FooterProps) {
   return (
     <footer className="w-full bg-white relative overflow-hidden">
       {/* ── Upper CTA Section: "Start Your Hair Restoration Journey Today" ── */}
-      <section className="relative w-full min-h-[480px] sm:min-h-[520px] lg:min-h-[560px] overflow-hidden bg-white flex items-center">
+      {!hideCta && (
+        <section className="relative w-full min-h-[480px] sm:min-h-[520px] lg:min-h-[560px] overflow-hidden bg-white flex items-center">
         {/* Full-Bleed Panorama Background Banner */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
           <Image
@@ -79,6 +84,7 @@ export default function Footer() {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ── Main Deep Navy Footer with Animated Mesh Network Background ── */}
       <MeshBackground

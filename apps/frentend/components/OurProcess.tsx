@@ -231,17 +231,18 @@ export default function OurProcess() {
 
           {/* ── Animated Progress Line with Indicator Dot ── */}
           <div className="relative w-full mt-5 sm:mt-6">
-            <div className="relative w-full h-[5px] sm:h-[6px] bg-[#e4effa] rounded-full overflow-hidden">
+            {/* More visible background track */}
+            <div className="relative w-full h-[6px] sm:h-[7px] bg-[#b0becf] rounded-full overflow-hidden">
               <div
                 className="h-full bg-[#00a8ff] rounded-full transition-all duration-500 ease-out"
                 style={{ width: progressWidths[activeStep] }}
               />
             </div>
+
             {/* Dot at start of progress track */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#00a8ff] rounded-full shadow-sm pointer-events-none" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#00a8ff] rounded-full shadow-sm pointer-events-none" />
           </div>
         </div>
-
         {/* ── Dynamic Content Cards ── */}
         <div className="max-w-5xl mx-auto mt-10 sm:mt-12">
           <AnimatePresence mode="wait">

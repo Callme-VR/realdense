@@ -21,6 +21,7 @@ const navLinks: NavItem[] = [
     href: "/services",
     hasDropdown: true,
     dropdown: [
+      { label: "All Services Overview", href: "/services" },
       { label: "FUE Hair Transplant", href: "/services/fue" },
       { label: "DHI Hair Transplant", href: "/services/dhi" },
       { label: "Sapphire FUE", href: "/services/sapphire-fue" },
@@ -114,13 +115,15 @@ export default function Navbar() {
                   onMouseEnter={onDropdownEnter}
                   onMouseLeave={onDropdownLeave}
                 >
-                  <button
+                  <Link
+                    href={item.href}
                     className={`group relative flex items-center gap-1 px-4 py-1.5 rounded-full text-[14px] font-semibold text-[#031E50] transition-all duration-200 select-none ${active
                       ? "bg-[rgba(62,184,247,0.32)] shadow-[0px_2px_4px_rgba(0,0,0,0.12),inset_0px_1px_4px_rgba(0,75,214,0.35)]"
                       : "hover:bg-[rgba(62,184,247,0.14)] hover:text-[#00A3FF]"
                       }`}
                     aria-expanded={servicesOpen}
                     aria-haspopup="true"
+                    onClick={() => setServicesOpen(false)}
                   >
                     <span>{item.label}</span>
 
@@ -143,7 +146,7 @@ export default function Navbar() {
 
                     {/* Animated underline on hover */}
                     <span className="absolute bottom-0 left-4 right-4 h-[2px] origin-left scale-x-0 bg-[#00A3FF] transition-transform duration-200 group-hover:scale-x-100" />
-                  </button>
+                  </Link>
 
                   {/* Dropdown panel */}
                   <div
@@ -230,31 +233,49 @@ export default function Navbar() {
             if (item.hasDropdown) {
               return (
                 <div key={item.label} className="w-full">
-                  <button
+                  <div
                     className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-[14.5px] font-semibold text-[#031E50] transition-colors ${active
                       ? "bg-[rgba(62,184,247,0.32)]"
                       : "hover:bg-white/60"
                       }`}
-                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    aria-expanded={mobileServicesOpen}
                   >
-                    <span>{item.label}</span>
-
-                    <svg
-                      className={`w-4 h-4 text-[#031E50] transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""
-                        }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
+                    <Link
+                      href={item.href}
+                      className="flex-1"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setMobileServicesOpen(false);
+                      }}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </button>
+                      {item.label}
+                    </Link>
+
+                    <button
+                      type="button"
+                      className="p-1 -mr-1 rounded-lg hover:bg-black/5"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMobileServicesOpen(!mobileServicesOpen);
+                      }}
+                      aria-label="Toggle services menu"
+                      aria-expanded={mobileServicesOpen}
+                    >
+                      <svg
+                        className={`w-4 h-4 text-[#031E50] transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""
+                          }`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
 
                   <div
                     className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen
