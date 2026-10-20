@@ -77,6 +77,14 @@ export const ASSETS = {
     patientResultsBackground: "/Fue_page_images/fue-patient-results-background.webp",
     classicStripMethod: "/Fue_page_images/fue-classic-strip-method.webp",
     combinedTechnique: "/Fue_page_images/fue-combined-technique.webp",
+    recovery: "/Fue_page_images/Recovery.webp",
+    process: {
+      step1: "/Fue_page_images/process-1.webp",
+      step2: "/Fue_page_images/process-2.webp",
+      step3: "/Fue_page_images/process-3.webp",
+      step4: "/Fue_page_images/process-4.webp",
+      step5: "/Fue_page_images/process-5.webp",
+    },
     benefits: {
       benefit1: "/Fue_page_images/benefit-1.webp",
       benefit2: "/Fue_page_images/benefit-2.webp",
