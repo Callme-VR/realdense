@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface PatientCard {
@@ -68,9 +69,74 @@ const patientCards: PatientCard[] = [
   },
 ];
 
+const mobileHeroCards = [
+  {
+    id: "abhishek",
+    name: "Abhishek P",
+    imageSrc: "/images/hero/patient-abhishek.webp",
+  },
+  {
+    id: "deepak",
+    name: "Dipak M",
+    imageSrc: "/images/hero/patient-deepak.webp",
+  },
+  {
+    id: "ranbeer",
+    name: "Ranbir M",
+    imageSrc: "/images/hero/patient-ranbeer.webp",
+  },
+  {
+    id: "kashyap",
+    name: "Kashyap D",
+    imageSrc: "/images/hero/patient-kashyap.webp",
+  },
+];
+
 export default function HomePage() {
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchDeltaX, setTouchDeltaX] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState(390);
+
+  useEffect(() => {
+    const updateWidth = () => setWindowWidth(window.innerWidth);
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+    setTouchDeltaX(0);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    setTouchDeltaX(e.touches[0].clientX - touchStartX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null) return;
+    if (touchDeltaX < -40) {
+      // Swiped left -> next card
+      setActiveIndex((prev) => Math.min(prev + 1, mobileHeroCards.length - 1));
+    } else if (touchDeltaX > 40) {
+      // Swiped right -> previous card
+      setActiveIndex((prev) => Math.max(prev - 1, 0));
+    }
+    setTouchStartX(null);
+    setTouchDeltaX(0);
+  };
+
+  // Dimensions for mobile carousel matching reference image (centered Dipak M, peeking Abhishek & Ranbir)
+  const cardWidth = Math.min(Math.round(windowWidth * 0.68), 270);
+  const gap = 12;
+  const centerOffset = (windowWidth - cardWidth) / 2;
+  const baseTranslateX = centerOffset - activeIndex * (cardWidth + gap);
+  const translateX = touchStartX !== null ? baseTranslateX + touchDeltaX : baseTranslateX;
+
   return (
-    <section className="relative isolate flex w-full flex-col items-center justify-center overflow-hidden pt-24 pb-10 sm:pt-28 sm:pb-16">
+    <section className="relative isolate flex w-full flex-col items-center justify-center overflow-hidden pt-20 pb-10 sm:pt-28 sm:pb-16">
       {/* White glow behind the headline */}
       <div
         aria-hidden="true"
@@ -79,12 +145,12 @@ export default function HomePage() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
         {/* Eyebrow */}
-        <p className="mb-2 font-['Plus_Jakarta_Sans'] text-[12px] font-semibold uppercase leading-[25px] tracking-[0.24em] text-[#0cb0f2] sm:text-[13.5px] md:text-[16px]">
+        <p className="mb-2 font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase leading-[22px] tracking-[0.22em] text-[#0cb0f2] sm:text-[13.5px] sm:font-semibold sm:leading-[25px] sm:tracking-[0.24em] md:text-[16px]">
           Because Look Matters.
         </p>
 
         {/* Main headline */}
-        <h1 className="mx-auto max-w-3xl font-['Plus_Jakarta_Sans'] text-[30px] font-extrabold leading-[1.14] tracking-tight sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[48px]">
+        <h1 className="mx-auto max-w-3xl font-['Plus_Jakarta_Sans'] text-[28px] xs:text-[30px] font-extrabold leading-[1.18] tracking-tight sm:text-4xl sm:leading-[1.14] md:text-[42px] lg:text-[46px] xl:text-[48px]">
           <span className="text-[#001e56]">
             Rediscover a Denser
             <br />
@@ -98,21 +164,69 @@ export default function HomePage() {
         </h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-3 w-full max-w-[800px] font-['Plus_Jakarta_Sans'] text-[10px] font-medium leading-relaxed tracking-[0.02em] text-[#001E56] sm:mt-3.5 sm:text-[15.5px] md:text-[16px] md:leading-[1.6] lg:text-[18px] lg:leading-[1.7]">
+        <p className="mx-auto mt-2.5 w-full max-w-[340px] font-['Plus_Jakarta_Sans'] text-[12.5px] font-medium leading-[1.55] tracking-[0.01em] text-[#001E56]/90 sm:mt-3.5 sm:max-w-[800px] sm:text-[15.5px] sm:leading-relaxed sm:tracking-[0.02em] sm:text-[#001E56] md:text-[16px] md:leading-[1.6] lg:text-[18px] lg:leading-[1.7]">
           Advanced hair restoration designed around you, with natural-looking
           results
-          <br />
+          <br className="hidden sm:inline" />{" "}
           that feel completely your own.
         </p>
-        {/* Patient transformations */}
-        <div className="mt-7 flex w-full items-center justify-center gap-1.5 px-1 sm:mt-9 sm:gap-3.5 sm:px-4 lg:gap-5">
+
+        {/* Mobile Patient transformations (sm:hidden) — Matches mobile reference image */}
+        <div
+          className="relative mt-6 w-screen left-1/2 -translate-x-1/2 overflow-hidden py-1 sm:hidden select-none touch-pan-y"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          aria-label="Patient before and after transformations"
+        >
+          <div
+            className={`flex items-center will-change-transform ${
+              touchStartX !== null ? "transition-none" : "transition-transform duration-300 ease-out"
+            }`}
+            style={{
+              transform: `translateX(${translateX}px)`,
+              gap: `${gap}px`,
+            }}
+          >
+            {mobileHeroCards.map((card, idx) => {
+              const isActive = idx === activeIndex;
+              return (
+                <div
+                  key={card.id}
+                  onClick={() => setActiveIndex(idx)}
+                  style={{ width: `${cardWidth}px` }}
+                  className={`relative shrink-0 overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
+                    isActive
+                      ? "rounded-[22px] border-[2.5px] border-white shadow-[0_12px_30px_rgba(0,30,86,0.20)] scale-100 z-10 opacity-100"
+                      : "rounded-[18px] border-2 border-white/90 shadow-[0_6px_20px_rgba(0,30,86,0.12)] scale-[0.95] z-0 opacity-85"
+                  }`}
+                >
+                  <div className="relative aspect-[1192/1320] w-full">
+                    <Image
+                      src={card.imageSrc}
+                      alt={`${card.name} Hair Restoration Result`}
+                      fill
+                      sizes="(max-width: 640px) 70vw, 280px"
+                      className="object-cover object-center select-none pointer-events-none"
+                      priority={isActive}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Desktop Patient transformations (sm:flex) — 100% Preserved */}
+        <div className="mt-7 hidden w-full items-center justify-center gap-1.5 px-1 sm:mt-9 sm:flex sm:gap-3.5 sm:px-4 lg:gap-5">
           {patientCards.map((card) => (
             <div
               key={card.id}
-              className={`relative shrink-0 overflow-hidden border border-white/80 bg-white/10 shadow-[0_6px_20px_rgba(0,30,86,0.10)] transition-transform duration-300 ease-out ${card.widthClass} ${card.isCenter
-                ? "rounded-[14px] sm:rounded-[22px] lg:rounded-[26px] shadow-[0_10px_28px_rgba(0,30,86,0.16)]"
-                : "rounded-[10px] sm:rounded-[16px] lg:rounded-[20px]"
-                } ${card.scaleClass} ${card.zIndexClass}`}
+              className={`relative shrink-0 overflow-hidden border border-white/80 bg-white/10 shadow-[0_6px_20px_rgba(0,30,86,0.10)] transition-transform duration-300 ease-out ${card.widthClass} ${
+                card.isCenter
+                  ? "rounded-[14px] sm:rounded-[22px] lg:rounded-[26px] shadow-[0_10px_28px_rgba(0,30,86,0.16)]"
+                  : "rounded-[10px] sm:rounded-[16px] lg:rounded-[20px]"
+              } ${card.scaleClass} ${card.zIndexClass}`}
             >
               <div className="relative aspect-[1192/1320] w-full">
                 <Image
@@ -129,12 +243,12 @@ export default function HomePage() {
         </div>
 
         {/* Statistics bar */}
-        <div className="mt-7 grid w-full max-w-[1060px] grid-cols-2 gap-x-3 gap-y-4 rounded-[22px] border border-white/25 bg-[#0c246c]/85 px-5 py-4 shadow-[0_10px_35px_rgba(2,30,80,0.22)] backdrop-blur-md sm:mt-10 sm:flex sm:items-center sm:justify-between sm:gap-4 sm:px-10 sm:py-[18px]">
+        <div className="mt-6 grid w-full max-w-[1060px] grid-cols-2 gap-x-2.5 gap-y-4 rounded-[24px] border border-white/25 bg-gradient-to-b from-[#185cb8]/90 to-[#0e4492]/95 px-4 py-4 shadow-[0_10px_35px_rgba(2,30,80,0.22)] backdrop-blur-md xs:gap-x-4 xs:gap-y-5 xs:px-5 xs:py-5 sm:mt-10 sm:flex sm:items-center sm:justify-between sm:gap-4 sm:rounded-[22px] sm:border-white/25 sm:bg-[#0c246c]/85 sm:bg-none sm:px-10 sm:py-[18px]">
           {/* Stat 1 */}
-          <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0d2c8a] text-white shadow-sm sm:h-11 sm:w-11">
+          <div className="flex min-w-0 items-center gap-2 xs:gap-2.5 sm:gap-3.5">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0d2c8a] text-white shadow-sm xs:h-10 xs:w-10 sm:h-11 sm:w-11">
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4 xs:h-5 xs:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -149,10 +263,10 @@ export default function HomePage() {
               </svg>
             </div>
             <div className="min-w-0 text-left">
-              <div className="text-[16px] font-bold leading-tight tracking-tight text-white sm:text-[20px]">
+              <div className="text-[15px] font-bold leading-tight tracking-tight text-white xs:text-[16px] sm:text-[20px]">
                 2000+
               </div>
-              <div className="mt-0.5 text-[11px] font-medium leading-tight text-sky-100 sm:text-[13px]">
+              <div className="mt-0.5 text-[10.5px] font-medium leading-tight text-sky-100 xs:text-[11px] sm:text-[13px]">
                 Patients Treated
               </div>
             </div>
@@ -161,10 +275,10 @@ export default function HomePage() {
           <div className="hidden h-10 w-px bg-white/20 sm:block" />
 
           {/* Stat 2 */}
-          <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A8FF] text-white shadow-sm sm:h-11 sm:w-11">
+          <div className="flex min-w-0 items-center gap-2 xs:gap-2.5 sm:gap-3.5">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A8FF] text-white shadow-sm xs:h-10 xs:w-10 sm:h-11 sm:w-11">
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4 xs:h-5 xs:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -179,10 +293,10 @@ export default function HomePage() {
               </svg>
             </div>
             <div className="min-w-0 text-left">
-              <div className="text-[16px] font-bold leading-tight tracking-tight text-white sm:text-[20px]">
+              <div className="text-[15px] font-bold leading-tight tracking-tight text-white xs:text-[16px] sm:text-[20px]">
                 10+ Years
               </div>
-              <div className="mt-0.5 text-[11px] font-medium leading-tight text-sky-100 sm:text-[13px]">
+              <div className="mt-0.5 text-[10.5px] font-medium leading-tight text-sky-100 xs:text-[11px] sm:text-[13px]">
                 of Experience
               </div>
             </div>
@@ -191,10 +305,10 @@ export default function HomePage() {
           <div className="hidden h-10 w-px bg-white/20 sm:block" />
 
           {/* Stat 3 */}
-          <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0d2c8a] text-white shadow-sm sm:h-11 sm:w-11">
+          <div className="flex min-w-0 items-center gap-2 xs:gap-2.5 sm:gap-3.5">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#0d2c8a] text-white shadow-sm xs:h-10 xs:w-10 sm:h-11 sm:w-11">
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4 xs:h-5 xs:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -209,10 +323,10 @@ export default function HomePage() {
               </svg>
             </div>
             <div className="min-w-0 text-left">
-              <div className="text-[16px] font-bold leading-tight tracking-tight text-white sm:text-[20px]">
+              <div className="text-[15px] font-bold leading-tight tracking-tight text-white xs:text-[16px] sm:text-[20px]">
                 4.9/5
               </div>
-              <div className="mt-0.5 text-[11px] font-medium leading-tight text-sky-100 sm:text-[13px]">
+              <div className="mt-0.5 text-[10.5px] font-medium leading-tight text-sky-100 xs:text-[11px] sm:text-[13px]">
                 Patient Satisfaction
               </div>
             </div>
@@ -221,10 +335,10 @@ export default function HomePage() {
           <div className="hidden h-10 w-px bg-white/20 sm:block" />
 
           {/* Stat 4 */}
-          <div className="flex min-w-0 items-center gap-2.5 sm:gap-3.5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A8FF] text-white shadow-sm sm:h-11 sm:w-11">
+          <div className="flex min-w-0 items-center gap-2 xs:gap-2.5 sm:gap-3.5">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 bg-[#00A8FF] text-white shadow-sm xs:h-10 xs:w-10 sm:h-11 sm:w-11">
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4 xs:h-5 xs:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -239,10 +353,10 @@ export default function HomePage() {
               </svg>
             </div>
             <div className="min-w-0 text-left">
-              <div className="text-[16px] font-bold leading-tight tracking-tight text-white sm:text-[20px]">
+              <div className="text-[15px] font-bold leading-tight tracking-tight text-white xs:text-[16px] sm:text-[20px]">
                 Personalized
               </div>
-              <div className="mt-0.5 text-[11px] font-medium leading-tight text-sky-100 sm:text-[13px]">
+              <div className="mt-0.5 text-[10.5px] font-medium leading-tight text-sky-100 xs:text-[11px] sm:text-[13px]">
                 Treatment Plans
               </div>
             </div>
