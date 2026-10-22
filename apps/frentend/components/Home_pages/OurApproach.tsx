@@ -14,7 +14,7 @@ const features: ApproachFeature[] = [
     title: "Personalised Treatment Plans",
     icon: (
       <svg
-        className="h-5 w-5 text-white"
+        className="h-5 w-5 max-sm:h-4 max-sm:w-4 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -33,7 +33,7 @@ const features: ApproachFeature[] = [
     title: "Experienced Specialists",
     icon: (
       <svg
-        className="h-5 w-5 text-white"
+        className="h-5 w-5 max-sm:h-4 max-sm:w-4 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -56,7 +56,7 @@ const features: ApproachFeature[] = [
     title: "Advanced Techniques",
     icon: (
       <svg
-        className="h-5 w-5 text-white"
+        className="h-5 w-5 max-sm:h-4 max-sm:w-4 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -92,7 +92,7 @@ const features: ApproachFeature[] = [
     title: "Long-Term Support",
     icon: (
       <svg
-        className="h-5 w-5 text-white"
+        className="h-5 w-5 max-sm:h-4 max-sm:w-4 text-white"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -155,53 +155,55 @@ export default function OurApproach(): React.JSX.Element {
   return (
     <section
       id="our-approach"
-      className="relative w-full overflow-hidden bg-white pb-0 pt-12 sm:pt-16 lg:pt-20"
+      className="relative w-full overflow-hidden bg-white pb-0 pt-12 max-sm:pt-8 sm:pt-16 lg:pt-20"
     >
       {/* Top Hero Section */}
-      <div className="mx-auto max-w-7xl px-6 pb-2 sm:px-8 lg:px-12 lg:pb-4">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-6">
+      <div className="mx-auto max-w-7xl px-6 max-sm:px-4 pb-2 max-sm:pb-4 sm:px-8 lg:px-12 lg:pb-4">
+        <div className="grid grid-cols-1 max-sm:flex max-sm:flex-col items-center gap-10 max-sm:gap-0 lg:grid-cols-12 lg:gap-6">
           {/* Left Column: Text and Features */}
-          <div className="z-10 flex flex-col items-start lg:col-span-5">
-            {/* Eyebrow */}
-            <div className="mb-5 inline-flex items-center rounded-full border border-[#0cb0f2]/40 bg-white px-5 py-1.5">
-              <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#0cb0f2]">
-                OUR APPROACH
-              </span>
+          <div className="z-10 flex flex-col items-start lg:col-span-5 max-sm:contents">
+            {/* Header Content */}
+            <div className="flex flex-col items-start max-sm:order-1 max-sm:w-full">
+              {/* Eyebrow */}
+              <div className="mb-5 max-sm:mb-3.5 inline-flex items-center rounded-full border border-[#0cb0f2]/40 bg-white px-5 max-sm:px-4 py-1.5 max-sm:py-1">
+                <span className="text-[12px] max-sm:text-[10.5px] font-bold uppercase tracking-[0.2em] text-[#0cb0f2]">
+                  OUR APPROACH
+                </span>
+              </div>
+
+              {/* Main Headline */}
+              <h2 className="mb-5 max-sm:mb-2.5 text-3xl max-sm:text-[23px] max-sm:leading-[1.18] font-extrabold leading-[1.14] tracking-tight sm:text-4xl lg:text-[46px]">
+                <span className="text-[#001e56]">
+                  Precision Behind Every
+                </span>
+
+                <span className="block text-[#0cb0f2]">
+                  Transformation
+                </span>
+              </h2>
+
+              {/* Subtitle */}
+              <p className="mb-8 max-sm:mb-6 max-w-[420px] text-[15px] max-sm:text-[11.5px] max-sm:leading-[1.45] font-medium leading-relaxed text-[#4A5568] sm:text-[16px]">
+                It&apos;s more than a procedure —
+                <br className="hidden sm:inline" />
+                it&apos;s a personalised journey, guided by expertise,
+                <br className="hidden sm:inline" />
+                advanced techniques, and ongoing care.
+              </p>
             </div>
 
-
-            {/* Main Headline */}
-            <h2 className="mb-5 text-3xl font-extrabold leading-[1.14] tracking-tight sm:text-4xl lg:text-[46px]">
-              <span className="text-[#001e56]">
-                Precision Behind Every
-              </span>
-
-              <span className="block text-[#0cb0f2]">
-                Transformation
-              </span>
-            </h2>
-
-            {/* Subtitle */}
-            <p className="mb-8 max-w-[420px] text-[15px] font-medium leading-relaxed text-[#4A5568] sm:text-[16px]">
-              It&apos;s more than a procedure —
-              <br className="hidden sm:inline" />
-              it&apos;s a personalised journey, guided by expertise,
-              <br className="hidden sm:inline" />
-              advanced techniques, and ongoing care.
-            </p>
-
             {/* Feature List */}
-            <div className="flex w-full flex-col gap-5">
+            <div className="flex w-full flex-col gap-5 max-sm:order-3 max-sm:grid max-sm:grid-cols-2 max-sm:gap-x-2 max-sm:gap-y-4 max-sm:mb-8 max-sm:mt-2">
               {features.map((item) => (
                 <div
                   key={item.title}
-                  className="group flex items-center gap-4"
+                  className="group flex items-center gap-4 max-sm:gap-2.5"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#0cb0f2] text-white shadow-md shadow-sky-200/80 transition-transform duration-200 group-hover:scale-105">
+                  <div className="flex h-12 w-12 max-sm:h-9 max-sm:w-9 shrink-0 items-center justify-center rounded-full bg-[#0cb0f2] text-white shadow-md shadow-sky-200/80 transition-transform duration-200 group-hover:scale-105">
                     {item.icon}
                   </div>
 
-                  <span className="text-[16px] font-bold tracking-tight text-[#001e56] transition-colors group-hover:text-[#0cb0f2]">
+                  <span className="text-[16px] max-sm:text-[12px] max-sm:leading-tight font-bold tracking-tight text-[#001e56] transition-colors group-hover:text-[#0cb0f2]">
                     {item.title}
                   </span>
                 </div>
@@ -210,7 +212,7 @@ export default function OurApproach(): React.JSX.Element {
           </div>
 
           {/* Right Column: Before-and-After Image */}
-          <div className="relative flex w-full items-center justify-center lg:col-span-7 lg:justify-end">
+          <div className="relative flex w-full items-center justify-center lg:col-span-7 lg:justify-end max-sm:order-2 max-sm:mb-6">
             {/* Soft background glow */}
             <div
               aria-hidden="true"
@@ -234,31 +236,36 @@ export default function OurApproach(): React.JSX.Element {
       </div>
 
       {/* Bottom Four-Step Process */}
-      <div className="w-full bg-gradient-to-b from-white via-[#f4fafe] to-[#edf6fe] pb-14 pt-4 lg:pb-16 lg:pt-6">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-sky-200/60 lg:gap-0">
-            {steps.map((step) => (
+      <div className="w-full bg-gradient-to-b from-white via-[#f4fafe] to-[#edf6fe] pb-14 max-sm:pb-10 pt-4 max-sm:pt-8 lg:pb-16 lg:pt-6">
+        <div className="mx-auto max-w-7xl px-6 max-sm:px-3 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 max-sm:grid-cols-2 items-stretch gap-8 max-sm:gap-y-7 max-sm:gap-x-0 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-sky-200/60 lg:gap-0">
+            {steps.map((step, index) => (
               <div
                 key={step.number}
-                className="group flex cursor-pointer flex-col items-center px-4 text-center lg:px-6"
+                className="group relative flex cursor-pointer flex-col items-center px-4 max-sm:px-2.5 text-center lg:px-6"
               >
+                {/* Mobile Vertical Separator between column 1 and column 2 */}
+                {index % 2 === 0 && (
+                  <div className="pointer-events-none absolute right-0 top-3 bottom-3 w-[1px] bg-sky-200/60 md:hidden" />
+                )}
+
                 {/* Number Badge */}
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-[#dcf1fd] text-[15px] font-extrabold text-[#0196e3] shadow-sm transition-colors duration-200 group-hover:bg-[#0cb0f2] group-hover:text-white">
+                <div className="mb-4 max-sm:mb-2.5 flex h-11 w-11 max-sm:h-9 max-sm:w-9 items-center justify-center rounded-full bg-[#dcf1fd] text-[15px] max-sm:text-[13px] font-extrabold text-[#0196e3] shadow-sm transition-colors duration-200 group-hover:bg-[#0cb0f2] group-hover:text-white">
                   {step.number}
                 </div>
 
                 {/* Step Title */}
-                <h3 className="mb-2 text-[17.5px] font-bold tracking-tight text-[#001e56] transition-colors duration-200 group-hover:text-[#0cb0f2]">
+                <h3 className="mb-2 max-sm:mb-1 text-[17.5px] max-sm:text-[13px] max-sm:leading-tight font-bold tracking-tight text-[#001e56] transition-colors duration-200 group-hover:text-[#0cb0f2]">
                   {step.title}
                 </h3>
 
                 {/* Step Description */}
-                <p className="mb-6 min-h-0 sm:min-h-[52px] max-w-[250px] text-[14px] font-normal leading-relaxed text-[#64748B]">
+                <p className="mb-6 max-sm:mb-3 min-h-0 sm:min-h-[52px] max-w-[250px] max-sm:max-w-none text-[14px] max-sm:text-[10px] max-sm:leading-[1.35] font-normal leading-relaxed text-[#64748B]">
                   {step.description}
                 </p>
 
                 {/* Process Image */}
-                <div className="relative h-[175px] w-full overflow-hidden rounded-2xl border-2 border-white shadow-sm shadow-sky-100 transition-shadow duration-200 group-hover:shadow-md">
+                <div className="relative h-[175px] max-sm:h-[110px] w-full overflow-hidden rounded-2xl max-sm:rounded-xl border-2 border-white shadow-sm shadow-sky-100 transition-shadow duration-200 group-hover:shadow-md">
                   <Image
                     src={step.image}
                     alt={step.alt}

@@ -370,19 +370,19 @@ function ServiceBeforeAfterCard({
       aria-valuemin={0}
       aria-valuemax={100}
       onKeyDown={handleKeyDown}
-      className="relative w-full max-w-[320px] aspect-[1.15/1] rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(12,176,242,0.18)] border-4 border-white select-none cursor-ew-resize bg-slate-900 group/showcase touch-none @container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0cb0f2]"
+      className="relative w-full aspect-[1.14/1] rounded-2xl overflow-hidden select-none cursor-ew-resize bg-slate-900 group/showcase touch-none @container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0cb0f2]"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onMouseMove={handleMouseMove}
     >
       {/* BEFORE Badge */}
-      <span className="absolute top-4 left-4 z-30 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10.5px] font-extrabold uppercase tracking-wider text-white border border-white/10 shadow-sm pointer-events-none">
+      <span className="absolute top-3.5 left-3.5 z-30 px-2.5 py-0.5 rounded-full bg-slate-800/60 backdrop-blur-xs text-[10px] font-bold uppercase tracking-wider text-white border border-white/10 shadow-sm pointer-events-none">
         BEFORE
       </span>
 
       {/* AFTER Badge */}
-      <span className="absolute top-4 right-4 z-30 px-3 py-1 rounded-full bg-[#0cb0f2] text-[10.5px] font-extrabold uppercase tracking-wider text-white shadow-md shadow-sky-500/30 pointer-events-none">
+      <span className="absolute top-3.5 right-3.5 z-30 px-2.5 py-0.5 rounded-full bg-[#00a8ff] text-[10px] font-bold uppercase tracking-wider text-white shadow-md shadow-sky-500/25 pointer-events-none">
         AFTER
       </span>
 
@@ -393,14 +393,14 @@ function ServiceBeforeAfterCard({
           alt={`After ${title}`}
           fill
           loading="eager"
-          sizes="(max-width: 768px) 100vw, 320px"
+          sizes="(max-width: 768px) 100vw, 340px"
           className="object-cover object-center"
         />
       </div>
 
       {/* BEFORE Image (Clipped) */}
       <div
-        className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-white shadow-xl"
+        className="absolute inset-y-0 left-0 overflow-hidden border-r border-white/80 shadow-md"
         style={{ width: `${sliderPos}%` }}
       >
         <div className="absolute inset-y-0 left-0 w-[100cqw] min-w-full h-full">
@@ -409,24 +409,26 @@ function ServiceBeforeAfterCard({
             alt={`Before ${title}`}
             fill
             loading="eager"
-            sizes="(max-width: 768px) 100vw, 320px"
+            sizes="(max-width: 768px) 100vw, 340px"
             className="object-cover object-center"
           />
         </div>
       </div>
 
-      {/* Split Beam Divider */}
+      {/* Split Divider */}
       <div
-        className="absolute top-0 bottom-0 w-[3px] bg-cyan-400 shadow-[0_0_12px_#0cb0f2] z-20 pointer-events-none"
-        style={{ left: `calc(${sliderPos}% - 1.5px)` }}
+        className="absolute top-0 bottom-0 w-[2px] bg-white shadow-[0_0_8px_rgba(0,0,0,0.3)] z-20 pointer-events-none"
+        style={{ left: `calc(${sliderPos}% - 1px)` }}
       />
 
       {/* Handle Knob */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-[#0cb0f2] border-2 border-[#0cb0f2] shadow-lg flex items-center justify-center z-30 text-[11px] font-bold group-hover/showcase:scale-110 transition-transform pointer-events-none"
+        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white text-slate-700 border border-slate-200/90 shadow-md flex items-center justify-center z-30 text-[10px] font-bold group-hover/showcase:scale-105 transition-transform pointer-events-none"
         style={{ left: `${sliderPos}%` }}
       >
-        ‹ ›
+        <span className="flex select-none items-center gap-[1px] leading-none text-slate-700">
+          ‹›
+        </span>
       </div>
     </div>
   );
@@ -442,52 +444,46 @@ export default function OurServices() {
   return (
     <section
       id="our-services"
-      className="relative w-full bg-gradient-to-b from-white via-[#f8fafc] to-white py-12 sm:py-16 lg:py-20 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-white via-[#f8fafc] to-white py-12 max-sm:py-8 sm:py-16 lg:py-20 overflow-hidden"
     >
-      {/* Background Ambient Light Glow */}
+      {/* Ambient background glow */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#dcf1fd]/40 blur-3xl rounded-full opacity-70" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 max-sm:px-4 sm:px-8 lg:px-12">
         {/* ── Section Header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center"
-        >
-          <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-[#0cb0f2] mb-3">
+        <div className="mx-auto mb-10 max-sm:mb-6 sm:mb-12 flex max-w-3xl flex-col items-center text-center">
+          <p className="text-[11px] max-sm:text-[10px] sm:text-[12px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-2 sm:mb-2.5 max-sm:mb-1">
             OUR SERVICES
           </p>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-extrabold leading-[1.12] tracking-tight text-[#001e56]">
+          <h2 className="text-3xl max-sm:text-[23px] sm:text-4xl lg:text-[44px] font-extrabold leading-[1.14] tracking-tight text-[#001e56]">
             Advanced Hair Restoration
           </h2>
-        </motion.div>
+        </div>
 
         {/* ── Interactive Service Selection Tabs Bar ── */}
-        <div className="flex items-center gap-3 lg:gap-4 overflow-x-auto w-full pb-4 mb-14 scrollbar-none justify-start pr-6">
+        <div className="flex items-center gap-3 lg:gap-4 overflow-x-auto w-full pb-3 max-sm:pb-2 mb-10 max-sm:mb-6 sm:mb-12 scrollbar-none justify-start pr-6 max-sm:pr-4">
           {servicesList.map((service) => {
             const isActive = activeTab === service.id;
             return (
               <button
                 key={service.id}
                 onClick={() => setActiveTab(service.id)}
-                className={`flex items-center gap-3 px-5 py-3.5 rounded-2xl transition-all duration-300 cursor-pointer shrink-0 text-left ${isActive
-                  ? "bg-white border-2 border-[#0cb0f2] shadow-[0_8px_24px_rgba(12,176,242,0.18)] scale-[1.02]"
-                  : "bg-white/80 border border-slate-200/90 hover:bg-[#edf6fe] hover:border-[#0cb0f2]/60"
+                className={`flex items-center gap-3 max-sm:gap-2 px-4 max-sm:px-3 sm:px-5 py-3 max-sm:py-2.5 rounded-2xl max-sm:rounded-xl transition-all duration-300 cursor-pointer shrink-0 text-left ${isActive
+                  ? "bg-[#edf7fe] border-2 border-[#0cb0f2]/60 shadow-[0_4px_16px_rgba(12,176,242,0.15)] scale-[1.01]"
+                  : "bg-white border border-slate-200/80 hover:bg-[#f6fbfe] hover:border-slate-300"
                   }`}
               >
-                {/* Bullseye / Target Icon */}
+                {/* Target / Bullseye Icon */}
                 <div
-                  className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${isActive
+                  className={`w-8 h-8 max-sm:w-7 max-sm:h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${isActive
                     ? "bg-[#0cb0f2] text-white"
                     : "bg-[#edf6fe] text-[#0196e3]"
                     }`}
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className="w-4 h-4 max-sm:w-3.5 max-sm:h-3.5 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <circle cx="12" cy="12" r="9" />
                     <circle cx="12" cy="12" r="5" />
                     <circle cx="12" cy="12" r="1" />
@@ -495,10 +491,10 @@ export default function OurServices() {
                 </div>
 
                 <div>
-                  <h3 className="text-[14.5px] font-bold text-[#001e56] leading-tight">
+                  <h3 className="text-[13.5px] max-sm:text-[12px] sm:text-[14px] font-bold text-[#001e56] leading-tight">
                     {service.tabTitle}
                   </h3>
-                  <p className="text-[12px] font-medium text-[#64748B] mt-0.5">
+                  <p className="text-[11px] max-sm:text-[10px] sm:text-[11.5px] font-medium text-[#64748B] mt-0.5 max-sm:mt-0">
                     {service.tabSubtitle}
                   </p>
                 </div>
@@ -511,55 +507,58 @@ export default function OurServices() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentService.id}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="mb-14"
+            exit={{ opacity: 0, y: -14 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="mb-10 max-sm:mb-6 sm:mb-12"
           >
-            {/* Top Row: Description on Left, Smaller Before/After Image Card on Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-8">
+            {/* Top Row: Description on Left, Framed Before/After Image on Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-8 max-sm:mb-5">
               <div className="lg:col-span-8 flex flex-col items-start">
-                <p className="text-[13px] font-bold uppercase tracking-[0.25em] text-[#0cb0f2] mb-4">
+                <p className="text-[12px] max-sm:text-[11px] font-bold uppercase tracking-[0.22em] text-[#0cb0f2] mb-3 max-sm:mb-1.5">
                   {currentService.eyebrow}
                 </p>
 
-                <h3 className="text-4xl sm:text-5xl lg:text-[52px] font-extrabold leading-tight text-[#001e56] mb-5">
+                <h3 className="text-4xl sm:text-5xl lg:text-[52px] max-sm:text-[24px] font-extrabold leading-tight text-[#001e56] mb-4 max-sm:mb-2">
                   {currentService.title}
                 </h3>
 
-                <p className="text-[16px] sm:text-[17px] font-normal leading-relaxed text-[#64748B]">
+                <p className="text-[15px] sm:text-[16px] max-sm:text-[13px] font-normal leading-relaxed text-[#64748B] max-w-xl max-sm:mb-4">
                   {currentService.description}
                 </p>
               </div>
 
               <div className="lg:col-span-4 flex justify-center lg:justify-end">
-                <ServiceBeforeAfterCard
-                  beforeImg={currentService.beforeImg}
-                  afterImg={currentService.afterImg}
-                  title={currentService.title}
-                />
+                {/* Framed Before/After Showcase */}
+                <div className="w-full max-w-[340px] max-sm:max-w-[280px] p-3 sm:p-3.5 max-sm:p-2.5 rounded-[28px] sm:rounded-[32px] max-sm:rounded-[22px] bg-[#e1f1fc] shadow-sm">
+                  <ServiceBeforeAfterCard
+                    beforeImg={currentService.beforeImg}
+                    afterImg={currentService.afterImg}
+                    title={currentService.title}
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Middle Row: 3 Key Benefits FULL-WIDTH BELOW Image & Description */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-0 lg:divide-x divide-slate-200/90 w-full py-6 my-6 border-t border-b border-slate-100/90 items-center">
+            {/* Middle Row: 3 Key Benefits */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 max-sm:grid-cols-3 gap-5 sm:gap-4 max-sm:gap-1.5 py-5 max-sm:py-3.5 my-6 max-sm:my-4 border-t border-b border-slate-100 items-center max-sm:items-start">
               {currentService.benefits.map((benefit, idx) => (
-                <div key={idx} className="flex items-center gap-3.5 px-2 lg:px-6">
-                  <div className="w-11 h-11 rounded-full bg-[#edf6fe] text-cyan-400 flex items-center justify-center shrink-0 shadow-sm">
+                <div key={idx} className="flex items-center gap-3.5 px-2 max-sm:gap-1.5 max-sm:px-0.5 max-sm:items-start">
+                  <div className="w-10 h-10 max-sm:w-6 max-sm:h-6 max-sm:mt-0.5 rounded-full bg-[#edf6fe] text-[#0cb0f2] flex items-center justify-center shrink-0 shadow-sm">
                     {idx === 0 ? (
-                      <Leaf className="w-5 h-5" strokeWidth={2} />
+                      <Leaf className="w-4.5 h-4.5 max-sm:w-3 max-sm:h-3" strokeWidth={2} />
                     ) : idx === 1 ? (
-                      <Clock className="w-5 h-5" strokeWidth={2} />
+                      <Clock className="w-4.5 h-4.5 max-sm:w-3 max-sm:h-3" strokeWidth={2} />
                     ) : (
-                      <Star className="w-5 h-5" strokeWidth={2} />
+                      <Star className="w-4.5 h-4.5 max-sm:w-3 max-sm:h-3" strokeWidth={2} />
                     )}
                   </div>
                   <div>
-                    <h4 className="text-[15px] font-bold text-[#001e56] leading-snug">
+                    <h4 className="text-[14px] max-sm:text-[9.5px] max-sm:leading-[1.15] font-bold text-[#001e56] leading-snug">
                       {benefit.title}
                     </h4>
-                    <p className="text-[12.5px] font-medium text-[#64748B] mt-0.5">
+                    <p className="text-[11.5px] max-sm:text-[7.5px] max-sm:leading-[1.2] font-medium text-[#64748B] mt-0.5 max-sm:mt-0.5 max-sm:line-clamp-2">
                       {benefit.subtitle}
                     </p>
                   </div>
@@ -569,94 +568,103 @@ export default function OurServices() {
           </motion.div>
         </AnimatePresence>
 
-        {/* ── Bottom 3-Card Information Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+        {/* ── Bottom Information Cards (3-column on desktop, stacked on mobile) ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7 items-stretch max-sm:gap-4">
           {/* Card 1: How It Works Timeline */}
-          <div className="bg-[#f4fafe]/90 rounded-3xl p-6 sm:p-7 border border-[#e9f4fd] shadow-sm flex flex-col">
-            <h3 className="text-[19px] font-bold text-[#001e56] mb-6">
-              How It Works
-            </h3>
+          <div className="bg-[#f4fafe] rounded-3xl max-sm:rounded-2xl p-6 sm:p-8 max-sm:p-5 border border-[#e8f3fc] shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 className="text-[20px] max-sm:text-[17px] font-bold text-[#001e56] mb-6 max-sm:mb-4">
+                How It Works
+              </h3>
 
-            <div className="flex flex-col gap-6 relative">
-              {/* Vertical connecting line */}
-              <div className="absolute top-4 bottom-4 left-4 w-[2px] bg-sky-200 border-dashed border-l border-sky-300 z-0" />
+              <div className="flex flex-col gap-6 max-sm:gap-4 relative">
+                {/* Vertical dotted/dashed connecting line */}
+                <div className="absolute top-4 bottom-4 left-4 max-sm:left-3.5 w-[2px] border-l-2 border-dashed border-sky-300 z-0" />
 
-              {currentService.timeline.map((stepItem) => (
-                <div key={stepItem.step} className="flex items-start gap-4 relative z-10">
-                  <div className="w-8 h-8 rounded-full bg-[#dcf1fd] text-[#0196e3] font-bold text-[13px] flex items-center justify-center shrink-0 shadow-sm border border-white">
-                    {stepItem.step}
+                {currentService.timeline.map((stepItem) => (
+                  <div key={stepItem.step} className="flex items-start gap-4 max-sm:gap-3 relative z-10">
+                    <div className="w-8 h-8 max-sm:w-7 max-sm:h-7 rounded-full bg-[#dcf1fd] text-[#0196e3] font-bold text-[13px] max-sm:text-[11px] flex items-center justify-center shrink-0 shadow-sm border border-white">
+                      {stepItem.step}
+                    </div>
+                    <div>
+                      <h4 className="text-[15px] max-sm:text-[13.5px] font-bold text-[#001e56] leading-snug">
+                        {stepItem.title}
+                      </h4>
+                      <p className="text-[12.5px] max-sm:text-[11.5px] font-normal text-[#64748B] leading-relaxed mt-0.5">
+                        {stepItem.description}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-[15px] font-bold text-[#001e56] leading-snug">
-                      {stepItem.title}
-                    </h4>
-                    <p className="text-[12.5px] font-normal text-[#64748B] leading-relaxed mt-0.5">
-                      {stepItem.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Card 2: Advantages / Checklist */}
-          <div className="bg-[#f4fafe]/90 rounded-3xl p-6 sm:p-7 border border-[#e9f4fd] shadow-sm flex flex-col">
-            <h3 className="text-[19px] font-bold text-[#001e56] mb-6">
-              Key Advantages
-            </h3>
+          {/* Card 2: What It Offers */}
+          <div className="bg-[#f4fafe] rounded-3xl max-sm:rounded-2xl p-6 sm:p-8 max-sm:p-5 border border-[#e8f3fc] shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 className="text-[20px] max-sm:text-[17px] font-bold text-[#001e56] mb-6 max-sm:mb-4">
+                What It Offers
+              </h3>
 
-            <div className="flex flex-col gap-3.5">
-              {currentService.checklist.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#0cb0f2]/15 text-[#0cb0f2] flex items-center justify-center shrink-0">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
+              <div className="flex flex-col gap-3.5 max-sm:gap-2.5">
+                {currentService.checklist.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3 max-sm:gap-2.5">
+                    <div className="w-5 h-5 max-sm:w-4.5 max-sm:h-4.5 rounded-full bg-[#dcf1fd] text-[#0196e3] flex items-center justify-center shrink-0">
+                      <svg className="w-3.5 h-3.5 max-sm:w-3 max-sm:h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-[13.5px] max-sm:text-[12px] font-semibold text-[#001e56] leading-snug">
+                      {item}
+                    </span>
                   </div>
-                  <span className="text-[13.5px] font-semibold text-[#001e56] leading-snug">
-                    {item}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Card 3: Pricing & Consultation CTA */}
-          <div className="bg-[#f4fafe]/90 rounded-3xl p-6 sm:p-7 border border-[#e9f4fd] shadow-sm flex flex-col">
-            <h3 className="text-[19px] font-bold text-[#001e56] mb-6">
-              Starting From
-            </h3>
+          {/* Card 3: Starting From / Pricing & Consultation CTA */}
+          <div className="bg-[#f4fafe] rounded-3xl max-sm:rounded-2xl p-6 sm:p-8 max-sm:p-5 border border-[#e8f3fc] shadow-sm flex flex-col justify-between">
+            <div>
+              <span className="text-[13px] max-sm:text-[11.5px] font-semibold text-[#64748B]">
+                Starting From
+              </span>
 
-            <div className="flex items-baseline gap-1.5 mb-6">
-              <span className="text-3xl sm:text-4xl font-extrabold text-[#001e56]">
-                {currentService.price}
-              </span>
-              <span className="text-[13.5px] font-normal text-[#64748B]">
-                session
-              </span>
+              <div className="flex items-baseline gap-2 mt-1 mb-6 max-sm:mb-4">
+                <span className="text-3xl sm:text-4xl max-sm:text-[26px] font-extrabold text-[#001e56]">
+                  {currentService.price}
+                </span>
+                <span className="text-[13.5px] max-sm:text-[11.5px] font-normal text-[#64748B]">
+                  session
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-3 max-sm:gap-2 mb-6 max-sm:mb-5">
+                <div className="flex items-center gap-2.5 text-[13.5px] max-sm:text-[11.5px] font-medium text-[#001e56]">
+                  <span className="w-2 h-2 rounded-full bg-[#001e56] shrink-0" />
+                  Procedure Time {currentService.procedureTime}
+                </div>
+                <div className="flex items-center gap-2.5 text-[13.5px] max-sm:text-[11.5px] font-medium text-[#001e56]">
+                  <span className="w-2 h-2 rounded-full bg-[#001e56] shrink-0" />
+                  Recovery Time {currentService.recoveryTime}
+                </div>
+                <div className="flex items-center gap-2.5 text-[13.5px] max-sm:text-[11.5px] font-medium text-[#001e56]">
+                  <span className="w-2 h-2 rounded-full bg-[#001e56] shrink-0" />
+                  Results Visible {currentService.resultsTime}
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-3 mb-6 pt-4 border-t border-slate-200/80">
-              <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
-                <span className="w-2 h-2 rounded-full bg-[#001e56]" />
-                Procedure Time {currentService.procedureTime}
-              </div>
-              <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
-                <span className="w-2 h-2 rounded-full bg-[#001e56]" />
-                Recovery Time {currentService.recoveryTime}
-              </div>
-              <div className="flex items-center gap-2.5 text-[13.5px] font-medium text-[#001e56]">
-                <span className="w-2 h-2 rounded-full bg-[#001e56]" />
-                Results Visible {currentService.resultsTime}
-              </div>
+            <div className="mt-auto">
+              <BookConsultationButton
+                className="flex items-center justify-center gap-2.5 w-full py-3.5 max-sm:py-3 px-6 rounded-xl text-[14.5px] max-sm:text-[13.5px] font-semibold text-white bg-[#001e56] shadow-sm hover:bg-[#0c246c] hover:shadow-md transition-all duration-200 active:scale-[0.98]"
+              />
             </div>
-
-            <BookConsultationButton
-              className="flex items-center justify-center gap-2.5 w-full py-3.5 px-6 rounded-2xl text-[14.5px] font-semibold text-white bg-[#001e56] shadow-md hover:bg-[#0c246c] hover:shadow-lg transition-all duration-300 ease-out active:scale-[0.98]"
-            />
           </div>
         </div>
       </div>
     </section>
   );
 }
+

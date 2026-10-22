@@ -163,28 +163,28 @@ const progressWidths = ["12.5%", "37.5%", "62.5%", "88%"];
 
 export default function OurProcess() {
   const [activeStep, setActiveStep] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0); // 0: WHO'S WITH YOU, 1: HOW THEY SUPPORT YOU
   const current = stepsData[activeStep];
+  const displayedItems = activeSlide === 0 ? current.whosWithYou : current.howTheySupportYou;
 
   return (
     <section
       id="our-process"
-      className="relative w-full bg-white py-16 sm:py-20 lg:py-24 overflow-hidden"
+      className="relative w-full bg-white py-14 max-sm:py-8 sm:py-18 lg:py-20 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 max-sm:px-3 sm:px-6 lg:px-8">
         {/* ── Section Header ── */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <p className="text-[12px] sm:text-[13px] font-extrabold uppercase tracking-[0.25em] text-[#00a8ff] mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 max-sm:mb-6 sm:mb-12">
+          <p className="text-[11px] max-sm:text-[10px] sm:text-[12px] font-bold uppercase tracking-[0.25em] text-[#64748B] mb-2 sm:mb-2.5 max-sm:mb-1">
             OUR PROCESS
           </p>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight leading-[1.18] text-[#001e56]">
-            A Team of Experts,
-            <span className="block text-[#00a8ff] mt-1 sm:mt-1.5">
-              Focused on You
-            </span>
+          <h2 className="text-2xl max-sm:text-[21px] max-sm:leading-tight sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.18] text-[#001e56]">
+            <span>A Team of Experts, </span>
+            <span className="text-[#00a8ff]">Focused on You</span>
           </h2>
 
-          <p className="mt-4 text-sm sm:text-[15.5px] font-normal leading-relaxed text-[#556987] max-w-2xl mx-auto">
+          <p className="mt-3 max-sm:mt-2 max-sm:text-[11.5px] max-sm:leading-relaxed sm:mt-4 text-[13px] sm:text-[14.5px] font-normal leading-relaxed text-[#64748B] max-w-xl mx-auto">
             Hair restoration isn&apos;t a one-person job – it&apos;s a team effort.
             Our specialists work together to design a natural, safe, and lasting
             hairline with zero compromise.
@@ -192,14 +192,17 @@ export default function OurProcess() {
         </div>
 
         {/* ── Stepper Navigation ── */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="grid grid-cols-4 gap-2 sm:gap-4">
             {stepsData.map((step) => {
               const isActive = activeStep === step.id;
               return (
                 <button
                   key={step.id}
-                  onClick={() => setActiveStep(step.id)}
+                  onClick={() => {
+                    setActiveStep(step.id);
+                    setActiveSlide(0);
+                  }}
                   type="button"
                   className="group flex flex-col items-center cursor-pointer transition-all focus:outline-none"
                   aria-label={`Step ${step.id + 1}: ${step.navLabel}`}
@@ -207,20 +210,22 @@ export default function OurProcess() {
                 >
                   {/* Step Number Circle */}
                   <div
-                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-base sm:text-lg transition-all duration-300 ${isActive
-                      ? "bg-[#00a8ff] text-white shadow-md shadow-sky-500/25 scale-105"
-                      : "bg-[#e1f0fe] text-[#001e56] group-hover:bg-[#d5e9fd]"
-                      }`}
+                    className={`w-9 h-9 max-sm:w-8 max-sm:h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-bold text-sm max-sm:text-xs sm:text-base transition-all duration-300 ${
+                      isActive
+                        ? "bg-[#00a8ff] text-white shadow-md shadow-sky-500/25"
+                        : "bg-[#e1f0fe] text-[#557398] group-hover:bg-[#d5e9fd]"
+                    }`}
                   >
                     {step.id + 1}
                   </div>
 
                   {/* Step Label */}
                   <span
-                    className={`mt-2.5 sm:mt-3 text-[11px] sm:text-[14px] transition-colors duration-200 text-center ${isActive
-                      ? "font-bold text-[#001e56]"
-                      : "font-semibold text-[#475569] group-hover:text-[#001e56]"
-                      }`}
+                    className={`mt-2 max-sm:mt-1.5 sm:mt-2.5 text-[12px] max-sm:text-[11px] sm:text-[13.5px] transition-colors duration-200 text-center ${
+                      isActive
+                        ? "font-bold text-[#001e56]"
+                        : "font-semibold text-[#64748B] group-hover:text-[#001e56]"
+                    }`}
                   >
                     {step.navLabel}
                   </span>
@@ -230,9 +235,9 @@ export default function OurProcess() {
           </div>
 
           {/* ── Animated Progress Line with Indicator Dot ── */}
-          <div className="relative w-full mt-5 sm:mt-6">
-            {/* More visible background track */}
-            <div className="relative w-full h-[6px] sm:h-[7px] bg-[#b0becf] rounded-full overflow-hidden">
+          <div className="relative w-full mt-4 max-sm:mt-3 sm:mt-5">
+            {/* Background track */}
+            <div className="relative w-full h-[5px] max-sm:h-[3.5px] sm:h-[6px] bg-[#dceaf7] rounded-full overflow-hidden">
               <div
                 className="h-full bg-[#00a8ff] rounded-full transition-all duration-500 ease-out"
                 style={{ width: progressWidths[activeStep] }}
@@ -240,98 +245,91 @@ export default function OurProcess() {
             </div>
 
             {/* Dot at start of progress track */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#00a8ff] rounded-full shadow-sm pointer-events-none" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 max-sm:w-1.5 max-sm:h-1.5 sm:w-2.5 sm:h-2.5 bg-[#00a8ff] rounded-full shadow-sm pointer-events-none" />
           </div>
         </div>
-        {/* ── Dynamic Content Cards ── */}
-        <div className="max-w-5xl mx-auto mt-10 sm:mt-12">
+
+        {/* ── Dynamic Content Cards (2-Card Layout matching Reference) ── */}
+        <div className="max-w-4xl mx-auto mt-8 max-sm:mt-6 sm:mt-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.28, ease: "easeOut" }}
-              className="flex flex-col lg:flex-row gap-5 sm:gap-6 items-stretch"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="flex flex-col md:flex-row max-sm:flex-row gap-5 max-sm:gap-2.5 sm:gap-6 items-stretch"
             >
-              {/* Card 1: Highlight / Number & Title */}
-              <div className="w-full lg:w-[220px] xl:w-[240px] shrink-0 bg-gradient-to-br from-[#ebf5fe] via-[#f1f8fe] to-[#dcf0fe] border border-[#d2e8fb] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col justify-center min-h-[170px] lg:min-h-[280px] shadow-[0_4px_20px_rgba(0,102,255,0.04)]">
-                <span className="text-4xl sm:text-[46px] font-extrabold text-[#001e56] leading-none mb-3 tracking-tight">
+              {/* Card 1: Step Number & Title */}
+              <div className="w-full md:w-[240px] lg:w-[260px] max-sm:w-[35%] shrink-0 bg-gradient-to-b from-[#e3f2fd] via-[#eaf5fe] to-[#edf6fe] border border-[#d7e9f9] rounded-2xl sm:rounded-3xl max-sm:rounded-2xl p-6 max-sm:p-3.5 sm:p-7 flex flex-col justify-center min-h-[160px] md:min-h-[280px] max-sm:min-h-0 shadow-[0_4px_20px_rgba(0,102,255,0.04)]">
+                <span className="text-4xl sm:text-[50px] max-sm:text-[28px] font-extrabold text-[#001e56] leading-none mb-3 max-sm:mb-2 tracking-tight">
                   {current.number}
                 </span>
-                <h3 className="text-lg sm:text-[21px] font-bold text-[#001e56] leading-snug mb-1.5">
+                <h3 className="text-lg sm:text-[21px] max-sm:text-[13.5px] font-bold text-[#001e56] leading-snug mb-1 max-sm:mb-0.5">
                   {current.cardTitle}
                 </h3>
-                <p className="text-sm sm:text-[14.5px] font-medium text-[#4b7bb0] leading-snug whitespace-pre-line">
+                <p className="text-xs sm:text-[13.5px] max-sm:text-[10px] font-medium text-[#7091b5] leading-snug whitespace-pre-line">
                   {current.cardSubtitle}
                 </p>
               </div>
 
-              {/* Card 2: WHO'S WITH YOU */}
-              <div className="flex-1 bg-[#f8fbfe] border border-[#e5f0fa] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_14px_rgba(0,0,0,0.02)]">
+              {/* Card 2: Interactive Slider Card (WHO'S WITH YOU / HOW THEY SUPPORT YOU) */}
+              <div className="flex-1 bg-[#f8fbfe] border border-[#e5f0fa] rounded-2xl sm:rounded-3xl max-sm:rounded-2xl p-6 max-sm:p-3.5 sm:p-7 flex flex-col justify-between shadow-[0_2px_14px_rgba(0,0,0,0.02)] min-h-[280px] max-sm:min-h-0">
                 <div>
-                  <div className="flex items-center justify-between pb-4 border-b border-[#e8f1fa] mb-4">
-                    <span className="text-xs sm:text-[13px] font-black tracking-wider text-[#001e56] uppercase">
-                      WHO&apos;S WITH YOU
+                  {/* Top Bar */}
+                  <div className="flex items-center justify-between pb-3 max-sm:pb-2 mb-4 max-sm:mb-2.5">
+                    <span className="text-xs sm:text-[13px] max-sm:text-[9.5px] font-extrabold tracking-wider text-[#001e56] uppercase">
+                      {activeSlide === 0 ? "WHO'S WITH YOU" : "HOW THEY SUPPORT YOU"}
                     </span>
-                    <span className="text-xs sm:text-[13px] font-bold text-[#567fa6]">
+                    <span className="text-xs sm:text-[13px] max-sm:text-[9.5px] font-bold text-[#64748B]">
                       {current.stepNumber}/04
                     </span>
                   </div>
 
-                  <div className="space-y-4">
-                    {current.whosWithYou.map((item, idx) => (
+                  {/* Items List */}
+                  <div className="space-y-3.5 max-sm:space-y-2 sm:space-y-4">
+                    {displayedItems.map((item, idx) => (
                       <div
                         key={idx}
                         className={
-                          idx !== current.whosWithYou.length - 1
-                            ? "border-b border-dashed border-[#d8e6f4] pb-3.5"
+                          idx !== displayedItems.length - 1
+                            ? "border-b border-dashed border-[#d8e6f4] pb-3 max-sm:pb-1.5"
                             : ""
                         }
                       >
-                        <h4 className="text-[14.5px] sm:text-[15px] font-bold text-[#001e56] leading-snug">
+                        <h4 className="text-[14px] sm:text-[15px] max-sm:text-[11px] font-bold text-[#001e56] leading-snug">
                           {item.title}
                         </h4>
-                        <p className="text-[12.5px] sm:text-[13px] text-[#64748b] leading-relaxed mt-0.5">
+                        <p className="text-[12px] sm:text-[13px] max-sm:text-[8.5px] text-[#64748b] leading-relaxed max-sm:leading-tight mt-0.5 max-sm:mt-0">
                           {item.desc}
                         </p>
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
 
-              {/* Card 3: HOW THEY SUPPORT YOU */}
-              <div className="flex-1 bg-[#f8fbfe] border border-[#e5f0fa] rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_14px_rgba(0,0,0,0.02)]">
-                <div>
-                  <div className="flex items-center justify-between pb-4 border-b border-[#e8f1fa] mb-4">
-                    <span className="text-xs sm:text-[13px] font-black tracking-wider text-[#001e56] uppercase">
-                      HOW THEY SUPPORT YOU
-                    </span>
-                    <span className="text-xs sm:text-[13px] font-bold text-[#567fa6]">
-                      {current.stepNumber}/04
-                    </span>
-                  </div>
-
-                  <div className="space-y-4">
-                    {current.howTheySupportYou.map((item, idx) => (
-                      <div
-                        key={idx}
-                        className={
-                          idx !== current.howTheySupportYou.length - 1
-                            ? "border-b border-dashed border-[#d8e6f4] pb-3.5"
-                            : ""
-                        }
-                      >
-                        <h4 className="text-[14.5px] sm:text-[15px] font-bold text-[#001e56] leading-snug">
-                          {item.title}
-                        </h4>
-                        <p className="text-[12.5px] sm:text-[13px] text-[#64748b] leading-relaxed mt-0.5">
-                          {item.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                {/* Bottom Carousel / Tab Indicator */}
+                <div className="flex items-center justify-center gap-1.5 pt-4 max-sm:pt-2 mt-2 max-sm:mt-1">
+                  <button
+                    type="button"
+                    onClick={() => setActiveSlide(0)}
+                    aria-label="Who's with you"
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${
+                      activeSlide === 0
+                        ? "w-6 h-1 max-sm:w-4 max-sm:h-0.5 bg-[#001e56]"
+                        : "w-1.5 h-1.5 max-sm:w-1 max-sm:h-1 bg-[#cbd5e1] hover:bg-[#94a3b8]"
+                    }`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setActiveSlide(1)}
+                    aria-label="How they support you"
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${
+                      activeSlide === 1
+                        ? "w-6 h-1 max-sm:w-4 max-sm:h-0.5 bg-[#001e56]"
+                        : "w-1.5 h-1.5 max-sm:w-1 max-sm:h-1 bg-[#cbd5e1] hover:bg-[#94a3b8]"
+                    }`}
+                  />
                 </div>
               </div>
             </motion.div>
