@@ -25,7 +25,7 @@ const defaultBlock1: OverviewBlockData = {
     "FUT (Follicular Unit Transplantation), also known as the strip method, is a proven hair transplant technique where a thin strip of scalp is removed from the donor area (usually the back of the head) under local anesthesia.",
     "The strip is carefully dissected under a microscope into individual follicular units, which are then implanted into thinning or bald areas to restore natural-looking hair.",
   ],
-  imageSrc: "/Fue_page_images/fue-procedure-implment.webp",
+  imageSrc: "/Fue_page_images/fue-procedure-implement.webp",
   imageAlt: "What is FUT Hair Transplant - Procedure marking and planning",
 };
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FueOverview from "@/components/Fue_pages/overview";
+import FueOverview from "@/components/Fue_pages/Overview";
 import FueHero from "@/components/Fue_pages/homepage";
 
 
