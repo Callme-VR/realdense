@@ -19,26 +19,26 @@ export interface OverviewProps {
 
 const defaultBlock1: OverviewBlockData = {
   eyebrow: "OVERVIEW",
-  titleLine1: "What is FUT",
+  titleLine1: "What is FUE",
   titleLine2: "Hair Transplant?",
   paragraphs: [
-    "FUT (Follicular Unit Transplantation), also known as the strip method, is a proven hair transplant technique where a thin strip of scalp is removed from the donor area (usually the back of the head) under local anesthesia.",
-    "The strip is carefully dissected under a microscope into individual follicular units, which are then implanted into thinning or bald areas to restore natural-looking hair.",
+    "FUE (Follicular Unit Extraction) is a minimally invasive hair transplant technique in which individual hair follicles are extracted from the donor area, usually at the back of the head.",
+    "These follicles are carefully implanted into thinning or bald areas to restore natural-looking hair growth, without the linear scar associated with the traditional FUT strip method."
   ],
   imageSrc: "/Fue_page_images/fue-procedure-implement.webp",
-  imageAlt: "What is FUT Hair Transplant - Procedure marking and planning",
+  imageAlt: "What is FUE Hair Transplant - Procedure marking and planning",
 };
 
 const defaultBlock2: OverviewBlockData = {
   eyebrow: "IN INDIA",
-  titleLine1: "FUT Hair Transplant",
+  titleLine1: "FUE Hair Transplant",
   titleLine2: "in India",
   paragraphs: [
-    "FUT has been the foundation of hair restoration surgery worldwide for decades and is still widely used today for patients with significant hair loss who require high graft counts in a single procedure.",
-    "With the growing demand for hair restoration, top clinics in India now offer advanced FUT procedures with expert surgeons, modern microscopic dissection techniques and cost-effective treatment options, making India a preferred destination for both national and international patients.",
+    "FUE has become a popular hair restoration option for people seeking natural-looking results with minimal visible scarring. The technique is suitable for a range of hair loss patterns, depending on donor hair availability and individual needs.",
+    "With careful planning, skilled specialists and precise follicle extraction, FUE can help restore hair density and create a natural-looking hairline tailored to each patient."
   ],
   imageSrc: "/Fue_page_images/Closeup-implementation.webp",
-  imageAlt: "FUT Hair Transplant in India - Microscopic graft dissection",
+  imageAlt: "FUE Hair Transplant in India - Microscopic graft dissection",
 };
 
 export default function FueOverview({

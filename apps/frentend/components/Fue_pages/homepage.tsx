@@ -35,10 +35,10 @@ const countryList: CountryOption[] = [
 ];
 
 export default function FueHero({
-  eyebrow = "FUT HAIR TRANSPLANT",
-  titleLine1 = "FUT Hair Transplant",
-  titleLine2 = "Maximum Graft Yield",
-  description = "A proven strip technique that delivers high graft density and natural, long - lasting hair restoration results.",
+  eyebrow = "FUE HAIR TRANSPLANT",
+  titleLine1 = "FUE Hair Transplant",
+  titleLine2 = "Natural Results, Minimal Scarring",
+  description = "A minimally invasive hair restoration technique that extracts individual hair follicles for natural-looking results, with minimal scarring and a faster recovery.",
   patientCount = "2,000+",
   ratingScore = "4.9/5",
   onSubmitCallback,

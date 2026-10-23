@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FueOverview from "@/components/Fue_pages/Overview";
 import FueHero from "@/components/Fue_pages/homepage";
+import IdealCandidate from "@/components/Fue_pages/IdealCandidate";
+import FuePatientResults from "@/components/Fue_pages/PatientResults";
 
 
 export const metadata: Metadata = {
@@ -18,6 +20,8 @@ export default function FuePage() {
       <main className="flex-1 w-full overflow-x-hidden">
         <FueHero />
         <FueOverview />
+        <IdealCandidate />
+        <FuePatientResults />
       </main>
       <Footer hideCta />
     </div>

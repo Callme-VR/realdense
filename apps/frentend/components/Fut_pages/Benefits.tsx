@@ -19,7 +19,7 @@ const benefitCards: BenefitCardData[] = [
     title: "Maximum Graft Yield",
     description:
       "The FUT technique can deliver more than 3000 grafts in a single session.",
-    imageSrc: "/Fue_page_images/benefit-1.webp",
+    imageSrc: "/Fut_page_images/benefit-1.webp",
     imageAlt:
       "01 Maximum Graft Yield - The FUT technique can deliver more than 3000 grafts in a single session.",
   },
@@ -29,7 +29,7 @@ const benefitCards: BenefitCardData[] = [
     title: "Permanent, Natural Results",
     description:
       "Transplanted follicles are resistant to hair loss, ensuring lifelong, natural growth.",
-    imageSrc: "/Fue_page_images/benefit-2.webp",
+    imageSrc: "/Fut_page_images/benefit-2.webp",
     imageAlt:
       "02 Permanent, Natural Results - Transplanted follicles are resistant to hair loss, ensuring lifelong, natural growth.",
   },
@@ -39,7 +39,7 @@ const benefitCards: BenefitCardData[] = [
     title: "Cost-Effective for High Graft Counts",
     description:
       "Affordable option for patients needing more grafts, with a lower per-graft cost than FUE.",
-    imageSrc: "/Fue_page_images/benefit-3.webp",
+    imageSrc: "/Fut_page_images/benefit-3.webp",
     imageAlt:
       "03 Cost-Effective for High Graft Counts - Affordable option for patients needing more grafts, with a lower per-graft cost than FUE.",
   },
@@ -49,7 +49,7 @@ const benefitCards: BenefitCardData[] = [
     title: "Donor Area Preservation",
     description:
       "Reduces overharvesting and preserves long-term donor potential.",
-    imageSrc: "/Fue_page_images/benefit-4.webp",
+    imageSrc: "/Fut_page_images/benefit-4.webp",
     imageAlt:
       "04 Donor Area Preservation - Reduces overharvesting and preserves long-term donor potential.",
   },

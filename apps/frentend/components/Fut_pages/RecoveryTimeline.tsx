@@ -108,7 +108,7 @@ export default function RecoveryTimeline({
   titlePart1 = "Recovery Timeline & Aftercare of",
   titlePart2 = "FUT Hair Transplant",
   description = "FUT has a slightly longer recovery time compared to FUE due to the donor strip excision and suture healing. Here's what to expect at each stage and how to care for your scalp for a smooth and stress-free recovery.",
-  imageSrc = "/Fue_page_images/Recovery.webp",
+  imageSrc = "/Fut_page_images/Recovery.webp",
   imageAlt = "Medical post-procedure scalp spray care during FUT recovery",
 }: RecoveryTimelineProps) {
   const [activeStageIndex, setActiveStageIndex] = useState(0);
@@ -164,14 +164,14 @@ export default function RecoveryTimeline({
                     <div className="relative z-10 shrink-0">
                       <div
                         className={`w-[24px] h-[24px] rounded-full border-2 flex items-center justify-center transition-all duration-300 ${isActive
-                            ? "border-[#0088ff] bg-white ring-4 ring-[#00a3ff]/20"
-                            : "border-[#bde3f8] bg-white group-hover:border-[#0088ff]"
+                          ? "border-[#0088ff] bg-white ring-4 ring-[#00a3ff]/20"
+                          : "border-[#bde3f8] bg-white group-hover:border-[#0088ff]"
                           }`}
                       >
                         <div
                           className={`w-[9px] h-[9px] rounded-full transition-all duration-300 ${isActive
-                              ? "bg-[#0088ff]"
-                              : "bg-[#0088ff]/60 group-hover:bg-[#0088ff]"
+                            ? "bg-[#0088ff]"
+                            : "bg-[#0088ff]/60 group-hover:bg-[#0088ff]"
                             }`}
                         />
                       </div>
@@ -180,8 +180,8 @@ export default function RecoveryTimeline({
                     {/* Step Pill Button */}
                     <div
                       className={`flex-1 rounded-[18px] sm:rounded-[22px] px-5 py-3 sm:py-3.5 transition-all duration-300 ${isActive
-                          ? "bg-gradient-to-r from-[#0085f2] to-[#149aff] text-white shadow-[0_6px_20px_rgba(0,136,255,0.28)] scale-[1.02]"
-                          : "bg-[#edf5fc] hover:bg-[#e4f0fa] text-[#001e56]"
+                        ? "bg-gradient-to-r from-[#0085f2] to-[#149aff] text-white shadow-[0_6px_20px_rgba(0,136,255,0.28)] scale-[1.02]"
+                        : "bg-[#edf5fc] hover:bg-[#e4f0fa] text-[#001e56]"
                         }`}
                     >
                       <span
