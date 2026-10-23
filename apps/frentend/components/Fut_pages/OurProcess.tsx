@@ -103,7 +103,6 @@ export default function OurProcess({
 
             {/* Floating Card 1: 3 Week Recovery (With 4 Corner Handles) */}
             <div className="relative z-10 self-center lg:self-center mb-5 w-[210px] sm:w-[220px]">
-              {/* 4 Corner Tech Handles */}
               <span className="absolute -top-1.5 -left-1.5 w-3.5 h-3.5 rounded-full border-2 border-[#00A3FF] bg-white shadow-xs z-20" />
               <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 rounded-full border-2 border-[#00A3FF] bg-white shadow-xs z-20" />
               <span className="absolute -bottom-1.5 -left-1.5 w-3.5 h-3.5 rounded-full border-2 border-[#00A3FF] bg-white shadow-xs z-20" />

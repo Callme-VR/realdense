@@ -154,8 +154,8 @@ export default function IdealCandidate({
 
             {/* Middle: Explanatory text */}
             <p className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14.5px] text-white/80 leading-relaxed max-w-[400px]">
-              Get personalized guidance to understand if FUT is the right option
-              for your hair restoration journey.
+              Get personalized guidance to understand if FUE is the right <br />
+              option for your hair restoration journey.
             </p>
 
             {/* Right: CTA Button */}

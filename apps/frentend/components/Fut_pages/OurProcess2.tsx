@@ -88,9 +88,13 @@ export default function OurProcess2({
             <span className="font-['Plus_Jakarta_Sans'] text-[11.5px] sm:text-[13px] font-bold uppercase tracking-[0.22em] text-[#00A3FF] mb-2 sm:mb-3 block">
               {eyebrow}
             </span>
-            <h2 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[36px] lg:text-[42px] font-extrabold tracking-[-0.03em] leading-[1.16]">
-              <span className="text-[#001e56] block">{titleLine1}</span>
-              <span className="text-[#00A3FF] block mt-1">{titleLine2}</span>
+            <h2 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[36px] lg:text-[42px] font-extrabold tracking-[-0.03em] leading-[1.16] whitespace-nowrap">
+              <span className="text-[#001e56] block whitespace-nowrap">
+                {titleLine1}
+              </span>
+              <span className="text-[#00A3FF] block mt-1">
+                {titleLine2}
+              </span>
             </h2>
             <p className="mt-4 sm:mt-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15px] leading-[1.7] font-normal">
               {description}
