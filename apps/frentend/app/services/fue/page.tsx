@@ -12,6 +12,9 @@ import BenefitsFue from "@/components/Fue_pages/Benefits";
 import CostOverviewFue from "@/components/Fue_pages/CostOverview";
 import CausesOfHairLossFue from "@/components/Fue_pages/CausesOfHairLoss";
 import OurProcess2Fue from "@/components/Fue_pages/Ourprocess2fue";
+import PostSurgerySupportFue from "@/components/Fue_pages/PostSurgerySupportFue";
+import DosAndDontsFue from "@/components/Fue_pages/DosAndDonts";
+import PatientReviews from "@/components/Home_pages/PatientReviews";
 
 
 
@@ -37,6 +40,9 @@ export default function FuePage() {
         <CostOverviewFue />
         <CausesOfHairLossFue />
         <OurProcess2Fue />
+        <PostSurgerySupportFue />
+        <DosAndDontsFue />
+        <PatientReviews />
       </main>
       <Footer hideCta />
     </div>
