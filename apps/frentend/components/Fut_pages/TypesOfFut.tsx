@@ -67,7 +67,7 @@ export default function TypesOfFut({
               {/* Diagram Box */}
               <div className="relative w-full rounded-[20px] bg-white p-4 sm:p-5 sm:py-6 border border-white shadow-xs mb-6 overflow-hidden flex items-center justify-center">
                 <Image
-                  src="/Fue_page_images/fue-classic-strip-method.webp"
+                  src="/Fut_page_images/fut-classic-strip-method.webp"
                   alt="FUT Classic Strip Method: Strip Removal, Graft Dissection, and Implantation"
                   width={1516}
                   height={534}
@@ -109,7 +109,7 @@ export default function TypesOfFut({
               {/* Diagram Box */}
               <div className="relative w-full rounded-[20px] bg-white p-4 sm:p-5 sm:py-6 border border-white shadow-xs mb-6 overflow-hidden flex items-center justify-center">
                 <Image
-                  src="/Fue_page_images/fue-combined-technique.webp"
+                  src="/Fut_page_images/fut-combined-technique.webp"
                   alt="FUT vs FUE/QHT Implantation Technique comparison"
                   width={1516}
                   height={550}

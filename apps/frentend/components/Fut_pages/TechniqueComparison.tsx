@@ -6,8 +6,8 @@ import React from "react";
 
 interface ComparisonRow {
   feature: string;
-  fue: string;
   fut: string;
+  fue: string;
   qht: string;
 }
 

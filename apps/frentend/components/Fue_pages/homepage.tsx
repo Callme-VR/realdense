@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { User, ChevronDown, CheckCircle2 } from "lucide-react";
 
-export interface FueHeroProps {
+export interface FutHeroProps {
   eyebrow?: string;
   titleLine1?: string;
   titleLine2?: string;
@@ -42,7 +42,7 @@ export default function FueHero({
   patientCount = "2,000+",
   ratingScore = "4.9/5",
   onSubmitCallback,
-}: FueHeroProps) {
+}: FutHeroProps) {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [selectedCountry, setSelectedCountry] = useState<CountryOption>(
@@ -100,7 +100,7 @@ export default function FueHero({
       {/* ── Background Image Layer ── */}
       <div className="absolute inset-0 -z-10 w-full h-full select-none pointer-events-none overflow-hidden">
         <Image
-          src="/Fue_page_images/fue-hero-background.webp"
+          src="/Fut_page_images/fut-hero-background.webp"
           alt="Hair Transplant Background"
           fill
           priority
@@ -250,9 +250,8 @@ export default function FueHero({
                     {selectedCountry.dialCode}
                   </span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 text-white/70 transition-transform duration-200 ${
-                      countryDropdownOpen ? "rotate-180" : ""
-                    }`}
+                    className={`w-3.5 h-3.5 text-white/70 transition-transform duration-200 ${countryDropdownOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 

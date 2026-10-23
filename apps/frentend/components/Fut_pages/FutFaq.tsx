@@ -49,19 +49,19 @@ const defaultFaqData: FAQItem[] = [
   },
 ];
 
-export interface FueFaqProps {
+export interface FutFaqProps {
   titlePart1?: string;
   titlePart2?: string;
   description?: string;
   faqs?: FAQItem[];
 }
 
-export default function FueFaq({
+export default function FutFaq({
   titlePart1 = "FAQ’S for",
   titlePart2 = "FUT Hair Transplant",
   description = "At RealDense, our care doesn't end after surgery. We provide complete post-operative support to ensure smooth recovery and long-lasting, natural results.",
   faqs = defaultFaqData,
-}: FueFaqProps) {
+}: FutFaqProps) {
   const [openId, setOpenId] = useState<number | null>(1);
 
   const toggleFaq = (id: number) => {
@@ -130,7 +130,7 @@ export default function FueFaq({
 
       <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] xl:grid-cols-[450px_1fr] gap-10 lg:gap-14 items-start">
-          
+
           {/* ══════════════════════════════════════
               LEFT: Title & Description
           ══════════════════════════════════════ */}
@@ -154,11 +154,10 @@ export default function FueFaq({
               return (
                 <div
                   key={faq.id}
-                  className={`rounded-[20px] sm:rounded-[24px] bg-white border transition-all duration-300 ${
-                    isOpen
-                      ? "border-[#7ec6f8] shadow-[0_4px_20px_rgba(0,163,255,0.08)]"
-                      : "border-[#bde3f8] hover:border-[#8ad0fb] shadow-[0_2px_10px_rgba(0,163,255,0.03)]"
-                  }`}
+                  className={`rounded-[20px] sm:rounded-[24px] bg-white border transition-all duration-300 ${isOpen
+                    ? "border-[#7ec6f8] shadow-[0_4px_20px_rgba(0,163,255,0.08)]"
+                    : "border-[#bde3f8] hover:border-[#8ad0fb] shadow-[0_2px_10px_rgba(0,163,255,0.03)]"
+                    }`}
                 >
                   {/* Card Header: Click to Toggle */}
                   <button
@@ -192,9 +191,8 @@ export default function FueFaq({
                         strokeWidth="2.4"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className={`w-5 h-5 transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
+                        className={`w-5 h-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""
+                          }`}
                       >
                         <polyline points="6 9 12 15 18 9" />
                       </svg>

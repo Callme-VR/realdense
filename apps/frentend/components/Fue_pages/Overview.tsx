@@ -25,8 +25,8 @@ const defaultBlock1: OverviewBlockData = {
     "FUT (Follicular Unit Transplantation), also known as the strip method, is a proven hair transplant technique where a thin strip of scalp is removed from the donor area (usually the back of the head) under local anesthesia.",
     "The strip is carefully dissected under a microscope into individual follicular units, which are then implanted into thinning or bald areas to restore natural-looking hair.",
   ],
-  imageSrc: "/Fue_page_images/fue-procedure-marking.webp",
-  imageAlt: "Doctor marking donor area for FUT Hair Transplant",
+  imageSrc: "/Fue_page_images/fue-procedure-implment.webp",
+  imageAlt: "What is FUT Hair Transplant - Procedure marking and planning",
 };
 
 const defaultBlock2: OverviewBlockData = {
@@ -37,8 +37,8 @@ const defaultBlock2: OverviewBlockData = {
     "FUT has been the foundation of hair restoration surgery worldwide for decades and is still widely used today for patients with significant hair loss who require high graft counts in a single procedure.",
     "With the growing demand for hair restoration, top clinics in India now offer advanced FUT procedures with expert surgeons, modern microscopic dissection techniques and cost-effective treatment options, making India a preferred destination for both national and international patients.",
   ],
-  imageSrc: "/Fue_page_images/fue-grafts-dissection.webp",
-  imageAlt: "Dissected hair follicular graft units for transplantation",
+  imageSrc: "/Fue_page_images/Closeup-implementation.webp",
+  imageAlt: "FUT Hair Transplant in India - Microscopic graft dissection",
 };
 
 export default function FueOverview({
@@ -76,16 +76,16 @@ export default function FueOverview({
 
           {/* Image Column */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[410px] rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_30px_rgba(3,30,80,0.06)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
+            <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-[0_12px_36px_rgba(3,30,80,0.08)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
               <Image
-                src={b1.imageSrc || "/Fue_page_images/fue-procedure-marking.webp"}
-                alt={b1.imageAlt || "FUT Hair Transplant Overview"}
+                src={b1.imageSrc || "/Fut_page_images/fut-procedure-marking.webp"}
+                alt={b1.imageAlt || "What is FUT Hair Transplant"}
                 width={1534}
                 height={1431}
                 priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 410px"
-                className="w-full h-auto object-cover rounded-[22px] sm:rounded-[28px]"
-                quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 460px"
+                className="w-full h-auto object-cover rounded-[24px] sm:rounded-[32px]"
+                quality={92}
               />
             </div>
           </div>
@@ -93,17 +93,17 @@ export default function FueOverview({
 
         {/* ── Block 2: Image Left, Text Right ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          {/* Image Column (First on desktop, below on mobile/order handled) */}
+          {/* Image Column (First on desktop) */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[410px] rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_30px_rgba(3,30,80,0.06)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
+            <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-[0_12px_36px_rgba(3,30,80,0.08)] bg-slate-50 transition-transform duration-300 hover:scale-[1.01]">
               <Image
-                src={b2.imageSrc || "/Fue_page_images/fue-grafts-dissection.webp"}
+                src={b2.imageSrc || "/Fue_page_images/Closeup-implementation.webp"}
                 alt={b2.imageAlt || "FUT Hair Transplant in India"}
                 width={1534}
                 height={1431}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 410px"
-                className="w-full h-auto object-cover rounded-[22px] sm:rounded-[28px]"
-                quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 460px"
+                className="w-full h-auto object-cover rounded-[24px] sm:rounded-[32px]"
+                quality={92}
               />
             </div>
           </div>
@@ -133,3 +133,5 @@ export default function FueOverview({
     </section>
   );
 }
+
+

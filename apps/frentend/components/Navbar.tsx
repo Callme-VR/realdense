@@ -22,6 +22,7 @@ const navLinks: NavItem[] = [
     hasDropdown: true,
     dropdown: [
       { label: "All Services Overview", href: "/services" },
+      { label: "FUT Hair Transplant", href: "/services/fut" },
       { label: "FUE Hair Transplant", href: "/services/fue" },
       { label: "DHI Hair Transplant", href: "/services/dhi" },
       { label: "Sapphire FUE", href: "/services/sapphire-fue" },

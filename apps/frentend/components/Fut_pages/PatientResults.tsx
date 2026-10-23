@@ -193,7 +193,7 @@ export interface PatientResultsProps {
   items?: TransformationCard[];
 }
 
-export default function FuePatientResults({
+export default function FutPatientResults({
   eyebrow = "PATIENT RESULTS",
   titleLine1 = "Results of",
   titleLine2 = "FUT Hair Transplant",
@@ -205,7 +205,7 @@ export default function FuePatientResults({
       {/* ── Background Image Layer (fue-patient-results-background.webp) ── */}
       <div className="absolute inset-0 -z-10 w-full h-full pointer-events-none select-none overflow-hidden">
         <Image
-          src="/Fue_page_images/fue-patient-results-background.webp"
+          src="/Fut_page_images/fut-patient-results-background.webp"
           alt="Patient Results Background"
           fill
           priority
