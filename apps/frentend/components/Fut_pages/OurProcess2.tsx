@@ -24,19 +24,19 @@ interface GridPhoto {
 
 const defaultGridPhotos: GridPhoto[] = [
   {
-    src: "/Fue_page_images/process-2.webp",
+    src: "/Fut_page_images/process-2.webp",
     alt: "RealDense surgeon examining patient hairline",
   },
   {
-    src: "/Fue_page_images/process-3.webp",
+    src: "/Fut_page_images/process-3.webp",
     alt: "Doctor consulting patient with hair analysis screen",
   },
   {
-    src: "/Fue_page_images/process-4.webp",
+    src: "/Fut_page_images/process-4.webp",
     alt: "Surgical team performing FUT hair transplant procedure",
   },
   {
-    src: "/Fue_page_images/process-5.webp",
+    src: "/Fut_page_images/process-5.webp",
     alt: "Patient consultation with RealDense hair specialist",
   },
 ];
@@ -67,7 +67,7 @@ export default function OurProcess2({
   advantageSubtitle = "Our experience, technology and personalised care ensure a smooth process and natural-looking results.",
   stats = defaultStats,
   heroPhoto = {
-    src: "/Fue_page_images/process-1.webp",
+    src: "/Fut_page_images/process-1.webp",
     alt: "RealDense Expert Surgical Team",
     caption: "",
     captionSub: "",
