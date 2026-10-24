@@ -3,6 +3,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import QhtHero from "@/components/QHT_pages/Qhthero";
 import OverviewQht from "@/components/QHT_pages/Overviewqht";
+import IdealCandidateQht from "@/components/QHT_pages/IdealCandidateqht";
+import PatientResultsQht from "@/components/QHT_pages/PatientResultsqht";
+import TypesOfFueQht from "@/components/QHT_pages/TypesOfFueqht";
+import OurprocessQht from "@/components/QHT_pages/Ourprocessqht";
 
 export const metadata: Metadata = {
   title: "QHT Hair Transplant - Advanced Precision, Faster Recovery | Realdense Clinic",
@@ -17,6 +21,10 @@ export default function QhtPage() {
       <main className="flex-1 w-full overflow-x-hidden">
         <QhtHero />
         <OverviewQht />
+        <IdealCandidateQht />
+        <PatientResultsQht />
+        <TypesOfFueQht />
+        <OurprocessQht />
       </main>
       <Footer hideCta />
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { CalendarCheck, HeartPulse } from "lucide-react";
 
 interface ProcessStep {
@@ -59,6 +59,7 @@ export default function OurProcess({
   titleLine2 = "For male Hair Transplant",
   description = "Male hair transplant involves assessment of the scalp followed by safer extraction with the usage of different hair techniques. The precision-guided implantation helps in faster recovery and significant hair growth.",
 }: OurProcessProps) {
+  const [activeStep, setActiveStep] = useState<number>(0);
   return (
     <section className="w-full bg-white py-14 sm:py-20 lg:py-24 overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -145,35 +146,49 @@ export default function OurProcess({
 
         {/* ── Main Process Card (Large Dark Navy Box) ── */}
         <div className="relative rounded-[22px] sm:rounded-[32px] bg-[#001e56] shadow-[0_20px_50px_rgba(0,30,86,0.3)] p-5 sm:p-9 lg:p-12 overflow-hidden">
-          <div className="space-y-6 sm:space-y-8 lg:space-y-10">
+          <div className="flex flex-col">
             {steps.map((item, idx) => {
               const isLast = idx === steps.length - 1;
+              const isActive = activeStep === idx;
+
               return (
                 <div
                   key={item.step}
-                  className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 lg:gap-8 group"
+                  onClick={() => setActiveStep(idx)}
+                  onMouseEnter={() => setActiveStep(idx)}
+                  className="flex items-stretch gap-3.5 sm:gap-6 group cursor-pointer"
                 >
-                  {/* Left + Middle: Step Number, Timeline Connector, Title, Description */}
-                  <div className="flex items-start gap-3.5 sm:gap-6 flex-1 min-w-0">
-                    {/* Number Circle & Vertical Timeline Connector */}
-                    <div className="relative flex flex-col items-center shrink-0">
-                      {/* Step Circle */}
-                      <div className="relative z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#dff2fe] text-[#001e56] font-['Plus_Jakarta_Sans'] font-extrabold text-[14px] sm:text-[16px] flex items-center justify-center shadow-xs">
-                        {item.step}
-                      </div>
-
-                      {/* Dashed Timeline Connector Line with Glowing Cyan Dot */}
-                      {!isLast && (
-                        <div
-                          className="w-[2px] h-14 sm:h-20 border-l-2 border-dashed border-[#00A3FF]/40 relative my-1 sm:my-1.5 flex items-center justify-center"
-                          aria-hidden="true"
-                        >
-                          {/* Cyan Dot on Timeline */}
-                          <span className="absolute w-2 h-2 rounded-full bg-[#00A3FF] shadow-[0_0_8px_#00A3FF] -left-[3px]" />
-                        </div>
-                      )}
+                  {/* Left Column: Number Circle & Vertical Timeline Connector */}
+                  <div className="relative flex flex-col items-center shrink-0 self-stretch">
+                    {/* Step Circle */}
+                    <div
+                      className={`relative z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full font-['Plus_Jakarta_Sans'] font-extrabold text-[14px] sm:text-[16px] flex items-center justify-center transition-all duration-200 ${isActive
+                        ? "bg-[#0052FF] text-white shadow-[0_4px_16px_rgba(0,82,255,0.5)]"
+                        : "bg-[#dff2fe] text-[#001e56] shadow-[0_4px_10px_rgba(0,0,0,0.2)]"
+                        }`}
+                    >
+                      {item.step}
                     </div>
 
+                    {/* Dashed Timeline Connector Line with Cyan Dot */}
+                    {!isLast && (
+                      <div
+                        className="w-0 flex-1 relative flex items-center justify-center my-0"
+                        style={{ borderLeft: "1px dashed #FFFFFF" }}
+                        aria-hidden="true"
+                      >
+                        {/* Cyan Dot on Timeline */}
+                        <span className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00A3FF] shadow-[0_0_8px_#00A3FF]" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Right Column: Step Content & Tag Pill */}
+                  <div
+                    className={`flex-1 min-w-0 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 lg:gap-8 ${
+                      !isLast ? "pb-6 sm:pb-8 lg:pb-10" : "pb-0"
+                    }`}
+                  >
                     {/* Step Content */}
                     <div className="flex-1 min-w-0 pt-0.5 sm:pt-1">
                       <h3 className="font-['Plus_Jakarta_Sans'] text-[16px] sm:text-[19px] font-bold text-[#00A3FF] tracking-tight">
@@ -189,17 +204,22 @@ export default function OurProcess({
                         aria-hidden="true"
                       />
                     </div>
-                  </div>
 
-                  {/* Right Tag Pill */}
-                  <div className="w-full md:w-auto shrink-0 pl-[52px] sm:pl-[72px] md:pl-0">
-                    <div className="w-full md:w-[210px] lg:w-[230px] rounded-[16px] sm:rounded-[18px] bg-white/[0.07] hover:bg-white/[0.1] border border-white/12 px-4 py-3 sm:px-5 sm:py-4 text-center transition-colors duration-200">
-                      <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[14px] text-white/90 font-medium block leading-snug">
-                        {item.tagLine1}
-                      </span>
-                      <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[14px] text-white/90 font-medium block leading-snug">
-                        {item.tagLine2}
-                      </span>
+                    {/* Right Tag Pill */}
+                    <div className="w-full md:w-auto shrink-0">
+                      <div
+                        className={`w-full md:w-[210px] lg:w-[230px] rounded-[16px] sm:rounded-[18px] px-4 py-3 sm:px-5 sm:py-4 text-center transition-all duration-200 ${isActive
+                          ? "bg-[#0052FF] text-white shadow-[0_4px_16px_rgba(0,82,255,0.4)]"
+                          : "bg-[#0a235c] text-white/85 border border-white/10 hover:bg-[#0d2d75]"
+                          }`}
+                      >
+                        <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[14px] font-medium block leading-snug">
+                          {item.tagLine1}
+                        </span>
+                        <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[14px] font-medium block leading-snug">
+                          {item.tagLine2}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
