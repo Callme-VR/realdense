@@ -272,11 +272,11 @@ export default function FutHero({
                   className="w-full bg-transparent text-white text-[14px] sm:text-[14.5px] placeholder-white/60 focus:outline-none"
                 />
 
-                {/* Dropdown Menu */}
+                {/* Dropdown Menu (Opens upwards to avoid overlapping components below) */}
                 {countryDropdownOpen && (
                   <div
                     ref={dropdownRef}
-                    className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.22)] border border-slate-200 py-1.5 z-50 text-slate-800 max-h-56 overflow-y-auto"
+                    className="absolute bottom-full left-0 mb-2 w-56 bg-white rounded-2xl shadow-[0_16px_40px_rgba(15,23,42,0.25)] border border-slate-200/80 py-2 z-50 text-slate-800 max-h-56 overflow-y-auto animate-in fade-in zoom-in-95 duration-150"
                   >
                     {countryList.map((country) => (
                       <button
@@ -286,13 +286,17 @@ export default function FutHero({
                           setSelectedCountry(country);
                           setCountryDropdownOpen(false);
                         }}
-                        className="w-full flex items-center gap-2.5 px-3 py-2 text-[13.5px] hover:bg-[#ebf8ff] text-left transition-colors cursor-pointer"
+                        className={`w-full flex items-center gap-2.5 px-3.5 py-2 text-[13.5px] transition-colors cursor-pointer text-left ${
+                          selectedCountry.code === country.code
+                            ? "bg-[#e0f2fe] text-[#00A3FF] font-semibold"
+                            : "hover:bg-slate-50 text-[#001e56]"
+                        }`}
                       >
-                        <span className="text-[16px]">{country.flag}</span>
-                        <span className="font-medium text-[#001e56]">
+                        <span className="text-[17px]">{country.flag}</span>
+                        <span className="font-medium text-[13.5px]">
                           {country.name}
                         </span>
-                        <span className="text-slate-500 text-xs ml-auto font-mono">
+                        <span className="text-slate-400 text-xs ml-auto font-mono">
                           {country.dialCode}
                         </span>
                       </button>

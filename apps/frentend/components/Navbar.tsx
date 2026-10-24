@@ -24,6 +24,7 @@ const navLinks: NavItem[] = [
       { label: "All Services Overview", href: "/services" },
       { label: "FUT Hair Transplant", href: "/services/fut" },
       { label: "FUE Hair Transplant", href: "/services/fue" },
+      { label: "QHT Hair Transplant", href: "/services/qht" },
       { label: "DHI Hair Transplant", href: "/services/dhi" },
       { label: "Sapphire FUE", href: "/services/sapphire-fue" },
       { label: "Hairline Restoration", href: "/services/hairline" },
