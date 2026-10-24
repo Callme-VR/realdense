@@ -183,9 +183,8 @@ export default function HomePage() {
           aria-label="Patient before and after transformations"
         >
           <div
-            className={`flex items-center will-change-transform ${
-              !isMounted || touchStartX !== null ? "transition-none" : "transition-transform duration-300 ease-out"
-            }`}
+            className={`flex items-center will-change-transform ${!isMounted || touchStartX !== null ? "transition-none" : "transition-transform duration-300 ease-out"
+              }`}
             style={{
               transform: `translateX(${translateX}px)`,
               gap: `${gap}px`,
@@ -198,11 +197,10 @@ export default function HomePage() {
                   key={card.id}
                   onClick={() => setActiveIndex(idx)}
                   style={{ width: `${cardWidth}px` }}
-                  className={`relative shrink-0 overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
-                    isActive
-                      ? "rounded-[22px] border-[2.5px] border-white shadow-[0_12px_30px_rgba(0,30,86,0.20)] scale-100 z-10 opacity-100"
-                      : "rounded-[18px] border-2 border-white/90 shadow-[0_6px_20px_rgba(0,30,86,0.12)] scale-[0.95] z-0 opacity-85"
-                  }`}
+                  className={`relative shrink-0 overflow-hidden cursor-pointer transition-all duration-300 ease-out ${isActive
+                    ? "rounded-[22px] border-[2.5px] border-white shadow-[0_12px_30px_rgba(0,30,86,0.20)] scale-100 z-10 opacity-100"
+                    : "rounded-[18px] border-2 border-white/90 shadow-[0_6px_20px_rgba(0,30,86,0.12)] scale-[0.95] z-0 opacity-85"
+                    }`}
                 >
                   <div className="relative aspect-[1192/1320] w-full">
                     <Image
@@ -225,11 +223,10 @@ export default function HomePage() {
           {patientCards.map((card) => (
             <div
               key={card.id}
-              className={`relative shrink-0 overflow-hidden border border-white/80 bg-white/10 shadow-[0_6px_20px_rgba(0,30,86,0.10)] transition-transform duration-300 ease-out ${card.widthClass} ${
-                card.isCenter
-                  ? "rounded-[14px] sm:rounded-[22px] lg:rounded-[26px] shadow-[0_10px_28px_rgba(0,30,86,0.16)]"
-                  : "rounded-[10px] sm:rounded-[16px] lg:rounded-[20px]"
-              } ${card.scaleClass} ${card.zIndexClass}`}
+              className={`relative shrink-0 overflow-hidden border border-white/80 bg-white/10 shadow-[0_6px_20px_rgba(0,30,86,0.10)] transition-transform duration-300 ease-out ${card.widthClass} ${card.isCenter
+                ? "rounded-[14px] sm:rounded-[22px] lg:rounded-[26px] shadow-[0_10px_28px_rgba(0,30,86,0.16)]"
+                : "rounded-[10px] sm:rounded-[16px] lg:rounded-[20px]"
+                } ${card.scaleClass} ${card.zIndexClass}`}
             >
               <div className="relative aspect-[1192/1320] w-full">
                 <Image

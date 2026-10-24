@@ -15,6 +15,10 @@ import OurProcess2Fue from "@/components/Fue_pages/Ourprocess2fue";
 import PostSurgerySupportFue from "@/components/Fue_pages/PostSurgerySupportFue";
 import DosAndDontsFue from "@/components/Fue_pages/DosAndDonts";
 import PatientReviews from "@/components/Home_pages/PatientReviews";
+import Recoveryjourneryfue from "@/components/Fue_pages/Recoveryjourneryfue";
+import FaqFue from "@/components/Fue_pages/faqfue";
+import TechniqueComparisonfuq from "@/components/Fue_pages/TechniqueComparisonfuq";
+import GetInTouch from "@/components/Services_pages/GetinTouch";
 
 
 
@@ -43,6 +47,10 @@ export default function FuePage() {
         <PostSurgerySupportFue />
         <DosAndDontsFue />
         <PatientReviews />
+        <Recoveryjourneryfue />
+        <FaqFue />
+        <TechniqueComparisonfuq />
+        <GetInTouch />
       </main>
       <Footer hideCta />
     </div>
