@@ -93,12 +93,14 @@ const mobileHeroCards = [
 ];
 
 export default function HomePage() {
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchDeltaX, setTouchDeltaX] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState(390);
 
   useEffect(() => {
+    setIsMounted(true);
     const updateWidth = () => setWindowWidth(window.innerWidth);
     updateWidth();
     window.addEventListener("resize", updateWidth);
@@ -128,7 +130,7 @@ export default function HomePage() {
     setTouchDeltaX(0);
   };
 
-  // Dimensions for mobile carousel matching reference image (centered Dipak M, peeking Abhishek & Ranbir)
+  // Dimensions for mobile carousel matching reference image (centered Abhishek P, peeking Dipak M)
   const cardWidth = Math.min(Math.round(windowWidth * 0.68), 270);
   const gap = 12;
   const centerOffset = (windowWidth - cardWidth) / 2;
@@ -165,8 +167,9 @@ export default function HomePage() {
 
         {/* Subtitle */}
         <p className="mx-auto mt-2.5 w-full max-w-[340px] font-['Plus_Jakarta_Sans'] text-[12.5px] font-medium leading-[1.55] tracking-[0.01em] text-[#001E56]/90 sm:mt-3.5 sm:max-w-[800px] sm:text-[15.5px] sm:leading-relaxed sm:tracking-[0.02em] sm:text-[#001E56] md:text-[16px] md:leading-[1.6] lg:text-[18px] lg:leading-[1.7]">
-          Advanced hair restoration designed around you, with natural-looking
-          results
+          Advanced hair restoration designed around you, with{" "}
+          <br className="sm:hidden" />
+          natural-looking results
           <br className="hidden sm:inline" />{" "}
           that feel completely your own.
         </p>
@@ -181,7 +184,7 @@ export default function HomePage() {
         >
           <div
             className={`flex items-center will-change-transform ${
-              touchStartX !== null ? "transition-none" : "transition-transform duration-300 ease-out"
+              !isMounted || touchStartX !== null ? "transition-none" : "transition-transform duration-300 ease-out"
             }`}
             style={{
               transform: `translateX(${translateX}px)`,
