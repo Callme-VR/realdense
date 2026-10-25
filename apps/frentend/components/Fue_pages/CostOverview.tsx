@@ -155,22 +155,19 @@ export default function CostOverviewFue({
               {pricingRows.map((row, idx) => (
                 <div
                   key={idx}
-                  className={`grid grid-cols-2 transition-colors ${
-                    idx < pricingRows.length - 1
-                      ? "border-b border-[#e0eff8]"
-                      : ""
-                  } ${
-                    row.highlighted
+                  className={`grid grid-cols-2 transition-colors ${idx < pricingRows.length - 1
+                    ? "border-b border-[#e0eff8]"
+                    : ""
+                    } ${row.highlighted
                       ? "bg-[#dff2fe]"
                       : "bg-white hover:bg-[#f5fbff]"
-                  }`}
+                    }`}
                 >
                   {/* Type Label */}
                   <div className="px-5 sm:px-7 py-4 sm:py-5 flex items-center">
                     <span
-                      className={`font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold tracking-[-0.01em] ${
-                        row.highlighted ? "text-[#0077cc]" : "text-[#001e56]"
-                      }`}
+                      className={`font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold tracking-[-0.01em] ${row.highlighted ? "text-[#0077cc]" : "text-[#001e56]"
+                        }`}
                     >
                       {row.label}
                     </span>
@@ -178,9 +175,8 @@ export default function CostOverviewFue({
 
                   {/* Price */}
                   <div
-                    className={`px-5 sm:px-7 py-4 sm:py-5 border-l flex items-center ${
-                      row.highlighted ? "border-[#b5d9f0]" : "border-[#e0eff8]"
-                    }`}
+                    className={`px-5 sm:px-7 py-4 sm:py-5 border-l flex items-center ${row.highlighted ? "border-[#b5d9f0]" : "border-[#e0eff8]"
+                      }`}
                   >
                     <span className="font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15px] font-medium text-[#334155] leading-snug">
                       {row.prefix || "Starts from "}

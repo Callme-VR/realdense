@@ -121,8 +121,8 @@ export default function FaqFue({
           ══════════════════════════════════════ */}
           <div className="max-w-[460px] lg:sticky lg:top-28">
             <h2 className="font-['Plus_Jakarta_Sans'] text-[32px] sm:text-[40px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.18]">
-              <span className="text-[#001e56] block">{titlePart1}</span>
-              <span className="text-[#00A3FF] block mt-1">{titlePart2}</span>
+              <span className="text-[#001e56] block whitespace-nowrap">{titlePart1}</span>
+              <span className="text-[#00A3FF] block mt-1 whitespace-nowrap">{titlePart2}</span>
             </h2>
             <p className="mt-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[15.5px] leading-[1.7] font-normal">
               {description}
@@ -140,8 +140,8 @@ export default function FaqFue({
                 <div
                   key={faq.id}
                   className={`rounded-[20px] sm:rounded-[24px] border transition-all duration-300 ${isOpen
-                      ? "bg-[#e2f3fe] border-[#68c1fd] shadow-[0_4px_24px_rgba(0,163,255,0.12)]"
-                      : "bg-white border-[#bde3f8] hover:border-[#8ad0fb] shadow-[0_2px_10px_rgba(0,163,255,0.03)]"
+                    ? "bg-[#e2f3fe] border-[#68c1fd] shadow-[0_4px_24px_rgba(0,163,255,0.12)]"
+                    : "bg-white border-[#bde3f8] hover:border-[#8ad0fb] shadow-[0_2px_10px_rgba(0,163,255,0.03)]"
                     }`}
                 >
                   {/* Card Header: Click to Toggle */}

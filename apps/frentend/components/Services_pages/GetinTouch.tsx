@@ -8,9 +8,6 @@ import {
   MapPin,
   Calendar,
   Lock,
-  Heart,
-  ShieldCheck,
-  Award,
   CheckCircle2,
   ChevronDown,
 } from "lucide-react";
@@ -28,29 +25,82 @@ const trustBadges: BadgeItem[] = [
     id: "guidance",
     line1: "Expert",
     line2: "Guidance",
-    iconBg: "bg-[#00a3ff]",
-    icon: <Heart className="w-5 h-5 text-white" strokeWidth={2.2} />,
+    iconBg: "bg-[#0095ff]",
+    icon: (
+      <svg
+        className="w-6 h-6 text-white"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+      </svg>
+    ),
   },
   {
     id: "patients",
     line1: "2,000+ Happy",
     line2: "Patients",
-    iconBg: "bg-[#0077e6]",
-    icon: <ShieldCheck className="w-5 h-5 text-white" strokeWidth={2.2} />,
+    iconBg: "bg-[#0095ff]",
+    icon: (
+      <svg
+        className="w-6 h-6 text-white"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <circle cx="12" cy="10.5" r="2.2" />
+        <path d="M12 12.7v3.2" />
+      </svg>
+    ),
   },
   {
     id: "response",
     line1: "Quick",
     line2: "Response",
-    iconBg: "bg-[#00a3ff]",
-    icon: <User className="w-5 h-5 text-white" strokeWidth={2.2} />,
+    iconBg: "bg-[#0095ff]",
+    icon: (
+      <svg
+        className="w-6 h-6 text-white"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="7" r="4" />
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      </svg>
+    ),
   },
   {
     id: "rating",
     line1: "4.9/5 Patient",
     line2: "Rating",
-    iconBg: "bg-[#0077e6]",
-    icon: <Award className="w-5 h-5 text-white" strokeWidth={2.2} />,
+    iconBg: "bg-[#0095ff]",
+    icon: (
+      <svg
+        className="w-6 h-6 text-white"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <circle cx="12" cy="10.5" r="2.2" />
+        <path d="M12 12.7v3.2" />
+      </svg>
+    ),
   },
 ];
 
@@ -112,20 +162,20 @@ export default function GetInTouch() {
               Consult with our RealDense hair restoration experts and get a personalized treatment plan designed for natural, long-lasting results.
             </p>
 
-            {/* 4 Trust Badges Grid (Responsive 1-col on tiny screens, 2-col on normal) */}
-            <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4 sm:gap-y-6 gap-x-4 sm:gap-x-8 max-w-[440px]">
+            {/* 4 Trust Badges Grid (2x2 Column and Row Layout as seen in reference) */}
+            <div className="grid grid-cols-2 gap-y-6 sm:gap-y-8 gap-x-6 sm:gap-x-10 max-w-[500px]">
               {trustBadges.map((badge) => (
-                <div key={badge.id} className="flex items-center gap-3">
+                <div key={badge.id} className="flex items-center gap-3.5 sm:gap-4">
                   <div
-                    className={`w-11 h-11 rounded-full ${badge.iconBg} flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(0,163,255,0.22)]`}
+                    className={`w-[48px] h-[48px] sm:w-[52px] sm:h-[52px] rounded-full ${badge.iconBg} flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(0,149,255,0.25)]`}
                   >
                     {badge.icon}
                   </div>
                   <div className="flex flex-col min-w-0">
-                    <span className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14.5px] font-bold text-[#001e56] leading-snug">
+                    <span className="font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold text-[#001e56] leading-[1.22] whitespace-nowrap">
                       {badge.line1}
                     </span>
-                    <span className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14.5px] font-bold text-[#001e56] leading-snug">
+                    <span className="font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold text-[#001e56] leading-[1.22] whitespace-nowrap">
                       {badge.line2}
                     </span>
                   </div>

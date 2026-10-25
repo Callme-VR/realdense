@@ -126,8 +126,8 @@ export default function DosAndDonts({
             {eyebrow}
           </span>
           <h2 className="font-['Plus_Jakarta_Sans'] text-[28px] sm:text-[38px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.18]">
-            <span className="text-[#001e56]">{titlePart1} </span>
-            <span className="text-[#00A3FF]">{titlePart2}</span>
+            <span className="text-[#001e56] whitespace-nowrap">{titlePart1} </span>
+            <span className="text-[#00A3FF] whitespace-nowrap">{titlePart2}</span>
           </h2>
           <p className="mt-4 sm:mt-5 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14.5px] sm:text-[15.5px] leading-[1.7] font-normal max-w-[620px] mx-auto">
             {description}
