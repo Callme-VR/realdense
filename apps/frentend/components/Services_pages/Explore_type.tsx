@@ -249,24 +249,24 @@ export default function ExploreServices() {
                     key={card.id}
                     className="group relative flex flex-col rounded-[22px] sm:rounded-[26px] overflow-hidden border border-[#e2e8f0]/80 shadow-[0_4px_16px_rgba(0,30,86,0.06)] hover:shadow-[0_12px_28px_rgba(0,30,86,0.12)] transition-all duration-300 hover:-translate-y-1 bg-[#edf3fc] min-w-0 max-sm:rounded-[18px]"
                   >
-                    <div className="relative w-full aspect-[1016/1104] overflow-hidden bg-[#edf3fc]">
+                    <div className="relative w-full aspect-[1016/1104] max-sm:aspect-[1016/1280] overflow-hidden bg-[#edf3fc]">
                       {/* Smooth shrinkable image canvas */}
-                      <div className="relative w-full h-full overflow-hidden transition-all duration-300 ease-out max-sm:scale-[0.86] max-sm:origin-top max-sm:translate-y-1 max-sm:rounded-[12px] sm:scale-100 sm:origin-top sm:translate-y-0 sm:group-hover:scale-[0.86] sm:group-hover:origin-top sm:group-hover:translate-y-1.5 sm:group-hover:rounded-[18px]">
+                      <div className="relative w-full h-full max-sm:h-[86.25%] overflow-hidden transition-all duration-300 ease-out max-sm:scale-100 max-sm:translate-y-0 max-sm:rounded-none sm:scale-100 sm:origin-top sm:translate-y-0 sm:group-hover:scale-[0.86] sm:group-hover:origin-top sm:group-hover:translate-y-1.5 sm:group-hover:rounded-[18px]">
                         <Image
                           src={card.image}
                           alt={`${card.title} - ${card.description}`}
                           fill
                           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover object-center"
+                          className="object-cover object-center max-sm:object-top"
                           quality={90}
                         />
                       </div>
 
                       {/* Know more CTA button */}
-                      <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-20 transition-all duration-300 ease-out max-sm:opacity-100 max-sm:translate-y-0 max-sm:pointer-events-auto sm:opacity-0 sm:translate-y-2.5 sm:pointer-events-none sm:group-hover:opacity-100 sm:group-hover:translate-y-0 sm:group-hover:pointer-events-auto">
+                      <div className="absolute bottom-2.5 left-2.5 max-sm:bottom-3 max-sm:left-3 xs:max-sm:bottom-3.5 xs:max-sm:left-3.5 sm:bottom-3.5 sm:left-3.5 z-20 transition-all duration-300 ease-out max-sm:opacity-100 max-sm:translate-y-0 max-sm:pointer-events-auto sm:opacity-0 sm:translate-y-2.5 sm:pointer-events-none sm:group-hover:opacity-100 sm:group-hover:translate-y-0 sm:group-hover:pointer-events-auto">
                         <Link
                           href={["fut", "fue", "qht"].includes(card.id) ? `/services/${card.id}` : "/services"}
-                          className="inline-flex items-center gap-1.5 rounded-md sm:rounded-lg bg-[#001e56] text-white px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[9.5px] xs:text-[10.5px] sm:text-[12px] font-semibold shadow-md hover:bg-[#072464] active:scale-[0.97] transition-all duration-200 cursor-pointer"
+                          className="inline-flex items-center gap-1.5 rounded-md sm:rounded-lg max-sm:rounded-lg bg-[#001e56] text-white px-2.5 py-1 max-sm:px-3 max-sm:py-1.5 sm:px-3.5 sm:py-1.5 text-[9.5px] xs:text-[10.5px] max-sm:text-[10.5px] sm:text-[12px] font-semibold shadow-sm hover:bg-[#072464] active:scale-[0.97] transition-all duration-200 cursor-pointer"
                         >
                           Know more <span className="text-[10px] sm:text-[12px] leading-none">→</span>
                         </Link>

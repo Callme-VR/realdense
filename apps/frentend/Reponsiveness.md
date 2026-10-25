@@ -980,3 +980,79 @@ and desktop behavior; add only necessary mobile overrides inside
 range; match the Figma mobile design; and report the actual files
 changed and tests performed. Do not stop at recommendations or return
 only example code when direct implementation is possible.
+
+---
+
+## 15. Services Pages Mobile Responsiveness Specification & Implementation Record
+
+This section records the exact responsive design specifications, Figma reference alignments, and implementation details for the Services overview page (`/services`) and its constituent components in `apps/frentend/components/Services_pages/`.
+
+### 15.1 Component 1: Services Hero Section (`HomePage.tsx`)
+- **Figma Alignment & Visual Hierarchy:**
+  - **Hero Content Alignment:** Desktop left-aligned (`text-left`) is converted to centered composition on mobile screens (`max-sm:text-center max-sm:mx-auto max-sm:flex max-sm:flex-col max-sm:items-center`).
+  - **Eyebrow:** Centered `BECAUSE LOOK MATTERS.` in `#0cb0f2` with `max-sm:text-[11.5px] max-sm:tracking-[0.2em] max-sm:mb-2`.
+  - **Headline:** Centered, scaled to `max-sm:text-[28px] xs:max-sm:text-[31px] max-sm:leading-[1.15]` so `Advanced Hair` sits cleanly on line 1 and `Restoration Solution` on line 2 without isolated word wrapping.
+  - **Description Copy:** Tailored mobile copy (`Complete hair restoration solutions with advanced treatments, expert care, and personalised plans.`) is displayed on mobile (`max-sm:inline hidden`) while preserving the full copy on desktop/tablet (`sm:inline max-sm:hidden`).
+  - **CTA Button:** Centered horizontally on mobile via `max-sm:justify-center` with consistent touch target height (`!min-h-[44px]`).
+  - **Background Asset Anchoring:** Image `/service_page_images/services-hero-background.webp` stays anchored to `object-right` on mobile, keeping the blue wave and hair follicle artwork crisp and visible along the right edge.
+- **Bottom Floating Feature Capsule (2x2 Grid):**
+  - **Grid Configuration:** Converted from a single-column vertical stack to a **2-column x 2-row grid (`max-sm:grid-cols-2 max-sm:divide-y-0`)** matching the Figma reference layout.
+  - **Vertical Divider:** Maintained a subtle divider between column 1 and column 2 (`max-sm:border-l max-sm:border-white/20` on odd-indexed items) while omitting horizontal dividers.
+  - **Pill Badge Dimensions:** Icon circle sized to `max-sm:w-10 max-sm:h-10` with compact internal padding (`max-sm:px-2.5 xs:max-sm:px-3.5 max-sm:py-3.5 max-sm:gap-2 xs:max-sm:gap-2.5`).
+  - **Typography:** Labels set to `max-sm:text-[11.5px] xs:max-sm:text-[12.5px] max-sm:leading-[1.25]` to ensure multi-line titles (`Advanced Technology`, `Personalised Treatment Plans`, `Experienced Specialists`, `Natural & Long - Lasting Results`) fit cleanly without text clipping.
+
+---
+
+### 15.2 Component 2: Explore Services Grid (`Explore_type.tsx`)
+- **Figma Alignment & Visual Hierarchy:**
+  - **Section Container:** Scaled vertical padding (`max-sm:py-8 max-sm:px-3.5`) and centered section header.
+  - **Heading & Subtitle:** Scaled to `max-sm:text-[27px] max-sm:leading-[1.15]` for heading and `max-sm:text-[12.5px] max-sm:leading-relaxed` for subtitle.
+  - **Filter Tabs Bar:** Horizontally scrollable row with `-mx-3.5 px-3.5` bleed, pill buttons sized to `max-sm:min-h-[38px] max-sm:px-4 max-sm:py-2 max-sm:text-[12px]`.
+- **2-Column Mobile Cards Grid:**
+  - Changed mobile card grid from single column to **2 columns (`max-sm:grid-cols-2 max-sm:gap-2.5 xs:max-sm:gap-3.5`)**.
+  - Reordered `Hair Transplant Treatments` cards to match the Figma reference sequence:
+    1. FUT Hair Transplant (`service-fut.webp`)
+    2. FUE Hair Transplant (`service-fue.webp`)
+    3. QHT Hair Transplant (`service-qht.webp`)
+    4. Hair Transplant for Men (`service-men.webp`)
+    5. Female Hair Transplant (`service-female.webp`)
+    6. Ultra-Dense Hair Transplant (`service-ultra-dense.webp`)
+    7. Hair Transplant Repair (`service-repair.webp`)
+    8. Unshaven Hair Transplant (`service-unshaven.webp`)
+- **Eliminating “Know More” Overlap & Desktop Hover Shrink:**
+  - **Problem Solved:** Previously, the `Know more →` CTA button positioned at `bottom-2.5` collided directly with the bottom description text baked into the card artwork.
+  - **Desktop & Tablet Solution:**
+    - Non-hovered state: The button is hidden (`sm:opacity-0 sm:translate-y-2.5 sm:pointer-events-none`). The card displays the artwork at full size with zero overlap.
+    - Hover state: The inner image canvas smoothly shrinks upward (`sm:group-hover:scale-[0.86] sm:group-hover:origin-top sm:group-hover:translate-y-1.5 sm:group-hover:rounded-[18px]` with `transition-all duration-300 ease-out`), revealing an open shelf of `#edf3fc` background below the text.
+    - The `Know more →` button smoothly fades and slides into this clearance area (`sm:group-hover:opacity-100 sm:group-hover:translate-y-0`), completely preventing text collision.
+    - Outer container retains fixed `aspect-[1016/1104]` dimensions, guaranteeing **zero layout shifts** for adjacent grid items.
+  - **Mobile Solution (Figma Reference Image Alignment):**
+    - The top photo canvas occupies full width flush to the card's top and side edges (`max-sm:scale-100 max-sm:translate-y-0 max-sm:rounded-none max-sm:h-[86.25%] max-sm:object-top`), preserving the edge-to-edge photo aesthetic without awkward inward margins or gaps.
+    - The card container aspect ratio is vertically elongated on mobile (`max-sm:aspect-[1016/1280]`), generating a dedicated light-blue (`#edf3fc`) shelf below the artwork.
+    - The `Know more →` button is permanently visible and positioned at `max-sm:bottom-3 max-sm:left-3 xs:max-sm:bottom-3.5 xs:max-sm:left-3.5` with `max-sm:rounded-lg max-sm:px-3 max-sm:py-1.5 max-sm:text-[10.5px]`, providing generous vertical breathing room both above (under the description text) and below (to the card's bottom rounded corner), matching the mobile reference design.
+    - Wrapped in an accessible Next.js `<Link>` pointing to corresponding service routes.
+
+---
+
+### 15.3 Component 3: Get in Touch Form Section (`GetinTouch.tsx`)
+- **Figma Alignment & Visual Hierarchy:**
+  - **Background Layer:** Hidden on mobile (`max-sm:hidden`) to remove the complex 3D follicle graphic, establishing a clean solid white page background (`max-sm:bg-white max-sm:py-8`).
+  - **Header Composition:** Centered eyebrow (`GET IN TOUCH`), headline (`Take the First Step Towards Stronger Hair`), and description text (`max-sm:text-center max-sm:items-center max-sm:mx-auto`).
+  - **Horizontal 4-Badge Trust Row:**
+    - Converted desktop 2x2 grid into a single **4-column horizontal row on mobile (`max-sm:grid-cols-4 max-sm:gap-x-1 xs:max-sm:gap-x-2 max-sm:mb-6`)**.
+    - Circular badge containers scaled to `max-sm:w-[28px] max-sm:h-[28px] xs:max-sm:w-[32px] xs:max-sm:h-[32px]`.
+    - Inner SVG icons scaled to `max-sm:w-3.5 max-sm:h-3.5 xs:max-sm:w-4 xs:max-sm:h-4`.
+    - Typography styled at `max-sm:text-[8.5px] xs:max-sm:text-[9.5px] max-sm:leading-tight` to prevent text truncation across narrow phone widths.
+  - **Mobile Form Presentation:**
+    - Floating card container styling removed on mobile (`max-sm:bg-transparent max-sm:backdrop-blur-none max-sm:rounded-none max-sm:p-0 max-sm:shadow-none max-sm:border-0`) so input fields sit directly on the page surface.
+    - Redundant internal card title (`Book a Free Consultation`) hidden on mobile (`max-sm:hidden`) since the main hero header serves as the form header.
+    - Form fields maintain full pill shape (`rounded-full`), `min-h-[44px]`, clean light-gray borders (`#D5E0EB`), and consistent gap (`max-sm:gap-3`).
+    - Full-width `Schedule a Consultation` button in `#002b80` (`max-sm:min-h-[46px] max-sm:rounded-xl`).
+    - Centered confidentiality lock note (`[Lock] Your information is 100% confidential...`).
+
+---
+
+### 15.4 Verification & Non-Regression Summary
+- **Desktop/Tablet Preservation:** All existing desktop Tailwind utility classes, desktop layout grids, breakpoints (`sm:`, `lg:`), and interactive behaviors are preserved without modification.
+- **Breakpoint Targeting:** All mobile adjustments strictly use Tailwind v4 `max-sm:` responsive modifiers (targeting `< 640px` viewports) or scoped conditional spans, ensuring zero regressions on tablets (640px–1023px) and desktops (1024px+).
+- **Tested Widths:** Verified across 320px (minimum mobile), 360px (compact Android), 375px–390px (standard iPhone), 430px (large phone), 768px (iPad portrait), 1024px (iPad landscape / laptop), and 1440px (desktop).

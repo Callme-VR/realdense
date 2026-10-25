@@ -130,7 +130,7 @@ const steps: ProcessStep[] = [
     title: "Personalized Plan",
     description:
       "A customised treatment strategy based on your goals, hair type and density.",
-    image: "/images/process/clinical-step-01.webp",
+    image: "/images/process/clinical-step_01.webp",
     alt: "Personalized hair restoration planning",
   },
   {
@@ -146,7 +146,7 @@ const steps: ProcessStep[] = [
     title: "Ongoing Care",
     description:
       "Structured aftercare support from day one to your final result at 12–18 months.",
-    image: "/images/process/clinical-step-04.webp",
+    image: "/images/process/clinical-step_04.png",
     alt: "Ongoing post-op checkup and scalp care",
   },
 ];

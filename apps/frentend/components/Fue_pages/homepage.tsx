@@ -287,8 +287,8 @@ export default function FueHero({
                           setCountryDropdownOpen(false);
                         }}
                         className={`w-full flex items-center gap-2.5 px-3.5 py-2 text-[13.5px] transition-colors cursor-pointer text-left ${selectedCountry.code === country.code
-                            ? "bg-[#e0f2fe] text-[#00A3FF] font-semibold"
-                            : "hover:bg-slate-50 text-[#001e56]"
+                          ? "bg-[#e0f2fe] text-[#00A3FF] font-semibold"
+                          : "hover:bg-slate-50 text-[#001e56]"
                           }`}
                       >
                         <span className="text-[17px]">{country.flag}</span>
