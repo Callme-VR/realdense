@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ServiceCard {
   id: string;
@@ -42,16 +43,22 @@ const serviceCategories: ServiceCategory[] = [
         image: "/service_page_images/service-qht.webp",
       },
       {
-        id: "ultra-dense",
-        title: "Ultra-Dense Hair Transplant",
-        description: "An effective procedure to achieve maximum density for a fuller look.",
-        image: "/service_page_images/service-ultra-dense.webp",
+        id: "men",
+        title: "Hair Transplant for Men",
+        description: "Result-driven male hair transplant solutions designed for a natural look.",
+        image: "/service_page_images/service-men.webp",
       },
       {
         id: "female",
         title: "Female Hair Transplant",
         description: "Restore your confidence with expert care at India's top clinic for women.",
         image: "/service_page_images/service-female.webp",
+      },
+      {
+        id: "ultra-dense",
+        title: "Ultra-Dense Hair Transplant",
+        description: "An effective procedure to achieve maximum density for a fuller look.",
+        image: "/service_page_images/service-ultra-dense.webp",
       },
       {
         id: "repair",
@@ -64,12 +71,6 @@ const serviceCategories: ServiceCategory[] = [
         title: "Unshaven Hair Transplant",
         description: "Get natural results with minimal shaving and maximum discretion.",
         image: "/service_page_images/service-unshaven.webp",
-      },
-      {
-        id: "men",
-        title: "Hair Transplant for Men",
-        description: "Result-driven male hair transplant solutions designed for a natural look.",
-        image: "/service_page_images/service-men.webp",
       },
     ],
   },
@@ -191,29 +192,29 @@ export default function ExploreServices() {
       : serviceCategories.filter((cat) => cat.filterKey === activeFilter);
 
   return (
-    <section className="relative w-full bg-white py-12 sm:py-16 lg:py-20">
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full bg-white py-12 sm:py-16 lg:py-20 max-sm:py-8">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 max-sm:px-3.5">
         {/* ── Section Header ── */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 max-sm:mb-6">
           {/* Eyebrow */}
-          <p className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] lg:text-[13.5px] font-semibold uppercase tracking-[0.24em] text-[#64748B] mb-2 sm:mb-2.5">
+          <p className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] lg:text-[13.5px] font-semibold uppercase tracking-[0.24em] text-[#64748B] mb-2 sm:mb-2.5 max-sm:text-[11px] max-sm:tracking-[0.2em] max-sm:mb-1.5">
             FIND THE RIGHT SOLUTION
           </p>
 
           {/* Heading */}
-          <h2 className="font-['Plus_Jakarta_Sans'] text-[28px] xs:text-[32px] sm:text-[38px] md:text-[44px] font-extrabold tracking-tight text-[#001e56]">
+          <h2 className="font-['Plus_Jakarta_Sans'] text-[28px] xs:text-[32px] sm:text-[38px] md:text-[44px] font-extrabold tracking-tight text-[#001e56] max-sm:text-[27px] max-sm:leading-[1.15]">
             <span>Explore </span>
             <span className="text-[#0cb0f2]">Our Services</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="mt-3 sm:mt-3.5 font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15.5px] lg:text-[16px] font-medium leading-relaxed text-[#334155] max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-3.5 font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15.5px] lg:text-[16px] font-medium leading-relaxed text-[#334155] max-w-2xl mx-auto max-sm:mt-2.5 max-sm:text-[12.5px] max-sm:leading-relaxed max-sm:px-2">
             Whether you&apos;re looking to restore your hairline, add density or explore non-surgical options, our expert-led treatments are designed to deliver natural, long-lasting results.
           </p>
         </div>
 
         {/* ── Filter Tabs (Mobile Scrollable with 44px Touch Targets) ── */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-3 pt-1 mb-10 sm:mb-14 scrollbar-none select-none -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-3 pt-1 mb-10 sm:mb-14 scrollbar-none select-none -mx-4 px-4 sm:mx-0 sm:px-0 max-sm:mb-7 max-sm:gap-2 max-sm:-mx-3.5 max-sm:px-3.5">
           {filterTabs.map((tab) => {
             const isActive = activeFilter === tab.key;
             return (
@@ -221,7 +222,7 @@ export default function ExploreServices() {
                 key={tab.key}
                 type="button"
                 onClick={() => setActiveFilter(tab.key)}
-                className={`shrink-0 min-h-[44px] rounded-full px-5 sm:px-6 py-2.5 text-[13.5px] sm:text-[14px] font-semibold transition-all duration-200 cursor-pointer flex items-center justify-center ${isActive
+                className={`shrink-0 min-h-[44px] rounded-full px-5 sm:px-6 py-2.5 text-[13.5px] sm:text-[14px] font-semibold transition-all duration-200 cursor-pointer flex items-center justify-center max-sm:min-h-[38px] max-sm:px-4 max-sm:py-2 max-sm:text-[12px] ${isActive
                   ? "bg-[#001e56] text-white shadow-[0_4px_14px_rgba(0,30,86,0.22)] border border-[#001e56]"
                   : "bg-white text-[#001e56] border border-[#cbd5e1] hover:border-[#0cb0f2] hover:text-[#0cb0f2]"
                   }`}
@@ -233,30 +234,43 @@ export default function ExploreServices() {
         </div>
 
         {/* ── Services Sections ── */}
-        <div className="flex flex-col gap-12 sm:gap-14 lg:gap-18">
+        <div className="flex flex-col gap-12 sm:gap-14 lg:gap-18 max-sm:gap-8">
           {filteredCategories.map((category) => (
             <div key={category.id} className="flex flex-col min-w-0">
               {/* Category Title */}
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] sm:text-[24px] lg:text-[26px] font-bold tracking-tight text-[#001e56] mb-5 sm:mb-7">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] sm:text-[24px] lg:text-[26px] font-bold tracking-tight text-[#001e56] mb-5 sm:mb-7 max-sm:text-[18px] max-sm:mb-3.5">
                 {category.categoryName}
               </h3>
 
               {/* Grid of Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+              <div className="grid grid-cols-1 max-sm:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-sm:gap-2.5 xs:max-sm:gap-3.5 sm:gap-6 lg:gap-8">
                 {category.cards.map((card) => (
                   <div
                     key={card.id}
-                    className="group relative flex flex-col rounded-[22px] sm:rounded-[26px] overflow-hidden border border-[#e2e8f0]/80 shadow-[0_4px_16px_rgba(0,30,86,0.06)] hover:shadow-[0_12px_28px_rgba(0,30,86,0.12)] transition-all duration-300 hover:-translate-y-1 bg-[#edf3fc] min-w-0"
+                    className="group relative flex flex-col rounded-[22px] sm:rounded-[26px] overflow-hidden border border-[#e2e8f0]/80 shadow-[0_4px_16px_rgba(0,30,86,0.06)] hover:shadow-[0_12px_28px_rgba(0,30,86,0.12)] transition-all duration-300 hover:-translate-y-1 bg-[#edf3fc] min-w-0 max-sm:rounded-[18px]"
                   >
-                    <div className="relative w-full aspect-[1016/1104] overflow-hidden">
-                      <Image
-                        src={card.image}
-                        alt={`${card.title} - ${card.description}`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
-                        quality={90}
-                      />
+                    <div className="relative w-full aspect-[1016/1104] overflow-hidden bg-[#edf3fc]">
+                      {/* Smooth shrinkable image canvas */}
+                      <div className="relative w-full h-full overflow-hidden transition-all duration-300 ease-out max-sm:scale-[0.86] max-sm:origin-top max-sm:translate-y-1 max-sm:rounded-[12px] sm:scale-100 sm:origin-top sm:translate-y-0 sm:group-hover:scale-[0.86] sm:group-hover:origin-top sm:group-hover:translate-y-1.5 sm:group-hover:rounded-[18px]">
+                        <Image
+                          src={card.image}
+                          alt={`${card.title} - ${card.description}`}
+                          fill
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover object-center"
+                          quality={90}
+                        />
+                      </div>
+
+                      {/* Know more CTA button */}
+                      <div className="absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 z-20 transition-all duration-300 ease-out max-sm:opacity-100 max-sm:translate-y-0 max-sm:pointer-events-auto sm:opacity-0 sm:translate-y-2.5 sm:pointer-events-none sm:group-hover:opacity-100 sm:group-hover:translate-y-0 sm:group-hover:pointer-events-auto">
+                        <Link
+                          href={["fut", "fue", "qht"].includes(card.id) ? `/services/${card.id}` : "/services"}
+                          className="inline-flex items-center gap-1.5 rounded-md sm:rounded-lg bg-[#001e56] text-white px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[9.5px] xs:text-[10.5px] sm:text-[12px] font-semibold shadow-md hover:bg-[#072464] active:scale-[0.97] transition-all duration-200 cursor-pointer"
+                        >
+                          Know more <span className="text-[10px] sm:text-[12px] leading-none">→</span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 ))}

@@ -28,7 +28,7 @@ const trustBadges: BadgeItem[] = [
     iconBg: "bg-[#0095ff]",
     icon: (
       <svg
-        className="w-6 h-6 text-white"
+        className="w-6 h-6 text-white max-sm:w-3.5 max-sm:h-3.5 xs:max-sm:w-4 xs:max-sm:h-4"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -47,7 +47,7 @@ const trustBadges: BadgeItem[] = [
     iconBg: "bg-[#0095ff]",
     icon: (
       <svg
-        className="w-6 h-6 text-white"
+        className="w-6 h-6 text-white max-sm:w-3.5 max-sm:h-3.5 xs:max-sm:w-4 xs:max-sm:h-4"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -68,7 +68,7 @@ const trustBadges: BadgeItem[] = [
     iconBg: "bg-[#0095ff]",
     icon: (
       <svg
-        className="w-6 h-6 text-white"
+        className="w-6 h-6 text-white max-sm:w-3.5 max-sm:h-3.5 xs:max-sm:w-4 xs:max-sm:h-4"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -88,7 +88,7 @@ const trustBadges: BadgeItem[] = [
     iconBg: "bg-[#0095ff]",
     icon: (
       <svg
-        className="w-6 h-6 text-white"
+        className="w-6 h-6 text-white max-sm:w-3.5 max-sm:h-3.5 xs:max-sm:w-4 xs:max-sm:h-4"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -125,9 +125,9 @@ export default function GetInTouch() {
   };
 
   return (
-    <section className="relative isolate w-full overflow-hidden bg-[#eef6fe] py-14 sm:py-18 lg:py-22">
+    <section className="relative isolate w-full overflow-hidden bg-[#eef6fe] py-14 sm:py-18 lg:py-22 max-sm:bg-white max-sm:py-8">
       {/* ── Background Wave & 3D Follicle Layer (services-form-banner.webp) ── */}
-      <div className="absolute inset-0 z-0 w-full h-full select-none pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-0 w-full h-full select-none pointer-events-none overflow-hidden max-sm:hidden">
         <Image
           src="/service_page_images/services-form-banner.webp"
           alt="Consultation Background Pattern"
@@ -141,41 +141,41 @@ export default function GetInTouch() {
         <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/40 md:hidden pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 max-sm:px-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8 max-sm:gap-0">
           {/* ── Left Column: Value Proposition & Trust Badges ── */}
-          <div className="w-full lg:max-w-[460px] xl:max-w-[500px] shrink-0 flex flex-col justify-center">
+          <div className="w-full lg:max-w-[460px] xl:max-w-[500px] shrink-0 flex flex-col justify-center max-sm:items-center max-sm:text-center">
             {/* Eyebrow */}
-            <p className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] lg:text-[13.5px] font-bold uppercase tracking-[0.24em] text-[#0cb0f2] mb-2 sm:mb-3">
+            <p className="font-['Plus_Jakarta_Sans'] text-[12px] sm:text-[13px] lg:text-[13.5px] font-bold uppercase tracking-[0.24em] text-[#0cb0f2] mb-2 sm:mb-3 max-sm:text-[11px] max-sm:tracking-[0.22em] max-sm:mb-2">
               GET IN TOUCH
             </p>
 
             {/* Headline */}
-            <h2 className="font-['Plus_Jakarta_Sans'] text-[28px] xs:text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold tracking-[-0.03em] leading-[1.12] text-[#001e56]">
-              <span>Take the First Step</span>
-              <br />
+            <h2 className="font-['Plus_Jakarta_Sans'] text-[28px] xs:text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold tracking-[-0.03em] leading-[1.12] text-[#001e56] max-sm:text-[23px] xs:max-sm:text-[26px] max-sm:leading-[1.2]">
+              <span>Take the First Step </span>
+              <br className="hidden sm:inline" />
               <span className="text-[#0cb0f2]">Towards Stronger Hair</span>
             </h2>
 
             {/* Description */}
-            <p className="mt-3.5 sm:mt-4 mb-7 sm:mb-9 max-w-[460px] font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15.5px] font-medium leading-[1.6] text-[#1e3a6a]">
+            <p className="mt-3.5 sm:mt-4 mb-7 sm:mb-9 max-w-[460px] font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15.5px] font-medium leading-[1.6] text-[#1e3a6a] max-sm:mt-2.5 max-sm:mb-6 max-sm:text-[12.5px] max-sm:leading-relaxed max-sm:max-w-[380px] max-sm:mx-auto">
               Consult with our RealDense hair restoration experts and get a personalized treatment plan designed for natural, long-lasting results.
             </p>
 
-            {/* 4 Trust Badges Grid (2x2 Column and Row Layout as seen in reference) */}
-            <div className="grid grid-cols-2 gap-y-6 sm:gap-y-8 gap-x-6 sm:gap-x-10 max-w-[500px]">
+            {/* 4 Trust Badges Grid (4 columns in a row on mobile, 2x2 on desktop/tablet) */}
+            <div className="grid grid-cols-2 max-sm:grid-cols-4 gap-y-6 sm:gap-y-8 gap-x-6 sm:gap-x-10 max-w-[500px] max-sm:max-w-full max-sm:w-full max-sm:gap-x-1 xs:max-sm:gap-x-2 max-sm:mb-6">
               {trustBadges.map((badge) => (
-                <div key={badge.id} className="flex items-center gap-3.5 sm:gap-4">
+                <div key={badge.id} className="flex items-center gap-3.5 sm:gap-4 max-sm:gap-1.5 max-sm:justify-center">
                   <div
-                    className={`w-[48px] h-[48px] sm:w-[52px] sm:h-[52px] rounded-full ${badge.iconBg} flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(0,149,255,0.25)]`}
+                    className={`w-[48px] h-[48px] sm:w-[52px] sm:h-[52px] max-sm:w-[28px] max-sm:h-[28px] xs:max-sm:w-[32px] xs:max-sm:h-[32px] rounded-full ${badge.iconBg} flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(0,149,255,0.25)] max-sm:shadow-none`}
                   >
                     {badge.icon}
                   </div>
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold text-[#001e56] leading-[1.22] whitespace-nowrap">
+                  <div className="flex flex-col min-w-0 text-left">
+                    <span className="font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold text-[#001e56] leading-[1.22] whitespace-nowrap max-sm:text-[8.5px] xs:max-sm:text-[9.5px] max-sm:leading-tight">
                       {badge.line1}
                     </span>
-                    <span className="font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold text-[#001e56] leading-[1.22] whitespace-nowrap">
+                    <span className="font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold text-[#001e56] leading-[1.22] whitespace-nowrap max-sm:text-[8.5px] xs:max-sm:text-[9.5px] max-sm:leading-tight">
                       {badge.line2}
                     </span>
                   </div>
@@ -187,11 +187,11 @@ export default function GetInTouch() {
           {/* ── Center Space: Reserved for the 3D Follicle & Glowing Bubbles to shine through ── */}
           <div className="hidden lg:block flex-1 min-w-[60px]" aria-hidden="true" />
 
-          {/* ── Right Column: White Floating Consultation Card (Compact) ── */}
-          <div className="w-full lg:max-w-[375px] xl:max-w-[390px] shrink-0 flex justify-center lg:justify-end">
-            <div className="w-full bg-white/95 backdrop-blur-xs rounded-[22px] sm:rounded-[26px] p-4.5 sm:p-5.5 lg:p-6 shadow-[0_16px_40px_rgba(0,30,86,0.11)] border border-[#e2eaf4]">
-              {/* Card Header */}
-              <div className="text-center mb-3.5 sm:mb-4">
+          {/* ── Right Column: Consultation Form ── */}
+          <div className="w-full lg:max-w-[375px] xl:max-w-[390px] shrink-0 flex justify-center lg:justify-end max-sm:max-w-full">
+            <div className="w-full bg-white/95 backdrop-blur-xs rounded-[22px] sm:rounded-[26px] p-4.5 sm:p-5.5 lg:p-6 shadow-[0_16px_40px_rgba(0,30,86,0.11)] border border-[#e2eaf4] max-sm:bg-transparent max-sm:backdrop-blur-none max-sm:rounded-none max-sm:p-0 max-sm:shadow-none max-sm:border-0">
+              {/* Card Header (Hidden on mobile as main section header serves as form header) */}
+              <div className="text-center mb-3.5 sm:mb-4 max-sm:hidden">
                 <h3 className="font-['Plus_Jakarta_Sans'] text-[18px] sm:text-[19.5px] font-bold tracking-tight text-[#001e56]">
                   <span>Book a </span>
                   <span className="text-[#0cb0f2]">Free Consultation</span>
@@ -228,7 +228,7 @@ export default function GetInTouch() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-2.5">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 max-sm:gap-3">
                   {/* Full Name */}
                   <div className="relative flex items-center">
                     <div className="absolute left-3.5 pointer-events-none text-[#94A3B8]">
@@ -316,7 +316,7 @@ export default function GetInTouch() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full min-h-[44px] mt-1 py-2.5 sm:py-3 rounded-xl font-semibold text-[13.5px] sm:text-[14px] text-white bg-[#002b80] hover:bg-[#002066] active:scale-[0.99] transition-all duration-200 shadow-[0_5px_15px_rgba(0,43,128,0.22)] flex items-center justify-center cursor-pointer"
+                    className="w-full min-h-[44px] sm:min-h-[44px] max-sm:min-h-[46px] mt-1 py-2.5 sm:py-3 rounded-xl font-semibold text-[13.5px] sm:text-[14px] max-sm:text-[14px] text-white bg-[#002b80] hover:bg-[#002066] active:scale-[0.99] transition-all duration-200 shadow-[0_5px_15px_rgba(0,43,128,0.22)] flex items-center justify-center cursor-pointer"
                   >
                     {loading ? (
                       <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -326,7 +326,7 @@ export default function GetInTouch() {
                   </button>
 
                   {/* Privacy / Confidential Notice */}
-                  <div className="flex items-center justify-center gap-1.5 mt-1 text-[#64748B]">
+                  <div className="flex items-center justify-center gap-1.5 mt-1 sm:mt-1 max-sm:mt-2.5 text-[#64748B]">
                     <Lock className="w-3 h-3 shrink-0" />
                     <p className="text-[10.5px] sm:text-[11px] leading-tight text-center">
                       Your information is 100% confidential and will never be shared with third parties.
