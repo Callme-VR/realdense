@@ -202,7 +202,7 @@ export default function FutPatientResults({
 }: PatientResultsProps) {
   return (
     <section className="relative isolate w-full bg-white py-14 sm:py-20 lg:py-24 overflow-hidden">
-      {/* ── Background Image Layer (fue-patient-results-background.webp) ── */}
+      {/* ── Background Image Layer (fut-patient-results-background.webp) ── */}
       <div className="absolute inset-0 -z-10 w-full h-full pointer-events-none select-none overflow-hidden">
         <Image
           src="/Fut_page_images/fut-patient-results-background.webp"
