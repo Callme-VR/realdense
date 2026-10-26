@@ -146,7 +146,7 @@ const steps: ProcessStep[] = [
     title: "Ongoing Care",
     description:
       "Structured aftercare support from day one to your final result at 12–18 months.",
-    image: "/images/process/clinical-step_04.png",
+    image: "/images/process/clinical-step-04.webp",
     alt: "Ongoing post-op checkup and scalp care",
   },
 ];
