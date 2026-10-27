@@ -15,6 +15,8 @@ import FemaleWhyChoose from "@/components/Female_hair_Pages/FemaleWhyChoose";
 import FemalePostSurgerySupport from "@/components/Female_hair_Pages/FemalePostSurgerySupport";
 import FemaleDosAndDonts from "@/components/Female_hair_Pages/FemaleDosAndDonts";
 import FemaleRecovery from "@/components/Female_hair_Pages/FemaleRecovery";
+import FemaleFaq from "@/components/Female_hair_Pages/FemaleFaq";
+import FemaleComparison from "@/components/Female_hair_Pages/FemaleComparison";
 import PatientReviews from "@/components/Home_pages/PatientReviews";
 import GetInTouch from "@/components/Services_pages/GetinTouch";
 
@@ -45,6 +47,8 @@ export default function FemalePage() {
         <FemaleDosAndDonts />
         <PatientReviews />
         <FemaleRecovery />
+        <FemaleFaq />
+        <FemaleComparison />
         <GetInTouch />
       </main>
       <Footer hideCta />
