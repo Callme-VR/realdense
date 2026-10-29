@@ -27,6 +27,7 @@ const navLinks: NavItem[] = [
       { label: "QHT Hair Transplant", href: "/services/qht" },
       { label: "Ultra dense Transplant", href: "/services/ultradense" },
       { label: "Female Hair Transplant", href: "/services/female" },
+      { label: "Hair repair", href: "/services/hairrepair" },
       // { label: "Sapphire FUE", href: "/services/sapphire-fue" },
       // { label: "Hairline Restoration", href: "/services/hairline" },
       // { label: "Beard Transplant", href: "/services/beard" },
