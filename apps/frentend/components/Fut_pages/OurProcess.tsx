@@ -81,44 +81,59 @@ export default function OurProcess({
 
           {/* Right Column: Floating Stat Cards with Geometric Contour */}
           <div className="lg:col-span-5 relative flex flex-col items-center lg:items-end justify-center min-h-[220px]">
-            {/* Background Dotted Trajectory Line */}
+            {/* Background Dotted Geometric Contour Line */}
             <div
               className="absolute inset-0 pointer-events-none select-none"
               aria-hidden="true"
             >
               <svg
-                className="w-full h-full"
-                viewBox="0 0 380 220"
+                className="w-full h-full overflow-visible"
+                viewBox="0 0 400 240"
                 fill="none"
                 preserveAspectRatio="none"
               >
                 <path
-                  d="M 60 50 L 190 20 L 330 20 L 350 110 L 250 180 L 130 190 L 70 120"
-                  stroke="#38bdf8"
-                  strokeWidth="1.2"
+                  d="M 25 65 L 55 12 L 115 2 L 130 26 M 235 60 L 260 70 L 260 95 L 325 95 L 325 135 L 365 145 L 380 180 L 370 245 L 340 240 M 180 185 L 160 185 L 130 150 L 65 153 L 25 65"
+                  stroke="#7eb5df"
+                  strokeWidth="1.3"
                   strokeDasharray="4 4"
-                  strokeOpacity="0.6"
+                  strokeOpacity="0.8"
                 />
               </svg>
             </div>
 
-            {/* Floating Card 1: 3 Week Recovery (With 4 Corner Handles) */}
-            <div className="relative z-10 self-center lg:self-center mb-5 w-[210px] sm:w-[220px]">
-              <span className="absolute -top-1.5 -left-1.5 w-3.5 h-3.5 rounded-full border-2 border-[#00A3FF] bg-white shadow-xs z-20" />
-              <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 rounded-full border-2 border-[#00A3FF] bg-white shadow-xs z-20" />
-              <span className="absolute -bottom-1.5 -left-1.5 w-3.5 h-3.5 rounded-full border-2 border-[#00A3FF] bg-white shadow-xs z-20" />
-              <span className="absolute -bottom-1.5 -right-1.5 w-3.5 h-3.5 rounded-full border-2 border-[#00A3FF] bg-white shadow-xs z-20" />
-
-              {/* Card Inner */}
-              <div className="flex items-center gap-3.5 px-4 py-3 rounded-[18px] bg-white/95 backdrop-blur-xs border border-[#00A3FF]/40 shadow-[0_8px_24px_rgba(0,163,255,0.14)]">
-                <div className="w-10 h-10 rounded-xl bg-[#001e56] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <CalendarCheck className="w-5 h-5 text-white" strokeWidth={2.2} />
+            {/* Floating Card 1: 3 Week Recovery */}
+            <div className="relative z-10 self-center lg:self-start ml-0 lg:ml-6 mb-6 w-[220px] sm:w-[235px]">
+              <div className="flex items-center gap-4 px-5 py-3.5 rounded-[22px] bg-[#f0f6fc] border border-white shadow-[0_8px_24px_rgba(3,30,80,0.06)]">
+                {/* Solid Blue Calendar Icon with White Checkmark */}
+                <div className="shrink-0 flex items-center justify-center">
+                  <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
+                    <rect x="9" y="1" width="3.5" height="5" rx="1.75" fill="#003cb3" />
+                    <rect x="27.5" y="1" width="3.5" height="5" rx="1.75" fill="#003cb3" />
+                    <rect x="3" y="3.5" width="34" height="33" rx="7" fill="#003cb3" />
+                    <line
+                      x1="3"
+                      y1="12"
+                      x2="37"
+                      y2="12"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeOpacity="0.3"
+                    />
+                    <path
+                      d="M13 23.5 L17.5 28 L27 18.5"
+                      stroke="white"
+                      strokeWidth="3.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-['Plus_Jakarta_Sans'] text-[20px] font-extrabold text-[#001e56] leading-none">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[24px] sm:text-[26px] font-extrabold text-[#001e56] leading-none">
                     3
                   </span>
-                  <span className="font-['Plus_Jakarta_Sans'] text-[12px] font-medium text-[#556987] mt-0.5">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[13px] font-medium text-[#556987] mt-1">
                     Week Recovery
                   </span>
                 </div>
@@ -126,16 +141,29 @@ export default function OurProcess({
             </div>
 
             {/* Floating Card 2: Minimal Pain */}
-            <div className="relative z-10 self-center lg:self-end mr-0 lg:mr-8 w-[190px] sm:w-[200px]">
-              <div className="flex items-center gap-3 px-4 py-3 rounded-[18px] bg-[#f0f7fe] border border-white shadow-[0_8px_20px_rgba(3,30,80,0.06)]">
-                <div className="w-10 h-10 rounded-xl bg-[#001e56] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <HeartPulse className="w-5 h-5 text-white" strokeWidth={2.2} />
+            <div className="relative z-10 self-center lg:self-end mr-0 lg:mr-2 w-[220px] sm:w-[235px]">
+              <div className="flex items-center gap-4 px-5 py-3.5 rounded-[22px] bg-[#f0f6fc] border border-white shadow-[0_8px_24px_rgba(3,30,80,0.06)]">
+                {/* Solid Navy Heart with White Cardiogram Pulse */}
+                <div className="shrink-0 flex items-center justify-center">
+                  <svg className="w-10 h-10" viewBox="0 0 44 44" fill="none">
+                    <path
+                      d="M22 38.5 C22 38.5 4 27.5 4 14.5 C4 8.5 8.5 4 14.5 4 C18.2 4 21.5 6.2 22 7.5 C22.5 6.2 25.8 4 29.5 4 C35.5 4 40 8.5 40 14.5 C40 27.5 22 38.5 22 38.5 Z"
+                      fill="#001e56"
+                    />
+                    <path
+                      d="M4 21.5 H13.5 L16.5 17.5 L19.5 25.5 L23.5 13.5 L27.5 28.5 L30.5 21.5 H40"
+                      stroke="white"
+                      strokeWidth="2.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-['Plus_Jakarta_Sans'] text-[15px] font-bold text-[#001e56] leading-tight">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[17px] sm:text-[18px] font-bold text-[#001e56] leading-tight">
                     Minimal
                   </span>
-                  <span className="font-['Plus_Jakarta_Sans'] text-[12px] font-medium text-[#556987]">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[13px] font-medium text-[#556987]">
                     Pain
                   </span>
                 </div>

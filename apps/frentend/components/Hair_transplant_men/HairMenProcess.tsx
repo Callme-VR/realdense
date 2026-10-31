@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { CalendarCheck, HeartPulse } from "lucide-react";
 
 export interface HairMenProcessStep {
   step: string;
   title: string;
   description: string;
-  tag: string;
+  tagLine1: string;
+  tagLine2?: string;
 }
 
 const defaultSteps: HairMenProcessStep[] = [
@@ -16,28 +16,29 @@ const defaultSteps: HairMenProcessStep[] = [
     title: "Initial consultation",
     description:
       "It's important to assess the scalp to analyze the donor and the recipient area of the scalp for the procedure.",
-    tag: "Consultation",
+    tagLine1: "Consultation",
   },
   {
     step: "02",
     title: "Selection of techniques",
     description:
       "The surgeon selects FUT, FUE, or QHT based on your individual needs.",
-    tag: "Best Technique",
+    tagLine1: "Best",
+    tagLine2: "Technique",
   },
   {
     step: "03",
     title: "Safe extraction",
     description:
       "It's important to extract hair from a safe donor zone to avoid future hair loss.",
-    tag: "Extraction",
+    tagLine1: "Extraction",
   },
   {
     step: "04",
     title: "Fast recovery",
     description:
       "Grafts follow the natural hair direction, with new growth typically appearing within a few months.",
-    tag: "Recovery",
+    tagLine1: "Recovery",
   },
 ];
 
@@ -45,7 +46,6 @@ export interface HairMenProcessProps {
   eyebrow?: string;
   titleLine1?: string;
   titleLine2?: string;
-  titleLine3?: string;
   description?: string;
   stepsList?: HairMenProcessStep[];
 }
@@ -53,8 +53,7 @@ export interface HairMenProcessProps {
 export default function HairMenProcess({
   eyebrow = "OUR PROCESS",
   titleLine1 = "Procedure used in india",
-  titleLine2 = "For Male Hair Transplant",
-  titleLine3 = "in India",
+  titleLine2 = "For Male Hair Transplant in India",
   description = "Male hair transplant involves assessment of the scalp followed by safer extraction with the usage of different hair techniques. The precision-guided implantation helps in faster recovery and significant hair growth.",
   stepsList = defaultSteps,
 }: HairMenProcessProps) {
@@ -72,50 +71,72 @@ export default function HairMenProcess({
             </span>
             <h2 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[36px] lg:text-[44px] font-extrabold tracking-[-0.03em] leading-[1.16]">
               <span className="text-[#001e56] block">{titleLine1}</span>
-              <span className="text-[#00A3FF] block mt-1">
-                {titleLine2}
-                {titleLine3 && ` ${titleLine3}`}
-              </span>
+              <span className="text-[#00A3FF] block mt-1">{titleLine2}</span>
             </h2>
             <p className="mt-3.5 sm:mt-4 text-[#556987] font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15px] leading-[1.65] font-normal">
               {description}
             </p>
           </div>
 
-          {/* Right Column: Floating Stat Cards with Geometric Contour */}
+          {/* Right Column: Floating Stat Cards with Geometric Contour Line (Matching Reference Screenshot) */}
           <div className="lg:col-span-5 relative flex flex-col items-center lg:items-end justify-center min-h-[220px]">
-            {/* Background Dotted Trajectory Line */}
+            {/* Background Dotted Geometric Contour Line */}
             <div
               className="absolute inset-0 pointer-events-none select-none"
               aria-hidden="true"
             >
               <svg
-                className="w-full h-full"
-                viewBox="0 0 380 220"
+                className="w-full h-full overflow-visible"
+                viewBox="0 0 400 240"
                 fill="none"
                 preserveAspectRatio="none"
               >
                 <path
-                  d="M 60 50 L 190 20 L 330 20 L 350 110 L 250 180 L 130 190 L 70 120"
-                  stroke="#38bdf8"
-                  strokeWidth="1.2"
+                  d="M 25 65 L 55 12 L 115 2 L 130 26 M 235 60 L 260 70 L 260 95 L 325 95 L 325 135 L 365 145 L 380 180 L 370 245 L 340 240 M 180 185 L 160 185 L 130 150 L 65 153 L 25 65"
+                  stroke="#7eb5df"
+                  strokeWidth="1.3"
                   strokeDasharray="4 4"
-                  strokeOpacity="0.6"
+                  strokeOpacity="0.8"
                 />
               </svg>
             </div>
 
             {/* Floating Card 1: 3 Week Recovery */}
-            <div className="relative z-10 self-center lg:self-center mb-5 w-[210px] sm:w-[220px]">
-              <div className="flex items-center gap-3.5 px-4 py-3 rounded-[18px] bg-[#f0f7fe] border border-white shadow-[0_8px_20px_rgba(3,30,80,0.06)]">
-                <div className="w-10 h-10 rounded-xl bg-[#001e56] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <CalendarCheck className="w-5 h-5 text-white" strokeWidth={2.2} />
+            <div className="relative z-10 self-center lg:self-start ml-0 lg:ml-6 mb-6 w-[220px] sm:w-[235px]">
+              <div className="flex items-center gap-4 px-5 py-3.5 rounded-[22px] bg-[#f0f6fc] border border-white shadow-[0_8px_24px_rgba(3,30,80,0.06)]">
+                {/* Solid Blue Calendar Icon with White Checkmark */}
+                <div className="shrink-0 flex items-center justify-center">
+                  <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none">
+                    {/* Top Binder Tabs */}
+                    <rect x="9" y="1" width="3.5" height="5" rx="1.75" fill="#003cb3" />
+                    <rect x="27.5" y="1" width="3.5" height="5" rx="1.75" fill="#003cb3" />
+                    {/* Main Calendar Body */}
+                    <rect x="3" y="3.5" width="34" height="33" rx="7" fill="#003cb3" />
+                    {/* White Header Divider */}
+                    <line
+                      x1="3"
+                      y1="12"
+                      x2="37"
+                      y2="12"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeOpacity="0.3"
+                    />
+                    {/* White Checkmark */}
+                    <path
+                      d="M13 23.5 L17.5 28 L27 18.5"
+                      stroke="white"
+                      strokeWidth="3.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-['Plus_Jakarta_Sans'] text-[20px] font-extrabold text-[#001e56] leading-none">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[24px] sm:text-[26px] font-extrabold text-[#001e56] leading-none">
                     3
                   </span>
-                  <span className="font-['Plus_Jakarta_Sans'] text-[12px] font-medium text-[#556987] mt-0.5">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[13px] font-medium text-[#556987] mt-1">
                     Week Recovery
                   </span>
                 </div>
@@ -123,16 +144,31 @@ export default function HairMenProcess({
             </div>
 
             {/* Floating Card 2: Minimal Pain */}
-            <div className="relative z-10 self-center lg:self-end mr-0 lg:mr-8 w-[190px] sm:w-[200px]">
-              <div className="flex items-center gap-3 px-4 py-3 rounded-[18px] bg-[#f0f7fe] border border-white shadow-[0_8px_20px_rgba(3,30,80,0.06)]">
-                <div className="w-10 h-10 rounded-xl bg-[#001e56] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <HeartPulse className="w-5 h-5 text-white" strokeWidth={2.2} />
+            <div className="relative z-10 self-center lg:self-end mr-0 lg:mr-2 w-[220px] sm:w-[235px]">
+              <div className="flex items-center gap-4 px-5 py-3.5 rounded-[22px] bg-[#f0f6fc] border border-white shadow-[0_8px_24px_rgba(3,30,80,0.06)]">
+                {/* Solid Navy Heart with White Cardiogram Pulse */}
+                <div className="shrink-0 flex items-center justify-center">
+                  <svg className="w-10 h-10" viewBox="0 0 44 44" fill="none">
+                    {/* Dark Navy Heart */}
+                    <path
+                      d="M22 38.5 C22 38.5 4 27.5 4 14.5 C4 8.5 8.5 4 14.5 4 C18.2 4 21.5 6.2 22 7.5 C22.5 6.2 25.8 4 29.5 4 C35.5 4 40 8.5 40 14.5 C40 27.5 22 38.5 22 38.5 Z"
+                      fill="#001e56"
+                    />
+                    {/* White Heartbeat Line */}
+                    <path
+                      d="M4 21.5 H13.5 L16.5 17.5 L19.5 25.5 L23.5 13.5 L27.5 28.5 L30.5 21.5 H40"
+                      stroke="white"
+                      strokeWidth="2.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-['Plus_Jakarta_Sans'] text-[15px] font-bold text-[#001e56] leading-tight">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[17px] sm:text-[18px] font-bold text-[#001e56] leading-tight">
                     Minimal
                   </span>
-                  <span className="font-['Plus_Jakarta_Sans'] text-[12px] font-medium text-[#556987]">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[13px] font-medium text-[#556987]">
                     Pain
                   </span>
                 </div>
@@ -141,89 +177,88 @@ export default function HairMenProcess({
           </div>
         </div>
 
-        {/* ── Main Process Box (Navy Container) ── */}
-        <div className="relative rounded-[26px] sm:rounded-[36px] bg-[#001b54] p-6 sm:p-10 lg:p-14 shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: 4 Timeline Steps */}
-            <div className="lg:col-span-8 flex flex-col space-y-6 sm:space-y-8">
-              {stepsList.map((step, index) => {
-                const isActive = activeStep === index;
-                const isLast = index === stepsList.length - 1;
+        {/* ── Main Process Card (Large Dark Navy Box) ── */}
+        <div className="relative rounded-[22px] sm:rounded-[32px] bg-[#001e56] shadow-[0_20px_50px_rgba(0,30,86,0.3)] p-5 sm:p-9 lg:p-12 overflow-hidden">
+          <div className="flex flex-col">
+            {stepsList.map((item, idx) => {
+              const isLast = idx === stepsList.length - 1;
+              const isActive = activeStep === idx;
 
-                return (
-                  <div
-                    key={step.step}
-                    onClick={() => setActiveStep(index)}
-                    onMouseEnter={() => setActiveStep(index)}
-                    className="relative flex items-start gap-4 sm:gap-6 group cursor-pointer"
-                  >
-                    {/* Step Circle & Vertical Timeline Line */}
-                    <div className="flex flex-col items-center shrink-0 relative">
-                      {/* Step Number Circle */}
-                      <div
-                        className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15px] font-extrabold transition-all duration-300 z-10 select-none ${
-                          isActive
-                            ? "bg-white text-[#001e56] shadow-[0_0_20px_rgba(255,255,255,0.4)] scale-105"
-                            : "bg-[#0a2768] text-white/80 border border-white/20 group-hover:border-white/50"
+              return (
+                <div
+                  key={item.step}
+                  onClick={() => setActiveStep(idx)}
+                  onMouseEnter={() => setActiveStep(idx)}
+                  className="flex items-stretch gap-3.5 sm:gap-6 group cursor-pointer"
+                >
+                  {/* Left Column: Number Circle & Vertical Timeline Connector */}
+                  <div className="relative flex flex-col items-center shrink-0 self-stretch">
+                    {/* Step Circle */}
+                    <div
+                      className={`relative z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full font-['Plus_Jakarta_Sans'] font-extrabold text-[14px] sm:text-[16px] flex items-center justify-center transition-all duration-200 ${isActive
+                          ? "bg-[#0052FF] text-white shadow-[0_4px_16px_rgba(0,82,255,0.5)]"
+                          : "bg-[#dff2fe] text-[#001e56] shadow-[0_4px_10px_rgba(0,0,0,0.2)]"
                         }`}
-                      >
-                        {step.step}
-                      </div>
-
-                      {/* Timeline Line connecting to next dot */}
-                      {!isLast && (
-                        <div
-                          className="w-0.5 bg-white/20 h-16 sm:h-18 absolute top-12 left-1/2 -translate-x-1/2 pointer-events-none"
-                          aria-hidden="true"
-                        >
-                          {/* Inner small dot in between */}
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#00A3FF] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                        </div>
-                      )}
+                    >
+                      {item.step}
                     </div>
 
-                    {/* Step Content */}
-                    <div className="flex-1 pt-1.5 pb-2 border-b border-white/10 last:border-b-0">
-                      <h3
-                        className={`font-['Plus_Jakarta_Sans'] text-[17px] sm:text-[19px] lg:text-[20px] font-bold transition-colors duration-200 tracking-tight ${
-                          isActive
-                            ? "text-[#00A3FF]"
-                            : "text-white group-hover:text-white/90"
-                        }`}
+                    {/* Dashed Timeline Connector Line with Cyan Dot */}
+                    {!isLast && (
+                      <div
+                        className="w-0 flex-1 relative flex items-center justify-center my-0"
+                        style={{ borderLeft: "1px dashed #FFFFFF" }}
+                        aria-hidden="true"
                       >
-                        {step.title}
+                        {/* Cyan Dot on Timeline */}
+                        <span className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00A3FF] shadow-[0_0_8px_#00A3FF]" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Right Column: Step Content & Tag Pill */}
+                  <div
+                    className={`flex-1 min-w-0 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 lg:gap-8 ${!isLast ? "pb-6 sm:pb-8 lg:pb-10" : "pb-0"
+                      }`}
+                  >
+                    {/* Step Content */}
+                    <div className="flex-1 min-w-0 pt-0.5 sm:pt-1">
+                      <h3 className="font-['Plus_Jakarta_Sans'] text-[16px] sm:text-[19px] font-bold text-[#00A3FF] tracking-tight">
+                        {item.title}
                       </h3>
-                      <p className="mt-1 sm:mt-1.5 text-white/70 font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[14px] leading-relaxed max-w-[560px]">
-                        {step.description}
+                      <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[14.5px] leading-relaxed text-[#cbd5e1] mt-1.5 sm:mt-2 max-w-[580px]">
+                        {item.description}
                       </p>
+
+                      {/* Subtle Horizontal Divider */}
+                      <div
+                        className="w-full max-w-[580px] h-[1px] bg-white/10 mt-4 sm:mt-6"
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    {/* Right Tag Pill */}
+                    <div className="w-full md:w-auto shrink-0">
+                      <div
+                        className={`w-full md:w-[210px] lg:w-[230px] rounded-[16px] sm:rounded-[18px] px-4 py-3 sm:px-5 sm:py-4 text-center transition-all duration-200 ${isActive
+                            ? "bg-[#0052FF] text-white shadow-[0_4px_16px_rgba(0,82,255,0.4)]"
+                            : "bg-[#0a235c] text-white/85 border border-white/10 hover:bg-[#0d2d75]"
+                          }`}
+                      >
+                        <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[14px] font-medium block leading-snug">
+                          {item.tagLine1}
+                        </span>
+                        {item.tagLine2 && (
+                          <span className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[14px] font-medium block leading-snug">
+                            {item.tagLine2}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Right Column: 4 Interactive Pills */}
-            <div className="lg:col-span-4 flex flex-col space-y-4">
-              {stepsList.map((step, index) => {
-                const isActive = activeStep === index;
-
-                return (
-                  <button
-                    key={step.step}
-                    type="button"
-                    onClick={() => setActiveStep(index)}
-                    onMouseEnter={() => setActiveStep(index)}
-                    className={`w-full py-4 sm:py-5 px-6 rounded-[16px] text-center font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[16px] font-bold transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? "bg-[#0052FF] text-white shadow-[0_8px_24px_rgba(0,82,255,0.4)] scale-[1.02]"
-                        : "bg-white/[0.08] hover:bg-white/[0.14] text-white/80 border border-white/10"
-                    }`}
-                  >
-                    {step.tag}
-                  </button>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
