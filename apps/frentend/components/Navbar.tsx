@@ -13,6 +13,22 @@ interface NavItem {
   dropdown?: { label: string; href: string }[];
 }
 
+const servicesPart1 = [
+  { label: "All Services Overview", href: "/services" },
+  { label: "FUT Hair Transplant", href: "/services/fut" },
+  { label: "FUE Hair Transplant", href: "/services/fue" },
+  { label: "QHT Hair Transplant", href: "/services/qht" },
+  { label: "Ultra dense Transplant", href: "/services/ultradense" },
+];
+
+const servicesPart2 = [
+  { label: "Hair Transplant for Men", href: "/services/hairmen" },
+  { label: "Female Hair Transplant", href: "/services/female" },
+  { label: "Custom Hairline Transplant", href: "/services/customhair" },
+  { label: "Hair repair", href: "/services/hairrepair" },
+  { label: "No shave", href: "/services/noshave" },
+];
+
 const navLinks: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Results", href: "/results" },
@@ -20,22 +36,7 @@ const navLinks: NavItem[] = [
     label: "Services",
     href: "/services",
     hasDropdown: true,
-    dropdown: [
-      { label: "All Services Overview", href: "/services" },
-      { label: "FUT Hair Transplant", href: "/services/fut" },
-      { label: "FUE Hair Transplant", href: "/services/fue" },
-      { label: "QHT Hair Transplant", href: "/services/qht" },
-      { label: "Ultra dense Transplant", href: "/services/ultradense" },
-      { label: "Hair Transplant for Men", href: "/services/hairmen" },
-      { label: "Female Hair Transplant", href: "/services/female" },
-      { label: "Hair repair", href: "/services/hairrepair" },
-      { label: "No shave", href: "/services/noshave" },
-
-      // { label: "Sapphire FUE", href: "/services/sapphire-fue" },
-      // { label: "Hairline Restoration", href: "/services/hairline" },
-      // { label: "Beard Transplant", href: "/services/beard" },
-      // { label: "Eyebrow Transplant", href: "/services/eyebrow" },
-    ],
+    dropdown: [...servicesPart1, ...servicesPart2],
   },
   { label: "Treatment cost", href: "/treatment-cost" },
   { label: "Our doctors", href: "/our-doctors" },
@@ -155,9 +156,9 @@ export default function Navbar() {
                     <span className="absolute bottom-0 left-4 right-4 h-[2px] origin-left scale-x-0 bg-[#00A3FF] transition-transform duration-200 group-hover:scale-x-100" />
                   </Link>
 
-                  {/* Dropdown panel */}
+                  {/* Dropdown panel (Broken in 2 parts) */}
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-2xl shadow-[0_10px_35px_rgba(3,30,80,0.12)] border border-[#d6ecfb] py-2 transition-all duration-200 origin-top ${servicesOpen
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[480px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(3,30,80,0.14)] border border-[#d6ecfb] p-3.5 transition-all duration-200 origin-top ${servicesOpen
                       ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                       : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                       }`}
@@ -165,18 +166,45 @@ export default function Navbar() {
                   >
                     <div className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-white border-l border-t border-[#d6ecfb] rotate-45" />
 
-                    {item.dropdown!.map((subItem) => (
-                      <Link
-                        key={subItem.label}
-                        href={subItem.href}
-                        role="menuitem"
-                        className="flex items-center gap-2.5 px-4 py-2 text-[13.5px] font-semibold text-[#031E50] hover:bg-[#EBF8FF] hover:text-[#00A3FF] transition-colors"
-                        onClick={() => setServicesOpen(false)}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#00A3FF] shrink-0" />
-                        {subItem.label}
-                      </Link>
-                    ))}
+                    <div className="grid grid-cols-2 gap-3 divide-x divide-[#e2effa]">
+                      {/* Part 1 */}
+                      <div className="flex flex-col gap-0.5 pr-1">
+                        <span className="px-3 pt-0.5 pb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#00A3FF]">
+                          Procedures
+                        </span>
+                        {servicesPart1.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            href={subItem.href}
+                            role="menuitem"
+                            className="flex items-center gap-2 px-3 py-2 rounded-xl text-[13px] font-semibold text-[#031E50] hover:bg-[#EBF8FF] hover:text-[#00A3FF] transition-colors"
+                            onClick={() => setServicesOpen(false)}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#00A3FF] shrink-0" />
+                            <span className="truncate">{subItem.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+
+                      {/* Part 2 */}
+                      <div className="flex flex-col gap-0.5 pl-3">
+                        <span className="px-3 pt-0.5 pb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#00A3FF]">
+                          Specialized
+                        </span>
+                        {servicesPart2.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            href={subItem.href}
+                            role="menuitem"
+                            className="flex items-center gap-2 px-3 py-2 rounded-xl text-[13px] font-semibold text-[#031E50] hover:bg-[#EBF8FF] hover:text-[#00A3FF] transition-colors"
+                            onClick={() => setServicesOpen(false)}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#00A3FF] shrink-0" />
+                            <span className="truncate">{subItem.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
@@ -286,24 +314,50 @@ export default function Navbar() {
 
                   <div
                     className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen
-                      ? "max-h-80 opacity-100 mt-1"
+                      ? "max-h-[560px] opacity-100 mt-1"
                       : "max-h-0 opacity-0"
                       }`}
                   >
-                    <div className="ml-4 pl-3 border-l-2 border-[#00A3FF]/30 flex flex-col gap-1">
-                      {item.dropdown!.map((subItem) => (
-                        <Link
-                          key={subItem.label}
-                          href={subItem.href}
-                          className="py-2 px-3 text-[13.5px] font-medium text-[#031E50]/80 hover:text-[#00A3FF] transition-colors"
-                          onClick={() => {
-                            setMobileOpen(false);
-                            setMobileServicesOpen(false);
-                          }}
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
+                    <div className="ml-3 pl-3 border-l-2 border-[#00A3FF]/30 grid grid-cols-1 sm:grid-cols-2 gap-2 py-1">
+                      {/* Part 1 */}
+                      <div className="flex flex-col gap-0.5">
+                        <span className="px-2 pt-1 pb-0.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#00A3FF]">
+                          Procedures
+                        </span>
+                        {servicesPart1.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            href={subItem.href}
+                            className="py-1.5 px-2.5 rounded-lg text-[13px] font-medium text-[#031E50]/80 hover:text-[#00A3FF] hover:bg-white/50 transition-colors"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileServicesOpen(false);
+                            }}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+
+                      {/* Part 2 */}
+                      <div className="flex flex-col gap-0.5">
+                        <span className="px-2 pt-1 pb-0.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#00A3FF]">
+                          Specialized
+                        </span>
+                        {servicesPart2.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            href={subItem.href}
+                            className="py-1.5 px-2.5 rounded-lg text-[13px] font-medium text-[#031E50]/80 hover:text-[#00A3FF] hover:bg-white/50 transition-colors"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileServicesOpen(false);
+                            }}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
