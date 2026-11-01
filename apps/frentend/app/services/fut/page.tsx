@@ -33,15 +33,15 @@ export default function FutPage() {
       <main className="flex-1 w-full overflow-x-hidden">
         <FutHero />
         <FutOverview />
-        <TypesOfFut />
-        <Benefits />
         <IdealCandidate />
         <FutPatientResults />
+        <TypesOfFut />
         <OurProcess />
-        <OurProcess2 />
         <StepByStepProcedure />
+        <Benefits />
         <CostOverview />
         <CausesOfHairLoss />
+        <OurProcess2 />
         <PostSurgerySupport />
         <DosAndDonts />
         <PatientReviews />
