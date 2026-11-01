@@ -6,33 +6,33 @@ import Faqqht, { FaqQhtProps, FAQItem } from "@/components/QHT_pages/Faqqht";
 const crownHairFaqs: FAQItem[] = [
   {
     id: 1,
-    question: "Why is a crown hair transplant considered challenging?",
+    question: "How effective is a crown hair transplant?",
     answer:
-      "The crown has a complex spiral (whorl) growth pattern with varying follicle angles. Recreating this requires exceptional surgical skill to ensure the new hair blends invisibly with native hair.",
+      "Most patients resume daily activities within a few days, with scalp healing taking 1–2 weeks.",
   },
   {
     id: 2,
-    question: "How many grafts are typically needed for the crown?",
+    question: "Which technique is better for crown hair Transplant?",
     answer:
-      "Depending on the extent of thinning or baldness, a crown procedure generally requires between 1,500 and 3,500 grafts to achieve satisfying density and full coverage.",
+      "Both FUE and QHT are effective, but QHT offers superior precision for matching the natural whorl angle with faster healing and higher graft survival.",
   },
   {
     id: 3,
-    question: "How long does it take to see full results in the crown area?",
+    question: "How long is crown transplant recovery?",
     answer:
-      "While initial growth is visible within 3 to 6 months, crown hair typically matures around 9 to 12 months post-procedure due to scalp circulation and circular hair direction.",
+      "Initial healing takes about 7 to 10 days, while noticeable hair growth begins around 3 to 6 months and reaches full density at 9 to 12 months.",
   },
   {
     id: 4,
-    question: "Are crown hair transplant results permanent?",
+    question: "Are the crown hair transplant results permanent?",
     answer:
-      "Yes. The hair follicles are harvested from the permanent, DHT-resistant donor zone at the back and sides of the scalp, ensuring lifelong growth.",
+      "Yes, transplanted follicles are harvested from the DHT-resistant permanent zone at the back and sides of the scalp, providing permanent growth.",
   },
   {
     id: 5,
-    question: "Can I combine crown restoration with a hairline transplant?",
+    question: "Does a crown hair transplant leave scars after surgery?",
     answer:
-      "Yes, if your donor area has sufficient graft density, our surgeons can design a treatment plan addressing both hairline recession and crown thinning.",
+      "With advanced micro-punch FUE and QHT techniques, extraction points heal into tiny micro-dots that are virtually imperceptible even with short hair.",
   },
 ];
 
@@ -41,10 +41,9 @@ export default function CrownHairFaq(props: Partial<FaqQhtProps>) {
     <Faqqht
       titlePart1="FAQ’S for"
       titlePart2="Crown hair transplant"
-      description="At RealDense, our commitment extends well beyond the procedure. We provide structured aftercare and expert follow-up to support optimal crown hair density."
+      description="At RealDense, our care doesn't end after surgery. We provide complete post-operative support to ensure smooth recovery and long-lasting, natural results."
       faqs={crownHairFaqs}
       {...props}
     />
   );
 }
-

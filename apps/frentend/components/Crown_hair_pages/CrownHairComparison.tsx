@@ -10,29 +10,19 @@ export interface ComparisonRow {
 
 const defaultComparisonData: ComparisonRow[] = [
   {
-    feature: "Crown Whorl Control",
-    col1: "Manual angle alignment",
-    col2: "360° precision directional placement",
+    feature: "Purpose",
+    col1: "Precision, natural spiral, high density",
+    col2: "Forceps implantation in premade slits.",
   },
   {
-    feature: "Graft Survival Rate",
-    col1: "90% – 93%",
-    col2: "95% – 98% (minimal graft handling)",
+    feature: "Scarring",
+    col1: "Minimal, covered by procedure",
+    col2: "Minimal",
   },
   {
-    feature: "Recovery Timeline",
-    col1: "7 to 10 days",
-    col2: "3 to 5 days",
-  },
-  {
-    feature: "Crown Density",
-    col1: "Natural density",
-    col2: "Ultra-dense natural blend",
-  },
-  {
-    feature: "Scalp Trauma",
-    col1: "Low",
-    col2: "Negligible micro-punches",
+    feature: "Recovery",
+    col1: "5–7 days",
+    col2: "7–10 days",
   },
 ];
 
@@ -47,10 +37,10 @@ export interface CrownHairComparisonProps {
 
 export default function CrownHairComparison({
   titlePart1 = "Compare of",
-  titlePart2 = "FUE vs QHT for Crown Restoration",
-  subtitle = "Choosing the right technique for crown hair transplant is crucial because of the complex spiral growth. Here is a direct comparison:",
-  col1Title = "FUE Technique",
-  col2Title = "QHT Technique",
+  titlePart2 = "GFC vs PRP for Hairline Growth",
+  subtitle = "GFC injections are different from the PRP injections, though both of them are non-invasive the following factors make them different from one to another:",
+  col1Title = "QHT Temple Hair Transplant",
+  col2Title = "Traditional FUE",
   data = defaultComparisonData,
 }: CrownHairComparisonProps) {
   return (
@@ -153,4 +143,3 @@ export default function CrownHairComparison({
     </section>
   );
 }
-

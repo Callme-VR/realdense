@@ -7,13 +7,13 @@ import CrownHairIdealCandidate from "@/components/Crown_hair_pages/CrownHairIdea
 import CrownHairPatientResults from "@/components/Crown_hair_pages/CrownHairPatientResults";
 import CrownHairTypes from "@/components/Crown_hair_pages/CrownHairTypes";
 import CrownHairProcess from "@/components/Crown_hair_pages/CrownHairProcess";
-import HairRepairStepProcedure from "@/components/Hair_repair_pages/HairRepairStepProcedure";
+import CrownHairStepProcedure from "@/components/Crown_hair_pages/CrownHairStepProcedure";
 import CrownHairBenefits from "@/components/Crown_hair_pages/CrownHairBenefits";
 import CrownHairCostOverview from "@/components/Crown_hair_pages/CrownHairCostOverview";
-import HairRepairCausesOfHairLoss from "@/components/Hair_repair_pages/HairRepairCausesOfHairLoss";
+import CrownHairCausesOfHairLoss from "@/components/Crown_hair_pages/CrownHairCausesOfHairLoss";
 import CrownHairWhyChoose from "@/components/Crown_hair_pages/CrownHairWhyChoose";
-import HairRepairPostSurgerySupport from "@/components/Hair_repair_pages/HairRepairPostSurgerySupport";
-import HairRepairDosAndDonts from "@/components/Hair_repair_pages/HairRepairDosAndDonts";
+import CrownHairPostSurgerySupport from "@/components/Crown_hair_pages/CrownHairPostSurgerySupport";
+import CrownHairDosAndDonts from "@/components/Crown_hair_pages/CrownHairDosAndDonts";
 import PatientReviews from "@/components/Home_pages/PatientReviews";
 import CrownHairRecovery from "@/components/Crown_hair_pages/CrownHairRecovery";
 import CrownHairFaq from "@/components/Crown_hair_pages/CrownHairFaq";
@@ -38,13 +38,13 @@ export default function CrownHairPage() {
         <CrownHairPatientResults />
         <CrownHairTypes />
         <CrownHairProcess />
-        <HairRepairStepProcedure />
+        <CrownHairStepProcedure />
         <CrownHairBenefits />
         <CrownHairCostOverview />
-        <HairRepairCausesOfHairLoss />
+        <CrownHairCausesOfHairLoss />
         <CrownHairWhyChoose />
-        <HairRepairPostSurgerySupport />
-        <HairRepairDosAndDonts />
+        <CrownHairPostSurgerySupport />
+        <CrownHairDosAndDonts />
         <PatientReviews />
         <CrownHairRecovery />
         <CrownHairFaq />

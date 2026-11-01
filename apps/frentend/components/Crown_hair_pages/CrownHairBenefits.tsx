@@ -8,40 +8,38 @@ import HairRepairBenefits, {
 
 const crownHairBenefitsCards: HairRepairBenefitCardData[] = [
   {
-    id: "natural-whorl-pattern",
+    id: "realistic-hair-density",
     step: "01",
-    title: "Natural Crown Spiral",
-    description:
-      "Recreates the authentic circular whorl growth pattern unique to your scalp.",
+    title: "Realistic Hair Density",
+    description: "Crown Hair Transplant with a natural spiral growth pattern.",
     imageSrc: "/Ultra_page_images/Benefits-4.webp",
-    imageAlt: "01 Natural Crown Spiral",
+    imageAlt: "01 Realistic Hair Density",
   },
   {
-    id: "full-density-coverage",
+    id: "long-lasting-results",
     step: "02",
-    title: "Full Density & Coverage",
+    title: "Long–lasting Results",
     description:
-      "Transforms prominent bald crown spots into dense, natural-looking hair.",
+      "The transplanted hair follicles are less prone to root damage",
     imageSrc: "/Ultra_page_images/Benefits-2.webp",
-    imageAlt: "02 Full Density & Coverage",
+    imageAlt: "02 Long–lasting Results",
   },
   {
-    id: "permanent-dht-resistant",
+    id: "minimal-invasive-techniques",
     step: "03",
-    title: "Permanent DHT Resistance",
-    description:
-      "Harvested from safe donor zones, transplanted crown hair lasts for life.",
-    imageSrc: "/Hair_repair_pages/Benefits-3.webp",
-    imageAlt: "03 Permanent DHT Resistance",
+    title: "Minimal Invasive techniques",
+    description: "The Realdense technique gives minimal scars.",
+    imageSrc: "/Ultra_page_images/Benefits-3.webp",
+    imageAlt: "03 Minimal Invasive techniques",
   },
   {
-    id: "minimally-invasive",
-    step: "04",
-    title: "Fast, Scarless Recovery",
+    id: "customised-approach",
+    step: "03",
+    title: "Customised Approach",
     description:
-      "Advanced micro-punch technology ensures rapid healing and virtually invisible scarring.",
-    imageSrc: "/Ultra_page_images/Benefits-3.webp",
-    imageAlt: "04 Fast, Scarless Recovery",
+      "At Realdense Clinic, the procedure is tailored to the patient’s needs.",
+    imageSrc: "/Ultra_page_images/Benefits-1.webp",
+    imageAlt: "03 Customised Approach",
   },
 ];
 
@@ -53,10 +51,9 @@ export default function CrownHairBenefits(
       eyebrow="BENEFITS"
       titleLine1="Benefits of"
       titleAccent="Crown Hair Transplant"
-      subtitle="A crown hair transplant offers complete vertex coverage, restoring a natural whorl pattern and youthful density with minimal downtime."
+      subtitle="The Crown Hair Transplant at our clinic restores the hair in the crown region. The advanced procedure is beneficial in the following ways:"
       cards={crownHairBenefitsCards}
       {...props}
     />
   );
 }
-

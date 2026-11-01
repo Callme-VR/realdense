@@ -17,40 +17,44 @@ export interface CrownHairProcessProps {
   titleLine2?: string;
   description?: string;
   stepsList?: CrownHairProcessStep[];
+  stat1Number?: string | number;
+  stat1Text?: string;
+  stat2Title?: string;
+  stat2Text?: string;
 }
 
 const crownHairSteps: CrownHairProcessStep[] = [
   {
     step: "01",
-    title: "Consultation & Assessment",
+    title: "Assessment.",
     description:
-      "Comprehensive scalp analysis to evaluate crown thinning patterns, whorl direction, and donor graft availability.",
+      "Evaluation of the previous transplant by the realdense Clinic team of experts.",
     tagLine1: "Consultation &",
     tagLine2: "Assessment",
   },
   {
     step: "02",
-    title: "Spiral Pattern Design",
+    title: "Grafts Correction",
     description:
-      "Artistic mapping of the natural crown whorl pattern, ensuring correct angle and orientation for every transplanted graft.",
-    tagLine1: "Spiral Angle",
-    tagLine2: "Design",
-  },
-  {
-    step: "03",
-    title: "Precision Graft Extraction",
-    description:
-      "DHT-resistant follicular units are extracted carefully from the donor area with minimal tissue trauma.",
+      "The pluggy grafts are carefully extracted, and healthy new grafts are taken from the donor area.",
     tagLine1: "Graft",
     tagLine2: "Extraction",
   },
   {
-    step: "04",
-    title: "Crown Implantation & Care",
+    step: "03",
+    title: "Grafts Preparation",
     description:
-      "Dense, natural implantation aligned with the natural crown spiral, backed by structured follow-up support.",
-    tagLine1: "Implantation &",
-    tagLine2: "Care",
+      "Healthy grafts are loaded into implanters, while others are preserved in a special solution.",
+    tagLine1: "Healthy",
+    tagLine2: "Grafts",
+  },
+  {
+    step: "04",
+    title: "Implantation in the Crown area",
+    description:
+      "Grafts are implanted along the crown’s natural spiral pattern for a realistic look.",
+    tagLine1: "Implantation",
+    tagLine2: "",
   },
 ];
 
@@ -58,12 +62,15 @@ export default function CrownHairProcess(props: CrownHairProcessProps) {
   return (
     <OurprocessQht
       eyebrow="OUR PROCESS"
-      titleLine1="Procedure used in India"
-      titleLine2="For Crown Hair Transplant"
-      description="The procedure for crown hair transplant requires meticulous planning to recreate the natural circular spiral (whorl) pattern with maximum density."
+      titleLine1="Procedure used in india"
+      titleLine2="For Hair Transplant in India"
+      description="The Hair Transplant at Crown area at our Clinic is performed with utmost precision to ensure permanent outcomes. The process comprises the following steps:"
       stepsList={crownHairSteps}
+      stat1Number="4"
+      stat1Text="Week Recovery"
+      stat2Title="Minimal"
+      stat2Text="Pain"
       {...props}
     />
   );
 }
-

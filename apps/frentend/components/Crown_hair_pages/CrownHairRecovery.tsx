@@ -8,61 +8,48 @@ import Recoveryjourneryqht, {
 
 const crownHairStages: TimelineStage[] = [
   {
-    id: "week-1",
-    tabTitle: "Week 1",
-    tabSubtitle: "Swelling & Care",
-    whatToExpect: ["Mild redness and swelling in the donor and crown area."],
+    id: "week-1-2",
+    tabTitle: "Week 1–2",
+    tabSubtitle: "Swelling",
+    whatToExpect: ["Redness , swelling , Sensitivity"],
     howToCare: [
-      "Sleep with your head elevated at a 45-degree angle.",
-      "Take prescribed medications on time and avoid touching the crown.",
+      "Head elevated and follow postoperative instructions religiously.",
+      "Routine to be followed, no scratching.",
     ],
   },
   {
-    id: "week-2",
-    tabTitle: "Week 2",
-    tabSubtitle: "Scab Formation",
+    id: "week-2-6",
+    tabTitle: "Week 2–6",
+    tabSubtitle: "Scabs fall off",
     whatToExpect: [
-      "Tiny scabs begin to form at the recipient crown sites as early healing starts.",
+      "Scabs begin falling off naturally as early healing stabilizes.",
     ],
     howToCare: [
-      "Do not pick, rub, or scratch at the scabs.",
-      "Follow doctor's instructions for gentle head washing with lukewarm water.",
+      "Gentle wash routine as advised, no picking scabs.",
+      "Protect scalp from dust and harsh sunlight.",
     ],
   },
   {
-    id: "week-3",
-    tabTitle: "Week 3",
-    tabSubtitle: "Hair Shedding",
+    id: "week-3-12-month",
+    tabTitle: "Week 3–12 month",
+    tabSubtitle: "New hair",
     whatToExpect: [
-      "Transplanted hair shafts begin shedding, which is an expected shock-loss stage.",
+      "Fresh hair roots sprout along the natural crown whorl.",
     ],
     howToCare: [
-      "Do not panic—the transplanted roots remain firmly anchored underneath.",
-      "Continue using gentle, prescribed mild shampoo.",
+      "Maintain a balanced, nutrient-rich diet.",
+      "Stay hydrated and avoid harsh chemical styling.",
     ],
   },
   {
-    id: "week-4",
-    tabTitle: "Week 4",
-    tabSubtitle: "Scalp Cleared",
+    id: "after-1-year",
+    tabTitle: "After 1 year",
+    tabSubtitle: "Improvements",
     whatToExpect: [
-      "The scalp clears completely of scabs and redness subsides significantly.",
+      "Maximum density achieved with natural-looking spiral blending.",
     ],
     howToCare: [
-      "Gradually return to your normal routine.",
-      "Protect your scalp from direct sun exposure with a loose hat.",
-    ],
-  },
-  {
-    id: "week-5",
-    tabTitle: "Week 5+",
-    tabSubtitle: "New Growth",
-    whatToExpect: [
-      "Fresh new hair follicles gradually begin to sprout in the crown whorl area.",
-    ],
-    howToCare: [
-      "Maintain a balanced, nutrient-rich diet with essential vitamins.",
-      "Stay hydrated and attend follow-up consultations with your surgeon.",
+      "Follow standard hair care and enjoy permanent crown results.",
     ],
   },
 ];
@@ -75,12 +62,11 @@ export default function CrownHairRecovery(
       eyebrow="RECOVERY JOURNEY"
       titlePart1="Recovery Timeline & Aftercare of"
       titlePart2="Crown Hair Transplant"
-      description="Understand the recovery timeline and essential aftercare tips for ensuring proper hair growth, optimum crown density, and smooth healing."
-      imageSrc="/Crown_hair_images/recovery.webp"
+      description="Understand the recovery timeline and essential aftercare tips for a quicker recovery after a Crown Hair Transplant"
+      imageSrc="/Crown_hair_images/first.webp"
       imageAlt="Recovery Timeline & Aftercare of Crown Hair Transplant"
       stages={crownHairStages}
       {...props}
     />
   );
 }
-
