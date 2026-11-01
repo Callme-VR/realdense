@@ -19,6 +19,8 @@ const servicesPart1 = [
   { label: "FUE Hair Transplant", href: "/services/fue" },
   { label: "QHT Hair Transplant", href: "/services/qht" },
   { label: "Ultra dense Transplant", href: "/services/ultradense" },
+  { label: "Crown Hair Transplant", href: "/services/crown_hair" },
+
 ];
 
 const servicesPart2 = [
@@ -158,7 +160,7 @@ export default function Navbar() {
 
                   {/* Dropdown panel (Broken in 2 parts) */}
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[480px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(3,30,80,0.14)] border border-[#d6ecfb] p-3.5 transition-all duration-200 origin-top ${servicesOpen
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[510px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(3,30,80,0.14)] border border-[#d6ecfb] p-3.5 transition-all duration-200 origin-top ${servicesOpen
                       ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                       : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                       }`}
@@ -314,7 +316,7 @@ export default function Navbar() {
 
                   <div
                     className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen
-                      ? "max-h-[560px] opacity-100 mt-1"
+                      ? "max-h-[640px] opacity-100 mt-1"
                       : "max-h-0 opacity-0"
                       }`}
                   >
