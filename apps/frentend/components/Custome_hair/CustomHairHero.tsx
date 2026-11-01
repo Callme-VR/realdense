@@ -96,7 +96,7 @@ export default function CustomHairHero({
   };
 
   return (
-        <section className="relative isolate w-full bg-[#dff2fe] min-h-0 sm:min-h-[720px] lg:min-h-[780px] xl:min-h-[840px] flex flex-col justify-start sm:justify-between overflow-hidden pt-20 sm:pt-32 lg:pt-36 pb-8 sm:pb-14 lg:pb-16">
+    <section className="relative isolate w-full bg-[#dff2fe] min-h-[640px] sm:min-h-[720px] lg:min-h-[780px] xl:min-h-[840px] flex flex-col justify-between overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-10 sm:pb-14 lg:pb-16">
       {/* ── Background Image Layer ── */}
       <div className="absolute inset-0 -z-10 w-full h-full select-none pointer-events-none overflow-hidden">
         <Image
@@ -111,86 +111,79 @@ export default function CustomHairHero({
       </div>
 
       {/* ── Main Hero Content (Centered) ── */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center my-0 sm:my-auto">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center my-auto">
         {/* Eyebrow / Kicker */}
-        <p className="mb-2 sm:mb-3 font-['Plus_Jakarta_Sans'] text-[10.5px] sm:text-[13px] md:text-[14px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.22em] text-[#00A3FF]">
+        <p className="mb-2 sm:mb-3 font-['Plus_Jakarta_Sans'] text-[11px] sm:text-[13px] md:text-[14px] font-bold uppercase tracking-[0.22em] text-[#00A3FF]">
           {eyebrow}
         </p>
 
         {/* Headline */}
-        <h1 className="font-['Plus_Jakarta_Sans'] text-[26px] sm:text-[44px] md:text-[54px] lg:text-[62px] xl:text-[66px] font-extrabold tracking-[-0.03em] leading-[1.12] sm:leading-[1.14] text-center max-w-[900px] mx-auto px-2">
-          <span className="text-[#001e56] block">{titleLine1}</span>
-          <span className="text-[#00A3FF] block mt-0.5 sm:mt-1.5">
+        <h1 className="font-['Plus_Jakarta_Sans'] tracking-[-0.03em] leading-[1.15] text-center max-w-[1100px] mx-auto px-2">
+          <span className="text-[#001e56] font-extrabold text-[28px] sm:text-[42px] md:text-[52px] lg:text-[60px] xl:text-[64px] block">
+            {titleLine1}
+          </span>
+          <span className="text-[#00A3FF] font-extrabold text-[20px] sm:text-[30px] md:text-[38px] lg:text-[45px] xl:text-[49px] block mt-1 sm:mt-2 sm:whitespace-nowrap">
             {titleLine2}
           </span>
         </h1>
 
         {/* Subtitle / Description */}
-        <p className="mt-2.5 sm:mt-4 mb-5 sm:mb-8 max-w-[310px] sm:max-w-[660px] mx-auto font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[16px] md:text-[17px] font-normal sm:font-medium leading-[1.45] sm:leading-[1.6] text-[#475569] sm:text-[#1b3a6b] px-2">
+        <p className="mt-3 sm:mt-4 mb-6 sm:mb-8 max-w-[660px] mx-auto font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[16px] md:text-[17px] font-medium leading-[1.6] text-[#1b3a6b] px-2">
           {description}
         </p>
 
-        {/* Social Proof (Avatars, count, stars, rating) */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-y-2 sm:gap-x-4 mb-6 sm:mb-10 lg:mb-12">
-          {/* Row 1 on mobile: Avatars + Happy Patients Count */}
-          <div className="flex items-center gap-2.5 sm:gap-3.5">
-            {/* 3 Overlapping Patient Avatars */}
-            <div className="flex items-center -space-x-2 sm:-space-x-3">
-              <div className="relative w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white shadow-xs ring-1 ring-black/5">
-                <Image
-                  src="/images/reviews/amit-sharma.webp"
-                  alt="Patient review"
-                  fill
-                  className="object-cover"
-                  sizes="36px"
-                />
-              </div>
-              <div className="relative w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white shadow-xs ring-1 ring-black/5 z-10">
-                <Image
-                  src="/images/reviews/patient-1.webp"
-                  alt="Patient review"
-                  fill
-                  className="object-cover"
-                  sizes="36px"
-                />
-              </div>
-              <div className="relative w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white shadow-xs ring-1 ring-black/5 z-20">
-                <Image
-                  src="/images/reviews/rohan-mehta.webp"
-                  alt="Patient review"
-                  fill
-                  className="object-cover"
-                  sizes="36px"
-                />
-              </div>
+        {/* Social Proof Pill (Avatars, count, stars, rating) */}
+        <div className="flex items-center justify-center flex-wrap gap-x-3.5 sm:gap-x-4 gap-y-2 mb-8 sm:mb-10 lg:mb-12">
+          {/* 3 Overlapping Patient Avatars */}
+          <div className="flex items-center -space-x-2.5 sm:-space-x-3">
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white shadow-sm ring-1 ring-black/5">
+              <Image
+                src="/images/reviews/amit-sharma.webp"
+                alt="Patient review"
+                fill
+                className="object-cover"
+                sizes="36px"
+              />
             </div>
-
-            {/* Happy Patients Count */}
-            <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[14.5px] text-[#475569]">
-              <strong className="font-bold text-[#001e56]">{patientCount}</strong>{" "}
-              happy patients
-            </p>
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white shadow-sm ring-1 ring-black/5 z-10">
+              <Image
+                src="/images/reviews/patient-1.webp"
+                alt="Patient review"
+                fill
+                className="object-cover"
+                sizes="36px"
+              />
+            </div>
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white shadow-sm ring-1 ring-black/5 z-20">
+              <Image
+                src="/images/reviews/rohan-mehta.webp"
+                alt="Patient review"
+                fill
+                className="object-cover"
+                sizes="36px"
+              />
+            </div>
           </div>
 
-          {/* Horizontal Divider (Mobile only) */}
-          <div
-            className="sm:hidden w-24 h-[1px] bg-[#cbd5e1] my-0.5"
-            aria-hidden="true"
-          />
+          {/* Happy Patients Count */}
+          <p className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14.5px] text-[#475569]">
+            <strong className="font-bold text-[#001e56]">{patientCount}</strong>{" "}
+            happy patients
+          </p>
 
-          {/* Vertical Divider (Desktop only) */}
+          {/* Divider */}
           <span
             className="hidden sm:inline-block w-[1px] h-4 bg-[#cbd5e1] mx-0.5"
             aria-hidden="true"
           />
 
-          {/* Row 2 on mobile: Star Rating */}
+          {/* Star Rating */}
           <div className="flex items-center gap-1.5">
             <div className="flex items-center gap-0.5 text-[#f59e0b]">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
-                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current text-[#f59e0b]"
+                  className="w-4 h-4 fill-current text-[#f59e0b]"
                   viewBox="0 0 20 20"
                   aria-hidden="true"
                 >
@@ -198,7 +191,7 @@ export default function CustomHairHero({
                 </svg>
               ))}
             </div>
-            <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[14.5px] text-[#475569]">
+            <p className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14.5px] text-[#475569]">
               <strong className="font-bold text-[#001e56]">{ratingScore}</strong>{" "}
               rating
             </p>
@@ -206,87 +199,70 @@ export default function CustomHairHero({
         </div>
       </div>
 
-      {/* ── Bottom Floating "Request a Callback" Form Bar ── */}
-      <div className="relative z-20 w-full max-w-[325px] sm:max-w-[1040px] mx-auto px-0 sm:px-6 lg:px-8 mt-1 sm:mt-6">
-        <div className="relative rounded-[18px] sm:rounded-[24px] bg-gradient-to-b from-[#082a77] via-[#10378b] to-[#1c499d] sm:from-transparent sm:to-transparent sm:bg-[#1a3b83] shadow-[0_14px_36px_rgba(15,35,95,0.28)] sm:shadow-[0_16px_40px_rgba(15,35,95,0.22)] border border-white/15 sm:border-white/10 p-4 sm:p-4 md:p-5 lg:px-7 lg:py-4">
+      {/* ── Bottom Floating Callback Bar (Rectangular with Underline Accent) ── */}
+      <div className="relative z-20 w-full max-w-[1020px] mx-auto px-4 sm:px-6">
+        <div className="rounded-[20px] sm:rounded-[24px] bg-[#0c235c] p-4 sm:p-5 lg:p-6 shadow-[0_18px_45px_rgba(0,30,86,0.28)] border border-white/10 backdrop-blur-xs">
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col lg:flex-row items-center gap-2.5 sm:gap-4 lg:gap-4.5 w-full"
+            className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 sm:gap-4"
           >
-            {/* "Request a Callback" with underline */}
-            <div className="shrink-0 text-left w-full lg:w-auto mb-1 sm:mb-1 lg:mb-0">
-              <div className="inline-block text-left">
-                <span className="font-['Plus_Jakarta_Sans'] text-white font-semibold text-[14.5px] sm:text-[16px] tracking-[-0.01em]">
-                  Request a Callback
-                </span>
-                <div className="w-8 sm:w-11 h-[2px] bg-white/95 rounded-full mt-1 sm:mt-1" />
-              </div>
+            {/* Left title: Request a Callback with cyan underline */}
+            <div className="flex flex-col justify-center px-1 sm:px-2 shrink-0">
+              <span className="font-['Plus_Jakarta_Sans'] text-white text-[15px] sm:text-[16px] font-bold tracking-tight">
+                Request a Callback
+              </span>
+              <span className="h-[2px] w-12 bg-[#00A3FF] rounded-full mt-1" />
             </div>
 
-            {/* Input 1: Full Name */}
-            <div className="relative w-full lg:flex-1 lg:max-w-[280px]">
-              <div className="relative flex items-center bg-white/[0.08] hover:bg-white/[0.12] focus-within:bg-white/[0.14] border border-white/20 focus-within:border-white/50 rounded-xl transition-all duration-200 h-[42px] sm:h-[48px] px-3 sm:px-3.5">
-                <User
-                  className="w-4 h-4 text-white/70 shrink-0 mr-2 sm:mr-2.5"
-                  aria-hidden="true"
-                />
+            {/* Inputs & Submit container */}
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-center">
+              {/* Full Name Input */}
+              <div className="relative lg:col-span-5">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/50">
+                  <User className="w-4 h-4" />
+                </div>
                 <input
                   type="text"
-                  name="fullName"
+                  required
+                  placeholder="Full name"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  placeholder="Full name"
-                  required
-                  className="w-full bg-transparent text-white text-[13px] sm:text-[14.5px] placeholder-white/60 focus:outline-none"
+                  className="w-full h-11 pl-10 pr-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 font-['Plus_Jakarta_Sans'] text-[13.5px] focus:outline-none focus:border-[#00A3FF] focus:bg-white/15 transition-all"
                 />
               </div>
-            </div>
 
-            {/* Input 2: Phone with Country Code */}
-            <div className="relative w-full lg:flex-1 lg:max-w-[320px]">
-              <div className="relative flex items-center bg-white/[0.08] hover:bg-white/[0.12] focus-within:bg-white/[0.14] border border-white/20 focus-within:border-white/50 rounded-xl transition-all duration-200 h-[42px] sm:h-[48px] px-2.5 sm:px-3">
-                {/* Country Trigger */}
+              {/* Phone Input with Country Code Dropdown */}
+              <div className="relative lg:col-span-5 flex items-center h-11 rounded-xl bg-white/10 border border-white/20 focus-within:border-[#00A3FF] focus-within:bg-white/15 transition-all" ref={dropdownRef}>
+                {/* Country Selector Button */}
                 <button
                   type="button"
                   onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
-                  className="flex items-center gap-1 sm:gap-1.5 text-white text-[14px] font-medium shrink-0 focus:outline-none pr-2 sm:pr-2.5 hover:opacity-90 select-none cursor-pointer"
-                  aria-label="Select country code"
+                  className="h-full flex items-center gap-1.5 pl-3 pr-2 text-white font-['Plus_Jakarta_Sans'] text-[13px] hover:text-white/80 transition-colors shrink-0"
+                  aria-label="Select Country Code"
                 >
-                  <span className="text-[15px] sm:text-[17px] leading-none">
-                    {selectedCountry.flag}
-                  </span>
-                  <span className="text-[12.5px] sm:text-[13.5px] font-medium">
+                  <span className="text-[14px]">{selectedCountry.flag}</span>
+                  <span className="font-semibold text-white/90">
                     {selectedCountry.dialCode}
                   </span>
-                  <ChevronDown
-                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/70 transition-transform duration-200 ${countryDropdownOpen ? "rotate-180" : ""
-                      }`}
-                  />
+                  <ChevronDown className="w-3.5 h-3.5 text-white/60" />
                 </button>
 
-                {/* Divider between country & phone input */}
-                <div
-                  className="w-[1px] h-4 sm:h-5 bg-white/20 mr-2 sm:mr-2.5 shrink-0"
-                  aria-hidden="true"
-                />
+                {/* Vertical separator */}
+                <span className="h-5 w-[1px] bg-white/20 mr-2" />
 
-                {/* Phone Input */}
+                {/* Number input */}
                 <input
                   type="tel"
-                  name="phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="Enter number"
                   required
-                  className="w-full bg-transparent text-white text-[13px] sm:text-[14.5px] placeholder-white/60 focus:outline-none"
+                  placeholder="Enter number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ""))}
+                  className="w-full h-full pr-3 bg-transparent text-white placeholder-white/60 font-['Plus_Jakarta_Sans'] text-[13.5px] focus:outline-none"
                 />
 
-                {/* Dropdown Menu (Opens upwards to avoid overlapping components below) */}
+                {/* Country dropdown menu */}
                 {countryDropdownOpen && (
-                  <div
-                    ref={dropdownRef}
-                    className="absolute bottom-full left-0 mb-2 w-56 bg-white rounded-2xl shadow-[0_16px_40px_rgba(15,23,42,0.25)] border border-slate-200/80 py-2 z-50 text-slate-800 max-h-56 overflow-y-auto animate-in fade-in zoom-in-95 duration-150"
-                  >
+                  <div className="absolute top-[calc(100%+6px)] left-0 z-50 w-56 max-h-60 overflow-y-auto rounded-xl bg-[#001e56] border border-white/15 shadow-2xl py-1 backdrop-blur-md">
                     {countryList.map((country) => (
                       <button
                         key={country.code}
@@ -295,16 +271,17 @@ export default function CustomHairHero({
                           setSelectedCountry(country);
                           setCountryDropdownOpen(false);
                         }}
-                        className={`w-full flex items-center gap-2.5 px-3.5 py-2 text-[13.5px] transition-colors cursor-pointer text-left ${selectedCountry.code === country.code
-                            ? "bg-[#e0f2fe] text-[#00A3FF] font-semibold"
-                            : "hover:bg-slate-50 text-[#001e56]"
-                          }`}
+                        className={`w-full flex items-center justify-between px-3 py-2 text-left font-['Plus_Jakarta_Sans'] text-[13px] hover:bg-white/10 transition-colors ${
+                          selectedCountry.code === country.code
+                            ? "bg-white/15 text-[#00A3FF] font-semibold"
+                            : "text-white"
+                        }`}
                       >
-                        <span className="text-[17px]">{country.flag}</span>
-                        <span className="font-medium text-[13.5px]">
-                          {country.name}
+                        <span className="flex items-center gap-2 truncate">
+                          <span>{country.flag}</span>
+                          <span className="truncate">{country.name}</span>
                         </span>
-                        <span className="text-slate-400 text-xs ml-auto font-mono">
+                        <span className="text-white/70 font-mono text-[12px] ml-2 shrink-0">
                           {country.dialCode}
                         </span>
                       </button>
@@ -312,25 +289,26 @@ export default function CustomHairHero({
                   </div>
                 )}
               </div>
-            </div>
 
-            {/* Submit Button */}
-            <div className="w-full lg:w-auto shrink-0 mt-1 sm:mt-0">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full lg:w-[140px] h-[40px] sm:h-[48px] bg-white hover:bg-slate-50 text-[#0d2e7b] sm:text-[#1a3b83] font-bold text-[14px] sm:text-[15px] rounded-xl shadow-md transition-all duration-200 hover:shadow-lg active:scale-[0.98] flex items-center justify-center cursor-pointer select-none disabled:opacity-75"
-              >
-                {isSubmitting ? (
-                  <div className="w-5 h-5 border-2 border-[#1a3b83] border-t-transparent rounded-full animate-spin" />
-                ) : isSubmitted ? (
-                  <span className="flex items-center gap-1.5 text-emerald-600 font-semibold text-[14px]">
-                    <CheckCircle2 className="w-4 h-4" /> Received!
-                  </span>
-                ) : (
-                  "Submit"
-                )}
-              </button>
+              {/* Submit Button */}
+              <div className="sm:col-span-2 lg:col-span-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting || isSubmitted}
+                  className="w-full h-11 rounded-xl bg-white text-[#001e56] font-['Plus_Jakarta_Sans'] text-[14px] font-bold hover:bg-[#e6f4fe] active:scale-[0.98] transition-all flex items-center justify-center shadow-sm disabled:opacity-75 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <span className="inline-block w-4 h-4 border-2 border-[#001e56] border-t-transparent rounded-full animate-spin" />
+                  ) : isSubmitted ? (
+                    <span className="flex items-center gap-1.5 text-green-700">
+                      <CheckCircle2 className="w-4 h-4" />
+                      Sent
+                    </span>
+                  ) : (
+                    "Submit"
+                  )}
+                </button>
+              </div>
             </div>
           </form>
         </div>

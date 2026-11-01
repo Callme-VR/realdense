@@ -232,44 +232,23 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button
-          className="lg:hidden relative flex items-center justify-center p-1.5 text-[#000E38] hover:opacity-80 transition-opacity focus:outline-none"
+          className="lg:hidden relative flex flex-col justify-center items-center w-10 h-10 rounded-full bg-[#EBF8FF] border border-[#d6ecfb] transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
-          {mobileOpen ? (
-            <svg
-              width="21"
-              height="16"
-              viewBox="0 0 21 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4 2L17 14M17 2L4 14"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                stroke="#000E38"
-              />
-            </svg>
-          ) : (
-            <svg
-              width="21"
-              height="16"
-              viewBox="0 0 21 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 8H20M1 1H20M10.5 15H15.25H20"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                stroke="#000E38"
-              />
-            </svg>
-          )}
+          <span
+            className={`absolute block w-5 h-[2px] rounded-full bg-[#031E50] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-0" : "-translate-y-[5px]"
+              }`}
+          />
+          <span
+            className={`block w-5 h-[2px] rounded-full bg-[#031E50] transition-all duration-300 ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+              }`}
+          />
+          <span
+            className={`absolute block w-5 h-[2px] rounded-full bg-[#031E50] transition-all duration-300 ${mobileOpen ? "-rotate-45 translate-y-0" : "translate-y-[5px]"
+              }`}
+          />
         </button>
       </div>
 
