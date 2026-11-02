@@ -124,7 +124,7 @@ function BeforeAfterSlider({
       aria-valuemin={0}
       aria-valuemax={100}
       onPointerDown={handlePointerDown}
-      className="relative aspect-square w-full cursor-ew-resize select-none overflow-hidden bg-slate-100 touch-none"
+      className="relative aspect-square w-full cursor-ew-resize select-none overflow-hidden bg-slate-100 touch-none rounded-[14px] sm:rounded-none"
     >
       {/* AFTER Image (Background) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
@@ -132,7 +132,7 @@ function BeforeAfterSlider({
           src={afterImg}
           alt={`After ${title}`}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover object-center"
           quality={85}
         />
@@ -150,19 +150,19 @@ function BeforeAfterSlider({
           src={beforeImg}
           alt={`Before ${title}`}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover object-center"
           quality={85}
         />
       </div>
 
       {/* BEFORE Badge */}
-      <span className="pointer-events-none absolute left-2.5 top-2.5 z-20 rounded-full bg-black/45 backdrop-blur-xs px-2.5 py-0.5 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+      <span className="pointer-events-none absolute left-1.5 top-1.5 sm:left-2.5 sm:top-2.5 z-20 rounded-full bg-black/45 backdrop-blur-xs px-2 py-0.5 sm:px-2.5 sm:py-0.5 text-[8.5px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
         BEFORE
       </span>
 
       {/* AFTER Badge */}
-      <span className="pointer-events-none absolute right-2.5 top-2.5 z-20 rounded-full bg-[#00a8ff] px-2.5 py-0.5 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+      <span className="pointer-events-none absolute right-1.5 top-1.5 sm:right-2.5 sm:top-2.5 z-20 rounded-full bg-[#00a8ff] px-2 py-0.5 sm:px-2.5 sm:py-0.5 text-[8.5px] sm:text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
         AFTER
       </span>
 
@@ -174,10 +174,10 @@ function BeforeAfterSlider({
 
       {/* Circular Slider Handle */}
       <div
-        className="pointer-events-none absolute top-1/2 z-30 flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[11px] font-bold text-[#001e56] shadow-[0_2px_8px_rgba(0,0,0,0.25)] border border-slate-100"
+        className="pointer-events-none absolute top-1/2 z-30 flex h-5 w-5 sm:h-6 sm:w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[11px] font-bold text-[#001e56] shadow-[0_2px_8px_rgba(0,0,0,0.25)] border border-slate-100"
         style={{ left: `${sliderPos}%` }}
       >
-        <span className="flex select-none items-center gap-[1px] leading-none text-slate-700 font-mono text-[9px]">
+        <span className="flex select-none items-center gap-[1px] leading-none text-slate-700 font-mono text-[8px] sm:text-[9px]">
           ‹›
         </span>
       </div>
@@ -230,15 +230,15 @@ export default function FutPatientResults({
           </p>
         </div>
 
-        {/* ── 8 Cards Grid (4 columns x 2 rows) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* ── 8 Cards Grid (2 columns on mobile, 2 columns on tablet, 4 columns on desktop) ── */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
           {items.map((item) => (
             <div
               key={item.id}
-              className="group relative flex flex-col rounded-[20px] sm:rounded-[24px] bg-white border border-slate-100/90 shadow-[0_8px_24px_rgba(3,30,80,0.06)] overflow-hidden transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,30,80,0.12)] hover:-translate-y-0.5"
+              className="group relative flex flex-col rounded-[18px] sm:rounded-[24px] bg-white p-1.5 sm:p-0 border border-slate-100/90 shadow-[0_8px_24px_rgba(3,30,80,0.06)] overflow-hidden transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,30,80,0.12)] hover:-translate-y-0.5"
             >
               {/* Image Comparison Slider */}
-              <div className="overflow-hidden rounded-t-[20px] sm:rounded-t-[24px]">
+              <div className="overflow-hidden rounded-[14px] sm:rounded-none sm:rounded-t-[24px]">
                 <BeforeAfterSlider
                   beforeImg={item.beforeImg}
                   afterImg={item.afterImg}
@@ -246,8 +246,8 @@ export default function FutPatientResults({
                 />
               </div>
 
-              {/* Card Meta Content */}
-              <div className="p-4 sm:p-4.5 text-center flex flex-col justify-center items-center bg-white">
+              {/* Card Meta Content (hidden on mobile to match mobile design, displayed on tablet/desktop) */}
+              <div className="hidden sm:flex p-4 sm:p-4.5 text-center flex-col justify-center items-center bg-white">
                 <h3 className="font-['Plus_Jakarta_Sans'] text-[15px] sm:text-[15.5px] font-bold text-[#001e56] tracking-[-0.01em]">
                   {item.title}
                 </h3>
