@@ -211,13 +211,16 @@ export default function Footer({ hideCta = false }: FooterProps) {
               <div className={`${openSection === "services" ? "max-sm:block" : "max-sm:hidden"} max-sm:pt-4 sm:block`}>
                 <ul className="space-y-2.5 max-sm:space-y-3">
                   {[
-                    { name: "FUE Hair Transplant", href: "/services" },
-                    { name: "DHI Hair Transplant", href: "/services" },
-                    { name: "Sapphire FUE", href: "/services" },
-                    { name: "Hairline Restoration", href: "/services" },
-                    { name: "Crown Restoration", href: "/services" },
-                    { name: "Beard Transplant", href: "/services" },
-                    { name: "Eyebrow Transplant", href: "/services" },
+                    { name: "FUT Hair Transplant", href: "/services/fut" },
+                    { name: "FUE Hair Transplant", href: "/services/fue" },
+                    { name: "QHT Hair Transplant", href: "/services/qht" },
+                    { name: "Ultra-Dense Hair Transplant", href: "/services/ultradense" },
+                    { name: "Crown Hair Transplant", href: "/services/crown_hair" },
+                    { name: "Hair Transplant for Men", href: "/services/hairmen" },
+                    { name: "Female Hair Transplant", href: "/services/female" },
+                    { name: "Custom Hairline Transplant", href: "/services/customhair" },
+                    { name: "Hair Transplant Repair", href: "/services/hairrepair" },
+                    { name: "Unshaven Hair Transplant", href: "/services/noshave" },
                   ].map((link, idx) => (
                     <li key={idx}>
                       <Link

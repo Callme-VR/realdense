@@ -9,6 +9,7 @@ interface ServiceCard {
   title: string;
   description: string;
   image: string;
+  href: string;
 }
 
 interface ServiceCategory {
@@ -29,48 +30,56 @@ const serviceCategories: ServiceCategory[] = [
         title: "FUT Hair Transplant",
         description: "A traditional strip method suitable for extensive hair restoration.",
         image: "/service_page_images/service-fut.webp",
+        href: "/services/fut",
       },
       {
         id: "fue",
         title: "FUE Hair Transplant",
         description: "Minimally invasive treatment for natural results, without linear scars.",
         image: "/service_page_images/service-fue.webp",
+        href: "/services/fue",
       },
       {
         id: "qht",
         title: "QHT Hair Transplant",
         description: "Advanced minimally invasive technique for precise and natural results.",
         image: "/service_page_images/service-qht.webp",
+        href: "/services/qht",
       },
       {
         id: "men",
         title: "Hair Transplant for Men",
         description: "Result-driven male hair transplant solutions designed for a natural look.",
         image: "/service_page_images/service-men.webp",
+        href: "/services/hairmen",
       },
       {
         id: "female",
         title: "Female Hair Transplant",
         description: "Restore your confidence with expert care at India's top clinic for women.",
         image: "/service_page_images/service-female.webp",
+        href: "/services/female",
       },
       {
         id: "ultra-dense",
         title: "Ultra-Dense Hair Transplant",
         description: "An effective procedure to achieve maximum density for a fuller look.",
         image: "/service_page_images/service-ultra-dense.webp",
+        href: "/services/ultradense",
       },
       {
         id: "repair",
         title: "Hair Transplant Repair",
         description: "Correct and improve previous transplant results with expert care and precision.",
         image: "/service_page_images/service-repair.webp",
+        href: "/services/hairrepair",
       },
       {
         id: "unshaven",
         title: "Unshaven Hair Transplant",
         description: "Get natural results with minimal shaving and maximum discretion.",
         image: "/service_page_images/service-unshaven.webp",
+        href: "/services/noshave",
       },
     ],
   },
@@ -84,30 +93,35 @@ const serviceCategories: ServiceCategory[] = [
         title: "Custom Hairline Transplant",
         description: "Personalised hairline design tailored to your facial features.",
         image: "/service_page_images/service-custom-hairline.webp",
+        href: "/services/customhair",
       },
       {
         id: "crown",
         title: "Crown Hair Transplant",
         description: "Restore hair density in the crown area for a fuller and natural look.",
         image: "/service_page_images/service-crown.webp",
+        href: "/services/crown_hair",
       },
       {
         id: "hairline-reconstruction",
         title: "Hairline Reconstruction",
         description: "Restore your hairline with a natural and age-appropriate design.",
         image: "/service_page_images/service-hairline-reconstruction.webp",
+        href: "/services/customhair",
       },
       {
         id: "bad-transplant-correction",
         title: "Bad Hair Transplant Correction",
         description: "From regret to renewal – correct your hair transplant with confidence.",
         image: "/service_page_images/service-bad-transplant-correction.webp",
+        href: "/services/hairrepair",
       },
       {
         id: "temple",
         title: "Temple Hair Transplant",
         description: "Expert solutions for temple restoration and balanced hairline design.",
         image: "/service_page_images/service-temple.webp",
+        href: "/services/customhair",
       },
     ],
   },
@@ -121,18 +135,21 @@ const serviceCategories: ServiceCategory[] = [
         title: "Moustache Hair Transplant",
         description: "Restore your facial hair and achieve a fuller, natural look.",
         image: "/service_page_images/service-moustache.webp",
+        href: "/services/customhair",
       },
       {
         id: "eyebrow",
         title: "Eyebrow Reconstruction",
         description: "Restore or enhance eyebrows with natural-looking density.",
         image: "/service_page_images/service-eyebrow.webp",
+        href: "/services/customhair",
       },
       {
         id: "beard",
         title: "Beard Hair Transplant",
         description: "Achieve a thicker, well-defined beard with natural results.",
         image: "/service_page_images/service-beard.webp",
+        href: "/services/customhair",
       },
     ],
   },
@@ -146,30 +163,35 @@ const serviceCategories: ServiceCategory[] = [
         title: "Afro Hair Transplant",
         description: "Specialized hair transplant services that honor the individuality of Afro-textured hair.",
         image: "/service_page_images/service-afro.webp",
+        href: "/services/qht",
       },
       {
         id: "influencer",
         title: "Social Media Influencer Hair",
         description: "Tailored hair transplant solutions for creators and public figures.",
         image: "/service_page_images/service-influencer.webp",
+        href: "/services/customhair",
       },
       {
         id: "caucasian",
         title: "Caucasian Patients Hair Transplant",
         description: "Expert hair transplant solutions for Caucasian patients.",
         image: "/service_page_images/service-caucasian.webp",
+        href: "/services/fue",
       },
       {
         id: "natural-look",
         title: "Natural Look Hair Restoration",
         description: "Reclaim your confidence with hair that looks as natural as it feels.",
         image: "/service_page_images/service-natural-look.webp",
+        href: "/services/qht",
       },
       {
         id: "burn",
         title: "Burn Hair Transplant",
         description: "From scars to strength, with a natural restoration that restores both hair.",
         image: "/service_page_images/service-burn.webp",
+        href: "/services/hairrepair",
       },
     ],
   },
@@ -251,7 +273,11 @@ export default function ExploreServices() {
                   >
                     <div className="relative w-full aspect-[1016/1104] max-sm:aspect-[1016/1280] overflow-hidden bg-[#edf3fc]">
                       {/* Smooth shrinkable image canvas */}
-                      <div className="relative w-full h-full max-sm:h-[86.25%] overflow-hidden transition-all duration-300 ease-out max-sm:scale-100 max-sm:translate-y-0 max-sm:rounded-none sm:scale-100 sm:origin-top sm:translate-y-0 sm:group-hover:scale-[0.86] sm:group-hover:origin-top sm:group-hover:translate-y-1.5 sm:group-hover:rounded-[18px]">
+                      <Link
+                        href={card.href}
+                        className="block relative w-full h-full max-sm:h-[86.25%] overflow-hidden transition-all duration-300 ease-out max-sm:scale-100 max-sm:translate-y-0 max-sm:rounded-none sm:scale-100 sm:origin-top sm:translate-y-0 sm:group-hover:scale-[0.86] sm:group-hover:origin-top sm:group-hover:translate-y-1.5 sm:group-hover:rounded-[18px]"
+                        aria-label={`View ${card.title}`}
+                      >
                         <Image
                           src={card.image}
                           alt={`${card.title} - ${card.description}`}
@@ -260,12 +286,12 @@ export default function ExploreServices() {
                           className="object-cover object-center max-sm:object-top"
                           quality={90}
                         />
-                      </div>
+                      </Link>
 
                       {/* Know more CTA button */}
                       <div className="absolute bottom-2.5 left-2.5 max-sm:bottom-3 max-sm:left-3 xs:max-sm:bottom-3.5 xs:max-sm:left-3.5 sm:bottom-3.5 sm:left-3.5 z-20 transition-all duration-300 ease-out max-sm:opacity-100 max-sm:translate-y-0 max-sm:pointer-events-auto sm:opacity-0 sm:translate-y-2.5 sm:pointer-events-none sm:group-hover:opacity-100 sm:group-hover:translate-y-0 sm:group-hover:pointer-events-auto">
                         <Link
-                          href={["fut", "fue", "qht"].includes(card.id) ? `/services/${card.id}` : "/services"}
+                          href={card.href}
                           className="inline-flex items-center gap-1.5 rounded-md sm:rounded-lg max-sm:rounded-lg bg-[#001e56] text-white px-2.5 py-1 max-sm:px-3 max-sm:py-1.5 sm:px-3.5 sm:py-1.5 text-[9.5px] xs:text-[10.5px] max-sm:text-[10.5px] sm:text-[12px] font-semibold shadow-sm hover:bg-[#072464] active:scale-[0.97] transition-all duration-200 cursor-pointer"
                         >
                           Know more <span className="text-[10px] sm:text-[12px] leading-none">→</span>
