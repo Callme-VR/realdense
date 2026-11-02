@@ -76,11 +76,11 @@ export default function HairRepairStepProcedure({
         </div>
 
         {/* ── 4-Step Grid Progression ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-8 lg:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-7 sm:gap-8 lg:gap-8">
           {steps.map((item) => (
             <div
               key={item.step}
-              className="flex flex-col items-center text-center px-2 group"
+              className="flex flex-col items-center text-center px-1 sm:px-2 group"
             >
               {/* Step Circle Badge */}
               <div
@@ -90,18 +90,18 @@ export default function HairRepairStepProcedure({
                   boxShadow:
                     "inset 0px -3px 4px rgba(5, 78, 116, 0.44), inset 0px 2.62px 7.86px #8DD8FF",
                 }}
-                className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[68px] lg:h-[68px] rounded-full flex items-center justify-center font-['Plus_Jakarta_Sans'] font-extrabold text-[#001e56] text-[18px] sm:text-[20px] lg:text-[22px] mb-5 sm:mb-6 transition-transform duration-200 group-hover:scale-105 select-none"
+                className="w-12 h-12 sm:w-16 sm:h-16 lg:w-[68px] lg:h-[68px] rounded-full flex items-center justify-center font-['Plus_Jakarta_Sans'] font-extrabold text-[#001e56] text-[16px] sm:text-[20px] lg:text-[22px] mb-3 sm:mb-6 transition-transform duration-200 group-hover:scale-105 select-none"
               >
                 {item.step}
               </div>
 
               {/* Step Title */}
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[16.5px] sm:text-[17.5px] font-bold text-[#001e56] mb-2 sm:mb-2.5 tracking-[-0.01em] min-h-[44px] flex items-center justify-center">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[17.5px] font-bold text-[#001e56] mb-1.5 sm:mb-2.5 tracking-[-0.01em] min-h-0 sm:min-h-[44px] flex items-center justify-center">
                 {item.title}
               </h3>
 
               {/* Step Description */}
-              <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987]">
+              <p className="font-['Plus_Jakarta_Sans'] text-[11px] sm:text-[13.5px] leading-[1.5] sm:leading-[1.65] text-[#556987]">
                 {item.description}
               </p>
             </div>
