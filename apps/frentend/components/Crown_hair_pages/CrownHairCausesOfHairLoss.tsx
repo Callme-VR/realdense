@@ -11,7 +11,7 @@ const ShockDnaIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <path
       d="M5 3C8 6 16 7 19 10M5 14C8 17 16 18 19 21"
@@ -44,7 +44,7 @@ const PostTransplantCareIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <path
       d="M12 21C16.5 21 19 17.5 19 13C19 8.5 16 5 12 5C8 5 5 8.5 5 13C5 17.5 7.5 21 12 21Z"
@@ -82,7 +82,7 @@ const WeakDonorGraftsIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.8" />
     <circle cx="12" cy="9.5" r="3.2" stroke="currentColor" strokeWidth="1.8" />
@@ -104,7 +104,7 @@ const InfectionsIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <path
       d="M12 3C7.5 3 5 6.5 5 11C5 15 7.5 19 12 21C16.5 19 19 15 19 11C19 6.5 16.5 3 12 3Z"
@@ -192,22 +192,22 @@ export default function CrownHairCausesOfHairLoss({
         </div>
 
         {/* ── Top Row: 3 Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1000px] mx-auto mb-6">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-2 sm:gap-6 max-w-[1000px] mx-auto mb-2.5 sm:mb-6">
           {topRowCauses.map((cause) => (
             <div
               key={cause.id}
-              className="flex flex-col justify-start rounded-[24px] sm:rounded-[28px] bg-[#edf3f8] p-6 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
+              className="flex flex-col justify-start rounded-[14px] sm:rounded-[28px] bg-[#edf3f8] p-2.5 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
             >
               {/* Icon Container */}
-              <div className="mb-5">{cause.icon}</div>
+              <div className="mb-2 sm:mb-5 h-[28px] sm:h-auto flex items-center">{cause.icon}</div>
 
               {/* Title */}
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[18px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-2.5">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-1 sm:mb-2.5 leading-tight">
                 {cause.title}
               </h3>
 
               {/* Description */}
-              <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987]">
+              <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987]">
                 {cause.description}
               </p>
             </div>
@@ -219,18 +219,18 @@ export default function CrownHairCausesOfHairLoss({
           {bottomRowCauses.map((cause) => (
             <div
               key={cause.id}
-              className="w-full md:w-[calc(33.333%-16px)] flex flex-col justify-start rounded-[24px] sm:rounded-[28px] bg-[#edf3f8] p-6 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
+              className="w-auto min-w-[105px] max-w-[160px] md:max-w-none md:w-[calc(33.333%-16px)] flex flex-col justify-start rounded-[14px] sm:rounded-[28px] bg-[#edf3f8] p-2.5 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
             >
               {/* Icon Container */}
-              <div className="mb-5">{cause.icon}</div>
+              <div className="mb-2 sm:mb-5 h-[28px] sm:h-auto flex items-center">{cause.icon}</div>
 
               {/* Title */}
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[18px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-2.5">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-1 sm:mb-2.5 leading-tight">
                 {cause.title}
               </h3>
 
               {/* Description */}
-              <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987]">
+              <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987]">
                 {cause.description}
               </p>
             </div>

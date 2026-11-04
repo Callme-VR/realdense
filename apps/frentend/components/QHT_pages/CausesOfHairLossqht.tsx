@@ -13,6 +13,7 @@ const ShockLossIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className="w-5 h-6 sm:w-12 sm:h-14"
   >
     <path
       d="M61.2117 62.2222C64.7379 67.6297 67.0245 73.843 67.7507 80.4444C67.9155 81.9446 68 83.4648 68 85M67.7507 80.4444H21.5714M35.5 44L34.2497 43.6492C23.8777 40.7419 15.3121 34.2488 9.78814 25.7778C6.26202 20.3704 3.97528 14.157 3.24932 7.55556C3.08436 6.05546 3 4.53527 3 3M3.24932 7.55556H49.4286M3 85C3 66.1245 15.7526 49.5359 34.2497 44.3508L35.5 44M35.5 44L36.7503 43.6492C55.2475 38.4641 68 21.8754 68 3M35.5 44L36.7503 44.3508C47.1225 47.2581 55.6881 53.7512 61.2117 62.2222M37.8214 25.7778H9.78814M33.1786 62.2222H61.2117"
@@ -33,6 +34,7 @@ const ImproperCareIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className="w-6 h-6 sm:w-12 sm:h-11"
   >
     <path
       d="M65.8467 60.9449H93V33.8583L65.8467 60.9449ZM9.50365 24.9874L35.2993 50.7197L55.6642 30.4047L76.0292 50.7197L82.8175 43.948L55.6642 16.8614L35.2993 37.1764L9.50365 11.5795V0H0V86H93V76.5197H9.50365V24.9874Z"
@@ -50,6 +52,7 @@ const SurgicalSkillsIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className="w-6 h-6 sm:w-13 sm:h-12"
   >
     <path
       d="M91.5455 16.975H14.4545C10.621 16.975 6.94439 18.5079 4.23364 21.2366C1.52289 23.9653 0 27.6661 0 31.525V82.45C0 86.3089 1.52289 90.0098 4.23364 92.7384C6.94439 95.4671 10.621 97 14.4545 97H91.5455C95.379 97 99.0556 95.4671 101.766 92.7384C104.477 90.0098 106 86.3089 106 82.45V31.525C106 27.6661 104.477 23.9653 101.766 21.2366C99.0556 18.5079 95.379 16.975 91.5455 16.975ZM96.3636 82.45C96.3636 83.7363 95.856 84.9699 94.9524 85.8795C94.0488 86.789 92.8233 87.3 91.5455 87.3H14.4545C13.1767 87.3 11.9512 86.789 11.0476 85.8795C10.144 84.9699 9.63636 83.7363 9.63636 82.45V31.525C9.63636 30.2387 10.144 29.0051 11.0476 28.0955C11.9512 27.186 13.1767 26.675 14.4545 26.675H91.5455C92.8233 26.675 94.0488 27.186 94.9524 28.0955C95.856 29.0051 96.3636 30.2387 96.3636 31.525V82.45ZM28.9091 4.85C28.9091 3.5637 29.4167 2.33008 30.3203 1.42053C31.2239 0.51098 32.4494 0 33.7273 0H72.2727C73.5506 0 74.7761 0.51098 75.6797 1.42053C76.5833 2.33008 77.0909 3.5637 77.0909 4.85C77.0909 6.1363 76.5833 7.36992 75.6797 8.27947C74.7761 9.18902 73.5506 9.7 72.2727 9.7H33.7273C32.4494 9.7 31.2239 9.18902 30.3203 8.27947C29.4167 7.36992 28.9091 6.1363 28.9091 4.85ZM57.8182 52.1375H67.4545V61.8375H57.8182V71.5375H48.1818V61.8375H38.5455V52.1375H48.1818V42.4375H57.8182V52.1375Z"
@@ -67,6 +70,7 @@ const GlassesIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className="w-6 h-6 sm:w-12 sm:h-12"
   >
     {/* Left Arm extending upwards */}
     <path
@@ -169,6 +173,9 @@ export default function CausesOfHairLossQht({
   subtitle = "Understanding the early causes of QHT hair transplant loss can help in identifying the underlying factors that contribute to poor graft survival rates.",
   causes = defaultCauses,
 }: CausesOfHairLossQhtProps) {
+  const topRow = causes.slice(0, 3);
+  const bottomRow = causes.slice(3);
+
   return (
     <section className="w-full bg-white py-14 sm:py-20 lg:py-24 overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,25 +196,50 @@ export default function CausesOfHairLossQht({
           </p>
         </div>
 
-        {/* ── 3 on Top, 2 Centered Below Grid of Cause Cards ── */}
-        <div className="flex flex-wrap justify-center gap-5 sm:gap-6 lg:gap-7 max-w-[1040px] mx-auto">
-          {causes.map((cause) => (
+        {/* ── Top Row: 3 Cards ── */}
+        <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-7 mb-2.5 sm:mb-7 max-w-[1040px] mx-auto">
+          {topRow.map((cause) => (
             <div
               key={cause.id}
-              className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-[330px] flex flex-col rounded-[24px] sm:rounded-[30px] bg-[#eef3f8] border border-[#dce8f2] p-6 sm:p-7 lg:p-8 transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,30,80,0.10)] hover:-translate-y-0.5"
+              className="flex flex-col justify-start rounded-[14px] sm:rounded-[30px] bg-[#eef3f8] border border-[#dce8f2] p-2.5 sm:p-8 transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,30,80,0.10)] hover:-translate-y-0.5"
             >
               {/* Icon container */}
-              <div className="mb-5 sm:mb-6 shrink-0 flex items-center justify-start h-[56px] sm:h-[60px]">
+              <div className="mb-2 sm:mb-6 shrink-0 flex items-center justify-start h-[30px] sm:h-[60px]">
                 {cause.icon}
               </div>
 
               {/* Title */}
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[17px] sm:text-[18px] lg:text-[19px] font-bold text-[#001e56] mb-2.5 sm:mb-3 tracking-[-0.01em] leading-snug">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[18px] lg:text-[19px] font-bold text-[#001e56] mb-1 sm:mb-3 tracking-[-0.01em] leading-tight">
                 {cause.title}
               </h3>
 
               {/* Description */}
-              <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987] font-normal">
+              <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987] font-normal">
+                {cause.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Bottom Row: 2 Cards (centered) ── */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-7 max-w-[700px] mx-auto">
+          {bottomRow.map((cause) => (
+            <div
+              key={cause.id}
+              className="flex flex-col justify-start rounded-[14px] sm:rounded-[30px] bg-[#eef3f8] border border-[#dce8f2] p-2.5 sm:p-8 transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,30,80,0.10)] hover:-translate-y-0.5"
+            >
+              {/* Icon container */}
+              <div className="mb-2 sm:mb-6 shrink-0 flex items-center justify-start h-[30px] sm:h-[60px]">
+                {cause.icon}
+              </div>
+
+              {/* Title */}
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[18px] lg:text-[19px] font-bold text-[#001e56] mb-1 sm:mb-3 tracking-[-0.01em] leading-tight">
+                {cause.title}
+              </h3>
+
+              {/* Description */}
+              <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987] font-normal">
                 {cause.description}
               </p>
             </div>

@@ -78,13 +78,13 @@ export default function BenefitsFue({
         </div>
 
         {/* ── 2+1 Grid of Benefit Cards (2 on top, 1 centered below) ── */}
-        <div className="max-w-[940px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7 justify-center items-stretch">
+        <div className="max-w-[940px] mx-auto grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 lg:gap-7 justify-center items-stretch">
           {cards.map((card, idx) => {
             const isLastSingle = idx === cards.length - 1 && cards.length % 2 !== 0;
             return (
               <div
                 key={card.id}
-                className={`group relative rounded-[18px] sm:rounded-[22px] overflow-hidden shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_26px_rgba(3,30,80,0.09)] transition-all duration-300 hover:-translate-y-0.5 bg-[#f4f8fb] mx-auto w-full max-w-[450px] ${isLastSingle ? "md:col-span-2" : ""
+                className={`group relative rounded-[12px] sm:rounded-[22px] overflow-hidden shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_26px_rgba(3,30,80,0.09)] transition-all duration-300 hover:-translate-y-0.5 bg-[#f4f8fb] mx-auto w-full max-w-[450px] ${isLastSingle ? "col-span-2 md:col-span-2 max-w-[240px] sm:max-w-none md:max-w-[450px]" : ""
                   }`}
               >
                 <Image

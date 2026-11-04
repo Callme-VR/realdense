@@ -11,7 +11,7 @@ const PoorHairlineIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <circle cx="12" cy="8" r="4.5" stroke="currentColor" strokeWidth="1.8" />
     <path
@@ -38,7 +38,7 @@ const GraftSurvivalIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <path
       d="M12 2V14"
@@ -76,7 +76,7 @@ const VisibleScarsIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <path
       d="M4 20L20 4"
@@ -114,7 +114,7 @@ const PoorDensityIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <path
       d="M12 3C7.5 3 4 6.8 4 11.5C4 16 7 19.5 10 21"
@@ -147,7 +147,7 @@ const PatientPersonalFactorsIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="w-11 h-11 text-[#002366]"
+    className="w-6 h-6 sm:w-11 sm:h-11 text-[#002366]"
   >
     <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
     <circle cx="12" cy="9" r="3" stroke="currentColor" strokeWidth="1.8" />
@@ -237,22 +237,22 @@ export default function HairRepairCausesOfHairLoss({
         </div>
 
         {/* ── Top Row: 3 Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1000px] mx-auto mb-6">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-2 sm:gap-6 max-w-[1000px] mx-auto mb-2.5 sm:mb-6">
           {topRowCauses.map((cause) => (
             <div
               key={cause.id}
-              className="flex flex-col justify-start rounded-[24px] sm:rounded-[28px] bg-[#edf3f8] p-6 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
+              className="flex flex-col justify-start rounded-[14px] sm:rounded-[28px] bg-[#edf3f8] p-2.5 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
             >
               {/* Icon Container */}
-              <div className="mb-5">{cause.icon}</div>
+              <div className="mb-2 sm:mb-5 h-[28px] sm:h-auto flex items-center">{cause.icon}</div>
 
               {/* Title */}
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[18px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-2.5">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-1 sm:mb-2.5 leading-tight">
                 {cause.title}
               </h3>
 
               {/* Description */}
-              <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987]">
+              <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987]">
                 {cause.description}
               </p>
             </div>
@@ -260,22 +260,22 @@ export default function HairRepairCausesOfHairLoss({
         </div>
 
         {/* ── Bottom Row: 2 Cards Centered ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[660px] mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 max-w-[660px] mx-auto">
           {bottomRowCauses.map((cause) => (
             <div
               key={cause.id}
-              className="flex flex-col justify-start rounded-[24px] sm:rounded-[28px] bg-[#edf3f8] p-6 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
+              className="flex flex-col justify-start rounded-[14px] sm:rounded-[28px] bg-[#edf3f8] p-2.5 sm:p-7 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_28px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-1"
             >
               {/* Icon Container */}
-              <div className="mb-5">{cause.icon}</div>
+              <div className="mb-2 sm:mb-5 h-[28px] sm:h-auto flex items-center">{cause.icon}</div>
 
               {/* Title */}
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[18px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-2.5">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[19px] font-bold text-[#001e56] tracking-tight mb-1 sm:mb-2.5 leading-tight">
                 {cause.title}
               </h3>
 
               {/* Description */}
-              <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987]">
+              <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987]">
                 {cause.description}
               </p>
             </div>

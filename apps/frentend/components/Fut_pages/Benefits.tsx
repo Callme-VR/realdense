@@ -88,11 +88,11 @@ export default function Benefits({
         </div>
 
         {/* ── 2x2 Grid of Benefit Cards (Compact sizing) ── */}
-        <div className="max-w-[940px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7 justify-center items-stretch">
+        <div className="max-w-[940px] mx-auto grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 lg:gap-7 justify-center items-stretch">
           {cards.map((card) => (
             <div
               key={card.id}
-              className="group relative rounded-[18px] sm:rounded-[22px] overflow-hidden shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_26px_rgba(3,30,80,0.09)] transition-all duration-300 hover:-translate-y-0.5 bg-[#f4f8fb] mx-auto w-full max-w-[450px]"
+              className="group relative rounded-[12px] sm:rounded-[22px] overflow-hidden shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_26px_rgba(3,30,80,0.09)] transition-all duration-300 hover:-translate-y-0.5 bg-[#f4f8fb] mx-auto w-full max-w-[450px]"
             >
               <Image
                 src={card.imageSrc}
@@ -100,7 +100,7 @@ export default function Benefits({
                 width={1416}
                 height={596}
                 sizes="(max-width: 768px) 100vw, 450px"
-                className="w-full h-auto object-contain rounded-[18px] sm:rounded-[22px] transition-transform duration-300 group-hover:scale-[1.01]"
+                className="w-full h-auto object-contain rounded-[12px] sm:rounded-[22px] transition-transform duration-300 group-hover:scale-[1.01]"
                 quality={90}
               />
               {/* Screen reader accessible fallback */}

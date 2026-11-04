@@ -84,17 +84,17 @@ export default function NoShaveBenefits({
         {/* ── Cards Layout: 2 on top row, 1 centered below ── */}
         <div className="max-w-[1020px] mx-auto">
           {/* Top Row: Cards 01 & 02 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 lg:gap-8">
             {cards.slice(0, 2).map((item) => (
               <div
                 key={item.step}
-                className="flex items-center justify-between gap-5 sm:gap-6 rounded-[28px] sm:rounded-[32px] bg-[#f5f8fc] border border-[#eef3f9] p-6 sm:p-8 lg:p-9 transition-transform duration-300 hover:-translate-y-0.5"
+                className="flex items-center justify-between gap-1.5 sm:gap-6 rounded-[14px] sm:rounded-[32px] bg-[#f5f8fc] border border-[#eef3f9] p-2.5 sm:p-8 lg:p-9 transition-transform duration-300 hover:-translate-y-0.5"
               >
-                <div className="flex-1 min-w-0 pr-2">
-                  <span className="font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15px] font-extrabold text-[#00A3FF] block mb-1.5 sm:mb-2">
+                <div className="flex-1 min-w-0 pr-1 sm:pr-2">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[9.5px] sm:text-[15px] font-extrabold text-[#00A3FF] block mb-0.5 sm:mb-2">
                     {item.step}
                   </span>
-                  <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] sm:text-[23px] font-bold text-[#001e56] tracking-tight mb-2 sm:mb-2.5 leading-[1.25]">
+                  <h3 className="font-['Plus_Jakarta_Sans'] text-[10px] min-[380px]:text-[11px] sm:text-[23px] font-bold text-[#001e56] tracking-tight mb-1 sm:mb-2.5 leading-[1.25]">
                     {item.titleTop && item.titleBottom ? (
                       <>
                         <span className="block">{item.titleTop}</span>
@@ -104,12 +104,12 @@ export default function NoShaveBenefits({
                       item.title
                     )}
                   </h3>
-                  <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987]">
+                  <p className="font-['Plus_Jakarta_Sans'] text-[7.5px] min-[380px]:text-[8.5px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987]">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 shrink-0 flex items-center justify-center">
+                <div className="relative w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-28 sm:h-28 lg:w-32 lg:h-32 shrink-0 flex items-center justify-center">
                   <Image
                     src={item.imageSrc}
                     alt={item.imageAlt}
@@ -124,13 +124,13 @@ export default function NoShaveBenefits({
 
           {/* Bottom Row: Card 03 (Centered) */}
           {cards[2] && (
-            <div className="flex justify-center mt-6 lg:mt-8">
-              <div className="w-full md:max-w-[494px] flex items-center justify-between gap-5 sm:gap-6 rounded-[28px] sm:rounded-[32px] bg-[#f5f8fc] border border-[#eef3f9] p-6 sm:p-8 lg:p-9 transition-transform duration-300 hover:-translate-y-0.5">
-                <div className="flex-1 min-w-0 pr-2">
-                  <span className="font-['Plus_Jakarta_Sans'] text-[14px] sm:text-[15px] font-extrabold text-[#00A3FF] block mb-1.5 sm:mb-2">
+            <div className="flex justify-center mt-3 sm:mt-6 lg:mt-8">
+              <div className="w-full md:max-w-[494px] flex items-center justify-between gap-1.5 sm:gap-6 rounded-[14px] sm:rounded-[32px] bg-[#f5f8fc] border border-[#eef3f9] p-2.5 sm:p-8 lg:p-9 transition-transform duration-300 hover:-translate-y-0.5">
+                <div className="flex-1 min-w-0 pr-1 sm:pr-2">
+                  <span className="font-['Plus_Jakarta_Sans'] text-[9.5px] sm:text-[15px] font-extrabold text-[#00A3FF] block mb-0.5 sm:mb-2">
                     {cards[2].step}
                   </span>
-                  <h3 className="font-['Plus_Jakarta_Sans'] text-[20px] sm:text-[23px] font-bold text-[#001e56] tracking-tight mb-2 sm:mb-2.5 leading-[1.25]">
+                  <h3 className="font-['Plus_Jakarta_Sans'] text-[10px] min-[380px]:text-[11px] sm:text-[23px] font-bold text-[#001e56] tracking-tight mb-1 sm:mb-2.5 leading-[1.25]">
                     {cards[2].titleTop && cards[2].titleBottom ? (
                       <>
                         <span className="block">{cards[2].titleTop}</span>
@@ -140,12 +140,12 @@ export default function NoShaveBenefits({
                       cards[2].title
                     )}
                   </h3>
-                  <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[13.5px] leading-[1.65] text-[#556987]">
+                  <p className="font-['Plus_Jakarta_Sans'] text-[7.5px] min-[380px]:text-[8.5px] sm:text-[13.5px] leading-[1.35] sm:leading-[1.65] text-[#556987]">
                     {cards[2].description}
                   </p>
                 </div>
 
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 shrink-0 flex items-center justify-center">
+                <div className="relative w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-28 sm:h-28 lg:w-32 lg:h-32 shrink-0 flex items-center justify-center">
                   <Image
                     src={cards[2].imageSrc}
                     alt={cards[2].imageAlt}

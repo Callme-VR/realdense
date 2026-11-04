@@ -17,7 +17,7 @@ const GeneticsIcon = () => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="w-10 h-10 text-[#001e56]"
+    className="w-6 h-6 sm:w-10 sm:h-10 text-[#001e56]"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
@@ -44,7 +44,7 @@ const HormonesIcon = () => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="w-10 h-10 text-[#001e56]"
+    className="w-6 h-6 sm:w-10 sm:h-10 text-[#001e56]"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
@@ -65,7 +65,7 @@ const ScalpHealthIcon = () => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="w-10 h-10 text-[#001e56]"
+    className="w-6 h-6 sm:w-10 sm:h-10 text-[#001e56]"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
@@ -88,7 +88,7 @@ const AftercareIcon = () => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="w-10 h-10 text-[#001e56]"
+    className="w-6 h-6 sm:w-10 sm:h-10 text-[#001e56]"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
@@ -125,7 +125,7 @@ const defaultCauses: NoShaveCauseCard[] = [
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-10 h-10 text-[#001e56]"
+        className="w-6 h-6 sm:w-10 sm:h-10 text-[#001e56]"
         stroke="currentColor"
         strokeWidth="2.2"
         strokeLinecap="round"
@@ -163,7 +163,7 @@ const defaultCauses: NoShaveCauseCard[] = [
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-10 h-10 text-[#001e56]"
+        className="w-6 h-6 sm:w-10 sm:h-10 text-[#001e56]"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
@@ -208,21 +208,21 @@ export default function NoShaveCausesOfHairLoss({
         </div>
 
         {/* ── 6 Cards Grid (3 Columns) ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-7">
           {causes.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col justify-start rounded-[28px] bg-[#edf2f7] border border-[#e2e8f0]/80 p-7 sm:p-8 hover:bg-[#e8eff5] transition-colors duration-200"
+              className="flex flex-col justify-start rounded-[14px] sm:rounded-[28px] bg-[#edf2f7] border border-[#e2e8f0]/80 p-2.5 sm:p-8 hover:bg-[#e8eff5] transition-colors duration-200"
             >
-              <div className="mb-5 flex items-center justify-start">
+              <div className="mb-2 sm:mb-5 flex items-center justify-start h-[30px] sm:h-auto">
                 {item.icon}
               </div>
 
-              <h3 className="font-['Plus_Jakarta_Sans'] text-[19px] sm:text-[21px] font-bold text-[#001e56] tracking-tight mb-2.5">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[21px] font-bold text-[#001e56] tracking-tight mb-1 sm:mb-2.5 leading-tight">
                 {item.title}
               </h3>
 
-              <p className="font-['Plus_Jakarta_Sans'] text-[13px] sm:text-[14px] leading-relaxed text-[#556987]">
+              <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[14px] leading-[1.35] sm:leading-relaxed text-[#556987]">
                 {item.description}
               </p>
             </div>

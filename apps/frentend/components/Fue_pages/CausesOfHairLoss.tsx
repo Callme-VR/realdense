@@ -7,7 +7,7 @@ import React from "react";
 /** 1. Genetic Androgenetic Alopecia – hourglass / helix icon */
 const GeneticIcon = () => (
   <svg
-    width="52"
+    width="52" className="w-5 h-6 sm:w-12 sm:h-14"
     height="64"
     viewBox="0 0 71 88"
     fill="none"
@@ -27,7 +27,7 @@ const GeneticIcon = () => (
 /** 2. Stress and Lifestyle Factors – declining chart icon */
 const StressIcon = () => (
   <svg
-    width="60"
+    width="60" className="w-6 h-6 sm:w-12 sm:h-11"
     height="56"
     viewBox="0 0 93 86"
     fill="none"
@@ -44,7 +44,7 @@ const StressIcon = () => (
 /** 3. Medical Conditions and Medications – first-aid kit icon */
 const MedicalIcon = () => (
   <svg
-    width="64"
+    width="64" className="w-6 h-6 sm:w-13 sm:h-12"
     height="58"
     viewBox="0 0 106 97"
     fill="none"
@@ -61,7 +61,7 @@ const MedicalIcon = () => (
 /** 4. Failed Previous Transplant – hair follicle / scalp icon */
 const FailedTransplantIcon = () => (
   <svg
-    width="54"
+    width="54" className="w-5 h-6 sm:w-12 sm:h-14"
     height="74"
     viewBox="0 0 87 118"
     fill="none"
@@ -102,7 +102,7 @@ const FailedTransplantIcon = () => (
 /** 5. Social and Professional Appearance – eyeglasses / mirror icon (custom) */
 const SocialIcon = () => (
   <svg
-    width="66"
+    width="66" className="w-7 h-5 sm:w-14 sm:h-10"
     height="38"
     viewBox="0 0 110 62"
     fill="none"
@@ -205,7 +205,7 @@ export default function CausesOfHairLossFue({
         </div>
 
         {/* ── 2x2 Grid of Cause Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7 max-w-[940px] mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 lg:gap-7 max-w-[940px] mx-auto">
           {causes.map((cause) => (
             <CauseCardItem key={cause.id} cause={cause} />
           ))}
@@ -218,19 +218,19 @@ export default function CausesOfHairLossFue({
 /* ── Single Card ── */
 function CauseCardItem({ cause }: { cause: CauseCard }) {
   return (
-    <div className="group relative flex flex-col rounded-[24px] sm:rounded-[30px] bg-[#eef3f8] border border-[#dce8f2] p-7 sm:p-8 lg:p-9 transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,30,80,0.10)] hover:-translate-y-0.5">
+    <div className="group relative flex flex-col rounded-[14px] sm:rounded-[30px] bg-[#eef3f8] border border-[#dce8f2] p-2.5 sm:p-8 lg:p-9 transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,30,80,0.10)] hover:-translate-y-0.5">
       {/* Icon container */}
-      <div className="mb-6 sm:mb-7 shrink-0 flex items-center justify-start h-[64px]">
+      <div className="mb-2 sm:mb-7 shrink-0 flex items-center justify-start h-[30px] sm:h-[64px]">
         {cause.icon}
       </div>
 
       {/* Title */}
-      <h3 className="font-['Plus_Jakarta_Sans'] text-[17px] sm:text-[19px] font-bold text-[#001e56] mb-3 tracking-[-0.01em] leading-snug">
+      <h3 className="font-['Plus_Jakarta_Sans'] text-[9.5px] min-[380px]:text-[11px] sm:text-[19px] font-bold text-[#001e56] mb-1 sm:mb-3 tracking-[-0.01em] leading-tight">
         {cause.title}
       </h3>
 
       {/* Description */}
-      <p className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14px] leading-[1.65] text-[#556987] font-normal">
+      <p className="font-['Plus_Jakarta_Sans'] text-[7px] min-[380px]:text-[8px] sm:text-[14px] leading-[1.35] sm:leading-[1.65] text-[#556987] font-normal">
         {cause.description}
       </p>
     </div>

@@ -92,30 +92,30 @@ export default function HairRepairBenefits({
         </div>
 
         {/* ── 2-Column Grid of 5 Benefit Cards ── */}
-        <div className="max-w-[1020px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7 items-stretch">
+        <div className="max-w-[1020px] mx-auto grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 lg:gap-7 items-stretch">
           {cards.map((card) => (
             <div
               key={card.id}
-              className="group relative rounded-[22px] sm:rounded-[26px] bg-[#f4f8fb] p-5 sm:p-6 lg:p-7 flex items-center justify-between gap-3 sm:gap-4 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_26px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-0.5"
+              className="group relative rounded-[14px] sm:rounded-[26px] bg-[#f4f8fb] p-2.5 sm:p-6 lg:p-7 flex items-center justify-between gap-1.5 sm:gap-4 shadow-[0_4px_16px_rgba(3,30,80,0.04)] hover:shadow-[0_10px_26px_rgba(3,30,80,0.08)] transition-all duration-300 hover:-translate-y-0.5"
             >
               {/* Left Column: Step, Title, Description */}
               <div className="flex flex-col items-start justify-center flex-1 min-w-0 pr-1 sm:pr-2">
-                <span className="font-['Plus_Jakarta_Sans'] text-[13.5px] sm:text-[14.5px] font-bold text-[#00A3FF] tracking-[0.06em] mb-1.5 sm:mb-2 block">
+                <span className="font-['Plus_Jakarta_Sans'] text-[9.5px] sm:text-[14.5px] font-bold text-[#00A3FF] tracking-[0.06em] mb-0.5 sm:mb-2 block">
                   {card.step}
                 </span>
 
-                <h3 className="font-['Plus_Jakarta_Sans'] text-[17px] sm:text-[19px] lg:text-[20px] font-extrabold text-[#001e56] leading-[1.25] tracking-[-0.015em] mb-2 sm:mb-2.5">
+                <h3 className="font-['Plus_Jakarta_Sans'] text-[10px] min-[380px]:text-[11px] sm:text-[19px] lg:text-[20px] font-extrabold text-[#001e56] leading-[1.25] tracking-[-0.015em] mb-1 sm:mb-2.5">
                   {card.title}
                 </h3>
 
-                <p className="font-['Plus_Jakarta_Sans'] text-[12.5px] sm:text-[13px] leading-[1.6] text-[#556987] font-normal max-w-[240px] sm:max-w-[280px]">
+                <p className="font-['Plus_Jakarta_Sans'] text-[7.5px] min-[380px]:text-[8.5px] sm:text-[13px] leading-[1.35] sm:leading-[1.6] text-[#556987] font-normal max-w-[240px] sm:max-w-[280px]">
                   {card.description}
                 </p>
               </div>
 
               {/* Right Column: Circular Illustration Badge */}
               <div className="shrink-0 flex items-center justify-center">
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-[104px] lg:h-[104px] rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                <div className="relative w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-24 sm:h-24 lg:w-[104px] lg:h-[104px] rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105">
                   <Image
                     src={card.imageSrc}
                     alt={card.imageAlt}
